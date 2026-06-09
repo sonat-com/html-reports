@@ -1,402 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Create a Knowledge Base That Actually Gets Used</title>
-  <meta name="description" content="Learn how to create a knowledge base your team and customers will actually use — planning, structure, writing, and maintenance in one practical guide.">
-  <meta property="og:title" content="How to Create a Knowledge Base That Actually Gets Used">
-  <meta property="og:description" content="Learn how to create a knowledge base your team and customers will actually use — planning, structure, writing, and maintenance in one practical guide.">
-  <meta property="og:type" content="article">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.7;
-      color: #1a1a2e;
-      background: #fafafa;
-    }
-
-    .page-wrapper {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    /* Header */
-    .site-header {
-      text-align: center;
-      margin-bottom: 56px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid #e8e8f0;
-    }
-
-    .site-header a {
-      font-size: 15px;
-      font-weight: 600;
-      color: #3b5bdb;
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    /* Article meta */
-    .article-meta {
-      margin-bottom: 12px;
-    }
-
-    .article-meta time {
-      font-size: 14px;
-      color: #6c6c8a;
-      letter-spacing: 0.02em;
-    }
-
-    /* Title */
-    h1 {
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: #0f0f23;
-      margin-bottom: 20px;
-    }
-
-    /* Lead paragraph */
-    .lead {
-      font-size: 20px;
-      color: #3a3a5c;
-      line-height: 1.6;
-      margin-bottom: 36px;
-    }
-
-    /* Hero image */
-    .hero-image {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-      margin-bottom: 48px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    }
-
-    /* Section divider */
-    hr {
-      border: none;
-      border-top: 1px solid #e8e8f0;
-      margin: 48px 0;
-    }
-
-    /* Headings */
-    h2 {
-      font-size: clamp(22px, 3.5vw, 28px);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: #0f0f23;
-      margin-top: 56px;
-      margin-bottom: 16px;
-      line-height: 1.3;
-    }
-
-    h2:first-of-type {
-      margin-top: 0;
-    }
-
-    h3 {
-      font-size: 19px;
-      font-weight: 700;
-      color: #1a1a2e;
-      margin-top: 36px;
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-
-    /* Body text */
-    p {
-      margin-bottom: 20px;
-      color: #2c2c44;
-    }
-
-    /* Bold inline */
-    strong {
-      font-weight: 700;
-      color: #0f0f23;
-    }
-
-    /* Lists */
-    ul, ol {
-      margin: 16px 0 20px 0;
-      padding-left: 28px;
-    }
-
-    li {
-      margin-bottom: 10px;
-      color: #2c2c44;
-    }
-
-    ol li {
-      padding-left: 4px;
-    }
-
-    /* Inline images */
-    .inline-image {
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-      margin: 32px 0;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-    }
-
-    /* CTA block */
-    .cta-block {
-      background: linear-gradient(135deg, #eef2ff 0%, #f0fdf4 100%);
-      border: 1px solid #c7d7fe;
-      border-radius: 12px;
-      padding: 32px 36px;
-      margin-top: 48px;
-      text-align: center;
-    }
-
-    .cta-block p {
-      font-size: 18px;
-      color: #1a1a2e;
-      margin-bottom: 20px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: #3b5bdb;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 8px;
-      transition: background 0.15s;
-      letter-spacing: 0.01em;
-    }
-
-    .cta-button:hover {
-      background: #2f4ac0;
-    }
-
-    /* Footer */
-    .site-footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid #e8e8f0;
-      text-align: center;
-      font-size: 14px;
-      color: #6c6c8a;
-    }
-
-    .site-footer a {
-      color: #3b5bdb;
-      text-decoration: none;
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-      .page-wrapper { padding: 32px 16px 60px; }
-      .cta-block { padding: 24px 20px; }
-      h2 { margin-top: 40px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Create a Knowledge Base Customers Will Use</title>
+<meta name="description" content="Learn how to create a knowledge base that deflects repeat questions: what to write first, how to structure it, make it findable, and keep it useful.">
+<meta property="og:title" content="How to Create a Knowledge Base Your Customers Will Actually Use">
+<meta property="og:description" content="A practical, research-grounded guide to building a self-service knowledge base that reduces repeat support questions.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="images/01-how-to-create-a-knowledge-base-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Create a Knowledge Base Your Customers Will Actually Use",
+  "datePublished": "2026-06-09",
+  "dateModified": "2026-06-09",
+  "image": "images/01-how-to-create-a-knowledge-base-hero.png",
+  "author": {"@type": "Organization", "name": "Sonat"},
+  "publisher": {"@type": "Organization", "name": "Sonat"},
+  "about": "how to create a knowledge base"
+}
+</script>
+<style>
+  :root {
+    --ink: #1f2a37;
+    --muted: #5b6573;
+    --muted: #5b6573;
+    --accent: #2f6fed;
+    --soft: #f5f7fb;
+    --line: #e6eaf1;
+    --yellow: #f4c64a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 18px;
+    background: #fff;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }
+  header.hero { background: var(--soft); border-bottom: 1px solid var(--line); }
+  header.hero .wrap { padding-top: 40px; padding-bottom: 16px; }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .lede { color: #4a5568; font-size: 1.08rem; margin: 0 0 8px; }
+  .meta { color: #8a93a3; font-size: 14px; margin: 6px 0 0; }
+  figure { margin: 28px 0; }
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .hero-img { margin: 24px 0 0; }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin: 44px 0 12px;
+    letter-spacing: -0.01em;
+  }
+  p { margin: 0 0 18px; }
+  ul, ol { margin: 0 0 18px; padding-left: 1.3em; }
+  li { margin: 0 0 8px; }
+  strong { color: var(--ink); }
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+  }
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 4px;
+    width: 18px; height: 18px;
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+  }
+  .cta {
+    margin-top: 40px;
+    padding: 26px 28px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+  .cta h2 { margin-top: 0; }
+  .cta p:last-child { margin-bottom: 0; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; }
+    .wrap { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
 </head>
 <body>
-  <div class="page-wrapper">
-
-    <header class="site-header">
-      <a href="https://sonat.com" rel="noopener">Sonat</a>
-    </header>
-
-    <article>
-
-      <div class="article-meta">
-        <time datetime="2026-06-09">June 9, 2026</time>
-      </div>
-
-      <h1>How to Create a Knowledge Base That Actually Gets Used</h1>
-
-      <p class="lead">Most knowledge bases gather digital dust. Teams spend weeks building them, then watch their colleagues keep asking the same questions over Slack and email as if the knowledge base never existed.</p>
-
-      <p>The problem isn't that people don't want to help themselves — 78% of CRM leaders say their customers actively prefer to solve issues independently. It's that most knowledge bases are built the wrong way: organized around how the company thinks, not how users search.</p>
-
-      <p>This guide shows you how to create a knowledge base that people actually find, read, and use — whether you're building one for customers, employees, or both.</p>
-
-      <img
-        class="hero-image"
-        src="images/01-how-to-create-a-knowledge-base-hero.png"
-        alt="A team collaborating around a laptop, viewing an organized knowledge base interface"
-        width="760"
-        height="500"
-      >
-
-      <hr>
-
-      <h2>Why Most Knowledge Bases Go Unused</h2>
-
-      <p>Before building, it helps to understand why most knowledge bases fail. The patterns are consistent:</p>
-
-      <p><strong>They're organized like an org chart.</strong> Content is bucketed by department — "HR," "Finance," "Product" — instead of by the questions users are actually asking. A new hire trying to submit a reimbursement doesn't think "Finance"; they think "how do I get paid back for my flight?"</p>
-
-      <p><strong>The writing is inconsistent.</strong> Different contributors use different formats, lengths, and tones. One article is a 2,000-word deep dive; the next is three bullet points with no context. Readers can't build a mental model of what to expect, so they stop trusting the resource.</p>
-
-      <p><strong>Nothing is maintained.</strong> Knowledge bases get built once and then forgotten. Processes change, software updates, teams restructure — and the knowledge base quietly becomes inaccurate. Research by Pryon found that 47% of professionals already spend one to five hours every day just searching for information. Outdated content makes that worse.</p>
-
-      <p>Building a knowledge base that works means solving all three of these problems before you write the first article.</p>
-
-      <hr>
-
-      <h2>Plan Before You Build: Deciding What to Document</h2>
-
-      <p>The most common mistake is trying to document everything at once. Start with what matters most.</p>
-
-      <h3>Start With the Questions Already Coming In</h3>
-
-      <p>Your best knowledge base outline already exists — it's sitting in your support inbox, your Slack DMs, and your onboarding checklists. Pull the last 30 days of common support tickets or new-hire questions and look for patterns.</p>
-
-      <p>Prioritize by two factors:</p>
-      <ul>
-        <li><strong>Frequency</strong> — questions that come up more than once a week deserve an article</li>
-        <li><strong>Severity</strong> — questions where a wrong answer causes real problems (compliance, data loss, billing) deserve your best writing</li>
-      </ul>
-
-      <h3>Don't Aim for Complete Coverage on Day One</h3>
-
-      <p>A knowledge base with 20 well-written, accurate articles is more useful than one with 200 half-finished stubs. Publish what you can stand behind, then expand from there.</p>
-
-      <p>A good starting scope for most teams: the top 20–30 questions from the past quarter, plus any content that currently lives only in someone's head or in a hard-to-find document.</p>
-
-      <hr>
-
-      <h2>How to Structure a Knowledge Base for Real Users</h2>
-
-      <p>Structure determines findability. Even well-written content fails if users can't navigate to it.</p>
-
-      <h3>Organize by User Task, Not Internal Logic</h3>
-
-      <p>Group articles by what the user is trying to do, not by which team owns the information. Instead of "IT Policies," try "Setting Up Your Laptop." Instead of "Product — Billing Module," try "Managing Your Subscription."</p>
-
-      <p>A useful test: ask someone unfamiliar with your company to find a specific piece of information. If they can't figure out where to look within 30 seconds, your categories need rethinking.</p>
-
-      <h3>Keep Your Hierarchy Shallow</h3>
-
-      <p>Two levels of navigation is almost always enough. A top-level category ("Getting Started") and subcategories ("Creating Your First Manual," "Inviting Team Members") give users enough context without making them dig.</p>
-
-      <p>Three levels is the practical maximum. Beyond that, users lose track of where they are and start relying on search instead — which means your navigation isn't helping.</p>
-
-      <h3>Treat Search as Primary Navigation</h3>
-
-      <p>Even with great structure, most users will skip your categories entirely and go straight to the search bar. This means your article titles and opening paragraphs do most of the work.</p>
-
-      <p>Write titles as questions or task-based phrases that mirror exactly how someone would type their problem. "How to reset your password" outperforms "Password Management" every time.</p>
-
-      <img
-        class="inline-image"
-        src="images/01-how-to-create-a-knowledge-base-structure.png"
-        alt="A knowledge base interface showing a sidebar menu with clear categories and a prominent search bar"
-        width="760"
-        height="480"
-      >
-
-      <hr>
-
-      <h2>How to Write Knowledge Base Articles People Actually Read</h2>
-
-      <p>Good knowledge base writing is almost the opposite of good essay writing. Essays build to a conclusion. Knowledge base articles answer the question first and explain afterward.</p>
-
-      <h3>One Topic Per Article</h3>
-
-      <p>Resist the urge to bundle related information into one mega-article. A single, tightly scoped article is easier to find, easier to update, and easier to read on a phone.</p>
-
-      <p>If you find yourself writing headers like "Also, one more thing…" or "A note on…" — that content probably belongs in its own article, linked from the current one.</p>
-
-      <h3>Use a Consistent Article Template</h3>
-
-      <p>Consistency builds trust. When readers know what to expect from every article, they read faster and retain more. A simple knowledge base template covers:</p>
-
-      <ol>
-        <li><strong>What this article covers</strong> (1 sentence)</li>
-        <li><strong>The answer or solution</strong> (the main content)</li>
-        <li><strong>Step-by-step instructions</strong> for processes (numbered, not bulleted)</li>
-        <li><strong>What to do if this doesn't work</strong> (a troubleshooting note or link)</li>
-      </ol>
-
-      <p>This structure works for customer-facing help articles and internal documentation alike.</p>
-
-      <h3>Write at the Right Level</h3>
-
-      <p>Know your audience before you write. Documentation for support agents can assume familiarity with your product. Documentation for end customers cannot. When in doubt, write for someone who knows what they're trying to do but not how your system works.</p>
-
-      <p>Avoid acronyms on first use, keep sentences short, and test every set of instructions by actually following them.</p>
-
-      <hr>
-
-      <h2>How to Create a Knowledge Base for Employees</h2>
-
-      <p>Internal knowledge bases have one challenge external ones don't: employees already have workarounds. They email Sarah, they ask in the team channel, they keep a personal notes document.</p>
-
-      <p>To break those habits, the internal knowledge base has to be obviously faster than the alternatives.</p>
-
-      <h3>Assign Clear Ownership</h3>
-
-      <p>Every section of an internal knowledge base needs an owner — a specific person whose job it is to keep that content accurate. Without ownership, nobody feels responsible when something goes out of date.</p>
-
-      <p>A simple governance model: one owner per department, a quarterly review schedule, and a clear process for flagging content that needs updating.</p>
-
-      <h3>Make It the Single Source of Truth</h3>
-
-      <p>An internal knowledge base only works if it's the definitive answer — not one of several places people might look. That means actively retiring alternatives: moving policy documents out of Google Drive folders, archiving old wiki pages, and updating Slack pinned messages to point to the knowledge base instead.</p>
-
-      <h3>Build Habit Through Consistent Use</h3>
-
-      <p>The easiest way to drive internal adoption is to answer internal questions with a knowledge base link rather than typing out the answer again. Every time you do this, you reinforce the habit — and you improve the article if you notice anything missing while linking.</p>
-
-      <hr>
-
-      <h2>Maintaining and Improving Your Knowledge Base Over Time</h2>
-
-      <p>A knowledge base is not a project with a launch date. It's an ongoing system. The teams that get the most value from theirs make maintenance a regular part of their workflow, not a one-time effort.</p>
-
-      <h3>Schedule Regular Reviews</h3>
-
-      <p>Quarterly is a reasonable cadence for most teams. During each review, check:</p>
-      <ul>
-        <li>Are the instructions still accurate?</li>
-        <li>Have any products, tools, or policies changed?</li>
-        <li>Are there new common questions that don't have articles yet?</li>
-      </ul>
-
-      <h3>Let Usage Data Guide Improvements</h3>
-
-      <p>Search queries with no results tell you exactly what your users are looking for that you haven't documented. Page exit rates on specific articles often signal content that's confusing or incomplete.</p>
-
-      <p>Self-service has become the norm — Salesforce data shows it now resolves around 54% of customer issues. Teams that track which articles reduce support requests (and which don't) can focus their maintenance effort where it matters most.</p>
-
-      <h3>Make It Easy to Flag Problems</h3>
-
-      <p>Add a simple feedback mechanism to every article — even just a "Was this helpful?" prompt. When readers can flag problems in the moment, your team doesn't have to guess which articles need attention.</p>
-
-      <hr>
-
-      <h2>A Knowledge Base That Earns Its Keep</h2>
-
-      <p>Creating a knowledge base that gets used comes down to three things: write for how people search, not how your company is organized; maintain a consistent structure so readers know what to expect; and treat it as a living resource, not a one-time project.</p>
-
-      <p>The upfront investment pays dividends quickly. Support tickets drop. Onboarding gets faster. Teams stop reinventing the wheel every time someone new joins or a process changes.</p>
-
-      <div class="cta-block">
-        <p>Ready to build one — or clean up the one you have? Sonat makes it straightforward to create, publish, and maintain professional documentation without any technical setup.</p>
-        <a class="cta-button" href="https://sonat.com" rel="noopener">Start free on Sonat</a>
-      </div>
-
-    </article>
-
-    <footer class="site-footer">
-      <p>&copy; 2026 <a href="https://sonat.com" rel="noopener">Sonat</a> &mdash; Online Manual Creator</p>
-    </footer>
-
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Knowledge Base</p>
+    <h1>How to Create a Knowledge Base Your Customers Will Actually Use</h1>
+    <p class="meta">June 9, 2026</p>
+    <figure class="hero-img">
+      <img src="images/01-how-to-create-a-knowledge-base-hero.png" alt="A small support team gathered around a wall of neatly labeled folders and a large open manual, sorting questions into clear sections.">
+    </figure>
   </div>
+</header>
+
+<main class="wrap">
+  <p>Your team answers the same handful of questions every week. How do I reset my password? Where do I change my plan? Why won't the export finish? Each one is quick on its own, but together they eat the hours your team needs for harder work.</p>
+
+  <p>A knowledge base fixes that &mdash; but only if people can find the answer and act on it without asking you. This guide walks through how to create a knowledge base step by step: what to write first, how to structure it, and how to keep it useful after launch. The goal isn't a bigger pile of articles. It's fewer repeat questions and customers who get unstuck on their own.</p>
+
+  <h2>What a knowledge base is (and what it's for)</h2>
+  <p>A knowledge base is a published, searchable library of help content &mdash; how-to guides, troubleshooting steps, and answers to common questions &mdash; that lets people solve a problem themselves instead of contacting support. It can face customers (a help center) or a team (an internal knowledge base).</p>
+  <p>That last part matters. A knowledge base is not a folder of documents nobody reads. Its job is to deflect the question before it becomes a ticket. Decades of customer research point the same way: people don't want to be delighted by support &mdash; they want a quick, low-effort solution. The most damaging moment in a support experience is the channel switch, when someone tries your website, fails to find the answer, and has to start over on the phone. A good knowledge base removes that switch.</p>
+  <p>Keep that test in mind for every choice below: does this make the answer easier to reach, or does it just add more to read?</p>
+
+  <h2>Step 1: Start with the questions people actually ask</h2>
+  <p>Don't begin with a content plan. Begin with evidence.</p>
+  <p>Pull your real sources of demand:</p>
+  <ul>
+    <li>Support tickets and chat logs, sorted by how often each issue repeats</li>
+    <li>Search terms people already type into your site</li>
+    <li>The questions your sales and onboarding teams hear over and over</li>
+    <li>Anything a new hire has to ask in their first week</li>
+  </ul>
+  <p>Cluster these into themes and rank them by frequency. The questions that come up most are your first articles &mdash; not the ones that are most fun to write. Usability research is blunt on this point: an FAQ or help article earns its keep only when it answers a question people genuinely have, in the words they actually use. Invented questions waste everyone's time.</p>
+  <p>This is also why search alone won't save you. Your team and your customers rarely use the same words for the same thing &mdash; you say "deactivate account," they type "cancel." Writing from real questions closes that vocabulary gap before it starts.</p>
+
+  <h2>Step 2: Plan a structure people can navigate</h2>
+  <p>Once you know what to write, decide where it lives. Structure is what separates a knowledge base from a junk drawer.</p>
+  <p>Group articles into a handful of clear categories that match how customers think about your product, not how your org chart is arranged. Aim for breadth over depth: a reader should reach most answers in two or three clicks. Use plain category names a newcomer would recognize &mdash; "Billing and plans," not "Revenue operations."</p>
+  <p>A few rules of thumb that hold up well:</p>
+  <ul>
+    <li><strong>Keep one home for each answer.</strong> When the same fact lives in three articles, two of them will eventually go stale and contradict the third. A single source of truth means there's one place to update, and one version everyone trusts.</li>
+    <li><strong>Name things the way readers do.</strong> Borrow the language from Step 1. Your category and article titles are navigation, so they should read like the questions in your customers' heads.</li>
+    <li><strong>Make popular content obvious.</strong> Surface your most-used articles on the landing page. Most people came for the same ten things; don't bury them.</li>
+  </ul>
+  <p>If you maintain different versions of a product &mdash; editions, releases, regions &mdash; plan for that now. It's far easier to design for variants up front than to untangle a single article trying to cover four cases at once.</p>
+
+  <figure>
+    <img src="images/01-how-to-create-a-knowledge-base-inline.png" alt="A person at a desk turning a long, cluttered list of questions into a tidy set of labeled folders and signposts.">
+  </figure>
+
+  <h2>Step 3: Write articles that reduce effort, not add to it</h2>
+  <p>Here's where most knowledge bases quietly fail. The structure is fine, but the articles read like internal memos. Help content has one job: get the reader to the outcome with as little effort as possible.</p>
+  <p>Usability research on help and documentation is consistent about what "good" looks like:</p>
+  <ul>
+    <li><strong>Focus each article on a single task.</strong> One article, one job to be done. "How to reset your password," not "Account management."</li>
+    <li><strong>List concrete steps in order.</strong> Number them. Start each step with the action. The reader is mid-problem and scanning, not studying.</li>
+    <li><strong>Keep it short and scannable.</strong> Headers, short paragraphs, and lists beat dense walls of text. If an article runs long, that's usually a sign it should be two articles.</li>
+    <li><strong>Write from the reader's point of view.</strong> Lead with what they're trying to do, then how to do it. Skip the background they didn't ask for.</li>
+    <li><strong>Mix in the right format.</strong> A 20-second screen recording or a labeled screenshot often explains a flow faster than a paragraph. Offer both, since people learn differently.</li>
+  </ul>
+  <p>Plain language wins every time. Short sentences, common words, no jargon. A reader who needs a glossary to read your help article has already given up and reached for the phone.</p>
+  <p>A practical aid here is a readability check while you write. If a tool can flag dense sentences and a too-high reading level before you publish, you fix the problem instead of shipping it. This is one reason teams draft help content in a familiar editor &mdash; like Google Docs &mdash; and keep the writing experience simple enough that subject-matter experts, not just writers, can contribute.</p>
+
+  <h2>Step 4: Make the answer findable</h2>
+  <p>A great article nobody can find may as well not exist. Findability is a feature, so treat it like one.</p>
+  <ul>
+    <li><strong>Invest in search.</strong> Full-text search that tolerates typos and matches customer vocabulary is the single biggest lever on self-service success. Many people search before they browse.</li>
+    <li><strong>Write titles that match real queries.</strong> The closest thing to your customer's search term should be the article title. This helps your on-site search and your ranking in Google at the same time.</li>
+    <li><strong>Mind your SEO basics.</strong> Clear titles, descriptive URLs, meta descriptions, and structured data help customers find your help content from a search engine &mdash; often before they ever reach your site.</li>
+    <li><strong>Link related articles.</strong> When someone solves one problem, point them to the next likely question. Good internal links anticipate the follow-up and head off a second ticket.</li>
+  </ul>
+
+  <h2>Step 5: Publish where customers already are</h2>
+  <p>A knowledge base only deflects tickets if it's easy to reach at the moment of frustration.</p>
+  <p>Publish it on your own domain &mdash; something like <code>docs.yoursite.com</code> &mdash; so it feels like part of your product, not a detour. Make sure it works on a phone, because a large share of readers are on mobile when they hit a snag. If your product is software, an embedded help widget or in-app link puts answers one click from where the problem happens, which is exactly where research says you want them: no channel switch, no starting over.</p>
+  <p>The branding matters more than it seems. A help center that looks and sounds like the rest of your product builds trust. One that looks bolted on makes people doubt the answer and reach for a human instead.</p>
+
+  <h2>Step 6: Treat your knowledge base as a feedback loop</h2>
+  <p>A knowledge base is never finished, and that's the point. The most valuable thing it produces isn't the articles &mdash; it's the data about where people still get stuck.</p>
+  <p>Build a simple loop:</p>
+  <ol>
+    <li><strong>Watch what people search for and don't find.</strong> Empty search results are a to-do list for your next articles.</li>
+    <li><strong>Let readers say whether an article helped.</strong> A one-click "Was this helpful?" tells you which pages to fix first.</li>
+    <li><strong>Close the loop with support.</strong> Every ticket that a published article should have answered is a sign that article is missing, hidden, or unclear. Feed those back into your queue.</li>
+    <li><strong>Review on a schedule.</strong> Outdated help is worse than none &mdash; it actively misleads. Set a cadence to revisit your top articles and retire what's stale.</li>
+  </ol>
+  <p>Handled this way, your knowledge base gets sharper every month. The questions it can't yet answer become the roadmap for what to write next, and your support team spends less time repeating itself.</p>
+
+  <h2>A quick knowledge base best-practices checklist</h2>
+  <p>Before you call it done, run through the essentials:</p>
+  <ul class="checklist">
+    <li>First articles come from your most frequent real questions</li>
+    <li>Clear categories; most answers within two or three clicks</li>
+    <li>One home per answer &mdash; a genuine single source of truth</li>
+    <li>Each article covers one task, with numbered steps</li>
+    <li>Short, scannable, plain language; screenshots or video where they help</li>
+    <li>Reliable search and titles that match how customers phrase things</li>
+    <li>Published on your domain, mobile-friendly, on-brand</li>
+    <li>A working feedback loop and a review schedule</li>
+  </ul>
+
+  <div class="cta">
+    <h2>Where to go from here</h2>
+    <p>Creating a knowledge base isn't really a writing project &mdash; it's a habit of turning every repeat question into a published answer, then making that answer effortless to find. Start with the ten questions you're tired of answering, give each a clear home, write it for a reader mid-problem, and keep the loop running.</p>
+    <p>Sonat brings these pieces together in one place: draft in Google Docs, publish a fast, searchable, on-brand help center, check readability as you write, and use built-in AI answers to deflect the repetitive questions automatically &mdash; all without a technical setup. If you're ready to give your customers answers instead of a queue, that's a good place to start.</p>
+  </div>
+</main>
 </body>
 </html>
