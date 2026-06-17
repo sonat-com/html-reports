@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Knowledge Base People Actually Use</title>
+<meta name="description" content="Learn how to build a knowledge base people actually use: structure it by task, write in plain language, make it findable, and keep every answer accurate.">
+<style>
+  :root{
+    --ink:#1f2733; --muted:#5a6675; --line:#e8ebf0; --accent:#2f6df0;
+    --bg:#ffffff; --soft:#f6f8fb;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:48px 22px 80px}
+  h1{
+    font-size:2.2rem; line-height:1.2; letter-spacing:-0.02em;
+    margin:0 0 28px; font-weight:780;
+  }
+  h2{
+    font-size:1.5rem; line-height:1.3; letter-spacing:-0.01em;
+    margin:48px 0 14px; font-weight:720;
+  }
+  p{margin:0 0 18px}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(47,109,240,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  ul,ol{margin:0 0 20px; padding-left:1.3em}
+  li{margin:0 0 10px}
+  strong{font-weight:680}
+  figure{margin:0 0 30px}
+  img{display:block; width:100%; height:auto; border-radius:14px; background:var(--soft)}
+  .hero{margin:8px 0 36px}
+  .hero img{border:1px solid var(--line)}
+  hr{border:0; border-top:1px solid var(--line); margin:40px 0}
+  @media (max-width:560px){
+    body{font-size:17px}
+    .wrap{padding:32px 18px 64px}
+    h1{font-size:1.8rem}
+    h2{font-size:1.3rem}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <h1>How to Build a Knowledge Base People Actually Use</h1>
+
+  <figure class="hero">
+    <img src="images/01-how-to-build-a-knowledge-base-hero.png" alt="A small team organizing labeled folders and a printed manual on open shelves while a colleague reads at a desk">
+  </figure>
+
+  <p>Most knowledge bases don't fail because the writing is bad. They fail because nobody can find the right answer, or because the answer they find is out of date. You publish a hundred articles, traffic trickles in, and the support queue stays exactly as long as it was before.</p>
+
+  <p>A knowledge base is only as good as the answers people actually retrieve from it. This guide walks through how to plan, structure, write, and maintain one so it stays findable, accurate, and trusted &mdash; and points out the few failure modes that quietly sink most projects.</p>
+
+  <h2>What a knowledge base is (and what it isn't)</h2>
+  <p>A knowledge base is a single, organized home for the answers your readers need &mdash; how-to articles, troubleshooting steps, policies, product manuals, and FAQs &mdash; published so people can find them on their own. Internal knowledge bases serve employees; external ones serve customers. Many teams run both from the same source.</p>
+  <p>What separates a knowledge base from a pile of documents is intent. Every article exists to answer a real question, and the whole collection is organized, searchable, and maintained so those answers stay correct. A folder of orphaned files is storage. A knowledge base is a product.</p>
+
+  <h2>Start with the questions, not the articles</h2>
+  <p>The most common mistake in knowledge management is writing the articles you <em>have</em> instead of the answers people <em>need</em>. Before you draft anything, collect the real questions:</p>
+  <ul>
+    <li>Mine your support tickets, chat logs, and search queries for recurring problems.</li>
+    <li>Ask frontline support and sales which three questions they answer every week.</li>
+    <li>Note the exact words people use &mdash; readers search in their own language, not yours.</li>
+  </ul>
+  <p>Then write each article to answer one question completely. Phrasing headings as the question a reader would actually type ("How do I reset my password?") makes content easier to scan and easier for search to match.</p>
+
+  <h2>Structure your knowledge base around how people use it</h2>
+  <p>Once you know the questions, organize the answers. Decades of usability research point to one principle: group content by <strong>task</strong>, not by the team that owns it. In analyses of intranet information architecture, task-based structures came to dominate &mdash; by 2014, 86% of redesigned intranet IAs were organized by what people were trying to do rather than by department. Structures built around tasks survive reorganizations; structures built around your org chart break the moment the org chart changes.</p>
+  <p>A few structural rules that hold up well:</p>
+  <ul>
+    <li><strong>Keep top-level categories few and clear.</strong> Well-designed intranets tend to settle on roughly seven top-level categories on average &mdash; enough to cover the ground without overwhelming the reader.</li>
+    <li><strong>Make every label descriptive, specific, and mutually exclusive.</strong> Vague or overlapping section names ("Resources," "General," "Other") force readers to guess. If two categories could plausibly hold the same article, merge or rename them.</li>
+    <li><strong>Expose depth without burying it.</strong> Grouped menus and clear navigation let readers see secondary content at a glance, which improves discoverability instead of hiding answers three clicks down.</li>
+  </ul>
+
+  <figure>
+    <img src="images/01-how-to-build-a-knowledge-base-structure.png" alt="A person arranging article cards into a few clearly labeled category columns on a wall while a colleague points at one column">
+  </figure>
+
+  <h2>Write for the reader, in plain language</h2>
+  <p>Clear writing isn't a nicety &mdash; it's the difference between an article that deflects a ticket and one that creates one. The U.S. government's plain-language guidance, rooted in the Plain Writing Act of 2010, frames the goal simply: content should be written for its specific audience and be genuinely easy to understand.</p>
+  <p>Practical habits that get you there:</p>
+  <ul>
+    <li><strong>One idea per paragraph, short sentences, plain words.</strong> Cut jargon your reader wouldn't use.</li>
+    <li><strong>Lead with the answer.</strong> Put the resolution first, then the explanation. Readers scan; reward them fast.</li>
+    <li><strong>Use steps for procedures.</strong> Numbered steps beat a wall of prose for anything sequential.</li>
+    <li><strong>Test for comprehension.</strong> Plain-language practice treats testing as a real step &mdash; watch a few real users try to complete the task using only the article.</li>
+  </ul>
+  <p>Writing clearly is also how you scale support without scaling headcount: every reader who self-serves successfully is a question your team never has to field twice.</p>
+
+  <h2>Make it findable, because search is the front door</h2>
+  <p>Most readers don't browse a knowledge base &mdash; they search it, or they land on one article from Google and never see your navigation at all. So findability has to be designed, not assumed.</p>
+  <p>Low traffic on a good article usually means a discoverability problem, not a content problem. The fix is to look past raw analytics at the things that actually drive findability: the article's metadata, the words in its title and links, where it sits in navigation, and what related content points to it. Write titles as the questions people ask, tag articles at the moment you create them, and link related answers to each other so one good page leads to the next.</p>
+  <p>This is also where SEO and internal search overlap. Descriptive titles, clean structure, and meta tags help your articles surface in <a href="https://sonat.com">Sonat</a> and in Google alike &mdash; the same clarity serves both.</p>
+
+  <h2>Keep it accurate: the part everyone skips</h2>
+  <p>A knowledge base is never "done." The fastest way to lose a reader's trust is to give them a confident answer that turns out to be wrong, and stale content does exactly that. The upkeep that keeps a knowledge base healthy comes down to a handful of habits:</p>
+  <ul>
+    <li><strong>Single source of truth.</strong> Publish each answer in exactly one place, then link to it from everywhere it's relevant. Duplicated answers drift apart and contradict each other.</li>
+    <li><strong>Clear ownership.</strong> Every article needs an owner who is accountable for keeping it correct. Pages with no owner are the first to rot.</li>
+    <li><strong>Freshness checks.</strong> Track when each article was created and last edited, and review on a schedule. Archive or remove pages that are no longer accurate.</li>
+    <li><strong>Deduplication.</strong> Periodically hunt down and merge near-duplicate articles so search returns one strong result, not three weak ones.</li>
+    <li><strong>Feedback loops.</strong> Let readers rate articles or flag what didn't help. That signal tells you which pages to fix next.</li>
+  </ul>
+  <p>Version history matters here too. When you can see what changed, when, and who changed it &mdash; and roll back a bad edit &mdash; maintenance stops being scary. Review and approval workflows add a second pair of eyes before a change goes live, which is exactly what high-stakes content like policies and procedures needs.</p>
+
+  <h2>Where AI fits in an AI knowledge base</h2>
+  <p>AI is changing how readers reach answers, but it doesn't change the fundamentals &mdash; it raises the stakes on them. An AI assistant that answers questions from your knowledge base is only as trustworthy as the content underneath it. Feed it duplicated, stale, or contradictory articles and it will confidently serve duplicated, stale, or contradictory answers.</p>
+  <p>The practical takeaway: invest in the content layer first. Clean, well-owned, deduplicated, single-source articles are what make AI-powered answers reliable. AI can then help you draft new articles faster, suggest where coverage is thin, and &mdash; through machine translation &mdash; make the same answers available to readers in their own language. Keep a human in the loop for anything high-stakes, and let AI take the repetitive load.</p>
+
+  <h2>A simple way to start</h2>
+  <p>You don't need a hundred articles to launch. You need the right ten.</p>
+  <ol>
+    <li><strong>List the top 10 questions</strong> your team answers most often.</li>
+    <li><strong>Write one clear article per question</strong>, answer-first, in plain language.</li>
+    <li><strong>Group them into a few well-labeled categories</strong> organized by task.</li>
+    <li><strong>Publish, then watch search queries and feedback</strong> to see what's missing.</li>
+    <li><strong>Assign owners and a review cadence</strong> before the collection grows.</li>
+  </ol>
+  <p>Then expand deliberately. A small knowledge base that's accurate and findable beats a large one nobody trusts.</p>
+
+  <h2>The shift that makes a knowledge base work</h2>
+  <p>The teams that succeed stop treating a knowledge base as a documentation dump and start treating it as a living product: organized around real questions, written in plain language, designed to be found, and maintained so every answer stays true. Get those four things right and the knowledge base starts doing what it was always supposed to do &mdash; answer the question before it ever reaches your inbox.</p>
+  <p>Ready to build one? <a href="https://sonat.com">Sonat</a> gives non-technical teams a single place to write, organize, translate, and publish a knowledge base your readers can actually use.</p>
+
+</main>
+</body>
+</html>
