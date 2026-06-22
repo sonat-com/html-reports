@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write a User Manual: A Step-by-Step Template</title>
+<meta name="description" content="A reusable user manual template plus the writing habits that make it work: the sections to include, one-action steps, plain language, and how to publish.">
+<style>
+  :root{
+    --ink:#1f2733; --muted:#5b6675; --line:#e7eaef; --accent:#2563c9;
+    --bg:#ffffff; --soft:#f6f8fb;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; font-size:18px;
+  }
+  .wrap{max-width:740px; margin:0 auto; padding:32px 22px 72px}
+  header h1{
+    font-size:2.1rem; line-height:1.18; letter-spacing:-.01em;
+    margin:.2em 0 .55em; font-weight:750;
+  }
+  .lede{font-size:1.12rem; color:var(--muted); margin:0 0 1.6em}
+  img{max-width:100%; height:auto; display:block; border-radius:14px}
+  figure{margin:2em 0}
+  .hero{margin:.4em 0 1.8em; background:var(--soft); border-radius:16px; padding:14px}
+  h2{font-size:1.5rem; line-height:1.25; margin:1.9em 0 .5em; letter-spacing:-.01em; font-weight:720}
+  h3{font-size:1.18rem; margin:1.5em 0 .35em; font-weight:680}
+  p{margin:.7em 0}
+  ol,ul{padding-left:1.25em; margin:.7em 0}
+  li{margin:.5em 0}
+  ol li::marker{font-weight:700; color:var(--accent)}
+  strong{font-weight:680}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(37,99,201,.3)}
+  a:hover{border-bottom-color:var(--accent)}
+  .cta{
+    margin-top:2.4em; padding:22px 24px; background:var(--soft);
+    border:1px solid var(--line); border-radius:16px;
+  }
+  .cta p{margin:0}
+  hr{border:0; border-top:1px solid var(--line); margin:2.4em 0}
+  @media (max-width:560px){
+    body{font-size:17px}
+    header h1{font-size:1.7rem}
+    .wrap{padding:24px 16px 56px}
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <header>
+    <h1>How to Write a User Manual: A Step-by-Step Template</h1>
+  </header>
+
+  <figure class="hero">
+    <img src="images/01-how-to-write-a-user-manual-template-hero.png"
+         alt="A technical writer and a product specialist organizing labeled tabs and numbered step cards on a wall to plan a user manual">
+  </figure>
+
+  <p class="lede">You know your product inside out. Your customers don't &mdash; yet. A good user manual closes that gap, and the fastest way to write one is to start from a template instead of a blank page.</p>
+
+  <p>The trouble is that most manuals are written the way the product was built: feature by feature, in the order the team happened to ship them. Readers don't think that way. They arrive with a task &mdash; <em>set it up, fix this, get that one thing working</em> &mdash; and they want the shortest path to done. This guide gives you a reusable user manual template, section by section, plus the writing habits that make each section worth reading.</p>
+
+  <h2>What is a user manual template?</h2>
+  <p>A user manual template is a reusable structure &mdash; a set of standard sections in a sensible order &mdash; that you fill in for each product or release. It saves you from re-deciding the outline every time, keeps your manuals consistent, and makes sure you never forget the parts readers rely on, like safety notes or troubleshooting.</p>
+  <p>Think of it as the skeleton. The template decides <em>what goes where</em>; your product knowledge fills in the muscle.</p>
+
+  <h2>The user manual template: sections to include</h2>
+  <p>Here is a structure that works for software, hardware, and physical products alike. International guidance for instructions-for-use treats information as something people need across the whole life of a product &mdash; from first setup through everyday use, troubleshooting, and eventually retiring it &mdash; so a complete manual covers that whole arc, not just the happy path.</p>
+  <ol>
+    <li><strong>Title and version.</strong> Product name, model or release number, and the manual's own version. Readers need to know they're looking at the right instructions for the thing in front of them.</li>
+    <li><strong>Introduction.</strong> One short paragraph: what the product does and who this manual is for. Set expectations, then get out of the way.</li>
+    <li><strong>Safety and important notices.</strong> Anything that prevents harm, data loss, or an expensive mistake goes up front and stays visible. Don't bury a warning inside step 14.</li>
+    <li><strong>What's in the box / what you need.</strong> Parts, accessories, system requirements, accounts, or permissions. List prerequisites before the first step, not halfway through it.</li>
+    <li><strong>Getting started / setup.</strong> The shortest route from "just unpacked" or "just signed up" to a first working result.</li>
+    <li><strong>Core tasks (how-to section).</strong> The heart of the manual &mdash; one task per topic, each written as numbered steps. This is where most of your readers live.</li>
+    <li><strong>Troubleshooting and FAQs.</strong> Common problems, what causes them, and how to recover. Treat this as essential, not an afterthought.</li>
+    <li><strong>Reference.</strong> Specifications, settings, glossary, and anything readers look up rather than read straight through.</li>
+    <li><strong>Support and next steps.</strong> Where to get help, how to send feedback, and where to find updates.</li>
+  </ol>
+
+  <figure>
+    <img src="images/01-how-to-write-a-user-manual-template-sections.png"
+         alt="A person stacking labeled blocks for setup, troubleshooting, tasks, and reference while a colleague with a checklist points at the top">
+  </figure>
+
+  <p>Not every product needs all nine, and a small app won't need a "what's in the box" section. Cut what doesn't apply &mdash; but cut on purpose, not by forgetting.</p>
+
+  <h2>How to write each section so people actually read it</h2>
+  <p>A template gives you the bones. These habits give you a manual people finish.</p>
+
+  <h3>Organize around tasks, not features</h3>
+  <p>Decades of usability research point the same direction: people read documentation to <em>do</em> something, and help is most effective when it's short, searchable, focused on the user's immediate goal, and built from concrete steps. So name your sections after jobs ("Connect a new device," "Reset your password"), not after menus or modules. A reader scanning your contents should see their own goal staring back at them.</p>
+  <p>This is the core of the <em>minimalist</em> approach to documentation pioneered by researcher John Carroll: deliver short, task-oriented chunks rather than one long monolith, and let people start doing real work right away instead of reading a wall of background first.</p>
+
+  <h3>Write one action per step</h3>
+  <p>Break every procedure into single-action steps. Each numbered step should ask the reader to do exactly one thing. "Open Settings, scroll to Security, and enable two-factor" is three steps wearing one number &mdash; split it. Short steps are easier to follow, easier to screenshot, and far easier to translate.</p>
+
+  <h3>Use plain, direct language</h3>
+  <p>Plain-language practice &mdash; the same standard public agencies are held to &mdash; means writing for your specific reader, using everyday words, short sentences, and the active voice. Say "Press the power button," not "The power button should be depressed by the user." Define any term the first time it appears, and keep acronyms to a minimum. If an eighth-grader couldn't follow it, simplify.</p>
+
+  <h3>Show, don't just tell</h3>
+  <p>Add a screenshot or a simple diagram wherever a reader might wonder "which button?" Visuals every few hundred words break up the text and cut the chance of a wrong turn. Caption them so they make sense on their own.</p>
+
+  <h3>Plan for mistakes</h3>
+  <p>Good documentation assumes readers will slip up &mdash; and helps them recover. For each major task, answer the obvious "what if it doesn't work?" right where it happens, or link to the troubleshooting entry that does. An error the manual already anticipated stops being a support ticket.</p>
+
+  <h2>Keep the manual current</h2>
+  <p>A template makes a manual easy to start. Keeping it accurate is the harder, longer job &mdash; and it's where most documentation quietly fails. When the product changes and the manual doesn't, readers stop trusting it and start contacting support instead.</p>
+  <p>A few habits keep a manual honest:</p>
+  <ul>
+    <li><strong>Make updates part of "done."</strong> A feature isn't shipped until its manual section reflects it.</li>
+    <li><strong>Keep one source of truth.</strong> Maintain a single, versioned home for each manual so there's never a question of which copy is right.</li>
+    <li><strong>Watch how it's used.</strong> Search terms that return nothing and pages people abandon tell you exactly where to write next.</li>
+  </ul>
+
+  <h2>From template to published manual with Sonat</h2>
+  <p>A template lives in a document; a manual has to reach the people who need it &mdash; on the web, on a phone, in their language. That last mile is where <a href="https://sonat.com">Sonat</a> fits.</p>
+  <p>You draft in a familiar editor (or right in Google Docs and sync it over), then publish to the web with one click &mdash; to your own domain if you like. Every reader gets a mobile-responsive page and a fast search box, so they land on the exact step they need. Built-in version history means you can update with confidence and restore any earlier version, and machine translation turns one manual into many languages without rebuilding it. Viewers are always free and unlimited, so reaching more readers never costs more.</p>
+  <p>In other words: bring the structure from this template, and let the platform handle setup, publishing, search, and translation.</p>
+
+  <h2>Start with the structure</h2>
+  <p>A user manual is not a creative writing exercise. It's a map from "I just got this" to "I can use it," and the fastest way to draw that map is to start from a proven structure: title, intro, safety, setup, tasks, troubleshooting, reference, support. Fill each section with one-action steps in plain language, show readers where to click, plan for their mistakes, and keep the whole thing current.</p>
+
+  <div class="cta">
+    <p>Copy the template above, delete what your product doesn't need, and write the first task today. Your future support queue will thank you.</p>
+  </div>
+</article>
+</body>
+</html>
