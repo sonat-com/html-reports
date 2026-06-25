@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write an IT Runbook: A Practical Guide</title>
+<meta name="description" content="How to write an IT runbook that works under pressure — what to include, a copy-paste template and example, plus runbook vs. playbook explained.">
+<style>
+  :root { --ink:#1f2933; --muted:#52606d; --accent:#2563a8; --line:#e4e7eb; --bg:#ffffff; --soft:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7; font-size: 18px; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 22px 72px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 1.2rem; }
+  h2 { font-size: 1.5rem; line-height: 1.25; margin: 2.6rem 0 0.8rem; letter-spacing: -0.01em; }
+  h3 { font-size: 1.18rem; margin: 1.8rem 0 0.6rem; }
+  p { margin: 0 0 1.15rem; color: var(--ink); }
+  ul { margin: 0 0 1.2rem; padding-left: 1.3rem; }
+  li { margin: 0 0 0.55rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--ink); }
+  img { max-width: 100%; height: auto; display: block; border-radius: 12px; margin: 1.2rem auto 1.8rem; }
+  figure { margin: 0 0 1.8rem; }
+  .lede { font-size: 1.16rem; color: var(--muted); }
+  blockquote {
+    margin: 1.4rem 0; padding: 1rem 1.2rem; background: var(--soft);
+    border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0;
+    color: var(--ink); font-size: 0.98rem;
+  }
+  blockquote p { margin: 0 0 0.5rem; }
+  blockquote p:last-child { margin: 0; }
+  .cta {
+    margin-top: 2.8rem; padding: 1.6rem 1.4rem; background: var(--soft);
+    border: 1px solid var(--line); border-radius: 14px;
+  }
+  .cta p { margin: 0; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 2.4rem 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .wrap { padding: 28px 18px 56px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>How to Write an IT Runbook: A Practical Guide (with Template)</h1>
+
+    <figure>
+      <img src="images/01-how-to-write-an-it-runbook-hero.png" alt="A calm on-call engineer following a clear printed runbook at a desk while a teammate points to the next step on a wall board">
+    </figure>
+
+    <p class="lede">It's 2 a.m. A service is down, the on-call phone is buzzing, and the one person who knows how to fix it is on a plane. What happens next depends almost entirely on one thing: whether someone wrote down the steps before the pressure arrived.</p>
+
+    <p>That written-down set of steps is an IT runbook. A good one turns a stressful, improvised scramble into a calm, repeatable procedure that anyone on the team can follow. This guide explains what an IT runbook is, how it differs from a playbook and an SOP, what belongs inside one, and a reusable template you can copy today.</p>
+
+    <h2>What is an IT runbook?</h2>
+    <p>An IT runbook is a documented, step-by-step procedure for completing a specific operational task or resolving a known issue — for example, restarting a stuck service, rotating a database credential, or recovering from a failed backup. It tells the reader exactly what to do, in what order, and how to confirm it worked.</p>
+    <p>The key word is <em>specific</em>. A runbook is not a general philosophy of how your team operates. It is a tactical, do-this-then-that document written so that someone who is tired, unfamiliar, or under pressure can still get the right result.</p>
+
+    <h2>Runbook vs. playbook vs. SOP</h2>
+    <p>These three terms get used interchangeably, but they sit at different altitudes. Knowing the difference helps you write the right document for the job.</p>
+    <ul>
+      <li><strong>Runbook</strong> — Low-level and tactical. One procedure for one task: "How to restart the payments queue." Written to be followed literally, and often a candidate for automation later.</li>
+      <li><strong>Playbook</strong> — Higher-level and strategic. It coordinates <em>several</em> runbooks and roles into a broader response: "How we handle a Sev-1 outage," covering who leads, who communicates, and which runbooks to reach for.</li>
+      <li><strong>SOP (Standard Operating Procedure)</strong> — A formal, often compliance-facing process document. SOPs are read by auditors and managers as well as engineers, so they carry more context, ownership, and approval history than a bare runbook.</li>
+    </ul>
+    <p>A simple way to remember it: a runbook is a recipe, a playbook is the dinner-service plan, and an SOP is the recipe you can hand to a health inspector.</p>
+
+    <h2>Why runbooks matter</h2>
+    <p>The discipline of writing operational procedures comes straight out of site reliability engineering, where on-call engineers are expected to respond to incidents consistently regardless of who is holding the pager. Documented incident-management procedures reduce the amount a responder has to improvise in the moment, which lowers stress and makes outcomes more predictable.</p>
+    <p>Standards bodies make the same point from a security angle. Modern incident-response guidance treats <em>preparation</em> — documented procedures, defined roles, and a habit of continuous improvement — as the backbone of effective response, not an optional extra you bolt on afterward. The work you do writing a runbook on a quiet afternoon is the work that saves you at 2 a.m.</p>
+    <p>There's a quieter benefit too. Every runbook you write is one less piece of knowledge locked in a single person's head. That protects you when people are on vacation, when they leave, and when your team grows faster than tribal knowledge can spread.</p>
+
+    <h2>What makes a good runbook</h2>
+    <p>A runbook earns its place only if someone can actually use it mid-incident. The good ones share a few traits:</p>
+    <ul>
+      <li><strong>Single, clear trigger.</strong> State exactly when this runbook applies — the alert, symptom, or request that should send a reader here.</li>
+      <li><strong>Copy-pasteable steps.</strong> Commands should be exact and ready to run, not paraphrased. Ambiguity is where mistakes happen.</li>
+      <li><strong>Verification at each stage.</strong> After an action, tell the reader how to confirm it worked before moving on.</li>
+      <li><strong>A defined owner.</strong> Every runbook needs a name attached, so there's someone responsible for keeping it true.</li>
+      <li><strong>An escalation path.</strong> Make it obvious what to do, and who to call, when the steps don't resolve the issue.</li>
+    </ul>
+
+    <figure>
+      <img src="images/01-how-to-write-an-it-runbook-inline-1.png" alt="Two colleagues reviewing a documentation page broken into labeled sections — trigger, steps, verification, escalation — together">
+    </figure>
+
+    <h2>A reusable IT runbook template</h2>
+    <p>You don't need a heavy tool to start — you need a consistent structure. Copy the template below for each new procedure and fill in the blanks. Keeping every runbook in the same shape is what lets a reader move fast, because they always know where to look.</p>
+    <ul>
+      <li><strong>Title</strong> — The task, phrased plainly: "Restart the order-processing service."</li>
+      <li><strong>Owner &amp; last reviewed</strong> — Who maintains this, and when it was last checked for accuracy.</li>
+      <li><strong>Trigger</strong> — The exact alert, symptom, or request that brings someone to this runbook.</li>
+      <li><strong>Prerequisites</strong> — Access, credentials, tools, or approvals needed before starting.</li>
+      <li><strong>Steps</strong> — Numbered, literal actions. One action per step. Include exact commands and expected output.</li>
+      <li><strong>Verification</strong> — How to confirm the system is healthy again.</li>
+      <li><strong>Rollback</strong> — How to undo the change safely if something goes wrong.</li>
+      <li><strong>Escalation</strong> — Who to contact, and through which channel, if the runbook doesn't resolve the issue.</li>
+    </ul>
+
+    <h3>A short IT runbook example</h3>
+    <p>Here's the template applied to a common operations task, so you can see the shape in practice:</p>
+    <blockquote>
+      <p><strong>Title:</strong> Clear a full application log disk</p>
+      <p><strong>Owner:</strong> Platform team · <strong>Last reviewed:</strong> this quarter</p>
+      <p><strong>Trigger:</strong> "Disk usage &gt; 90%" alert on an app server.</p>
+      <p><strong>Prerequisites:</strong> SSH access to the host; permission to delete archived logs.</p>
+      <p><strong>Steps:</strong> 1) Connect to the host. 2) Confirm which directory is full. 3) Compress and move logs older than 7 days to cold storage. 4) Remove the moved files.</p>
+      <p><strong>Verification:</strong> Disk usage drops below 70% and the alert clears.</p>
+      <p><strong>Rollback:</strong> Restore archived logs from cold storage if any were moved in error.</p>
+      <p><strong>Escalation:</strong> If usage stays high, page the on-call platform engineer.</p>
+    </blockquote>
+    <p>The same skeleton works for a <strong>disaster recovery runbook</strong> — restoring from backups after a failure — where the verification and rollback sections matter most, because you're confirming that recovered data is complete and correct before you call the incident closed.</p>
+
+    <h2>IT documentation best practices that keep runbooks usable</h2>
+    <p>Writing the runbook is the easy part. Keeping it trustworthy is the real work, and a stale runbook is worse than none — it sends a tired engineer confidently in the wrong direction. A few habits keep yours alive:</p>
+    <ul>
+      <li><strong>Review on a schedule.</strong> Tie each runbook to a recurring review so commands, hostnames, and owners stay current.</li>
+      <li><strong>Test by following them.</strong> The best time to find a broken step is during a calm drill, not a live outage. Have someone unfamiliar run the procedure exactly as written.</li>
+      <li><strong>Keep one source of truth.</strong> Scattering runbooks across chat threads, personal drives, and sticky notes guarantees someone follows an outdated copy. Store them in one searchable, version-tracked place the whole team trusts.</li>
+      <li><strong>Write for the tired reader.</strong> Short sentences, exact commands, no insider shorthand. Assume the person reading is stressed and new.</li>
+      <li><strong>Version everything.</strong> When a procedure changes, keep the history so you can see what changed and roll back a bad edit.</li>
+    </ul>
+
+    <h2>Where your runbooks should live</h2>
+    <p>A runbook only helps if the right person can find it in seconds. That's a documentation problem as much as an operations one. The teams that get the most from their runbooks treat them as living documents with a clear home: searchable, version-controlled, easy for a non-specialist to update, and published where the whole team can reach them.</p>
+    <p>This is exactly the gap <a href="https://sonat.com">Sonat</a> is built to close. It gives IT and operations teams one place to write, organize, translate, and publish internal documentation — runbooks included — with a familiar editor, full version history, and a fast search so the answer surfaces when it's needed most. The result is fewer support tickets, less knowledge trapped in one person's head, and a calmer on-call rotation.</p>
+
+    <h2>Conclusion</h2>
+    <p>A runbook is a small investment that pays off at the worst possible moment. Start with your most frequent or most painful task, write it down using the template above, have a teammate test it, and give it a home where everyone can find it. Then write the next one. Incident by incident, you'll trade midnight improvisation for steady, repeatable procedure — and that is what operational maturity actually looks like.</p>
+
+    <div class="cta">
+      <p>Ready to give your runbooks a real home? <a href="https://sonat.com">Start documenting with Sonat</a> — write, organize, and publish your team's internal docs in one searchable, version-tracked place.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
