@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write Technical Documentation People Actually Read</title>
+<meta name="description" content="How to write technical documentation people actually read: pick the right doc type, structure for scanning, write for readability, and keep it consistent.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Write Technical Documentation People (and AI) Actually Read",
+  "about": "how to write technical documentation",
+  "author": {"@type": "Organization", "name": "Sonat"},
+  "publisher": {"@type": "Organization", "name": "Sonat", "url": "https://sonat.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is technical documentation?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Technical documentation is any written material that explains how a product, system, or process works so that someone can use it correctly, including user manuals, help center articles, onboarding guides, runbooks, and reference pages."}
+    },
+    {
+      "@type": "Question",
+      "name": "How long should a documentation page be?",
+      "acceptedAnswer": {"@type": "Answer", "text": "As long as the task needs and no longer. Match the length to the type of document and the reader's goal; if you reach the answer faster than asking a colleague, the length is right."}
+    }
+  ]
+}
+</script>
+<style>
+  :root{
+    --ink:#1a2230; --muted:#55617a; --line:#e6e9f0; --bg:#ffffff;
+    --accent:#1f6feb; --soft:#f6f8fc;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.7; font-size:18px;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:48px 22px 80px}
+  h1{font-size:2.15rem; line-height:1.2; margin:0 0 .6em; letter-spacing:-.02em}
+  h2{font-size:1.5rem; line-height:1.25; margin:2.2em 0 .55em; letter-spacing:-.01em}
+  p{margin:0 0 1.15em}
+  ul{margin:0 0 1.3em; padding-left:1.3em}
+  li{margin:.4em 0}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  strong{color:var(--ink)}
+  img{max-width:100%; height:auto; border-radius:14px; display:block; margin:1.6em 0; border:1px solid var(--line)}
+  .lead{font-size:1.18rem; color:var(--muted)}
+  .checklist{list-style:none; padding-left:0}
+  .checklist li{padding-left:1.9em; position:relative}
+  .checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--accent); font-weight:700}
+  .cta{
+    margin-top:2.6em; padding:24px 26px; background:var(--soft);
+    border:1px solid var(--line); border-radius:16px;
+  }
+  .cta p{margin:0}
+  @media (max-width:600px){
+    body{font-size:17px}
+    .wrap{padding:30px 18px 60px}
+    h1{font-size:1.8rem}
+    h2{font-size:1.3rem}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>How to Write Technical Documentation People (and AI) Actually Read</h1>
+
+    <p class="lead">You wrote the guide. You linked it in the ticket. The same
+    question came back anyway. Most technical documentation isn't bad because the
+    facts are wrong — it's bad because nobody can find the answer inside it, or they
+    give up halfway through.</p>
+
+    <p>This is a practical method for writing technical documentation that gets used.
+    You'll learn how to pick the right <em>kind</em> of document, structure it so
+    readers can scan it, write it so it's actually readable, and keep it consistent as
+    it grows. The same moves that help a tired person at 4&nbsp;p.m. also help the AI
+    assistants that now read your docs on their behalf.</p>
+
+    <img src="images/01-how-to-write-technical-documentation-hero.png" alt="A person arranging labeled folders into clear sections on a shelf while a colleague reads an open manual at a desk">
+
+    <h2>What is technical documentation?</h2>
+    <p>Technical documentation is any written material that explains how a product,
+    system, or process works so that someone can use it correctly. That includes user
+    manuals, help center articles, onboarding guides, runbooks, and reference pages.
+    Its job is simple: help a real person complete a real task without asking a human
+    for help.</p>
+    <p>That definition matters because it sets the bar. Documentation isn't done when
+    it's accurate. It's done when the reader can act on it.</p>
+
+    <h2>Start with the right type of document</h2>
+    <p>The most common documentation mistake is mixing four jobs into one page — part
+    tutorial, part reference, part troubleshooting, part background theory. The reader
+    who wants a quick answer has to wade through a lesson; the reader who wants to
+    learn gets dumped into a table of settings.</p>
+    <p>A widely used framework for technical documentation separates content into four
+    distinct types, each serving a different reader need:</p>
+    <ul>
+      <li><strong>Tutorials</strong> — learning-oriented. A guided, start-to-finish
+      lesson for someone doing the task for the first time.</li>
+      <li><strong>How-to guides</strong> — task-oriented. Direct steps to solve one
+      specific problem, for someone who already knows the basics.</li>
+      <li><strong>Reference</strong> — information-oriented. Dry, complete, and
+      consistent: settings, parameters, specifications you look things up in.</li>
+      <li><strong>Explanation</strong> — understanding-oriented. The "why" behind a
+      decision or concept, read when someone wants the bigger picture.</li>
+    </ul>
+
+    <img src="images/01-how-to-write-technical-documentation-types.png" alt="Four labeled documents on a desk representing a tutorial, a how-to guide, a reference table, and an explanation, with a person sorting them into groups">
+
+    <p>Before you write a word, decide which of the four you're making. If a page is
+    trying to be two of them, split it. This single habit fixes more documentation
+    structure problems than any tool, because each page now has one job and one shape.</p>
+
+    <h2>Structure for scanning, not reading</h2>
+    <p>People don't read documentation top to bottom. On a typical page, users read
+    only about a quarter of the words — they scan for the part that matches their
+    problem, read that, and leave. Your structure has to survive that behavior.</p>
+    <p>Write so a scanner succeeds:</p>
+    <ul>
+      <li><strong>Headings are signposts, not titles.</strong> Use plain, descriptive
+      headings a reader would actually search for — "How to reset a password," not
+      "Credential lifecycle." Headings are your strongest tool for communicating
+      what's on the page.</li>
+      <li><strong>Front-load every section.</strong> Put the answer in the first
+      sentence, then add detail. Don't make people earn the payoff.</li>
+      <li><strong>One idea per paragraph,</strong> kept short. Walls of text get
+      skipped.</li>
+      <li><strong>Use lists and tables for parallel items</strong> — steps, options,
+      specs — so the eye can jump to the right row.</li>
+    </ul>
+    <p>Good structure is also what makes documentation usable by AI assistants. Coding
+    copilots and support bots don't read a page front to back; they retrieve the
+    fragment that matches a question and answer from it. A page with one clear job and
+    descriptive headings gives them a clean fragment to pull. A page that buries the
+    answer in paragraph nine gives them noise.</p>
+
+    <h2>Write for readability</h2>
+    <p>Clear structure gets readers to the right paragraph. Readability decides whether
+    that paragraph helps. Plain-language guidance — the same principles public agencies
+    use to make critical information understandable — comes down to a few concrete
+    moves:</p>
+    <ul>
+      <li><strong>Write for your audience.</strong> Name who the page is for and assume
+      their context, not yours.</li>
+      <li><strong>Use short sentences and common words.</strong> If a simpler word
+      works, use it. Define a term the first time it appears.</li>
+      <li><strong>Prefer the active voice.</strong> "Click Save" beats "the document
+      should be saved."</li>
+      <li><strong>Aim for a plain reading level.</strong> For a broad audience, around
+      an eighth-grade level keeps text accessible without dumbing it down; specialist
+      audiences can take more, but jargon should earn its place.</li>
+    </ul>
+    <p>Readability isn't about sounding simple — it's about lowering the effort it takes
+    to understand you. Every sentence a reader has to re-read is a small invitation to
+    give up and open a support ticket instead.</p>
+
+    <h2>Keep style consistent with a documentation style guide</h2>
+    <p>Once more than one person writes docs, consistency becomes the quiet thing that
+    makes a library feel trustworthy. One page says "sign in," the next says "log on,"
+    a third says "authenticate." None is wrong; together they make readers wonder if
+    the docs are maintained.</p>
+    <p>A lightweight documentation style guide fixes this. Decide and write down:</p>
+    <ul>
+      <li><strong>Voice and tense</strong> — second person ("you"), present tense,
+      imperative steps.</li>
+      <li><strong>Terminology</strong> — one approved name per feature, button, and
+      concept.</li>
+      <li><strong>Formatting rules</strong> — how you write UI labels, code, notes, and
+      warnings.</li>
+      <li><strong>Capitalization and numbers</strong> — sentence case headings,
+      numerals for steps.</li>
+    </ul>
+    <p>It doesn't need to be long. A single page everyone follows beats a fifty-page
+    manual nobody opens. The goal is that any two articles read like they came from the
+    same team.</p>
+
+    <h2>Make it findable — and keep it that way</h2>
+    <p>Even a perfect page is worthless if it's stale or buried. Treat documentation as
+    a living product, not a one-time deliverable:</p>
+    <ul>
+      <li><strong>Keep a single source of truth.</strong> One canonical home per topic,
+      so there's never a question of which copy is current.</li>
+      <li><strong>Make search and navigation first-class.</strong> Readers arrive from a
+      search box more often than from your menu — full-text search and a clean structure
+      both matter.</li>
+      <li><strong>Plan for updates and translation.</strong> Documentation drifts the
+      moment the product ships. A version history and built-in translation let you keep
+      many audiences — and many languages — in sync without rewriting from scratch.</li>
+    </ul>
+    <p>This is where a purpose-built documentation platform earns its place. A tool like
+    <a href="https://sonat.com">Sonat</a> lets non-technical teams structure topics into
+    a wiki-style manual, check readability as they write, publish to the web or a custom
+    domain, and translate everything — so the structure and clarity you worked for stay
+    intact for every reader.</p>
+
+    <h2>How long should a documentation page be?</h2>
+    <p>As long as the task needs — and no longer. Length is the wrong target. A how-to
+    guide that solves the problem in six steps shouldn't be padded to feel
+    "comprehensive," and a reference page can run long because people scan it, not read
+    it. Match the length to the type of document and the reader's goal.</p>
+    <p>A useful test: read the page as the person with the problem. If you reach the
+    answer faster than you would by asking a colleague, the length is right. If you're
+    scrolling past setup, history, and caveats to get to the step you need, the page is
+    too long — or it's secretly two pages wearing one title. Split it, and let each
+    piece be exactly as long as its single job requires.</p>
+
+    <h2>A quick checklist for better technical documentation</h2>
+    <ul class="checklist">
+      <li>It's one of the four types — not all four at once.</li>
+      <li>The most important answer is in the first sentence of its section.</li>
+      <li>Headings describe the task in words a reader would search for.</li>
+      <li>Sentences are short, active, and free of unexplained jargon.</li>
+      <li>Terms, voice, and formatting match the rest of the library.</li>
+      <li>There's one canonical version, and it's current.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Writing technical documentation people actually read isn't about writing more —
+    it's about removing effort. Pick one job per page, structure it so a scanner wins,
+    write it in plain language, and keep it consistent and current. Do that and your
+    docs stop being a place questions go to die and start being the fastest way to get
+    an answer — for your readers, and for the assistants now reading on their behalf.</p>
+
+    <div class="cta">
+      <p>Ready to give your documentation that structure?
+      <a href="https://sonat.com">See how Sonat helps teams write, organize, and
+      publish docs people actually use</a>.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
