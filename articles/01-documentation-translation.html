@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation Translation: A Guide to Localizing Docs</title>
+<meta name="description" content="A practical guide to documentation translation: write a translation-ready source, balance machine and human review, and keep every language in sync.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Documentation Translation: How to Localize Your Docs for a Global Audience",
+  "description": "A practical guide to documentation translation: write a translation-ready source, balance machine and human review, and keep every language in sync.",
+  "publisher": { "@type": "Organization", "name": "Sonat" }
+}
+</script>
+<style>
+  :root{
+    --ink:#1f2733; --muted:#5b6675; --line:#e8ebef; --accent:#1d6fe0;
+    --bg:#ffffff; --soft:#f6f8fb; --maxw:720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:32px 22px 80px}
+  header.hero{padding-top:14px}
+  h1{
+    font-size:2.05rem; line-height:1.2; letter-spacing:-.02em;
+    margin:.2em 0 .5em; font-weight:780;
+  }
+  h2{font-size:1.42rem; line-height:1.3; letter-spacing:-.01em; margin:2.1em 0 .55em; font-weight:720}
+  h3{font-size:1.12rem; margin:1.6em 0 .4em; font-weight:700}
+  p{margin:0 0 1.15em}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  ul,ol{margin:0 0 1.2em; padding-left:1.3em}
+  li{margin:.4em 0}
+  strong{font-weight:680}
+  .lede{font-size:1.18rem; color:var(--muted)}
+  figure{margin:1.6em 0 1.8em}
+  img{max-width:100%; height:auto; display:block; border-radius:14px; background:var(--soft)}
+  .hero-img{margin:0 0 1.4em}
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:.12em; font-size:.74rem;
+    font-weight:720; color:var(--accent); margin:0 0 .2em;
+  }
+  hr{border:0; border-top:1px solid var(--line); margin:2.4em 0}
+  @media (max-width:560px){
+    body{font-size:17px}
+    h1{font-size:1.7rem}
+    h2{font-size:1.28rem}
+    .wrap{padding:22px 18px 64px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <p class="eyebrow">Documentation Strategy</p>
+  <h1>Documentation Translation: How to Localize Your Docs for a Global Audience</h1>
+  <figure class="hero-img">
+    <img src="images/01-documentation-translation-hero.png" alt="A support team gathered around a desk, sorting product manuals into labeled shelves marked with different country flags while one teammate reads on a tablet">
+  </figure>
+</header>
+
+<main>
+  <p class="lede">Your product already crosses borders. Your documentation usually doesn't. A help center that reads perfectly in English quietly turns into a wall for the customer in Munich, S&atilde;o Paulo, or Seoul who is trying to solve a problem at 9&nbsp;p.m. in their own language.</p>
+
+  <p>This guide walks through documentation translation as a repeatable process, not a one-off scramble before a launch. You'll learn how to write a source that's ready to translate, when machine translation is enough and when it isn't, how to keep ten languages in sync without losing your mind, and how to make translated docs easy to find. The goal is simple: docs that work for every reader, in every market, without a separate project each time.</p>
+
+  <h2>What documentation translation actually means</h2>
+  <p>Documentation translation is the process of taking your manuals, help articles, and policies and making them accurate and usable in another language. It's worth separating two terms people use interchangeably.</p>
+  <p><strong>Translation</strong> converts words from one language to another. <strong>Localization</strong> adapts the whole experience &mdash; units, currency, examples, screenshots, reading direction, and tone &mdash; so the content feels native rather than imported. A good documentation localization strategy treats translation as one step inside localization, not the finish line.</p>
+  <p>The distinction matters because readers notice. A manual that's been translated word-for-word but still shows U.S. date formats and dollar prices reads like a guest in someone else's house. One that's been localized reads like it was written there.</p>
+
+  <h2>Why translated documentation is a business decision, not a nice-to-have</h2>
+  <p>It's tempting to treat language as a polish task. The data says otherwise. In a survey of 8,709 consumers across 29 countries, 76% said they prefer to buy products with information in their own language, and 40% said they won't buy from websites in other languages at all. Support carries the same weight: roughly three in four people are more likely to buy again from a brand that helps them in their language.</p>
+  <p>For documentation specifically, the payoff is concrete:</p>
+  <ul>
+    <li><strong>Fewer support tickets.</strong> A customer who can read the answer doesn't open a ticket to ask for it.</li>
+    <li><strong>Faster onboarding</strong> in every region your product ships to, not just your headquarters' language.</li>
+    <li><strong>Lower legal and safety risk</strong> for policies, procedures, and compliance docs that people must actually understand.</li>
+    <li><strong>More organic reach</strong>, because search engines index each language separately and surface it to the right readers.</li>
+  </ul>
+  <p>Translated docs aren't a cost center bolted onto a launch. They're the difference between a market you serve and a market you merely sell into.</p>
+
+  <h2>Write a source that's ready to translate</h2>
+  <p>The cheapest way to improve every translation is to fix the English first. Translation multiplies whatever you feed it &mdash; clarity and confusion both scale.</p>
+  <p>A few habits make source content translation-ready:</p>
+  <ul>
+    <li><strong>Keep sentences short and literal.</strong> One idea per sentence. Idioms, sports metaphors, and puns rarely survive the trip.</li>
+    <li><strong>Stay consistent with terminology.</strong> Call it a "workspace" everywhere, not a "workspace," "space," and "project" on three different pages. Consistency is what lets a translation memory reuse your past work.</li>
+    <li><strong>Avoid embedding text in images.</strong> Words baked into a screenshot can't be translated without remaking the image. Put instructions in the text and keep visuals language-neutral where you can.</li>
+    <li><strong>Leave room for the words to grow.</strong> Translated text is usually longer than English. According to W3C internationalization guidance, short strings can expand by 200&ndash;300% &mdash; a five-character English word like "views" becomes the fifteen-character "visualizzazioni" in Italian. Tables, buttons, and tight layouts that look fine in English can break once the text expands, so design with slack.</li>
+  </ul>
+  <p>This is also where a single source of truth pays off. When every language flows from one canonical version of a topic &mdash; rather than a pile of forked copies &mdash; you fix the source once and every translation inherits the fix.</p>
+
+  <figure>
+    <img src="images/01-documentation-translation-workflow.png" alt="A workflow diagram: one English source document branching into several language versions, with people reviewing each branch and a check mark when published">
+  </figure>
+
+  <h2>Machine translation vs. human review: where each one fits</h2>
+  <p>The old debate of machine <em>or</em> human is mostly settled. The practical answer is both, in sequence.</p>
+  <p>Modern machine translation is fast, cheap, and good enough to carry the first 90% &mdash; especially for high-volume, fast-changing content like help articles. What it can't reliably judge is nuance: a safety warning, a legal clause, a phrase that's accidentally offensive in another culture. That last stretch is where a human reviewer earns their keep.</p>
+  <p>A pragmatic way to decide how much human review each document needs:</p>
+  <ol>
+    <li><strong>Machine-translate everything</strong> as the baseline. Nothing should sit untranslated while it waits for a perfect human pass.</li>
+    <li><strong>Add light human review</strong> for customer-facing help content &mdash; a native speaker checking that it reads naturally and the terminology is right.</li>
+    <li><strong>Add full professional review</strong> for anything high-stakes: policies, procedures, safety instructions, and contractual language.</li>
+  </ol>
+  <p>Tiering review by risk keeps cost in proportion to consequence. You're not paying for a courtroom-grade translation of a tooltip, and you're not shipping a safety warning that nobody checked.</p>
+
+  <h3>How translation memory keeps costs down</h3>
+  <p>A translation memory stores every sentence you've already translated and reuses it the next time the same or similar text appears. The first time you translate "Click <strong>Save</strong> to apply your changes," it costs effort. Every time after, it's free and instant &mdash; and identical across your whole library.</p>
+  <p>Over a large documentation set, that reuse is the single biggest lever on both cost and consistency. It's also why consistent source terminology matters so much: the memory can only reuse a sentence it recognizes.</p>
+
+  <h2>Keep every language in sync as the source changes</h2>
+  <p>Translation isn't the hard part. <em>Staying</em> translated is. Your English docs change constantly &mdash; a new feature here, a corrected step there &mdash; and every edit risks leaving ten other languages quietly out of date. Stale translations are worse than none, because readers trust them.</p>
+  <p>This is fundamentally a translation management problem, and a few practices keep it under control:</p>
+  <ul>
+    <li><strong>Version your content</strong> so you can see exactly what changed in the source and re-translate only the affected topics, not the entire manual.</li>
+    <li><strong>Track translation status per language</strong> so it's obvious at a glance which topics are current, which are drafted, and which are waiting on review.</li>
+    <li><strong>Trigger re-translation from source changes</strong>, rather than hoping someone remembers to update Portuguese after editing the English.</li>
+    <li><strong>Publish from one place.</strong> When the source, the translations, and the live site are different systems, drift is guaranteed. When they're one system, "update and publish" stays a single action.</li>
+  </ul>
+  <p>Sonat is built around exactly this loop. Each topic has one canonical source, machine translation across 184 languages produces every language version from it, and version history keeps those versions traceable as the source evolves &mdash; so a fix to the original is a fix everywhere, not the start of ten more tasks.</p>
+
+  <h2>Make translated documentation easy to find</h2>
+  <p>A perfectly translated article that no reader can find still fails. Discoverability is the last mile of any localization strategy.</p>
+  <ul>
+    <li><strong>Give each language its own indexed, crawlable page</strong> with the correct language tags, so search engines can serve the right version to the right audience instead of guessing.</li>
+    <li><strong>Translate the search experience too.</strong> A reader typing in German should match German content, which means a search index per language rather than one English-shaped index doing double duty.</li>
+    <li><strong>Localize titles and descriptions, not just body text</strong> &mdash; the snippet a reader sees in search results is often their first impression of whether your docs will help.</li>
+  </ul>
+  <p>Done well, multilingual documentation compounds: every language becomes its own front door, pulling in readers who would never have found the English version.</p>
+
+  <h2>Start small, then widen</h2>
+  <p>You don't need all 184 languages on day one. The teams that succeed at global documentation start narrow and build a habit:</p>
+  <ol>
+    <li>Pick the two or three languages that match where your customers and revenue already are.</li>
+    <li>Make your English source translation-ready using the habits above.</li>
+    <li>Machine-translate the full set, then add human review where the stakes justify it.</li>
+    <li>Wire translation to your publishing flow so updates propagate instead of piling up.</li>
+    <li>Add languages once the loop runs without heroics.</li>
+  </ol>
+  <p>Documentation translation stops being a fire drill the moment it becomes a system: one clear source, sensible review tiers, and a single place where updating and publishing are the same motion. Get that loop running, and serving a global audience turns from a launch-week panic into something your docs just do &mdash; every day, in every language your customers actually speak.</p>
+</main>
+</div>
+</body>
+</html>
