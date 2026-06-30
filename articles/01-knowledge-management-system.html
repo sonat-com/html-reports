@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Knowledge Management System</title>
+<meta name="description" content="A practical guide to building a knowledge management system your team will actually use — single source of truth, governance, AI upkeep, and real metrics.">
+<style>
+  :root{
+    --ink:#1d2433; --muted:#5b6678; --line:#e7eaf0; --bg:#ffffff;
+    --accent:#2f6df6; --accent-soft:#eef3ff; --max:720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:32px 22px 72px}
+  header.brand{max-width:var(--max); margin:0 auto; padding:22px 22px 0}
+  header.brand span{font-weight:700; letter-spacing:.2px; color:var(--ink)}
+  header.brand span b{color:var(--accent)}
+  h1{
+    font-size:2.05rem; line-height:1.22; letter-spacing:-.5px;
+    margin:.4em 0 .5em; font-weight:800;
+  }
+  h2{
+    font-size:1.42rem; line-height:1.3; letter-spacing:-.3px;
+    margin:2.1em 0 .55em; font-weight:750; font-weight:700;
+  }
+  p{margin:0 0 1.15em}
+  .lede{font-size:1.16rem; color:#36405a}
+  ul,ol{margin:0 0 1.3em; padding-left:1.25em}
+  li{margin:.45em 0}
+  li strong{color:var(--ink)}
+  img{max-width:100%; height:auto; display:block; border-radius:14px; margin:0 auto}
+  figure{margin:1.6em 0}
+  .hero{margin:.4em 0 1.8em; background:var(--accent-soft); border-radius:18px; padding:14px}
+  .hero img{border-radius:10px}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(47,109,246,.3)}
+  a:hover{border-bottom-color:var(--accent)}
+  hr{border:0; border-top:1px solid var(--line); margin:2.4em 0}
+  .cta{
+    margin-top:2.4em; padding:24px; background:var(--accent-soft);
+    border-radius:16px; text-align:center;
+  }
+  .cta a{
+    display:inline-block; margin-top:.4em; background:var(--accent); color:#fff;
+    padding:11px 22px; border-radius:10px; font-weight:650; border:0;
+  }
+  @media (max-width:600px){
+    body{font-size:17px}
+    .wrap{padding:24px 18px 56px}
+    h1{font-size:1.7rem}
+    h2{font-size:1.25rem}
+  }
+</style>
+</head>
+<body>
+<header class="brand"><span>Sonat<b>.</b></span></header>
+<main class="wrap">
+  <h1>How to Build a Knowledge Management System That People Actually Use</h1>
+
+  <figure class="hero">
+    <img src="images/01-knowledge-management-system-hero.png" alt="A small team organizing labeled folders and binders into a single shared shelf while a colleague reads a manual at a desk">
+  </figure>
+
+  <p class="lede">Your team already has the answers. They're just scattered — in a chat thread from March, a slide deck nobody can find, a spreadsheet on someone's laptop, and the head of one person who is out on leave this week. A knowledge management system is how you pull all of that into one place people trust, so the answer is there when someone needs it.</p>
+
+  <p>This guide walks through how to build one that sticks. Not a tool you buy and abandon, but a system your team actually opens, updates, and relies on. By the end, you'll have a practical plan: where to start, how to keep it current, and how to know it's working.</p>
+
+  <h2>What is a knowledge management system?</h2>
+  <p>A knowledge management system is the set of tools, processes, and habits an organization uses to capture, organize, and share what it knows — so the right information reaches the right person at the right time. It covers internal knowledge (how your team works) and external knowledge (how customers use your product).</p>
+  <p>It is not just a folder of documents. A working system has structure, an owner for each topic, a way to keep content fresh, and search that actually finds things. The software matters, but the habits around it matter more.</p>
+
+  <h2>Why most knowledge management systems fail</h2>
+  <p>Most teams don't fail because they picked the wrong app. They fail because they treat the tool as the whole solution.</p>
+  <p>The numbers back this up. Research ranks knowledge management among the top three issues influencing company success — yet only 9% of organizations feel prepared to address it. Even with modern search and AI, 29% of people say it is difficult or nearly impossible to pull the knowledge they need for daily work out of their own repositories.</p>
+  <p>The common failure pattern looks like this:</p>
+  <ul>
+    <li><strong>No single home.</strong> The same answer lives in five places, each slightly out of date.</li>
+    <li><strong>No owner.</strong> Nobody is responsible for a page, so nobody updates it.</li>
+    <li><strong>No incentive to share.</strong> People hoard what they know, or simply never have time to write it down.</li>
+    <li><strong>No trust.</strong> One wrong answer, and people stop searching and start asking a colleague instead.</li>
+  </ul>
+  <p>That last point compounds. When knowledge is hard to find, employees route around the system entirely. Studies show that at companies that genuinely prioritize knowledge transfer, 80% of people find it easy to access information from their repositories — compared with just 51% at companies that don't. The gap isn't the technology. It's whether sharing is built into how the team works.</p>
+
+  <h2>Start with a single source of truth</h2>
+  <p>Before you write a word of content, decide where it lives. A knowledge management system only works when there is one obvious place to look, and everyone knows where that is.</p>
+  <p>A single source of truth means each piece of knowledge has exactly one canonical home. When something changes, you update it once, and every link points to the current version. No duplicate copies drifting apart. No "which version is right?"</p>
+  <p>Practical ways to get there:</p>
+  <ul>
+    <li><strong>Pick one platform and commit.</strong> Migrating scattered docs is tedious, but two competing "official" homes guarantee confusion.</li>
+    <li><strong>Map your top 20 questions first.</strong> What do customers and teammates ask most? Build those pages before anything else. Coverage of the long tail can come later.</li>
+    <li><strong>Use a clear, shallow structure.</strong> A few well-named categories beat a deep tree nobody can navigate. If a reader needs more than three clicks, the structure is too deep.</li>
+  </ul>
+  <p>This is also where an internal knowledge base and a customer-facing help center can share the same foundation — written once, organized once, published to the right audience.</p>
+
+  <figure>
+    <img src="images/01-knowledge-management-system-inline.png" alt="A person sorting a tall pile of loose documents and folders into a single tidy bookshelf with clearly labeled sections while a coworker points at a category label">
+  </figure>
+
+  <h2>Design a knowledge management process people will follow</h2>
+  <p>A pile of pages is not a system. The system is the process that keeps those pages alive. The international standard for knowledge management systems, ISO 30401, frames this as a lifecycle rather than a one-time project — and that framing is useful no matter what tool you use.</p>
+  <p>Keep your knowledge management process light enough that busy people will actually follow it:</p>
+  <ol>
+    <li><strong>Capture.</strong> Make it easy to turn a good answer into a draft. If writing a page takes an hour of formatting, it won't happen. Let people start from a template or draft in a tool they already use.</li>
+    <li><strong>Organize.</strong> Place each new page in its single home, with a clear title and the words people actually search for.</li>
+    <li><strong>Review.</strong> Route the draft to someone who can confirm it's correct before it goes live.</li>
+    <li><strong>Publish.</strong> Make it findable — good search, sensible categories, and a mobile-friendly reader.</li>
+    <li><strong>Improve.</strong> Watch what readers struggle with and revise. A knowledge management system is never "done."</li>
+  </ol>
+  <p>The goal of a knowledge management strategy isn't a perfect document on day one. It's a loop that turns scattered, in-the-head knowledge into shared, trusted content a little more each week.</p>
+
+  <h2>Build in governance and review</h2>
+  <p>Trust is the whole game. People only return to a knowledge base that has been right the last several times they checked. That trust comes from governance — clear ownership and a review step before anything is published.</p>
+  <p>Good governance is lightweight, not bureaucratic:</p>
+  <ul>
+    <li><strong>Give every topic an owner.</strong> One name responsible for keeping it accurate. Ownership is the single biggest predictor of whether a page stays current.</li>
+    <li><strong>Require a review before publishing.</strong> An approval workflow — even a single approver — catches errors before readers see them. For policies and procedures, this also gives you an audit trail of who approved what and when.</li>
+    <li><strong>Keep a version history.</strong> When you can restore an earlier version, people edit boldly instead of leaving stale content untouched out of fear.</li>
+  </ul>
+  <p>This is exactly where applying a little software-engineering discipline — review, approval, version control — to everyday content pays off. The rigor stays invisible to readers. They just see answers they can trust.</p>
+
+  <h2>Keep content fresh — make AI an enabler, not the owner</h2>
+  <p>The fastest way to lose trust is stale content. The 2026 shift in knowledge management is using AI to fight that staleness: flagging pages that look outdated, drafting first versions, and answering questions in natural language by pulling from your own documents.</p>
+  <p>Used well, this is a real gain. AI can turn a rough explanation into a clean draft, suggest where a new page belongs, and surface answers directly from your knowledge base instead of making people hunt.</p>
+  <p>The caution is just as real. AI is an enabler, not the owner. A confident wrong answer is worse than no answer, because it spends trust you can't easily earn back. So keep a human in the loop: AI drafts and suggests, a subject-matter expert reviews and approves. Speed from the machine, judgment from the person.</p>
+  <p>A simple rule of thumb: let AI help you <em>write and find</em> knowledge, but keep a person accountable for whether it's <em>true</em>.</p>
+
+  <h2>Measure impact, not activity</h2>
+  <p>It's tempting to track page counts and views. Those numbers go up and to the right and tell you almost nothing. A knowledge management system earns its keep by changing outcomes, so measure those instead:</p>
+  <ul>
+    <li><strong>Time saved.</strong> Are people finding answers faster, with fewer interruptions to teammates?</li>
+    <li><strong>Support deflection.</strong> Are repeat questions dropping because the answer is now self-serve?</li>
+    <li><strong>Onboarding speed.</strong> Do new hires get productive sooner because the knowledge is written down?</li>
+    <li><strong>Content health.</strong> What share of your pages were reviewed in the last quarter?</li>
+  </ul>
+  <p>Pick two or three that map to a real business goal and watch them over time. If a page deflects a hundred support tickets a month, that's the story to tell — not how many words you published.</p>
+  <p>These outcomes also point to the best knowledge management practices for your specific team. Let the metrics tell you which gaps to fill next, instead of guessing.</p>
+
+  <h2>Bringing it together</h2>
+  <p>A knowledge management system isn't software you install. It's the combination of one trusted home, a light process that keeps content alive, clear ownership, AI that assists without taking over, and metrics that track real outcomes. Get those right, and the scattered answers your team already has become a shared resource everyone can rely on.</p>
+  <p>You don't have to build all of it at once. Start with your single source of truth and your top 20 questions, add a review step, and improve from there.</p>
+
+  <div class="cta">
+    <p><strong>Sonat brings these pieces together in one place</strong> — draft in the tools you already use, review and publish with confidence, translate into 184 languages, and keep everything current as a single source of truth.</p>
+    <a href="https://sonat.com">Start with Sonat</a>
+  </div>
+</main>
+</body>
+</html>
