@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Docs Feature — Usage &amp; Drop-off</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: #f5f5f5; color: #111; font-size: 15px; line-height: 1.6; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 32px 20px 64px; }
+  .eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+             color: #6b7280; margin-bottom: 6px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  .period { font-size: 13px; color: #6b7280; margin-bottom: 32px; }
+  .card { background: #fff; border-radius: 10px; padding: 24px 28px; margin-bottom: 20px;
+          box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .card h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid #f0f0f0;
+             padding-bottom: 10px; }
+  .card h3 { font-size: 14px; font-weight: 600; margin: 18px 0 8px; color: #374151; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px;
+              margin-bottom: 8px; }
+  .kpi { background: #f9fafb; border-radius: 8px; padding: 16px; }
+  .kpi .val { font-size: 28px; font-weight: 700; }
+  .kpi .lbl { font-size: 12px; color: #6b7280; margin-top: 2px; }
+  .good { color: #15803d; }
+  .bad  { color: #b91c1c; }
+  .neutral { color: #374151; }
+  .warn { color: #b45309; }
+  p { margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  b { font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th { text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase;
+       letter-spacing: .05em; color: #6b7280; padding: 6px 10px; border-bottom: 2px solid #e5e7eb; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f0f0f0; }
+  tr:last-child td { border-bottom: none; }
+  tr.cliff td { background: #fef2f2; }
+  tr.cliff td:first-child { border-left: 3px solid #b91c1c; }
+  .chart-wrap { position: relative; width: 100%; margin-top: 8px; }
+  .chart-wrap.tall { height: 280px; }
+  .chart-wrap.med  { height: 220px; }
+  .chart-wrap.sm   { height: 180px; }
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .chart-cell { background: #f9fafb; border-radius: 8px; padding: 16px; }
+  .chart-cell h3 { font-size: 12px; font-weight: 600; color: #6b7280; text-transform: uppercase;
+                   letter-spacing: .05em; margin-bottom: 10px; }
+  .note { font-size: 12px; color: #6b7280; margin-top: 8px; font-style: italic; }
+  .gap-tag { display: inline-block; background: #fef3c7; color: #92400e; font-size: 11px;
+             font-weight: 600; border-radius: 4px; padding: 1px 6px; margin-left: 4px; }
+  .rec { border-left: 3px solid #3b82f6; padding-left: 14px; margin-bottom: 14px; }
+  .rec .obs { font-size: 12px; color: #6b7280; margin-top: 4px; }
+  ul.plain { list-style: none; }
+  ul.plain li { padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+  ul.plain li:last-child { border-bottom: none; }
+  .footer { margin-top: 32px; font-size: 12px; color: #9ca3af; border-top: 1px solid #e5e7eb;
+            padding-top: 20px; line-height: 1.8; }
+  @media (max-width: 600px) {
+    .chart-row { grid-template-columns: 1fr; }
+    .kpi-grid  { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <div class="eyebrow">Sonat Product Analytics</div>
+  <h1>Google Docs Feature — Usage &amp; Drop-off.</h1>
+  <div class="period">
+    Report date: July 1, 2026 &nbsp;·&nbsp; Window: All available history
+    &nbsp;·&nbsp; Data range: Jan 30 – Jul 1, 2026 (~5 months)
+    &nbsp;·&nbsp; Funnel window: 14 days
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="card">
+    <h2>Executive Summary</h2>
+    <p>The Google Docs feature has seen <b>13 unique users</b> across all four flows since instrumentation began (January 30, 2026). The Editor "Create new Google Doc" path is the most-used entry point (<b>8 users</b>), followed by Import (<b>4 users</b>) and the Google Docs Add-on (<b>2 users</b>, dev/test only in February 2026). The Embed flow has no telemetry.</p>
+    <p>End-to-end completion is extremely low: of <b>11 users</b> who expressed Google Doc intent, only <b>1 ever published a Google Doc</b> (9.1% intent-to-completion). That single user published <b>12 times</b> in a 4-day burst (May 20–24), suggesting internal or power-user testing rather than broad adoption.</p>
+    <p>Two instrumentation gaps obscure the true picture: (1) the <code>is_google_doc</code> property on <code>document_created</code> is never set to <code>true</code>, making the Editor funnels appear to have 0% conversion at step 2 — a false signal; and (2) the "Reconnect" action on embed disconnect fires no event. A frustration signal is also visible: <b>2 of 11 intent users (18.2%) rage-clicked</b> during their session.</p>
+  </div>
+
+  <!-- KPIs -->
+  <div class="card">
+    <h2>Adoption KPIs</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="val neutral">13</div><div class="lbl">Total unique users</div></div>
+      <div class="kpi"><div class="val neutral">8</div><div class="lbl">Editor Create users</div></div>
+      <div class="kpi"><div class="val neutral">4</div><div class="lbl">Editor Import users</div></div>
+      <div class="kpi"><div class="val neutral">2</div><div class="lbl">Add-on users (dev/test)</div></div>
+      <div class="kpi"><div class="val neutral">11</div><div class="lbl">Intent users (GDoc clicks)</div></div>
+      <div class="kpi"><div class="val bad">9.1%</div><div class="lbl">Intent → publish conversion</div></div>
+      <div class="kpi"><div class="val neutral">1</div><div class="lbl">Google Doc publishers</div></div>
+      <div class="kpi"><div class="val neutral">12</div><div class="lbl">Total GDoc publishes</div></div>
+      <div class="kpi"><div class="val good">100%</div><div class="lbl">Add-on sync success (7/7)</div></div>
+      <div class="kpi"><div class="val warn">66.7%</div><div class="lbl">Add-on publish success (2/3)</div></div>
+      <div class="kpi"><div class="val warn">84.6%</div><div class="lbl">Add-on connect success (11/13)</div></div>
+      <div class="kpi"><div class="val bad">18.2%</div><div class="lbl">Rage-click rate (intent users)</div></div>
+    </div>
+
+    <h3>Users by Plan</h3>
+    <table>
+      <tr><th>Plan</th><th>Users</th></tr>
+      <tr><td>Unknown / not set</td><td>7</td></tr>
+      <tr><td>Free</td><td>5</td></tr>
+      <tr><td>Enterprise</td><td>1</td></tr>
+    </table>
+    <p class="note">Plan IDs missing for 54% of Google Doc users — person properties may not be set at event time.</p>
+  </div>
+
+  <!-- Charts: Funnels -->
+  <div class="card">
+    <h2>Charts</h2>
+
+    <h3>Add-on Funnel (2 users — dev/test, Feb 2026)</h3>
+    <div class="chart-wrap med"><canvas id="addonFunnel"></canvas></div>
+    <p class="note">Funnel based on 2 users total. Not representative of production adoption.</p>
+
+    <h3>Editor Funnels</h3>
+    <div class="chart-row">
+      <div class="chart-cell">
+        <h3>Create new Google Doc</h3>
+        <div class="chart-wrap sm"><canvas id="createFunnel"></canvas></div>
+      </div>
+      <div class="chart-cell">
+        <h3>Import existing Google Doc</h3>
+        <div class="chart-wrap sm"><canvas id="importFunnel"></canvas></div>
+      </div>
+    </div>
+    <p class="note"><b>Instrumentation gap:</b> <code>document_created</code> step shows 0 because the <code>is_google_doc</code> property is never set to <code>true</code> in the code. This is a false 0 — actual GDoc creation does happen (see <code>googledoc_publish_activity</code>).</p>
+
+    <h3>Weekly Google Doc Intent Activity</h3>
+    <div class="chart-wrap tall"><canvas id="weeklyTrend"></canvas></div>
+    <p class="note">Showing only weeks with at least one click. <code>addon_connect_success</code> fires no events in production (actual event is <code>addon_doc_connected</code>), so add-on connects column is always 0.</p>
+
+    <h3>Top Add-on Actions (button rank)</h3>
+    <div class="chart-wrap med"><canvas id="btnRank"></canvas></div>
+
+    <h3>Add-on Operations — Success vs. Failure</h3>
+    <div class="chart-row">
+      <div class="chart-cell">
+        <h3>Connect (13 initiated)</h3>
+        <div class="chart-wrap sm"><canvas id="connectDonut"></canvas></div>
+      </div>
+      <div class="chart-cell">
+        <h3>Publish (3 initiated)</h3>
+        <div class="chart-wrap sm"><canvas id="publishDonut"></canvas></div>
+      </div>
+      <div class="chart-cell">
+        <h3>Sync (7 initiated)</h3>
+        <div class="chart-wrap sm"><canvas id="syncDonut"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drop-off Analysis -->
+  <div class="card">
+    <h2>Drop-off Analysis</h2>
+
+    <h3>Add-on Funnel</h3>
+    <table>
+      <tr><th>#</th><th>Step</th><th>Users</th><th>Conv. from prev.</th><th>Conv. from start</th><th>Drop</th></tr>
+      <tr><td>1</td><td>Signed in</td><td>2</td><td>—</td><td class="good">100.0%</td><td>0</td></tr>
+      <tr class="cliff"><td>2</td><td>Account selected <span class="gap-tag">CLIFF</span></td><td>1</td><td class="bad">50.0%</td><td class="bad">50.0%</td><td>1</td></tr>
+      <tr><td>3</td><td>Connect initiated</td><td>1</td><td class="good">100.0%</td><td class="bad">50.0%</td><td>0</td></tr>
+      <tr><td>4</td><td>Doc connected</td><td>1</td><td class="good">100.0%</td><td class="bad">50.0%</td><td>0</td></tr>
+      <tr><td>5</td><td>Publish initiated</td><td>1</td><td class="good">100.0%</td><td class="bad">50.0%</td><td>0</td></tr>
+      <tr><td>6</td><td>Published</td><td>1</td><td class="good">100.0%</td><td class="bad">50.0%</td><td>0</td></tr>
+    </table>
+    <p class="note">Biggest cliff: step 1 → 2 (Sign-in to Account selected), -50%. Sample size is 2 users — treat with caution.</p>
+
+    <h3>Editor Create Funnel</h3>
+    <table>
+      <tr><th>#</th><th>Step</th><th>Users</th><th>Conv. from prev.</th><th>Conv. from start</th><th>Drop</th></tr>
+      <tr><td>1</td><td>Clicked 'New Google Doc'</td><td>8</td><td>—</td><td class="good">100.0%</td><td>0</td></tr>
+      <tr class="cliff"><td>2</td><td>Google Doc created (is_google_doc) <span class="gap-tag">INSTR. GAP</span></td><td>0</td><td class="bad">0.0%</td><td class="bad">0.0%</td><td>8</td></tr>
+      <tr><td>3</td><td>Published</td><td>0</td><td>—</td><td class="bad">0.0%</td><td>0</td></tr>
+    </table>
+    <p class="note">0% at step 2 is an instrumentation bug (<code>is_google_doc</code> property not set), not a real drop-off. Fix the property to recover this funnel.</p>
+
+    <h3>Editor Import Funnel</h3>
+    <table>
+      <tr><th>#</th><th>Step</th><th>Users</th><th>Conv. from prev.</th><th>Conv. from start</th><th>Drop</th></tr>
+      <tr><td>1</td><td>Clicked 'Import Google Doc'</td><td>4</td><td>—</td><td class="good">100.0%</td><td>0</td></tr>
+      <tr class="cliff"><td>2</td><td>Google Doc imported (is_google_doc) <span class="gap-tag">INSTR. GAP</span></td><td>0</td><td class="bad">0.0%</td><td class="bad">0.0%</td><td>4</td></tr>
+    </table>
+    <p class="note">Same instrumentation gap as above.</p>
+
+    <h3>Intent → Completion (reliable signal)</h3>
+    <table>
+      <tr><th>Metric</th><th>Value</th></tr>
+      <tr><td>Users who expressed Google Doc intent</td><td>11</td></tr>
+      <tr><td class="bad">Users who never published a Google Doc</td><td class="bad">10 (90.9%)</td></tr>
+      <tr><td class="good">Users who published at least one Google Doc</td><td class="good">1 (9.1%)</td></tr>
+      <tr><td>Total Google Doc publishes</td><td>12</td></tr>
+      <tr><td>Most publishes by a single user</td><td>12 (all from one user, May 20–24)</td></tr>
+    </table>
+  </div>
+
+  <!-- Weaknesses -->
+  <div class="card">
+    <h2>Weaknesses</h2>
+
+    <h3>Top Errors</h3>
+    <table>
+      <tr><th>Event</th><th>Error</th><th>Status</th><th>Occurrences</th><th>Users</th></tr>
+      <tr>
+        <td><code>addon_connect_failed</code></td>
+        <td>Unknown error</td>
+        <td class="bad">404</td>
+        <td>2</td>
+        <td>1</td>
+      </tr>
+    </table>
+    <p class="note">The 404 during <code>addon_connect_initiated</code> → <code>addon_connect_failed</code> indicates an endpoint not found condition; likely a missing API route or mis-configured connect URL. Needs backend investigation.</p>
+
+    <h3>Cancellations</h3>
+    <p>No cancellation events (<code>addon_*_cancelled</code>) recorded in the data window. Either cancellations don't happen or the events are not firing.</p>
+
+    <h3>Instrumentation Gaps <span class="gap-tag">ACTION REQUIRED</span></h3>
+    <ul class="plain">
+      <li><b>1. <code>is_google_doc</code> on <code>document_created</code></b> — never set to <code>true</code>. Both Editor funnels (Create and Import) return 0 users at step 2. This makes the funnels useless until fixed.</li>
+      <li><b>2. Embed "Reconnect" action</b> — when an embedded Google Doc loses its connection, the user must reconnect. No event fires for this interaction. Connection-loss frequency and reconnect success rate are invisible.</li>
+      <li><b>3. <code>addon_connect_success</code></b> — this event does not exist in PostHog. The real event fired by the add-on is <code>addon_doc_connected</code>. Weekly trend and retention queries that reference <code>addon_connect_success</code> return all zeros. Retention data is therefore entirely empty.</li>
+    </ul>
+
+    <h3>Friction Signal</h3>
+    <p><b>10 rage clicks from 2 users</b> (18.2% of 11 intent users) indicate meaningful UI friction in the Google Doc flows. Without session recordings, the specific breakpoint is unknown.</p>
+  </div>
+
+  <!-- Strengths -->
+  <div class="card">
+    <h2>Strengths</h2>
+    <ul class="plain">
+      <li><b>Add-on sync is perfectly reliable:</b> 7 of 7 sync operations succeeded (100%) in the available test data.</li>
+      <li><b>Add-on publish reliability:</b> 2 of 3 publish operations succeeded (66.7%). The failure was a 404, suggesting an edge case rather than a systemic bug.</li>
+      <li><b>Once connected, the add-on flow completes:</b> After the account-selection cliff, the connect → connect_success → publish_initiated → publish_success path runs at 100% per-step conversion.</li>
+      <li><b>One power user validates the end-to-end flow:</b> 12 Google Doc publishes from a single user in 4 days (May 20–24) confirms the full Editor → Publish path works end-to-end.</li>
+      <li><b>Editor intent is picking up slowly:</b> The May 17, 2026 week was the peak (4 create + 4 import clicks from 8 intent-events), suggesting growing awareness of the feature.</li>
+    </ul>
+  </div>
+
+  <!-- Recommendations -->
+  <div class="card">
+    <h2>Recommendations</h2>
+
+    <div class="rec">
+      <b>1. Fix <code>is_google_doc</code> on <code>document_created</code> (highest priority)</b>
+      <div class="obs">Observation: Both Editor funnels show 0% conversion at step 2 because the property is never set. Hypothesis: a single code-path fix in the Editor will restore the funnel and reveal the true Create and Import conversion rates. Expected impact: recovers visibility into the most-used entry paths.</div>
+    </div>
+
+    <div class="rec">
+      <b>2. Investigate the 10-of-11 intent users who never published</b>
+      <div class="obs">Observation: 90.9% of users who clicked a Google Doc action never completed a publish. Hypothesis: the Google OAuth / Picker handshake is failing silently, or users are confused after the picker closes. Expected impact: fixing the most common failure point could multiply completion rates significantly from the current 9.1%.</div>
+    </div>
+
+    <div class="rec">
+      <b>3. Add rage-click session recordings / heatmaps for Google Doc intent users</b>
+      <div class="obs">Observation: 18.2% of intent users rage-clicked. Hypothesis: a specific button or loading state is unresponsive (likely during OAuth popup or Picker). Expected impact: pinpoints the exact friction point without guesswork, enabling a targeted fix.</div>
+    </div>
+
+    <div class="rec">
+      <b>4. Instrument the Embed "Reconnect" action</b>
+      <div class="obs">Observation: No events fire when a disconnected embedded Google Doc reconnects. Hypothesis: connection loss may be frequent in production but invisible. Recommended events: <code>embed_reconnect_initiated</code>, <code>embed_reconnect_success</code>, <code>embed_reconnect_failed</code>. Expected impact: makes connection reliability measurable.</div>
+    </div>
+
+    <div class="rec">
+      <b>5. Align <code>addon_connect_success</code> event name (or update queries)</b>
+      <div class="obs">Observation: PostHog receives <code>addon_doc_connected</code>, not <code>addon_connect_success</code>. Retention and weekly trend queries referencing the latter return all zeros. Hypothesis: a naming mismatch between the add-on code and the analytics schema. Fix: either fire <code>addon_connect_success</code> as an alias or update all PostHog queries to use <code>addon_doc_connected</code>.</div>
+    </div>
+
+    <div class="rec">
+      <b>6. Investigate the 404 on <code>addon_connect_failed</code></b>
+      <div class="obs">Observation: 2 connect failures returned HTTP 404 with "Unknown error". Hypothesis: the add-on's connect API endpoint is missing or mis-routed for a specific account/doc configuration. Expected impact: unblocking this removes the only known hard error in the add-on connect flow.</div>
+    </div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="footer">
+    <b>Methodology note</b><br>
+    Data source: PostHog project 300407 (us.posthog.com) — frontend events only. No backend events exist for this feature.<br>
+    Window: All available history (10-year lookback). True data range: January 30, 2026 – July 1, 2026 (~5 months).<br>
+    Add-on telemetry range: February 24–27, 2026 only (2 users). Funnel window: 14 days.<br>
+    Errors in fetch: none (<code>_errors</code> array empty). Retention query returns all zeros — <code>addon_connect_success</code> event does not exist in PostHog.<br>
+    All figures are aggregate counts and rates. No PII, emails, names, or user IDs appear in this report.<br>
+    Events vs. users: "events" = total occurrences; "users" = unique <code>distinct_id</code> values. These are never conflated.<br>
+    Generated: July 1, 2026 by FlowKoi automated report.
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+// Inline data from output/posthog-data.json
+const DATA = {
+  addonFunnel: [
+    { name: "Signed in", count: 2, convPrev: 100.0 },
+    { name: "Account selected", count: 1, convPrev: 50.0 },
+    { name: "Connect initiated", count: 1, convPrev: 100.0 },
+    { name: "Doc connected", count: 1, convPrev: 100.0 },
+    { name: "Publish initiated", count: 1, convPrev: 100.0 },
+    { name: "Published", count: 1, convPrev: 100.0 }
+  ],
+  editorCreate: [
+    { name: "Clicked 'New GDoc'", count: 8 },
+    { name: "GDoc created *", count: 0 },
+    { name: "Published", count: 0 }
+  ],
+  editorImport: [
+    { name: "Clicked 'Import GDoc'", count: 4 },
+    { name: "GDoc imported *", count: 0 }
+  ],
+  weeklyTrend: [
+    { week: "Feb 22", create: 0, import: 1 },
+    { week: "Mar 1",  create: 2, import: 1 },
+    { week: "Mar 15", create: 1, import: 0 },
+    { week: "Apr 19", create: 2, import: 0 },
+    { week: "May 17", create: 4, import: 4 },
+    { week: "May 24", create: 2, import: 1 },
+    { week: "May 31", create: 1, import: 0 },
+    { week: "Jun 7",  create: 0, import: 1 }
+  ],
+  btnRank: [
+    { action: "addon_connect_initiated", clicks: 13 },
+    { action: "addon_publish_initiated", clicks: 3 },
+    { action: "addon_preview_opened",   clicks: 1 },
+    { action: "addon_open_in_editor",   clicks: 1 },
+    { action: "addon_view_live_opened", clicks: 1 }
+  ],
+  connectOps:  { success: 11, fail: 2 },
+  publishOps:  { success: 2,  fail: 1 },
+  syncOps:     { success: 7,  fail: 0 }
+};
+
+const GOOD = "#15803d", BAD = "#b91c1c", BLUE = "#2563eb", GRAY = "#9ca3af",
+      AMBER = "#d97706", TEAL = "#0d9488", INDIGO = "#6366f1";
+
+// Add-on funnel bar
+new Chart(document.getElementById("addonFunnel"), {
+  type: "bar",
+  data: {
+    labels: DATA.addonFunnel.map(d => d.name),
+    datasets: [{
+      label: "Users",
+      data: DATA.addonFunnel.map(d => d.count),
+      backgroundColor: DATA.addonFunnel.map((d, i) =>
+        i === 1 ? BAD + "cc" : GOOD + "cc"),
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, ticks: { stepSize: 1 }, max: 3 },
+      x: { ticks: { font: { size: 11 } } }
+    }
+  }
+});
+
+// Editor Create funnel
+new Chart(document.getElementById("createFunnel"), {
+  type: "bar",
+  data: {
+    labels: DATA.editorCreate.map(d => d.name),
+    datasets: [{
+      label: "Users",
+      data: DATA.editorCreate.map(d => d.count),
+      backgroundColor: [GOOD + "cc", BAD + "44", BAD + "44"],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 2 } },
+               x: { ticks: { font: { size: 10 } } } }
+  }
+});
+
+// Editor Import funnel
+new Chart(document.getElementById("importFunnel"), {
+  type: "bar",
+  data: {
+    labels: DATA.editorImport.map(d => d.name),
+    datasets: [{
+      label: "Users",
+      data: DATA.editorImport.map(d => d.count),
+      backgroundColor: [GOOD + "cc", BAD + "44"],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } },
+               x: { ticks: { font: { size: 10 } } } }
+  }
+});
+
+// Weekly trend
+new Chart(document.getElementById("weeklyTrend"), {
+  type: "line",
+  data: {
+    labels: DATA.weeklyTrend.map(d => d.week),
+    datasets: [
+      { label: "Create clicks", data: DATA.weeklyTrend.map(d => d.create),
+        borderColor: BLUE, backgroundColor: BLUE + "22",
+        tension: 0.3, fill: true, pointRadius: 4 },
+      { label: "Import clicks", data: DATA.weeklyTrend.map(d => d.import),
+        borderColor: TEAL, backgroundColor: TEAL + "22",
+        tension: 0.3, fill: true, pointRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: "bottom", labels: { font: { size: 12 } } } },
+    scales: {
+      y: { beginAtZero: true, ticks: { stepSize: 1 } },
+      x: { ticks: { font: { size: 11 } } }
+    }
+  }
+});
+
+// Button rank horizontal bar
+new Chart(document.getElementById("btnRank"), {
+  type: "bar",
+  data: {
+    labels: DATA.btnRank.map(d => d.action.replace("addon_", "").replace(/_/g, " ")),
+    datasets: [{
+      label: "Clicks",
+      data: DATA.btnRank.map(d => d.clicks),
+      backgroundColor: INDIGO + "cc",
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: "y",
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { beginAtZero: true, ticks: { stepSize: 2 } },
+      y: { ticks: { font: { size: 12 } } }
+    }
+  }
+});
+
+// Donut charts
+function donut(id, success, fail, label) {
+  const total = success + fail;
+  new Chart(document.getElementById(id), {
+    type: "doughnut",
+    data: {
+      labels: ["Success", "Failed"],
+      datasets: [{
+        data: [success, fail],
+        backgroundColor: [GOOD + "dd", BAD + "dd"],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "bottom", labels: { font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const pct = total ? ((ctx.parsed / total) * 100).toFixed(1) : 0;
+              return ` ${ctx.label}: ${ctx.parsed} (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+}
+donut("connectDonut", DATA.connectOps.success, DATA.connectOps.fail);
+donut("publishDonut", DATA.publishOps.success, DATA.publishOps.fail);
+donut("syncDonut",    DATA.syncOps.success,    DATA.syncOps.fail);
+</script>
+</body>
+</html>
