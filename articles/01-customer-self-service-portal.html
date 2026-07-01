@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customer Self-Service Portal: Build One That Resolves Issues</title>
+<meta name="description" content="Customers try self-service first, but most issues never resolve there. A practical playbook to build a customer self-service portal that deflects tickets.">
+<style>
+  :root { --ink:#1f2733; --muted:#5b6673; --accent:#2f6df6; --line:#e8ebf0; --bg:#ffffff; }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7;
+  }
+  .wrap { max-width:720px; margin:0 auto; padding:32px 20px 72px; }
+  h1 { font-size:2.1rem; line-height:1.2; letter-spacing:-0.01em; margin:0 0 1.1rem; }
+  h2 { font-size:1.5rem; line-height:1.25; margin:2.4rem 0 0.8rem; letter-spacing:-0.01em; }
+  h3 { font-size:1.18rem; margin:1.6rem 0 0.5rem; }
+  p { margin:0 0 1.1rem; color:var(--ink); }
+  ul, ol { margin:0 0 1.2rem; padding-left:1.3rem; }
+  li { margin:0.4rem 0; }
+  li strong { color:var(--ink); }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  figure { margin:1.8rem 0; }
+  img { width:100%; height:auto; display:block; border-radius:14px; background:#f6f8fb; }
+  hr { border:0; border-top:1px solid var(--line); margin:2.4rem 0; }
+  .lead { font-size:1.12rem; color:var(--muted); }
+  @media (max-width:600px){
+    body{ font-size:17px; }
+    .wrap{ padding:24px 16px 56px; }
+    h1{ font-size:1.7rem; }
+    h2{ font-size:1.3rem; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>Customer Self-Service Portal: Build One That Resolves Issues</h1>
+
+    <p class="lead">Your customers are already trying to help themselves. Across industries, about 81% of people attempt to solve a problem on their own before they ever contact a live representative. The hard part isn't convincing them to use self-service — it's making sure they succeed once they do. And that's where most portals quietly fall apart.</p>
+
+    <p>This guide walks through how to build a customer self-service portal that resolves real issues instead of just deflecting them into frustration. You'll learn why so many portals stall, how to structure content people can actually find, and how to keep the whole thing useful after launch.</p>
+
+    <figure>
+      <img src="images/01-customer-self-service-portal-hero.png" alt="A support and documentation team organizing labeled help articles on shelves while a customer reads a step-by-step guide at a desk">
+    </figure>
+
+    <h2>What is a customer self-service portal?</h2>
+    <p>A customer self-service portal is a searchable online space where people find answers and complete tasks on their own — through help articles, guides, FAQs, and troubleshooting steps — without opening a ticket or waiting for an agent. Done well, it's the first place customers go and the last place they need to.</p>
+    <p>The key word is <em>resolve</em>. A portal that only lists topics is a filing cabinet. A portal that helps someone finish what they came to do is support.</p>
+
+    <h2>Why most self-service portals fail</h2>
+    <p>Here's the uncomfortable data. While the vast majority of customers try self-service, only about 14% of customer service issues are fully resolved there, according to a large Gartner survey of more than 5,700 customers. Even for problems customers describe as "very simple," only about a third get fully resolved without human help.</p>
+    <p>That gap — between how often people try self-service and how rarely it works — is the real problem. When a portal fails, it doesn't just lose the deflection. It adds effort: the customer searches, reads, gives up, <em>then</em> contacts you, often more annoyed than if the portal hadn't existed at all.</p>
+    <p>Most of that failure traces back to a few predictable causes:</p>
+    <ul>
+      <li><strong>Content written for the org chart, not the customer.</strong> Articles mirror internal team names and product modules instead of the words customers use.</li>
+      <li><strong>Answers that describe features instead of finishing tasks.</strong> The page explains what a setting is, but not how to get the outcome the customer wanted.</li>
+      <li><strong>A search box that returns noise.</strong> If the top result isn't the right answer, most people won't scroll — they'll leave.</li>
+      <li><strong>Stale content.</strong> The product changed; the article didn't. Now the portal is actively misleading.</li>
+    </ul>
+    <p>Fixing the gap is less about adding more articles and more about making the ones you have findable, task-focused, and current.</p>
+
+    <h2>Start with the questions people actually ask</h2>
+    <p>Before writing a single article, gather the real questions. Your support queue, chat transcripts, search logs, and even sales calls are full of them — in the customer's own language.</p>
+    <p>Group those questions by intent, not by internal structure. "How do I get a refund?" and "Where's my money?" are the same task and should lead to one clear answer, not two half-articles. Prioritize by volume: the handful of questions that drive the most contacts deserve your best, most complete pages first.</p>
+    <p>This does two things at once. It ensures your earliest content covers what actually generates tickets, and it seeds your portal with the exact phrasing people type into search — which is also the phrasing they type into Google.</p>
+
+    <h2>Structure content so people can find it</h2>
+    <p>Findability is where portals live or die. Nielsen Norman Group's long-standing guidance on help and documentation is blunt about what good help requires: it must be easy to search, focused on the user's task, concrete, and concise. Each of those is a design decision.</p>
+
+    <h3>Make it searchable</h3>
+    <p>Search is how most people navigate a portal, so treat it as a first-class feature, not a box in the corner. Use the customer's vocabulary in titles and headings so search has something to match. Add the synonyms and "wrong" terms people actually use. And make sure results rank the <em>answer</em> first — a strong search that surfaces the right page in position one does more for resolution than a hundred extra articles nobody can reach.</p>
+
+    <h3>Write task-focused, step-by-step topics</h3>
+    <p>A good help topic answers one question and finishes one task. Lead with the outcome, list the steps in order, and show them — screenshots or short clips beat a wall of text for anything procedural. Keep each topic concise; if it sprawls across five unrelated tasks, split it. When someone lands on the page, they should be able to scan the steps, do the thing, and move on.</p>
+
+    <figure>
+      <img src="images/01-customer-self-service-portal-inline-1.png" alt="A person following a numbered, illustrated how-to guide on a laptop and successfully completing a task, with a checkmark, while a support agent works nearby">
+    </figure>
+
+    <h2>Balance proactive and reactive help</h2>
+    <p>Not all help waits to be searched for. Nielsen Norman Group draws a useful line between two kinds:</p>
+    <ul>
+      <li><strong>Reactive help</strong> is what people go looking for — the FAQs, articles, and troubleshooting guides in your portal. This is the core of self-service.</li>
+      <li><strong>Proactive help</strong> shows up before the question does — a tip at the moment a customer is about to make a mistake, or a short explainer surfaced right where a feature lives.</li>
+    </ul>
+    <p>The strongest self-service experiences use both. Reactive content answers the questions that arrive; proactive nudges prevent some of those questions from ever being asked. A portal is not an island — it works best when its content also reaches customers inside your product, at the exact point of need.</p>
+
+    <h2>Keep the portal alive after launch</h2>
+    <p>A self-service portal is not a launch; it's a practice. Content decays the moment your product moves on, and stale answers erode trust faster than missing ones.</p>
+    <p>Build a simple loop:</p>
+    <ol>
+      <li><strong>Watch what fails.</strong> Track searches that return nothing, articles with high traffic but low helpfulness ratings, and questions still hitting your support queue. Each is a content gap or a broken answer.</li>
+      <li><strong>Fix at the source.</strong> Close gaps by writing or updating the specific topic — ideally as part of resolving the ticket, so knowledge is captured while it's fresh instead of in a separate, deprioritized project.</li>
+      <li><strong>Let readers tell you.</strong> A one-click "Was this helpful?" on every article turns thousands of readers into a continuous QA team pointing you at what to fix next.</li>
+    </ol>
+    <p>Ownership matters here. When updating docs is somebody's explicit job — and when support agents can capture answers as they solve tickets — the portal stays accurate. When it's nobody's job, it rots.</p>
+
+    <h2>Measure ticket deflection honestly</h2>
+    <p>It's tempting to measure a self-service portal by page views, but views don't mean resolution. The metric that matters is whether the customer's issue actually got solved without a ticket — genuine case deflection, not a bounce.</p>
+    <p>A more honest read comes from combining signals:</p>
+    <ul>
+      <li><strong>Resolution and helpfulness rates</strong> — did readers say the article solved their problem?</li>
+      <li><strong>Contacts after search</strong> — how often does someone search, then still open a ticket for the same topic?</li>
+      <li><strong>Deflection on your highest-volume questions</strong> — are your top drivers of contact actually trending down?</li>
+    </ul>
+    <p>Watch these over time and let them direct your content work. Falling contacts on a topic you invested in is real deflection. A spike in "no results found" is a roadmap for what to write next.</p>
+
+    <h2>Where Sonat fits</h2>
+    <p>Building a portal that resolves issues comes down to publishing clear, task-focused content that people can find, then keeping it current. That's exactly what <a href="https://sonat.com">Sonat</a> is built for: teams draft in a familiar editor, organize topics into a searchable help center, publish to their own domain, and keep everything version-controlled so updates are quick and safe. Full-text search and an AI answer generator help customers reach the right answer fast, while built-in analytics show which topics are working and which need attention — so your portal keeps closing the resolution gap instead of widening it.</p>
+
+    <h2>The shift that makes self-service work</h2>
+    <p>Most self-service strategies over-invest in <em>having</em> a portal and under-invest in whether it <em>works</em>. The customers are already there — they're trying. The job is to meet them with answers they can find and steps they can finish, then to keep those answers honest as your product evolves.</p>
+    <p>Start with your highest-volume questions, write them as tasks people can complete, make them genuinely searchable, and measure real resolution rather than traffic. Do that, and your portal stops being a filing cabinet and starts being the fastest way your customers get unstuck.</p>
+    <p>Ready to build one? <a href="https://sonat.com">Explore how Sonat helps teams create and publish a self-service help center</a>.</p>
+  </article>
+</main>
+</body>
+</html>
