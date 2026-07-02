@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Docs Feature — Usage &amp; Drop-off</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#f6f7f9;--card:#fff;
+--good:#15803d;--bad:#b91c1c;--web:#2563eb;--addon:#7c3aed;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+.wrap{max-width:920px;margin:0 auto;padding:40px 20px 60px;}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:600;color:var(--muted);}
+h1{font-size:30px;line-height:1.15;margin:6px 0 8px;letter-spacing:-.01em;}
+h2{font-size:20px;margin:0 0 12px;}
+h3{font-size:15px;margin:0 0 12px;font-weight:650;}
+.period{font-size:16px;font-weight:600;color:var(--ink);}
+.subperiod{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+padding:20px 22px;margin:16px 0;box-shadow:0 1px 2px rgba(16,24,40,.04);}
+.summary p{margin:10px 0;}
+.summary .addon-line{padding:12px 14px;background:#faf5ff;border:1px solid #ecdcff;border-radius:10px;font-size:14px;}
+.section-head{margin:38px 0 4px;}
+.section-head h2{display:inline-block;vertical-align:middle;}
+.section-head .lead{color:#374151;margin:8px 0 0;}
+.tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;
+letter-spacing:.05em;padding:3px 8px;border-radius:6px;vertical-align:middle;margin-right:8px;}
+.tag-web{background:#dbeafe;color:#1d4ed8;}
+.tag-addon{background:#ede9fe;color:#6d28d9;}
+.section-head.web{border-left:4px solid var(--web);padding-left:14px;}
+.section-head.addon{border-left:4px solid var(--addon);padding-left:14px;}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+.kpi{padding:16px 16px;margin:0;}
+.kpi-label{font-size:12px;color:var(--muted);font-weight:600;}
+.kpi-val{font-size:26px;font-weight:750;letter-spacing:-.01em;margin:4px 0 2px;}
+.kpi-sub{font-size:12px;color:var(--muted);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid2 .card{margin:16px 0 0;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+td.dt,th.dt{color:var(--muted);white-space:nowrap;font-size:12.5px;}
+tr.cliff td{background:#fef2f2;}
+.good{color:var(--good);} .bad{color:var(--bad);}
+.muted{color:var(--muted);font-weight:400;}
+.badge{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:20px;margin-left:4px;}
+.badge-new{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;}
+.note{font-size:12.5px;color:var(--muted);margin:12px 0 0;}
+.bad-note{color:#7f1d1d;background:#fef2f2;border:1px solid #fecaca;padding:10px 12px;border-radius:8px;}
+.facts{margin:4px 0 0;padding-left:18px;} .facts li{margin:6px 0;}
+.verdict{margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14px;}
+.verdict-not_published{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;}
+.verdict-published{background:#f0fdf4;border:1px solid #bbf7d0;color:#14532d;}
+.verdict-unknown{background:#f3f4f6;border:1px solid #e5e7eb;color:#374151;}
+.donuts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:end;}
+.donut-cap{text-align:center;font-size:12px;color:var(--muted);margin-top:4px;font-weight:600;}
+.recs ol{padding-left:20px;} .recs li{margin:14px 0;}
+.recs em{color:var(--muted);font-style:italic;}
+.caveats ul,.methodology ul{padding-left:20px;} .caveats li,.methodology li{margin:8px 0;}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px;}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;}
+@media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr);}.grid2{grid-template-columns:1fr;}
+h1{font-size:24px;}.donuts{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Sonat · Feature Telemetry · PostHog</div>
+  <h1>Google Docs Feature — Usage &amp; Drop-off</h1>
+  <div class="period">All available history · Jan 30, 2026 – Jul 2, 2026</div>
+  <div class="subperiod">Window: all available history · True data history: Jan 30, 2026 – Jul 2, 2026</div>
+
+  <div class="card summary">
+    <h2>Executive summary</h2>
+    <p><strong>Web (in-Editor) — the real product story.</strong> 11 unique
+    users engaged the in-Editor Google-Doc flow (8 started a
+    <em>New</em> Google Doc, 4 an <em>Import</em>; 12 New clicks and
+    8 Import clicks in all). But only <strong>1</strong> of them ever
+    published a Google Doc — a <strong class="bad">90.9%</strong> intent→completion
+    drop-off — and that single publisher produced <strong>all 12</strong> publishes in one
+    4-day burst (May&nbsp;20–24, 2026). Real adoption of the feature has effectively not
+    materialised yet: engagement is a trickle, and completion is one power user.</p>
+    <p class="addon-line"><strong>Add-on (Marketplace sidebar).</strong> No evidence the add-on is published: this run could not confirm a public Marketplace listing, and add-on usage is limited to 2 dev/test account(s) with no external business-domain adoption. Treat the add-on funnel as dev/test-only, not a conversion failure. (If the add-on has since been published, external-domain usage will appear and this note clears automatically.)</p>
+  </div>
+
+  <!-- ============ SECTION 1: WEB ============ -->
+  <div class="section-head web">
+    <span class="tag tag-web">Track A</span>
+    <h2>Web (in-Editor) scenarios</h2>
+    <p class="lead">The shipped, in-browser flows every customer has: <strong>Create new
+    Google Doc</strong> and <strong>Import existing Google Doc</strong>. This is where real
+    product adoption lives. <span class="muted">(A third web scenario — embedding a Google Doc
+    as topic content — emits no telemetry and cannot be measured.)</span></p>
+  </div>
+
+  <div class="kpis">
+    <div class="card kpi"><div class="kpi-label">Web unique users</div><div class="kpi-val">11</div><div class="kpi-sub">clicked New or Import GD</div></div>
+    <div class="card kpi"><div class="kpi-label">New vs Import (users)</div><div class="kpi-val">8 / 4</div><div class="kpi-sub">New / Import</div></div>
+    <div class="card kpi"><div class="kpi-label">Google-Doc publishes</div><div class="kpi-val">12</div><div class="kpi-sub">by 1 user · all in 4 days</div></div>
+    <div class="card kpi"><div class="kpi-label">Intent→completion</div><div class="kpi-val bad">9.1%</div><div class="kpi-sub">1 of 11 published</div></div>
+  </div>
+
+  <div class="card">
+    <h3>All web actions <span class="muted">(journey order — from <code>web_action_usage</code>)</span></h3>
+    <table>
+      <thead><tr><th>Action</th><th class="num">Events</th><th class="num">Users</th><th class="dt">First seen</th><th class="dt">Last seen</th></tr></thead>
+      <tbody><tr><td>1. Create GD (click) </td><td class='num'>12</td><td class='num'>8</td><td class='dt'>2026-03-02</td><td class='dt'>2026-06-03</td></tr><tr><td>2. Import GD (click) </td><td class='num'>8</td><td class='num'>4</td><td class='dt'>2026-02-27</td><td class='dt'>2026-06-10</td></tr><tr><td>3. Created/Imported OK <span class="badge badge-new">newly instrumented (PR&nbsp;#307) — not yet collected</span></td><td class='num'><span class="muted">0</span></td><td class='num'><span class="muted">0</span></td><td class='dt'>—</td><td class='dt'>—</td></tr><tr><td>4. AutoSave </td><td class='num'>1</td><td class='num'>1</td><td class='dt'>2026-05-20</td><td class='dt'>2026-05-20</td></tr><tr><td>5. Preview </td><td class='num'>1</td><td class='num'>1</td><td class='dt'>2026-05-26</td><td class='dt'>2026-05-26</td></tr><tr><td>6. Open in Google Doc <span class="badge badge-new">newly instrumented (PR&nbsp;#307) — not yet collected</span></td><td class='num'><span class="muted">0</span></td><td class='num'><span class="muted">0</span></td><td class='dt'>—</td><td class='dt'>—</td></tr><tr><td>7. Publish (click) </td><td class='num'>24</td><td class='num'>1</td><td class='dt'>2026-05-20</td><td class='dt'>2026-05-24</td></tr><tr><td>8. Published OK </td><td class='num'>12</td><td class='num'>1</td><td class='dt'>2026-05-20</td><td class='dt'>2026-05-24</td></tr><tr><td>9. View Live </td><td class='num'>5</td><td class='num'>1</td><td class='dt'>2026-05-20</td><td class='dt'>2026-05-24</td></tr></tbody>
+    </table>
+    <p class="note">Two rows are <strong>newly instrumented (Editor-Frontend PR&nbsp;#307)</strong>:
+    “Created/Imported OK” now also covers the <em>import</em> path, and “Open in Google Doc”
+    is brand new. Both currently show no data with no first-seen — they are
+    <em>not yet deployed/collected</em>, not unused features. Reliable completion is measured
+    via <code>document_published</code> (<code>content_type='GoogleDoc'</code>).</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Users per web action</h3><canvas id="wauChart" height="230"></canvas></div>
+    <div class="card"><h3>Plan mix of feature users</h3><canvas id="planChart" height="230"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h3>Intent → completion <span class="muted">(the core cliff)</span></h3>
+    <table><thead><tr><th>Stage</th><th class="num">Users</th><th class="num">Conversion</th></tr></thead>
+    <tbody>
+<tr><td>Web intent users (clicked New/Import Google Doc)</td><td class='num'>11</td><td class='num'>100.0%</td></tr>
+<tr class='cliff'><td>Published a Google Doc</td><td class='num'>1</td><td class='num bad'>9.1%</td></tr>
+<tr><td>Produced no published Google Doc</td><td class='num'>10</td><td class='num'>90.9%</td></tr>
+</tbody></table>
+    <p class="note bad-note">Biggest web cliff: of 11 intent users, 10
+    (90.9%) never published a Google Doc. The one who did drove
+    every one of the 12 publishes — so the feature has essentially a single active user.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Create funnel <span class="muted">(New Google Doc)</span></h3><canvas id="createFunnel" height="230"></canvas>
+      <p class="note">Step 2 (“Google Doc created”) reads 0 because its completion event is the
+      newly-instrumented PR&nbsp;#307 signal that isn’t collecting yet — treat the middle of this
+      funnel as <em>unmeasured</em>, not an 8-user failure. Reliable endpoint: 1 user published.</p>
+    </div>
+    <div class="card"><h3>Import funnel <span class="muted">(Import Google Doc)</span></h3><canvas id="importFunnel" height="230"></canvas>
+      <p class="note">Import fired <em>no</em> completion event before PR&nbsp;#307, so pre-#307 import
+      conversion is <em>unmeasured, not zero</em>.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Weekly trend — web clicks</h3><canvas id="webTrend" height="230"></canvas>
+      <p class="note">Create + import clicks are spiky, peaked the week of May&nbsp;17 (8 combined),
+      then fell to zero through June. Rageclicks: <strong>10</strong> across
+      <strong>2</strong> of 11 intent users — a friction signal in the flow.</p>
+    </div>
+    <div class="card"><h3>Friction &amp; adoption at a glance</h3>
+      <ul class="facts">
+        <li><strong>12</strong> New-GD clicks · <strong>8</strong> Import-GD clicks</li>
+        <li><strong>10</strong> rageclicks among <strong>2</strong> intent users</li>
+        <li>Publishing window: <strong>May 20 – May 24, 2026</strong> (one user)</li>
+        <li>Trend direction: <strong class="bad">declining to zero</strong> in the last ~3 weeks</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2: ADD-ON ============ -->
+  <div class="section-head addon">
+    <span class="tag tag-addon">Track B</span>
+    <h2>Add-on (Google Workspace Marketplace sidebar)</h2>
+    <div class="verdict verdict-not_published">
+      <strong>Publish status this run: Not Published</strong>
+      (medium confidence · external adoption absent).
+      No evidence the add-on is published: this run could not confirm a public Marketplace listing, and add-on usage is limited to 2 dev/test account(s) with no external business-domain adoption. Treat the add-on funnel as dev/test-only, not a conversion failure. (If the add-on has since been published, external-domain usage will appear and this note clears automatically.)
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="card kpi"><div class="kpi-label">Add-on unique users</div><div class="kpi-val">2</div><div class="kpi-sub">dev/test accounts</div></div>
+    <div class="card kpi"><div class="kpi-label">Connect initiations</div><div class="kpi-val">13</div><div class="kpi-sub">2 failed (404)</div></div>
+    <div class="card kpi"><div class="kpi-label">Publish success</div><div class="kpi-val">66.7%</div><div class="kpi-sub">2/3 initiations</div></div>
+    <div class="card kpi"><div class="kpi-label">Sync success</div><div class="kpi-val good">100.0%</div><div class="kpi-sub">7/7 initiations</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Add-on funnel</h3><canvas id="addonFunnel" height="230"></canvas>
+      <p class="note">Biggest step: sign-in → account selected (2→1). With only 2 dev/test
+      users this is <em>not</em> a conversion failure — the funnel is exercised, not adopted.</p>
+    </div>
+    <div class="card"><h3>Add-on weekly trend</h3><canvas id="addonTrend" height="230"></canvas>
+      <p class="note">All add-on activity is a single late-February burst; nothing since.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Most-used add-on buttons</h3><canvas id="btnChart" height="260"></canvas></div>
+    <div class="card"><h3>Reliability — success vs failure</h3>
+      <div class="donuts">
+        <div><canvas id="connDonut" height="150"></canvas><div class="donut-cap">Connect</div></div>
+        <div><canvas id="pubDonut" height="150"></canvas><div class="donut-cap">Publish</div></div>
+        <div><canvas id="syncDonut" height="150"></canvas><div class="donut-cap">Sync</div></div>
+      </div>
+      <p class="note">Rates from <code>event_inventory</code>; N is tiny (dev/test). Connect logged
+      <strong>13</strong> initiations, <strong>2</strong> explicit failures
+      (404), and no <code>addon_connect_success</code> events. Retention (<code>retention_connect</code>)
+      cohorts are all empty — no add-on retention is measurable.</p>
+    </div>
+  </div>
+
+  <div class="card"><h3>Add-on failures</h3><table><thead><tr><th>Event</th><th>Error</th><th>Status</th><th>Occurrences</th><th>Users</th></tr></thead><tbody><tr><td>addon_connect_failed</td><td>Unknown error</td><td class='num'>404</td><td class='num'>2</td><td class='num'>1</td></tr></tbody></table></div>
+
+  <!-- ============ CAVEATS ============ -->
+  <div class="card caveats">
+    <h2>Instrumentation &amp; data caveats</h2>
+    <ul>
+      <li><strong>Editor “Reconnect” (disconnect-recovery) fires no event</strong>, so
+      connection-loss frequency is invisible — a blind spot worth closing.</li>
+      <li><strong>Recently closed (Editor-Frontend PR&nbsp;#307):</strong> importing an existing
+      Google Doc used to fire no completion event, and “Open in Google Doc” was untracked.
+      Both now emit events, so their history starts at PR&nbsp;#307’s deploy — older data is empty
+      <em>by construction</em>, not because the actions are unused.</li>
+      <li><strong>No backend events exist</strong> for this feature — all usage is client-side
+      PostHog, so measurement is bounded by what the frontend emits.</li>
+    </ul>
+  </div>
+
+  <!-- ============ RECOMMENDATIONS ============ -->
+  <div class="card recs">
+    <h2>Recommendations</h2>
+    <ol>
+      <li><span class="tag tag-web">Web</span> <strong>Close the intent→publish cliff.</strong>
+      <em>Observation:</em> 10 of 11 intent users never published a
+      Google Doc, and all 12 publishes came from one user.
+      <em>Hypothesis:</em> there is a hard blocker between clicking “New/Import Google Doc” and a
+      published doc (auth handoff, doc creation, or an unclear next step).
+      <em>Expected impact:</em> converting even 30% of intent users to a first publish would roughly
+      triple the count of active publishers.</li>
+
+      <li><span class="tag tag-web">Web</span> <strong>Deploy &amp; verify PR&nbsp;#307 completion instrumentation.</strong>
+      <em>Observation:</em> “Created/Imported OK” and “Open in Google Doc” show no data and no
+      first-seen — newly instrumented, not yet collecting.
+      <em>Hypothesis:</em> without the created/imported completion event the entire middle of both
+      funnels is a blind spot, so we can’t tell whether users fail to create or just aren’t tracked.
+      <em>Expected impact:</em> makes the create/import drop-off diagnosable instead of inferred.</li>
+
+      <li><span class="tag tag-web">Web</span> <strong>Instrument the “Reconnect” action.</strong>
+      <em>Observation:</em> disconnect-recovery fires no event; the 10 rageclicks
+      among 2 intent users hint at silent friction.
+      <em>Hypothesis:</em> unmeasured reconnect/disconnect churn is a hidden contributor to the
+      intent→publish drop.
+      <em>Expected impact:</em> quantifies a suspected friction driver so it can be prioritised.</li>
+
+      <li><span class="tag tag-addon">Add-on</span> <strong>Publish the add-on to the Marketplace.</strong>
+      <em>Observation:</em> Step 2b verdict is <em>not&nbsp;published</em>; usage is 2 dev/test
+      accounts with zero external business-domain adoption.
+      <em>Hypothesis:</em> the add-on cannot gain adoption until it is publicly listed — the “fix” is
+      publishing, not funnel tuning.
+      <em>Expected impact:</em> unlocks the only path to real add-on adoption and produces a real funnel
+      to measure.</li>
+
+      <li><span class="tag tag-addon">Add-on</span> <strong>Fix the connect 404 before launch.</strong>
+      <em>Observation:</em> <code>addon_connect_failed</code> = “Unknown error”, status 404, and no
+      <code>addon_connect_success</code> events against 13 connect initiations.
+      <em>Hypothesis:</em> a broken connect endpoint would block adoption on day one of a public launch.
+      <em>Expected impact:</em> prevents a launch-day connect failure that would waste acquisition.</li>
+    </ol>
+  </div>
+
+  <!-- ============ METHODOLOGY ============ -->
+  <div class="card methodology">
+    <h2>Methodology</h2>
+    <ul>
+      <li><strong>Source:</strong> PostHog only (project 300407) — no backend events exist for this
+      feature. Every figure is from <code>output/posthog-data.json</code>; empty sections mean the
+      event is unused or uninstrumented, never an estimate.</li>
+      <li><strong>Window:</strong> all available history. <strong>True data history:</strong> Jan 30, 2026 – Jul 2, 2026.</li>
+      <li><strong>Funnel window:</strong> 14 days for a user to complete a funnel from its first step.</li>
+      <li><strong>Per-track user counts (never blended):</strong> Web = <code>intent_to_completion.intent_users</code>
+      (11); Add-on = <code>users_per_flow.addon_users</code> (2). The blended
+      <code>total_unique_users</code> is deliberately not featured.</li>
+      <li><strong>Add-on publish status</strong> was determined at run time (<code>output/addon-publish.json</code>):
+      verdict <em>not_published</em>, basis <em>external_adoption_absent</em>, confidence <em>medium</em>.
+      When the add-on ships, external-domain usage appears and this framing clears automatically.</li>
+      <li><strong>Query errors this run:</strong> None — all queries returned.</li>
+      <li><strong>Aggregate only — no PII.</strong> Counts, rates, and plan segments only; no emails,
+      names, or user-id lists.</li>
+    </ul>
+  </div>
+
+  <div class="footer">Generated 2026-07-02 · Sonat feature telemetry · aggregate, no PII</div>
+</div>
+
+<script id="reportData" type="application/json">{"wau": [{"label": "1. Create GD (click)", "users": 8, "events": 12, "newly": false}, {"label": "2. Import GD (click)", "users": 4, "events": 8, "newly": false}, {"label": "3. Created/Imported OK", "users": 0, "events": 0, "newly": true}, {"label": "4. AutoSave", "users": 1, "events": 1, "newly": false}, {"label": "5. Preview", "users": 1, "events": 1, "newly": false}, {"label": "6. Open in Google Doc", "users": 0, "events": 0, "newly": true}, {"label": "7. Publish (click)", "users": 1, "events": 24, "newly": false}, {"label": "8. Published OK", "users": 1, "events": 12, "newly": false}, {"label": "9. View Live", "users": 1, "events": 5, "newly": false}], "plan": [{"plan_id": null, "users": 7, "plan_name": "Unknown / not set"}, {"plan_id": "11b2bff7-0a02-4a74-8120-efdea9bba894", "users": 5, "plan_name": "Free"}, {"plan_id": "0b8085be-c002-4320-b3f7-7982636c2671", "users": 1, "plan_name": "Enterprise"}], "create_funnel": [{"step": 1, "name": "Clicked 'New Google Doc'", "event": "create_button_clicked", "count": 8, "conversion_from_previous_pct": 100.0, "conversion_from_start_pct": 100.0, "dropoff_from_previous": 0}, {"step": 2, "name": "Google Doc created", "event": "document_created", "count": 0, "conversion_from_previous_pct": 0.0, "conversion_from_start_pct": 0.0, "dropoff_from_previous": 8}, {"step": 3, "name": "Published", "event": "document_published", "count": 0, "conversion_from_previous_pct": 0.0, "conversion_from_start_pct": 0.0, "dropoff_from_previous": 0}], "import_funnel": [{"step": 1, "name": "Clicked 'Import Google Doc'", "event": "create_button_clicked", "count": 4, "conversion_from_previous_pct": 100.0, "conversion_from_start_pct": 100.0, "dropoff_from_previous": 0}, {"step": 2, "name": "Google Doc imported", "event": "document_created", "count": 0, "conversion_from_previous_pct": 0.0, "conversion_from_start_pct": 0.0, "dropoff_from_previous": 4}], "addon_funnel": [{"step": 1, "name": "Signed in", "event": "addon_sign_in_success", "count": 2, "conversion_from_previous_pct": 100.0, "conversion_from_start_pct": 100.0, "dropoff_from_previous": 0}, {"step": 2, "name": "Account selected", "event": "addon_account_selected", "count": 1, "conversion_from_previous_pct": 50.0, "conversion_from_start_pct": 50.0, "dropoff_from_previous": 1}, {"step": 3, "name": "Connect initiated", "event": "addon_connect_initiated", "count": 1, "conversion_from_previous_pct": 100.0, "conversion_from_start_pct": 50.0, "dropoff_from_previous": 0}, {"step": 4, "name": "Doc connected", "event": "addon_doc_connected", "count": 1, "conversion_from_previous_pct": 100.0, "conversion_from_start_pct": 50.0, "dropoff_from_previous": 0}, {"step": 5, "name": "Publish initiated", "event": "addon_publish_initiated", "count": 1, "conversion_from_previous_pct": 100.0, "conversion_from_start_pct": 50.0, "dropoff_from_previous": 0}, {"step": 6, "name": "Published", "event": "addon_publish_success", "count": 1, "conversion_from_previous_pct": 100.0, "conversion_from_start_pct": 50.0, "dropoff_from_previous": 0}], "button_labels": [{"label": "Connect to Sonat", "clicks": 8, "users": 1}, {"label": "Connect with Google", "clicks": 8, "users": 2}, {"label": "Preview", "clicks": 5, "users": 1}, {"label": "Connect Document to Sonat", "clicks": 5, "users": 2}, {"label": "Publish", "clicks": 3, "users": 1}, {"label": "change-account-btn", "clicks": 2, "users": 1}, {"label": "I've connected the document", "clicks": 2, "users": 2}, {"label": "view-live-btn", "clicks": 1, "users": 1}, {"label": "Open in Sonat Editor", "clicks": 1, "users": 1}], "weeks": ["2026-01-25", "2026-02-08", "2026-02-15", "2026-02-22", "2026-03-01", "2026-03-08", "2026-03-15", "2026-03-22", "2026-03-29", "2026-04-05", "2026-04-12", "2026-04-19", "2026-04-26", "2026-05-03", "2026-05-10", "2026-05-17", "2026-05-24", "2026-05-31", "2026-06-07", "2026-06-14", "2026-06-21", "2026-06-28"], "create_series": [0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 4, 2, 1, 0, 0, 0, 0], "import_series": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 0, 1, 0, 0, 0], "addon_conn_series": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "addon_pub_series": [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "sync": {"ok": 7, "fail": 0}, "publish": {"ok": 2, "fail": 1}, "connect": {"ok": 11, "fail": 2}, "new_users": 8, "imp_users": 4}</script>
+
+<script>
+const D = JSON.parse(document.getElementById('reportData').textContent);
+const WEB='#2563eb', WEBL='#93c5fd', ADDON='#7c3aed', GOOD='#15803d', BAD='#b91c1c', GREY='#d1d5db';
+const baseOpts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{y:{beginAtZero:true,ticks:{precision:0}},x:{grid:{display:false}}}};
+function bar(id,labels,data,color,horizontal){
+  new Chart(document.getElementById(id),{type:'bar',
+    data:{labels:labels,datasets:[{data:data,backgroundColor:color,borderRadius:5}]},
+    options:{...baseOpts,indexAxis:horizontal?'y':'x'}});
+}
+// web action usage (users), grey out newly-instrumented
+bar('wauChart', D.wau.map(r=>r.label),
+    D.wau.map(r=>r.users),
+    D.wau.map(r=>r.newly?GREY:WEB));
+// plan mix
+bar('planChart', D.plan.map(p=>p.plan_name), D.plan.map(p=>p.users), WEB);
+// create funnel
+bar('createFunnel', D.create_funnel.map(s=>s.name), D.create_funnel.map(s=>s.count), WEB);
+bar('importFunnel', D.import_funnel.map(s=>s.name), D.import_funnel.map(s=>s.count), WEB);
+// web trend (two lines)
+new Chart(document.getElementById('webTrend'),{type:'line',
+  data:{labels:D.weeks,datasets:[
+    {label:'Create clicks',data:D.create_series,borderColor:WEB,backgroundColor:WEB,tension:.3,pointRadius:2},
+    {label:'Import clicks',data:D.import_series,borderColor:WEBL,backgroundColor:WEBL,tension:.3,pointRadius:2}]},
+  options:{...baseOpts,plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11}}}}}});
+// addon funnel
+bar('addonFunnel', D.addon_funnel.map(s=>s.name), D.addon_funnel.map(s=>s.count), ADDON);
+// addon trend
+new Chart(document.getElementById('addonTrend'),{type:'line',
+  data:{labels:D.weeks,datasets:[
+    {label:'Connects',data:D.addon_conn_series,borderColor:ADDON,backgroundColor:ADDON,tension:.3,pointRadius:2},
+    {label:'Publishes',data:D.addon_pub_series,borderColor:'#c4b5fd',backgroundColor:'#c4b5fd',tension:.3,pointRadius:2}]},
+  options:{...baseOpts,plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11}}}}}});
+// button labels horizontal
+bar('btnChart', D.button_labels.map(b=>b.label), D.button_labels.map(b=>b.clicks), ADDON, true);
+// donuts
+function donut(id,ok,fail){
+  new Chart(document.getElementById(id),{type:'doughnut',
+    data:{labels:['Success','Failure'],datasets:[{data:[ok,fail],backgroundColor:[GOOD,BAD]}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+      plugins:{legend:{display:false},tooltip:{enabled:true}}}});
+}
+donut('connDonut', D.connect.ok, D.connect.fail);
+donut('pubDonut', D.publish.ok, D.publish.fail);
+donut('syncDonut', D.sync.ok, D.sync.fail);
+</script>
+</body>
+</html>
