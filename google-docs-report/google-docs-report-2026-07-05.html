@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Docs Feature — Usage &amp; Drop-off</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:#f4f5f7; --card:#ffffff; --ink:#1a1d23; --muted:#5b6470; --line:#e5e7eb;
+    --web:#2563eb; --web-soft:#93c5fd; --connect:#7c3aed; --connect-soft:#c4b5fd;
+    --video:#0d9488; --video-soft:#5eead4; --good:#15803d; --bad:#b91c1c;
+    --amber:#b45309;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:940px; margin:0 auto; padding:40px 22px 80px; }
+  .eyebrow { text-transform:uppercase; letter-spacing:.12em; font-size:12px;
+    font-weight:700; color:var(--web); margin:0 0 8px; }
+  h1 { font-size:30px; line-height:1.2; margin:0 0 10px; letter-spacing:-.02em; }
+  .period { color:var(--muted); font-size:15px; margin:0 0 4px; }
+  .period b { color:var(--ink); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:26px 26px; margin:20px 0; box-shadow:0 1px 2px rgba(16,24,40,.04); }
+  .card h2 { font-size:21px; margin:0 0 4px; letter-spacing:-.01em; }
+  .card h3 { font-size:15px; margin:26px 0 10px; color:var(--ink); }
+  .card h2 .sub { display:block; font-size:13px; font-weight:500; color:var(--muted); margin-top:3px; }
+  .section { border-top:5px solid var(--line); }
+  .section.web { border-top-color:var(--web); }
+  .section.connect { border-top-color:var(--connect); }
+  .section.video { border-top-color:var(--video); }
+  .chip { display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em;
+    text-transform:uppercase; padding:3px 9px; border-radius:20px; vertical-align:middle; }
+  .chip.web { background:#e8f0fe; color:var(--web); }
+  .chip.connect { background:#f1ebfe; color:var(--connect); }
+  .chip.video { background:#e2f6f2; color:var(--video); }
+  .chip.pub { background:#e6f4ea; color:var(--good); }
+  .chip.unpub { background:#fdeaea; color:var(--bad); }
+  p { margin:10px 0; }
+  .lead { font-size:15.5px; }
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px; margin:18px 0 6px; }
+  .kpi { background:#fafbfc; border:1px solid var(--line); border-radius:11px; padding:15px 16px; }
+  .kpi-val { font-size:25px; font-weight:750; letter-spacing:-.02em; }
+  .kpi-label { font-size:12.5px; color:var(--muted); margin-top:3px; }
+  .kpi-sub { font-size:11.5px; color:var(--muted); margin-top:6px; }
+  .kpi.good .kpi-val { color:var(--good); }
+  .kpi.bad .kpi-val { color:var(--bad); }
+  .kpi.web .kpi-val { color:var(--web); }
+  .kpi.connect .kpi-val { color:var(--connect); }
+  .kpi.video .kpi-val { color:var(--video); }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; margin:8px 0; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:700; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  td.range { color:var(--muted); font-size:12.5px; }
+  tr.muted-row td { color:var(--muted); }
+  .tbl-scroll { overflow-x:auto; }
+  .tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 7px;
+    border-radius:5px; background:#fff7e6; color:var(--amber); border:1px solid #fde3b3; }
+  .cliff { background:#fdeaea !important; }
+  .cliff td { color:var(--bad) !important; font-weight:600; }
+  .chartbox { position:relative; height:230px; margin:6px 0 2px; }
+  .chartbox.tall { height:300px; }
+  .chartbox.donut { height:150px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  .donut-label { text-align:center; font-size:12.5px; color:var(--muted); margin-top:2px; }
+  .callout { border-left:4px solid var(--video); background:#effbf8; border-radius:0 10px 10px 0;
+    padding:16px 18px; margin:16px 0; }
+  .callout.warn { border-left-color:var(--amber); background:#fffaf0; }
+  .callout.info { border-left-color:var(--web); background:#f2f7ff; }
+  .callout h4 { margin:0 0 6px; font-size:15px; }
+  .rec { border:1px solid var(--line); border-radius:11px; padding:16px 18px; margin:12px 0; }
+  .rec .rtag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    padding:2px 8px; border-radius:6px; margin-right:8px; }
+  .rec .rtag.web { background:#e8f0fe; color:var(--web); }
+  .rec .rtag.connect { background:#f1ebfe; color:var(--connect); }
+  .rec .rtag.video { background:#e2f6f2; color:var(--video); }
+  .rec h4 { display:inline; font-size:15px; }
+  .rec dl { margin:10px 0 0; font-size:13.5px; }
+  .rec dt { font-weight:700; color:var(--muted); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.04em; margin-top:8px; }
+  .rec dd { margin:2px 0 0; }
+  .foot { font-size:12.5px; color:var(--muted); }
+  .foot h3 { color:var(--ink); }
+  .foot ul { margin:8px 0; padding-left:18px; }
+  .foot li { margin:5px 0; }
+  code { background:#f0f1f3; padding:1px 5px; border-radius:4px; font-size:12px; }
+  .big-num { font-size:34px; font-weight:750; letter-spacing:-.02em; }
+  @media (max-width:640px) {
+    .grid2,.grid3 { grid-template-columns:1fr; }
+    h1 { font-size:25px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Sonat · Product Analytics</p>
+  <h1>Google Docs Feature — Usage &amp; Drop-off</h1>
+  <p class="period">Window: <b>all available history</b> &nbsp;·&nbsp; Data history: <b>Jan 30, 2026 – Jul 3, 2026</b></p>
+  <p class="period">Generated Jul 5, 2026 · PostHog project 300407 · funnel window 14 days</p>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="card">
+    <h2>Executive summary</h2>
+    <p class="lead">The Google Docs feature is <b>three separate products</b> with
+    different audiences and maturity. They are reported in walled-off tracks and
+    never blended — no combined user total, funnel, or rate spans more than one.</p>
+
+    <p><span class="chip web">Web · in-Editor</span> &nbsp;This is where real
+    product adoption lives. <b>11 unique users</b> showed intent (clicked
+    <i>Create</i> or <i>Import</i> a Google Doc), but only <b>1</b>
+    ever published a Google Doc — a <b class="bad">9.1% intent&rarr;completion</b>
+    rate. That one publisher accounts for all <b>12</b> Google-Doc
+    publishes; the other <b>10</b> intent users produced none. The
+    single biggest reliably-measured cliff is <b>intent&nbsp;&rarr;&nbsp;published</b>
+    (11&nbsp;&rarr;&nbsp;1 users).</p>
+
+    <p><span class="chip connect">Connect add-on</span> &nbsp;No evidence the add-on is published: this run could not confirm a public Marketplace listing, and add-on usage is limited to 2 dev/test account(s) with no external business-domain adoption. Treat the add-on funnel as dev/test-only, not a conversion failure. (If the add-on has since been published, external-domain usage will appear and this note clears automatically.)</p>
+
+    <p><span class="chip video">Video Embed add-on</span> &nbsp;The Video Embed add-on is published to the Google Workspace Marketplace (verified: public listing returns HTTP 200 as of 2026-07-05). However, the Marketplace lists ~82 installs while PostHog records ZERO video-embed events — the deployed build predates the PostHog instrumentation and was never redeployed. This is an instrumentation gap, NOT low adoption: redeploy the instrumented build (Google-Workspace-Add-ons) to begin collecting usage.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- SECTION 1 — WEB -->
+  <!-- ============================================================= -->
+  <div class="card section web">
+    <h2><span class="chip web">Track A</span> &nbsp;Web (in-Editor) scenarios
+      <span class="sub">Create new / Import existing Google Doc — the shipped, in-browser flows every customer has.</span>
+    </h2>
+
+    <div class="kpi-grid">
+      <div class="kpi web"><div class="kpi-val">11</div><div class="kpi-label">Web unique users</div><div class="kpi-sub">clicked Create or Import</div></div>
+      <div class="kpi"><div class="kpi-val">8 / 4</div><div class="kpi-label">New / Import split</div><div class="kpi-sub">users · 12/8 clicks</div></div>
+      <div class="kpi web"><div class="kpi-val">12</div><div class="kpi-label">Google-Doc publishes</div><div class="kpi-sub">by 1 user</div></div>
+      <div class="kpi bad"><div class="kpi-val">9.1%</div><div class="kpi-label">Intent → completion</div><div class="kpi-sub">1 of 11 users</div></div>
+    </div>
+
+    <h3>All web actions <span class="foot">(Google-Doc-scoped · journey order)</span></h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Action</th><th class="num">Events</th><th class="num">Users</th><th>First → last seen</th></tr></thead>
+      <tbody>
+      <tr><td>1. Create GD (click)</td><td class="num">12</td><td class="num">8</td><td class="range">Mar 2, 2026 → Jun 3, 2026</td></tr>
+<tr><td>2. Import GD (click)</td><td class="num">8</td><td class="num">4</td><td class="range">Feb 27, 2026 → Jun 10, 2026</td></tr>
+<tr class="muted-row"><td>3. Created/Imported OK <span class="tag tag-new">newly instrumented · PR&nbsp;#307</span></td><td class="num">0</td><td class="num">0</td><td class="range">—</td></tr>
+<tr><td>4. AutoSave</td><td class="num">1</td><td class="num">1</td><td class="range">May 20, 2026</td></tr>
+<tr><td>5. Preview</td><td class="num">1</td><td class="num">1</td><td class="range">May 26, 2026</td></tr>
+<tr class="muted-row"><td>6. Open in Google Doc <span class="tag tag-new">newly instrumented · PR&nbsp;#307</span></td><td class="num">0</td><td class="num">0</td><td class="range">—</td></tr>
+<tr><td>7. Publish (click)</td><td class="num">24</td><td class="num">1</td><td class="range">May 20, 2026 → May 24, 2026</td></tr>
+<tr><td>8. Published OK</td><td class="num">12</td><td class="num">1</td><td class="range">May 20, 2026 → May 24, 2026</td></tr>
+<tr><td>9. View Live</td><td class="num">5</td><td class="num">1</td><td class="range">May 20, 2026 → May 24, 2026</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot">Two rows are newly instrumented in <b>Editor-Frontend PR&nbsp;#307</b>
+    (import-path completion, and the brand-new <i>Open in Google Doc</i> button). Their
+    empty/epoch data means <b>not yet deployed or collected</b> — not an unused feature.
+    A third web scenario, embedding a Google Doc as topic content, emits no telemetry and
+    is not measurable.</p>
+
+    <h3>Usage by action — unique users</h3>
+    <div class="chartbox"><canvas id="webActions"></canvas></div>
+
+    <h3>Intent → completion</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Stage</th><th class="num">Users</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Intent (clicked Create / Import GD)</td><td class="num">11</td><td class="range">new 8 · import 4 (1 user did both)</td></tr>
+        <tr class="cliff"><td>Published a Google Doc</td><td class="num">1</td><td>biggest cliff · −10 users (9.1% convert)</td></tr>
+        <tr class="muted-row"><td>Produced no Google Doc</td><td class="num">10</td><td class="range">reached intent, never published</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot">Completion uses <code>document_published</code> with
+    <code>content_type=GoogleDoc</code> (long-reliable). The intermediate
+    <i>created</i> step is currently unmeasured (see funnels below).</p>
+
+    <h3>Editor funnels — where clicks stall</h3>
+    <div class="grid2">
+      <div><div class="chartbox"><canvas id="createFunnel"></canvas></div>
+        <p class="donut-label">Create-new funnel</p></div>
+      <div><div class="chartbox"><canvas id="importFunnel"></canvas></div>
+        <p class="donut-label">Import-existing funnel</p></div>
+    </div>
+    <p class="foot"><b>Create funnel:</b> 8 users clicked
+    <i>New Google Doc</i>; the <i>Google Doc created</i> step reads 0.
+    <b>Import funnel:</b> 4 users clicked <i>Import</i>; the
+    <i>imported</i> step reads 0. Both zeros are an <b>instrumentation gap</b>, not
+    real abandonment: the <code>document_created</code> Google-Doc completion event
+    is the newly-instrumented PR&nbsp;#307 row and is not yet emitting on the deployed
+    build. Treat the click&rarr;created conversion as <b>unmeasured</b>, not zero —
+    the reliably-measured cliff is intent&rarr;<i>published</i> above.</p>
+
+    <div class="grid2">
+      <div><h3>Weekly click trend</h3>
+        <div class="chartbox tall"><canvas id="webTrend"></canvas></div></div>
+      <div><h3>Adopters by plan</h3>
+        <div class="chartbox tall"><canvas id="planChart"></canvas></div></div>
+    </div>
+    <p class="foot"><b>Friction:</b> 10 rageclicks across 2 of
+    the 11 intent users — concentrated frustration worth a targeted look.
+    Click volume is thin and intermittent (peak week of May&nbsp;17: 4 create /
+    4 import clicks), tapering to zero through late June.
+    Plan mix is the feature-wide adopter segmentation.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- SECTION 2 — CONNECT ADD-ON -->
+  <!-- ============================================================= -->
+  <div class="card section connect">
+    <h2><span class="chip connect">Track B</span> &nbsp;Connect to Sonat add-on
+      <span class="sub">Google Workspace Marketplace sidebar — publish / connect / sync. Excludes all Video-Embed events.</span>
+    </h2>
+
+    <p><span class="chip unpub">Not published</span></p>
+    <div class="callout warn">
+      <h4>Publish status (detected this run)</h4>
+      <p style="margin:0">No evidence the add-on is published: this run could not confirm a public Marketplace listing, and add-on usage is limited to 2 dev/test account(s) with no external business-domain adoption. Treat the add-on funnel as dev/test-only, not a conversion failure. (If the add-on has since been published, external-domain usage will appear and this note clears automatically.)</p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi connect"><div class="kpi-val">2</div><div class="kpi-label">Add-on users</div><div class="kpi-sub">dev/test accounts</div></div>
+      <div class="kpi bad"><div class="kpi-val">0.0%</div><div class="kpi-label">Connect success</div><div class="kpi-sub">0 of 13 initiated</div></div>
+      <div class="kpi"><div class="kpi-val">66.7%</div><div class="kpi-label">Publish success</div><div class="kpi-sub">2 of 3 initiated</div></div>
+      <div class="kpi good"><div class="kpi-val">100.0%</div><div class="kpi-label">Sync success</div><div class="kpi-sub">7 of 7 initiated</div></div>
+    </div>
+    <p class="foot">Because the add-on is <b>unpublished (dev/test only)</b>, the
+    near-zero funnel below is <b>expected</b> — it is not a conversion failure.</p>
+
+    <div class="grid2">
+      <div><h3>Connect funnel</h3>
+        <div class="chartbox tall"><canvas id="addonFunnel"></canvas></div></div>
+      <div><h3>Weekly activity</h3>
+        <div class="chartbox tall"><canvas id="addonTrend"></canvas></div></div>
+    </div>
+    <p class="foot">All add-on activity is a single burst in late Feb&nbsp;2026;
+    overall funnel conversion is 50.0% (1 of 2 signed-in users), the biggest
+    step being sign-in&rarr;account-selected. Nothing since — consistent with dev/test.</p>
+
+    <h3>Most-used actions (semantic)</h3>
+    <div class="chartbox"><canvas id="buttonRank"></canvas></div>
+
+    <div class="grid3">
+      <div><div class="chartbox donut"><canvas id="dConnect"></canvas></div>
+        <p class="donut-label">Connect success</p></div>
+      <div><div class="chartbox donut"><canvas id="dPublish"></canvas></div>
+        <p class="donut-label">Publish success</p></div>
+      <div><div class="chartbox donut"><canvas id="dSync"></canvas></div>
+        <p class="donut-label">Sync success</p></div>
+    </div>
+
+    <div class="grid2" style="margin-top:20px">
+      <div><h3>Button labels clicked</h3>
+        <div class="tbl-scroll"><table>
+          <thead><tr><th>Label</th><th class="num">Clicks</th><th class="num">Users</th></tr></thead>
+          <tbody><tr><td>Connect to Sonat</td><td class="num">8</td><td class="num">1</td></tr>
+<tr><td>Connect with Google</td><td class="num">8</td><td class="num">2</td></tr>
+<tr><td>Preview</td><td class="num">5</td><td class="num">1</td></tr>
+<tr><td>Connect Document to Sonat</td><td class="num">5</td><td class="num">2</td></tr>
+<tr><td>Publish</td><td class="num">3</td><td class="num">1</td></tr>
+<tr><td>change-account-btn</td><td class="num">2</td><td class="num">1</td></tr>
+<tr><td>I've connected the document</td><td class="num">2</td><td class="num">2</td></tr>
+<tr><td>view-live-btn</td><td class="num">1</td><td class="num">1</td></tr>
+<tr><td>Open in Sonat Editor</td><td class="num">1</td><td class="num">1</td></tr></tbody>
+        </table></div>
+      </div>
+      <div><h3>Failures &amp; cancellations</h3>
+        <div class="tbl-scroll"><table>
+          <thead><tr><th>Event</th><th>Error</th><th class="num">HTTP</th><th class="num">Volume</th></tr></thead>
+          <tbody><tr><td>addon_connect_failed</td><td>Unknown error</td><td class="num">404</td><td class="num">2 ev · 1 u</td></tr></tbody>
+        </table></div>
+        <p class="foot">No cancellation events recorded. The only failures are
+        2 connect attempts returning HTTP&nbsp;404 — the reason connect
+        success sits at 0.0%.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- SECTION 3 — VIDEO EMBED -->
+  <!-- ============================================================= -->
+  <div class="card section video">
+    <h2><span class="chip video">Track C</span> &nbsp;Video Embed add-on
+      <span class="sub"><code>sonat_videoembed</code> — the "Add Video" menu item (YouTube/Vimeo cover-image insert). Published &amp; independent of Track B.</span>
+    </h2>
+
+    <p><span class="chip pub">Published</span></p>
+    <div class="callout">
+      <h4>Publish status (detected this run)</h4>
+      <p style="margin:0">The Video Embed add-on is published to the Google Workspace Marketplace (verified: public listing returns HTTP 200 as of 2026-07-05). However, the Marketplace lists ~82 installs while PostHog records ZERO video-embed events — the deployed build predates the PostHog instrumentation and was never redeployed. This is an instrumentation gap, NOT low adoption: redeploy the instrumented build (Google-Workspace-Add-ons) to begin collecting usage.</p>
+    </div>
+
+    <div class="callout warn">
+      <h4>⚠ Published &amp; installed — but emitting zero analytics</h4>
+      <p>The <code>sonat_videoembed</code> listing is live (HTTP&nbsp;200) and the
+      Marketplace reports <b>~82 installs</b>, yet PostHog has recorded
+      <b>0</b> <code>addon_video_insert_*</code> events from <b>0 users</b>.
+      This is an <b>instrumentation gap, not low adoption</b>: the deployed build
+      predates the Feb-2026 instrumentation and was never redeployed.</p>
+      <div class="grid3" style="margin-top:10px">
+        <div><div class="big-num" style="color:var(--video)">~82</div><div class="foot">Marketplace installs</div></div>
+        <div><div class="big-num" style="color:var(--bad)">0</div><div class="foot">PostHog insert events</div></div>
+        <div><div class="big-num" style="color:var(--bad)">0</div><div class="foot">Tracked users</div></div>
+      </div>
+    </div>
+
+    <h3>All Video-Embed actions</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Action</th><th class="num">Events</th><th class="num">Users</th><th>First → last seen</th></tr></thead>
+      <tbody><tr class="muted-row"><td>1. Insert initiated</td><td class="num">0</td><td class="num">0</td><td class="range">—</td></tr>
+<tr class="muted-row"><td>2. Insert success</td><td class="num">0</td><td class="num">0</td><td class="range">—</td></tr>
+<tr class="muted-row"><td>3. Insert failed</td><td class="num">0</td><td class="num">0</td><td class="range">—</td></tr>
+<tr class="muted-row"><td>4. Insert cancelled</td><td class="num">0</td><td class="num">0</td><td class="range">—</td></tr></tbody>
+    </table></div>
+    <p class="foot">Every row is empty (epoch <code>1970-01-01</code> = no data), so no
+    funnel, platform split, or trend chart is drawn — rendering invented zeros would
+    misrepresent a live feature. The single Video-Embed action item is to
+    <b>redeploy the instrumented build</b> so these rows start filling.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- INSTRUMENTATION & CAVEATS -->
+  <!-- ============================================================= -->
+  <div class="card">
+    <h2>Instrumentation &amp; data caveats</h2>
+    <ul>
+      <li><b>Editor "Reconnect" is untracked.</b> The disconnect-recovery action
+      fires no event, so editor connection-loss frequency is invisible. Recommend adding it.</li>
+      <li><b>Recently closed (Editor-Frontend PR&nbsp;#307).</b> Importing an existing
+      Google Doc previously fired no completion event, and the <i>Open in Google Doc</i>
+      button was untracked. Both now emit events, so their history starts at PR&nbsp;#307's
+      deploy — older data is empty <i>by construction</i>, not because they are unused.</li>
+      <li><b>Web "embed a Google Doc as topic content"</b> emits no telemetry and cannot
+      be measured; stated once, not estimated.</li>
+      <li><b>Video Embed published-but-silent.</b> Track C is live (~82 installs)
+      yet records zero events — an instrumentation gap flagged above, not zero adoption.</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- RECOMMENDATIONS -->
+  <!-- ============================================================= -->
+  <div class="card">
+    <h2>Recommendations</h2>
+
+    <div class="rec">
+      <span class="rtag web">Web</span><h4>Close the intent&rarr;publish completion cliff</h4>
+      <dl>
+        <dt>Observation</dt><dd>11 users show clear intent (click Create/Import), but only 1 ever publishes a Google Doc (9.1%); the other 10 produce nothing, and 10 rageclicks cluster among 2 of them.</dd>
+        <dt>Hypothesis</dt><dd>Friction between doc creation and first publish (or an early blocker in the create/import handoff) stalls users before their first published doc.</dd>
+        <dt>Expected impact</dt><dd>Lifting completion from 9.1% to even ~30% would roughly 3× the number of real users who publish a Google Doc.</dd>
+      </dl>
+    </div>
+
+    <div class="rec">
+      <span class="rtag web">Web</span><h4>Deploy the PR&nbsp;#307 completion instrumentation so the create funnel becomes measurable</h4>
+      <dl>
+        <dt>Observation</dt><dd>Both editor funnels show a 100% click&rarr;created "cliff" that is actually the newly-instrumented <code>document_created</code> (Google-Doc) row and the <i>Open in Google Doc</i> row reading zero with no first-seen date.</dd>
+        <dt>Hypothesis</dt><dd>Docs <i>are</i> being created, but the completion event isn't emitting on the currently-deployed editor build.</dd>
+        <dt>Expected impact</dt><dd>Deploying/verifying PR&nbsp;#307 removes a false 100% drop from the dashboard and exposes the true create&rarr;publish funnel, so the completion fix above can be aimed precisely.</dd>
+      </dl>
+    </div>
+
+    <div class="rec">
+      <span class="rtag video">Video Embed</span><h4>Redeploy the instrumented Video-Embed build to stop the feature being invisible</h4>
+      <dl>
+        <dt>Observation</dt><dd>The published <code>sonat_videoembed</code> listing reports ~82 installs but emits <b>zero</b> <code>addon_video_insert_*</code> events.</dd>
+        <dt>Hypothesis</dt><dd>The deployed Apps Script build predates the Feb-2026 PostHog instrumentation and was never redeployed.</dd>
+        <dt>Expected impact</dt><dd>A redeploy turns a live-but-silent feature into a measurable one — you'd finally see whether those ~82 installs convert into video inserts, and the YouTube/Vimeo split.</dd>
+      </dl>
+    </div>
+
+    <div class="rec">
+      <span class="rtag connect">Connect</span><h4>Publish the add-on (and fix the 404 connect failure first) — don't tune an unshipped funnel</h4>
+      <dl>
+        <dt>Observation</dt><dd>The Connect add-on has 2 dev/test users, a single Feb-2026 burst, no external adoption, and every connect attempt failed with HTTP&nbsp;404; it is not published to the Marketplace.</dd>
+        <dt>Hypothesis</dt><dd>It cannot drive adoption while unlisted, and the 404 connect error would block real users on day one.</dd>
+        <dt>Expected impact</dt><dd>Fixing the connect 404 and publishing the listing is what unlocks a real external funnel — a conversion-optimization pass is premature until then.</dd>
+      </dl>
+    </div>
+
+    <div class="rec">
+      <span class="rtag web">Web</span><h4>Instrument the editor "Reconnect" action</h4>
+      <dl>
+        <dt>Observation</dt><dd>Disconnect-recovery fires no event, so how often editor connections drop — and how often users recover — is completely invisible.</dd>
+        <dt>Hypothesis</dt><dd>Silent reconnects may be a hidden friction source contributing to the low completion rate.</dd>
+        <dt>Expected impact</dt><dd>Adding the event quantifies a currently-invisible failure mode and lets connection loss be ruled in or out as a completion blocker.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- METHODOLOGY -->
+  <!-- ============================================================= -->
+  <div class="card foot">
+    <h2>Methodology</h2>
+    <ul>
+      <li><b>Source:</b> PostHog only (project 300407) — there are no
+      backend events for this feature. Every figure is read from
+      <code>output/posthog-data.json</code>; empty sections mean the event is unused or
+      uninstrumented, reported as-is, never estimated.</li>
+      <li><b>Window:</b> all available history (<code>-3650d</code>).
+      <b>True data history:</b> Jan 30, 2026 – Jul 3, 2026. <b>Funnel window:</b>
+      14 days.</li>
+      <li><b>Track separation:</b> Web users = <code>intent_to_completion.intent_users</code>
+      (11); Connect users = <code>users_per_flow.addon_users</code> (2);
+      Video-Embed users = <code>users_per_flow.video_embed_users</code> (0). No
+      blended total is headlined; no metric, rate, or chart spans more than one track.</li>
+      <li><b>Connect publish status</b> (<code>output/addon-publish.json</code>): verdict
+      <b>not_published</b> · basis <code>external_adoption_absent</code> · confidence medium.</li>
+      <li><b>Video-Embed publish status</b> (<code>output/videoembed-publish.json</code>):
+      verdict <b>published</b> · basis <code>marketplace_listing</code> ·
+      confidence high · Marketplace installs ~82 vs 0 PostHog events.</li>
+      <li><b>Data errors this run:</b> none.</li>
+      <li><b>Privacy:</b> aggregate counts, rates, and plan segments only — no emails, names, or user-id lists.</li>
+      <li><b>Events vs users</b> are always reported distinctly (total occurrences vs unique <code>distinct_id</code>).</li>
+    </ul>
+  </div>
+
+</div>
+
+<script id="report-data" type="application/json">{"web_actions": {"labels": ["1. Create GD (click)", "2. Import GD (click)", "3. Created/Imported OK", "4. AutoSave", "5. Preview", "6. Open in Google Doc", "7. Publish (click)", "8. Published OK", "9. View Live"], "users": [8, 4, 0, 1, 1, 0, 1, 1, 1], "events": [12, 8, 0, 1, 1, 0, 24, 12, 5], "newly": [false, false, true, false, false, true, false, false, false]}, "create_funnel": {"labels": ["1. Clicked 'New Google Doc'", "2. Google Doc created", "3. Published"], "counts": [8, 0, 0]}, "import_funnel": {"labels": ["1. Clicked 'Import Google Doc'", "2. Google Doc imported"], "counts": [4, 0]}, "weekly": {"weeks": ["2026-01-25", "2026-02-08", "2026-02-15", "2026-02-22", "2026-03-01", "2026-03-08", "2026-03-15", "2026-03-22", "2026-03-29", "2026-04-05", "2026-04-12", "2026-04-19", "2026-04-26", "2026-05-03", "2026-05-10", "2026-05-17", "2026-05-24", "2026-05-31", "2026-06-07", "2026-06-14", "2026-06-21", "2026-06-28"], "create": [0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 4, 2, 1, 0, 0, 0, 0], "import": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 0, 1, 0, 0, 0], "addon_connects": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "addon_publishes": [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "plans": {"labels": ["Unknown / not set", "Free", "Enterprise"], "users": [7, 5, 1]}, "addon_funnel": {"labels": ["1. Signed in", "2. Account selected", "3. Connect initiated", "4. Doc connected", "5. Publish initiated", "6. Published"], "counts": [2, 1, 1, 1, 1, 1]}, "button_rank": {"labels": ["addon_connect_initiated", "addon_publish_initiated", "addon_preview_opened", "addon_open_in_editor", "addon_view_live_opened"], "clicks": [13, 3, 1, 1, 1], "users": [2, 1, 1, 1, 1]}, "connect_donut": {"ok": 0, "init": 13}, "publish_donut": {"ok": 2, "init": 3}, "sync_donut": {"ok": 7, "init": 7}}</script>
+<script>
+const D = JSON.parse(document.getElementById('report-data').textContent);
+const WEB='#2563eb', WEBS='#93c5fd', CONNECT='#7c3aed', CONNECTS='#c4b5fd',
+      VIDEO='#0d9488', GOOD='#15803d', BAD='#b91c1c', GREY='#cbd5e1';
+Chart.defaults.font.family = "-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#5b6470';
+const noLegend = {legend:{display:false}};
+function mk(id, cfg){ const el=document.getElementById(id); if(el) new Chart(el, cfg); }
+
+// Web actions — users per action (bar); newly-instrumented rows greyed
+mk('webActions', {
+  type:'bar',
+  data:{ labels:D.web_actions.labels,
+    datasets:[{ label:'Users', data:D.web_actions.users,
+      backgroundColor:D.web_actions.newly.map(b=>b?GREY:WEB) }] },
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ ...noLegend, tooltip:{callbacks:{afterLabel:(c)=>'Events: '+D.web_actions.events[c.dataIndex]+(D.web_actions.newly[c.dataIndex]?' · newly instrumented (PR #307)':'')}} },
+    scales:{ x:{ ticks:{ maxRotation:60, minRotation:40, autoSkip:false, font:{size:10} } },
+      y:{ beginAtZero:true, ticks:{precision:0} } } }
+});
+
+// Create funnel
+mk('createFunnel', {
+  type:'bar',
+  data:{ labels:D.create_funnel.labels,
+    datasets:[{ data:D.create_funnel.counts, backgroundColor:[WEB,GREY,GREY] }] },
+  options:{ responsive:true, maintainAspectRatio:false, plugins:noLegend,
+    scales:{ y:{beginAtZero:true, ticks:{precision:0}}, x:{ticks:{font:{size:10}}} } }
+});
+
+// Import funnel
+mk('importFunnel', {
+  type:'bar',
+  data:{ labels:D.import_funnel.labels,
+    datasets:[{ data:D.import_funnel.counts, backgroundColor:[WEB,GREY] }] },
+  options:{ responsive:true, maintainAspectRatio:false, plugins:noLegend,
+    scales:{ y:{beginAtZero:true, ticks:{precision:0}}, x:{ticks:{font:{size:10}}} } }
+});
+
+// Web weekly trend
+const wkLabels = D.weekly.weeks.map(w=>w.slice(5));
+mk('webTrend', {
+  type:'line',
+  data:{ labels:wkLabels, datasets:[
+    { label:'Create clicks', data:D.weekly.create, borderColor:WEB, backgroundColor:WEB, tension:.3, pointRadius:2 },
+    { label:'Import clicks', data:D.weekly.import, borderColor:WEBS, backgroundColor:WEBS, tension:.3, pointRadius:2 }
+  ]},
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom', labels:{boxWidth:12}}},
+    scales:{ y:{beginAtZero:true, ticks:{precision:0}}, x:{ticks:{maxRotation:60,minRotation:45,font:{size:9}}} } }
+});
+
+// Plans
+mk('planChart', {
+  type:'bar',
+  data:{ labels:D.plans.labels, datasets:[{ data:D.plans.users, backgroundColor:WEB }] },
+  options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:noLegend,
+    scales:{ x:{beginAtZero:true, ticks:{precision:0}} } }
+});
+
+// Add-on funnel
+mk('addonFunnel', {
+  type:'bar',
+  data:{ labels:D.addon_funnel.labels,
+    datasets:[{ data:D.addon_funnel.counts, backgroundColor:CONNECT }] },
+  options:{ responsive:true, maintainAspectRatio:false, plugins:noLegend,
+    scales:{ y:{beginAtZero:true, ticks:{precision:0}}, x:{ticks:{maxRotation:50,minRotation:30,font:{size:9}}} } }
+});
+
+// Add-on trend
+mk('addonTrend', {
+  type:'line',
+  data:{ labels:wkLabels, datasets:[
+    { label:'Connects', data:D.weekly.addon_connects, borderColor:CONNECT, backgroundColor:CONNECT, tension:.3, pointRadius:2 },
+    { label:'Publishes', data:D.weekly.addon_publishes, borderColor:CONNECTS, backgroundColor:CONNECTS, tension:.3, pointRadius:2 }
+  ]},
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom', labels:{boxWidth:12}}},
+    scales:{ y:{beginAtZero:true, ticks:{precision:0}}, x:{ticks:{maxRotation:60,minRotation:45,font:{size:9}}} } }
+});
+
+// Button rank (horizontal)
+mk('buttonRank', {
+  type:'bar',
+  data:{ labels:D.button_rank.labels,
+    datasets:[{ label:'Clicks', data:D.button_rank.clicks, backgroundColor:CONNECT }] },
+  options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    plugins:{ ...noLegend, tooltip:{callbacks:{afterLabel:(c)=>'Users: '+D.button_rank.users[c.dataIndex]}} },
+    scales:{ x:{beginAtZero:true, ticks:{precision:0}} } }
+});
+
+// Success donuts
+function donut(id, ok, init){
+  const fail = Math.max(init-ok,0);
+  mk(id, {
+    type:'doughnut',
+    data:{ labels:['Success','Not completed'],
+      datasets:[{ data:[ok,fail], backgroundColor:[GOOD, ok===0?BAD:'#e5e7eb'], borderWidth:0 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins:{ legend:{display:false},
+        tooltip:{callbacks:{label:(c)=>c.label+': '+c.parsed+' / '+init}} } }
+  });
+}
+donut('dConnect', D.connect_donut.ok, D.connect_donut.init);
+donut('dPublish', D.publish_donut.ok, D.publish_donut.init);
+donut('dSync',    D.sync_donut.ok,    D.sync_donut.init);
+</script>
+</body>
+</html>
