@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Content Operations for Documentation Teams | Sonat</title>
+<meta name="description" content="What content operations means for a documentation team, the building blocks that make it work — single source of truth, structure, governance, workflows, analytics — and how to start.">
+<style>
+  :root{
+    --ink:#1c2430; --muted:#5a6675; --line:#e7ebf1;
+    --accent:#2f6fed; --accent-soft:#eef3fe; --bg:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:56px 22px 80px}
+  h1{font-size:2.15rem; line-height:1.2; letter-spacing:-0.02em; margin:0 0 28px; font-weight:800}
+  h2{font-size:1.5rem; line-height:1.28; letter-spacing:-0.01em; margin:52px 0 14px; font-weight:750}
+  h3{font-size:1.18rem; margin:32px 0 8px; font-weight:700}
+  p{margin:0 0 18px}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(47,111,237,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  strong{font-weight:700}
+  ul,ol{margin:0 0 18px; padding-left:1.25em}
+  li{margin:0 0 8px}
+  code{background:var(--accent-soft); color:#22449b; padding:.08em .38em; border-radius:5px; font-size:.86em; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  figure{margin:34px 0}
+  img{width:100%; height:auto; display:block; border-radius:14px; border:1px solid var(--line)}
+  .lead{font-size:1.16rem; color:var(--muted)}
+  .cta{margin-top:46px; padding:26px; background:var(--accent-soft); border:1px solid #dbe6fb; border-radius:16px}
+  .cta p{margin:0}
+  @media (max-width:560px){
+    body{font-size:17px}
+    .wrap{padding:40px 18px 64px}
+    h1{font-size:1.8rem}
+    h2{font-size:1.3rem}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>Content Operations for Documentation Teams: A Practical Guide</h1>
+
+    <p class="lead">Most documentation problems aren't writing problems. The article exists — it's just outdated, duplicated in three places, stuck waiting on a reviewer, or impossible to find. As a docs library grows past a few dozen pages, the bottleneck stops being how well you write and becomes how well you run the whole operation.</p>
+
+    <p>That's what content operations is for. This guide explains what content operations means for a documentation team, the building blocks that make it work, and how to put a lightweight version in place without a six-month project. If your docs are starting to feel unmanageable, this is the system that gets them back under control.</p>
+
+    <figure>
+      <img src="images/02-content-operations-documentation-hero.png" alt="A documentation team running a content pipeline, moving article cards through draft, review, and publish stages on a wall board">
+    </figure>
+
+    <h2>What is content operations?</h2>
+    <p><strong>Content operations</strong> — sometimes shortened to ContentOps — is the people, processes, and tools that turn scattered document creation into a repeatable system. It covers who creates content, how it's structured and reviewed, where the authoritative version lives, how it's published and translated, and how you know whether it's working.</p>
+    <p>Writing is one activity inside that system. Content operations is everything around the writing that decides whether a hundred articles stay consistent, current, and findable — or slowly rot.</p>
+    <p>You don't need a large team to have content operations. A team of two has content operations too; the only question is whether it's deliberate or accidental. The goal is to make it deliberate.</p>
+
+    <h2>Why documentation teams need it</h2>
+    <p>Small doc sets survive on good intentions. Large ones don't. The failure mode is predictable: content gets produced faster than anyone can maintain it, ownership blurs, and quality quietly slides.</p>
+    <p>Usability research on large content collections makes the pattern concrete. Libraries where anyone can publish without oversight tend to accumulate far more pages than managed ones — and that sprawl brings duplicate, conflicting, and outdated content with it. More pages is not the same as better documentation; often it's the opposite.</p>
+    <p>Content operations is the antidote. It gives you a way to grow the library without growing the chaos: clear ownership so nothing is orphaned, a single authoritative version so readers never hit two contradictory answers, and enough process to keep quality up without slowing everyone to a crawl.</p>
+
+    <h2>Signs your documentation needs content operations</h2>
+    <p>You rarely decide to "do content operations" out of nowhere — you notice symptoms first. A few reliable ones:</p>
+    <ul>
+      <li><strong>The same answer appears in several places, and they disagree.</strong> Duplication without a source of truth means every update leaves stale copies behind.</li>
+      <li><strong>Nobody's sure who owns a page.</strong> When you can't name the owner of an article, it won't get maintained.</li>
+      <li><strong>Publishing is either a bottleneck or a free-for-all.</strong> Everything queues behind one reviewer, or anything ships with no review at all — both are governance gaps.</li>
+      <li><strong>Readers keep asking questions the docs already answer.</strong> Usually the content exists but isn't findable or trustworthy enough to rely on.</li>
+      <li><strong>A product change means a frantic hunt for every affected page.</strong> Without structure and single-sourcing, you can't tell what a change touches.</li>
+    </ul>
+    <p>If two or three of these sound familiar, the problem isn't your writers — it's the operation around them. The good news is that each one maps directly to a building block below.</p>
+
+    <h2>The building blocks of documentation content operations</h2>
+    <p>A workable content operation rests on five pieces. You can adopt them incrementally, but you eventually need all five.</p>
+
+    <h3>A single source of truth</h3>
+    <p>Every topic should have exactly one authoritative version, and every other use of it should point back to that source rather than copying it. When a procedure changes, you update it once and every place it appears reflects the change.</p>
+    <p>Without this, you get the classic documentation trap: the same instruction lives in four articles, someone updates one, and the other three now lie to your users. A documentation platform that stores each topic once — with a full version history you can roll back to — is what makes single-sourcing practical rather than aspirational. Sonat is built around that model.</p>
+
+    <h3>Structured, reusable content</h3>
+    <p>A single source of truth only pays off if content is structured into pieces you can reuse. Breaking content into adaptable blocks — a standard safety note, a reusable setup step, a shared definition — lets you assemble articles from trusted components instead of rewriting the same paragraph for the tenth time.</p>
+    <p>Structure also makes content consistent by default. When every "how-to" follows the same shape, readers learn the pattern once and move faster through everything else you publish.</p>
+
+    <figure>
+      <img src="images/02-content-operations-documentation-workflow.png" alt="Reusable content blocks being assembled into several different documents like building blocks">
+    </figure>
+
+    <h3>A governance model: who owns what</h3>
+    <p>Someone has to own each part of the library, or no one does. A content-management model is simply a clear set of roles, responsibilities, standards, and guidelines for how and by whom content is produced, published, updated, and retired.</p>
+    <p>There are three common shapes:</p>
+    <ul>
+      <li><strong>Centralized</strong> — one team owns production and publishing, acting as a gatekeeper. Quality stays high and consistent, but publishing takes longer.</li>
+      <li><strong>Distributed</strong> — anyone can publish. Content moves fast, but sprawl and staleness creep in without strong standards.</li>
+      <li><strong>Hybrid</strong> — a central team owns the high-traffic core while subject-matter experts own their corners within shared guidelines. For most documentation teams, this is the sweet spot.</li>
+    </ul>
+    <p>Pick a model on purpose and write it down. The specific choice matters less than having made one everyone understands.</p>
+
+    <h3>Review and publishing workflows</h3>
+    <p>Governance needs teeth. Review workflows are how standards actually get enforced: the right person signs off before a change goes live. The trick is to match the review weight to the risk — a native-speaker or compliance review for sensitive pages, a light touch for a typo fix — so process protects quality without becoming a tax on every edit.</p>
+    <p>Approval workflows that let you set who reviews what, in sequence or in parallel, are what keep a hybrid model from sliding into a free-for-all.</p>
+
+    <h3>Localization and analytics</h3>
+    <p>Two pieces are easy to defer and expensive to bolt on later.</p>
+    <p><strong>Localization</strong> should ride on the single source of truth: translate a topic as a version of the original so, when the source changes, you know exactly which translations went stale. Wiring this in from the start beats retrofitting it across a thousand pages.</p>
+    <p><strong>Analytics</strong> close the loop. Content operations without measurement is just publishing with extra steps. Watch what readers search for and don't find, which pages get traffic, and where they drop off — then let that data drive what you write, update, or retire next.</p>
+
+    <h2>How to start without boiling the ocean</h2>
+    <p>You don't need to stand up all five pillars at once. A pragmatic sequence:</p>
+    <ol>
+      <li><strong>Inventory what you have.</strong> List every article and mark the outdated, duplicate, and orphaned ones. You'll usually find you have fewer real articles than you thought — and a maintenance backlog you didn't.</li>
+      <li><strong>Assign an owner to every page.</strong> Ownership is the cheapest, highest-impact move. Nothing should be unowned.</li>
+      <li><strong>Pick a governance model and write down your standards.</strong> Centralized, distributed, or hybrid — decide, and document who publishes and how.</li>
+      <li><strong>Turn on review where risk is high.</strong> Start with sensitive content; expand only if it's clearly worth it.</li>
+      <li><strong>Instrument and iterate.</strong> Add analytics, watch the signals, and let real usage set your priorities.</li>
+    </ol>
+    <p>Each step delivers value on its own, so you're never stuck waiting for a big-bang rollout.</p>
+
+    <h2>Bringing it together</h2>
+    <p>Content operations is what separates a documentation set that scales from one that sprawls. The core ideas are simple: one source of truth, structured and reusable content, a governance model with clear ownership, review that matches risk, and localization and analytics wired in from the start. Put even a lightweight version in place and your docs stop fighting you as they grow.</p>
+
+    <div class="cta">
+      <p>If you'd rather run all of that in one place instead of stitching tools together, <a href="https://sonat.com">Sonat</a> is built for it — single-source topics with full version history, reusable structure, roles and approval workflows, built-in translation, and analytics that show you what to fix next. That's content operations you can actually maintain, not just diagram.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
