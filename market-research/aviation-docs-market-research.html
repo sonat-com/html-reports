@@ -1,0 +1,510 @@
+<style>
+  :root {
+    --bg: #EEF2F6;
+    --surface: #FFFFFF;
+    --surface-2: #F6F9FC;
+    --surface-3: #EAF0F5;
+    --ink: #0F1A24;
+    --ink-soft: #45586A;
+    --muted: #6B7C8C;
+    --line: #D6E0E8;
+    --line-strong: #BECBD6;
+    --accent: #0E7FA6;
+    --accent-ink: #0A5E7C;
+    --accent-soft: #E1F1F7;
+    --good: #1E874B;
+    --good-soft: #E2F2E8;
+    --warn: #9C6A12;
+    --warn-soft: #F6ECD8;
+    --bad: #BE3A2B;
+    --bad-soft: #F7E4E1;
+    --shadow: 0 1px 2px rgba(15,26,36,.04), 0 8px 24px rgba(15,26,36,.06);
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    --maxw: 960px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0A1017;
+      --surface: #101B26;
+      --surface-2: #0D151E;
+      --surface-3: #16232F;
+      --ink: #E7EFF6;
+      --ink-soft: #A9B8C6;
+      --muted: #7C8D9C;
+      --line: #22303D;
+      --line-strong: #2E3F4E;
+      --accent: #37C1E8;
+      --accent-ink: #8FDDF3;
+      --accent-soft: #0E2A38;
+      --good: #3DD68C;
+      --good-soft: #10281C;
+      --warn: #E8B23D;
+      --warn-soft: #2A2210;
+      --bad: #F0685A;
+      --bad-soft: #2C1512;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0A1017; --surface: #101B26; --surface-2: #0D151E; --surface-3: #16232F;
+    --ink: #E7EFF6; --ink-soft: #A9B8C6; --muted: #7C8D9C; --line: #22303D; --line-strong: #2E3F4E;
+    --accent: #37C1E8; --accent-ink: #8FDDF3; --accent-soft: #0E2A38;
+    --good: #3DD68C; --good-soft: #10281C; --warn: #E8B23D; --warn-soft: #2A2210; --bad: #F0685A; --bad-soft: #2C1512;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #EEF2F6; --surface: #FFFFFF; --surface-2: #F6F9FC; --surface-3: #EAF0F5;
+    --ink: #0F1A24; --ink-soft: #45586A; --muted: #6B7C8C; --line: #D6E0E8; --line-strong: #BECBD6;
+    --accent: #0E7FA6; --accent-ink: #0A5E7C; --accent-soft: #E1F1F7;
+    --good: #1E874B; --good-soft: #E2F2E8; --warn: #9C6A12; --warn-soft: #F6ECD8; --bad: #BE3A2B; --bad-soft: #F7E4E1;
+    --shadow: 0 1px 2px rgba(15,26,36,.04), 0 8px 24px rgba(15,26,36,.06);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans);
+    line-height: 1.6; -webkit-font-smoothing: antialiased; font-size: 16px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+  a:hover { border-bottom-color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  h1, h2, h3 { text-wrap: balance; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0 0 14px; max-width: 68ch; }
+
+  .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent-ink); font-weight: 600; }
+  .mono { font-family: var(--font-mono); }
+
+  /* Masthead */
+  .masthead { padding: 60px 0 34px; border-bottom: 1px solid var(--line); }
+  .kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .kicker .badge { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); }
+  .whale { width: 26px; height: 26px; flex: none; color: var(--accent); }
+  h1.title { font-size: clamp(30px, 5.2vw, 46px); font-weight: 800; letter-spacing: -0.025em; }
+  .subtitle { font-size: clamp(17px, 2.4vw, 20px); color: var(--ink-soft); margin-top: 16px; max-width: 42ch; font-weight: 400; }
+  .stripline { height: 6px; margin-top: 28px; border-radius: 3px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0 26px, transparent 26px 38px);
+    opacity: .6; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 26px; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+  .meta b { color: var(--ink-soft); font-weight: 600; }
+
+  section { padding: 46px 0; border-bottom: 1px solid var(--line); }
+  .sec-head { display: flex; gap: 14px; align-items: baseline; margin-bottom: 22px; }
+  .sec-num { font-family: var(--font-mono); font-size: 13px; color: var(--accent-ink); font-weight: 600; flex: none; padding-top: 4px; }
+  h2 { font-size: clamp(22px, 3.4vw, 30px); font-weight: 750; }
+  h2 + .lead { color: var(--ink-soft); margin-top: 10px; font-size: 17px; }
+  h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+
+  /* Verdict panel */
+  .verdict { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+    border-radius: 12px; padding: 26px 28px; box-shadow: var(--shadow); }
+  .verdict .eyebrow { margin-bottom: 12px; display: block; }
+  .verdict p { font-size: 18px; color: var(--ink); max-width: 64ch; }
+  .verdict p strong { font-weight: 700; }
+  .verdict .rule { border: none; border-top: 1px solid var(--line); margin: 20px 0; }
+
+  /* Cluster split */
+  .clusters { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .cluster { border-radius: 12px; padding: 22px 22px 24px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+  .cluster.a { border-top: 3px solid var(--bad); }
+  .cluster.b { border-top: 3px solid var(--good); }
+  .cluster h3 { font-size: 15px; }
+  .cluster .tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+  .cluster.a .tag { color: var(--bad); }
+  .cluster.b .tag { color: var(--good); }
+  .cluster ul { margin: 12px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 14.5px; }
+  .cluster li { margin-bottom: 6px; }
+  .cluster .fit { margin-top: 16px; font-size: 13.5px; font-weight: 600; padding-top: 14px; border-top: 1px dashed var(--line-strong); }
+  .cluster.a .fit { color: var(--bad); }
+  .cluster.b .fit { color: var(--good); }
+
+  /* Generic cards grid */
+  .grid { display: grid; gap: 16px; }
+  .grid.two { grid-template-columns: 1fr 1fr; }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .card h3 { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .card .role { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+  .card p { font-size: 14px; color: var(--ink-soft); margin-bottom: 0; }
+  .card .kv { font-size: 13px; color: var(--muted); margin-top: 12px; font-family: var(--font-mono); }
+  .card .kv b { color: var(--ink-soft); }
+
+  /* Reg chip */
+  .chip { display: inline-block; font-family: var(--font-mono); font-size: 11.5px; padding: 2px 7px; border-radius: 5px;
+    background: var(--accent-soft); color: var(--accent-ink); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    white-space: nowrap; font-weight: 600; }
+
+  /* Tables */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 620px; }
+  thead th { text-align: left; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; padding: 14px 16px; background: var(--surface-2); border-bottom: 1px solid var(--line-strong); }
+  tbody td { padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td:first-child { color: var(--ink); font-weight: 600; }
+  tbody tr:hover td { background: var(--surface-2); }
+
+  /* Capability matrix */
+  .matrix table { min-width: 680px; }
+  .matrix td.cap { color: var(--ink); font-weight: 600; }
+  .matrix td.cap span { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .stat { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; font-family: var(--font-mono);
+    padding: 3px 9px 3px 8px; border-radius: 20px; white-space: nowrap; }
+  .stat .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .stat.full { background: var(--good-soft); color: var(--good); } .stat.full .dot { background: var(--good); }
+  .stat.part { background: var(--warn-soft); color: var(--warn); } .stat.part .dot { background: var(--warn); }
+  .stat.none { background: var(--bad-soft); color: var(--bad); } .stat.none .dot { background: var(--bad); }
+  .matrix col.c-cap { width: 40%; }
+
+  /* Fit / gap columns */
+  .fitgap { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .panel { border-radius: 12px; padding: 22px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+  .panel.win { border-top: 3px solid var(--good); }
+  .panel.lose { border-top: 3px solid var(--bad); }
+  .panel h3 { display: flex; align-items: center; gap: 9px; }
+  .panel h3 .mk { font-family: var(--font-mono); font-weight: 700; }
+  .panel.win h3 .mk { color: var(--good); } .panel.lose h3 .mk { color: var(--bad); }
+  .itemlist { list-style: none; margin: 14px 0 0; padding: 0; }
+  .itemlist li { padding: 11px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .itemlist li:first-child { border-top: none; }
+  .itemlist li b { display: block; color: var(--ink); font-weight: 650; margin-bottom: 2px; font-size: 14.5px; }
+  .itemlist li span { color: var(--ink-soft); }
+
+  /* Play / steps */
+  .play { display: grid; gap: 14px; }
+  .step { display: grid; grid-template-columns: 44px 1fr; gap: 16px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }
+  .step .n { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--accent-ink);
+    background: var(--accent-soft); border-radius: 8px; display: grid; place-items: center; height: 40px; }
+  .step h3 { margin-bottom: 4px; }
+  .step p { font-size: 14px; color: var(--ink-soft); margin-bottom: 0; }
+
+  /* Objection Q/A */
+  .qa { border-left: 3px solid var(--line-strong); padding: 4px 0 4px 18px; margin: 16px 0; }
+  .qa .q { font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .qa .q::before { content: "OBJECTION "; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; color: var(--bad); font-weight: 700; }
+  .qa .a { color: var(--ink-soft); font-size: 14.5px; }
+  .qa .a::before { content: "HONEST ANSWER "; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; color: var(--good); font-weight: 700; display: inline; }
+
+  /* Glossary */
+  dl.glossary { display: grid; grid-template-columns: max-content 1fr; gap: 10px 22px; margin: 0; font-size: 14px; }
+  dl.glossary dt { font-family: var(--font-mono); color: var(--accent-ink); font-weight: 600; }
+  dl.glossary dd { margin: 0; color: var(--ink-soft); }
+
+  /* Sources */
+  .sources { columns: 2; column-gap: 34px; font-size: 13px; }
+  .sources .src { break-inside: avoid; margin-bottom: 12px; }
+  .sources .src .q { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+    padding: 1px 6px; border-radius: 4px; margin-right: 6px; }
+  .q.primary { background: var(--good-soft); color: var(--good); }
+  .q.secondary { background: var(--accent-soft); color: var(--accent-ink); }
+  .q.blog { background: var(--warn-soft); color: var(--warn); }
+
+  .callout { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; font-size: 14px; color: var(--ink-soft); }
+  .callout .eyebrow { display: block; margin-bottom: 6px; }
+
+  footer { padding: 40px 0 70px; color: var(--muted); font-size: 12.5px; }
+  footer p { max-width: none; }
+
+  @media (max-width: 720px) {
+    .clusters, .grid.two, .grid.three, .fitgap { grid-template-columns: 1fr; }
+    .sources { columns: 1; }
+    dl.glossary { grid-template-columns: 1fr; gap: 3px 0; }
+    dl.glossary dd { margin-bottom: 10px; }
+    section { padding: 38px 0; }
+    .sec-head { flex-direction: column; gap: 4px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    a, .stat { transition: border-color .15s ease, background .15s ease; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="kicker">
+      <svg class="whale" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 13c3.2 0 4.2-3 8-3 3.1 0 4.6 2.2 7 2.2 1.6 0 2.4-.7 3-1.4.4 3.8-2.6 7.2-7 7.2-2.1 0-3.6-.8-4.9-1.9-.6 1.1-1.8 1.9-3.1 1.9.5-.8.8-1.7.8-2.6C5.4 15 3.4 14.3 2 13Zm15.5-1.8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+      <span class="badge">Sonat · Market Research · Confidential — Internal</span>
+    </div>
+    <h1 class="title">Documentation in the Helicopter &amp; Airline Industry</h1>
+    <p class="subtitle">What these operators need, who serves them today, and exactly where Sonat fits — and doesn't.</p>
+    <div class="stripline" aria-hidden="true"></div>
+    <div class="meta">
+      <span><b>Trial anchor</b> &nbsp;SAF Aerogroup (saf-helico.com)</span>
+      <span><b>Compiled</b> &nbsp;July 2026</span>
+      <span><b>Evidence</b> &nbsp;25 claims verified 3&#8209;0 · 26 sources</span>
+    </div>
+  </header>
+
+  <!-- 1. VERDICT -->
+  <section id="verdict">
+    <div class="sec-head"><span class="sec-num">01</span><div><h2>The bottom line, up front</h2></div></div>
+    <div class="verdict">
+      <span class="eyebrow">Verdict</span>
+      <p>Aviation documentation splits into two worlds. Sonat can genuinely win one of them and should not chase the other.</p>
+      <hr class="rule">
+      <p><strong>Don't fight the regulated core.</strong> The approved exposition manuals — <span class="chip">CAME</span> <span class="chip">MOE</span> <span class="chip">OM&#8209;A/B/C/D</span> — are hard-mandated by EASA to be regulator-reviewed, PDF-delivered, revision-controlled and audit-tracked. Specialists like <b>Web Manuals</b> and <b>Comply365</b> own this with live compliance libraries, controlled crew distribution and Type&nbsp;B EFB apps. Sonat has none of that machinery, and building it is a multi-year lift.</p>
+      <p style="margin-bottom:0"><strong>Win the surrounding knowledge tier instead.</strong> Every operator also runs a large body of <em>non-approved</em> content — ground-school &amp; training reference, internal SOP knowledge bases, partner/passenger-facing docs — that today lives in scattered PDFs, Google Drive and email. That is squarely Sonat's job: Google Docs authoring, 184-language translation, custom-domain publishing, approval workflows and RAG answers. <strong>Land there with SAF; expand across its brands.</strong></p>
+    </div>
+  </section>
+
+  <!-- 2. TWO CLUSTERS -->
+  <section id="clusters">
+    <div class="sec-head"><span class="sec-num">02</span><div><h2>Two clusters, one honest line between them</h2>
+      <p class="lead">Every doc an operator produces falls on one side of this line. Sonat only belongs on the right.</p></div></div>
+    <div class="clusters">
+      <div class="cluster a">
+        <span class="tag">Cluster A · Sonat does not fit</span>
+        <h3>Regulated core &amp; engineering data</h3>
+        <ul>
+          <li><b>Exposition &amp; ops manuals:</b> CAME, MOE, OM&#8209;A/B/C/D, training/ops manuals — regulator-approved, controlled.</li>
+          <li><b>Engineering / maintenance data:</b> OEM AMM, CMM, IPC, Service Bulletins, wiring — structured to <span class="chip">S1000D</span> / <span class="chip">ATA iSpec 2200</span>.</li>
+        </ul>
+        <div class="fit">Owned by Web Manuals &amp; Comply365 (manuals) and TRAX / AMOS / Veryon / IFS Maintenix (engineering data). Regulatory moat, not just a feature gap.</div>
+      </div>
+      <div class="cluster b">
+        <span class="tag">Cluster B · Sonat's opening</span>
+        <h3>Operational &amp; knowledge content</h3>
+        <ul>
+          <li><b>Non-approved knowledge:</b> ground-school reference, SOP knowledge bases, internal wikis, onboarding.</li>
+          <li><b>Outward-facing docs:</b> partner, client and passenger documentation — multilingual, public, searchable.</li>
+        </ul>
+        <div class="fit">Underserved by the specialists (they're built for controlled internal distribution, not public multilingual publishing). This is Sonat's core competency.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ANCHOR -->
+  <section id="saf">
+    <div class="sec-head"><span class="sec-num">03</span><div><h2>The anchor: SAF Aerogroup</h2>
+      <p class="lead">A 40-year French helicopter group whose documentation needs straddle three EASA regimes at once — which is exactly why it's a good test of where Sonat helps.</p></div></div>
+    <div class="grid three" style="margin-bottom:18px">
+      <div class="card"><h3>~90+<span class="role"> aircraft</span></h3><p>~73 at SAF Hélicoptères; ~92 group-wide (Mar 2024). SAF Hélicoptères alone flies ~17,000 hrs/yr across EMS, mountain rescue, firefighting &amp; heavy-lift.</p></div>
+      <div class="card"><h3>3<span class="role"> countries</span></h3><p>Bases across France, Morocco and Réunion — a genuinely multilingual footprint (FR / EN / AR) that maps directly to Sonat's translation story.</p></div>
+      <div class="card"><h3>~40<span class="role"> technicians</span></h3><p>Part-145 maintenance facility at Albertville HQ + Paris, performing all maintenance in-house — its own controlled-document burden.</p></div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>SAF brand</th><th>Function</th><th>Regulatory regime</th><th>Controlled documents it owns</th></tr></thead>
+        <tbody>
+          <tr><td>SAF Hélicoptères</td><td>HEMS, mountain rescue, aerial work</td><td><span class="chip">Part-OPS / CAT</span></td><td>OM-A/B/C/D, MEL, SOPs, SMS</td></tr>
+          <tr><td>SAF International</td><td>Heavy-lift operations</td><td><span class="chip">Part-OPS / CAT</span></td><td>OM suite, load/lift procedures</td></tr>
+          <tr><td>Aero Support Force</td><td>MRO / maintenance &amp; logistics</td><td><span class="chip">Part-145</span> <span class="chip">Part-CAMO</span></td><td>MOE, CAME, engineering data (S1000D/iSpec)</td></tr>
+          <tr><td>X-Aero Training</td><td>EASA-approved pilot training (ATO)</td><td><span class="chip">Part-ORA / FCL</span></td><td>Training manual, ops manual, management system</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px" class="callout"><span class="eyebrow">Why this matters</span> The controlled documents in the right-hand column belong to a specialist. But sitting <em>around</em> them — the ground-school study material X-Aero hands trainees, the internal SOP knowledge every base needs, the multilingual public/partner content — is a large, unglamorous body of knowledge no one has purpose-built tooling for. That's Sonat's entry point.</p>
+  </section>
+
+  <!-- 4. WHAT THE INDUSTRY NEEDS -->
+  <section id="needs">
+    <div class="sec-head"><span class="sec-num">04</span><div><h2>What the industry needs — and the rules that mandate it</h2>
+      <p class="lead">These aren't nice-to-haves. Each document's existence, structure, language and change-control is written into EASA implementing rules (all verified against primary EASA/IATA sources).</p></div></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Document</th><th>Who owns it</th><th>Mandated by</th><th>What the rule forces</th></tr></thead>
+        <tbody>
+          <tr><td>CAME <span style="font-weight:400;color:var(--muted)">— Continuing Airworthiness Mgmt Exposition</span></td><td>CAMO</td><td><span class="chip">AMC1 CAMO.A.300</span></td><td>Regulator-approved; fixed Part 0/1/2 structure; electronic PDF; English mandatory (2nd language only by EASA agreement, English prevails).</td></tr>
+          <tr><td>MOE <span style="font-weight:400;color:var(--muted)">— Maintenance Org Exposition</span></td><td>Part-145 MRO</td><td><span class="chip">145.A.70</span></td><td>Scope of work, responsible persons, procedures. <b>SMS now mandatory</b> in the approved MOE — Reg (EU) 2021/1963, compliance deadline 2 Dec 2024.</td></tr>
+          <tr><td>OM-A/B/C/D <span style="font-weight:400;color:var(--muted)">— Operations Manual suite</span></td><td>Air operator (AOC)</td><td><span class="chip">Part-CAT</span> <span class="chip">Part-ORO</span></td><td>Four-part operations manual + MEL, emergency checklists, cabin-crew manuals — revision-controlled and distributed to crew.</td></tr>
+          <tr><td>Training + Ops Manual, Mgmt System</td><td>Approved Training Org</td><td><span class="chip">ORA.ATO.130</span> <span class="chip">ORA.GEN.200</span></td><td>ATO shall maintain both manuals plus a documented management system incl. safety policy, hazard/risk mgmt (SMS) and compliance monitoring.</td></tr>
+          <tr><td>SMS documentation</td><td>All of the above</td><td><span class="chip">Reg (EU) 2021/1963</span></td><td>ICAO Annex-19-aligned hazard ID, risk mgmt, safety assurance, named safety manager — documented and controlled.</td></tr>
+          <tr><td>Document Control System</td><td>IATA-member airlines</td><td><span class="chip">IOSA / ISM</span></td><td>Five elements: defined procedures · version mgmt (no obsolete docs) · controlled 24/7 access · review/approval · tracked change &amp; audit trail.</td></tr>
+          <tr><td>AMM / CMM / IPC / SB / SRM</td><td>Engineering / Tech Pubs</td><td><span class="chip">S1000D</span> <span class="chip">ATA iSpec 2200</span></td><td>Structured XML/SGML engineering data, OEM-issued, ingested and revision-synced — a data pipeline, not a WYSIWYG document.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted)" class="mono">FAA analogues exist for each (14&nbsp;CFR Part 121/135 ops specs &amp; manuals, Part 145 repair-station manuals) — SAF operates under EASA / French DGAC.</p>
+  </section>
+
+  <!-- 5. INCUMBENTS -->
+  <section id="incumbents">
+    <div class="sec-head"><span class="sec-num">05</span><div><h2>Who serves this today</h2>
+      <p class="lead">Two specialist tiers. Sonat competes with neither head-on — but the manual tier is the reference point buyers will hold Sonat against.</p></div></div>
+
+    <h3 style="margin-bottom:12px">Controlled operational &amp; compliance manuals <span class="mono" style="font-size:12px;color:var(--muted);font-weight:400">— Sonat's nearest neighbours</span></h3>
+    <div class="grid three" style="margin-bottom:26px">
+      <div class="card">
+        <h3>Web Manuals <span class="role">Sweden</span></h3>
+        <p>The market reference for authoring + compliance-linking + controlled distribution. Live compliance libraries (EASA/FAA/CASA/IOSA/ICAO) with rule-to-paragraph linking &amp; change alerts; Type&nbsp;B EFB app; offline; read-confirmation; full audit trail. Serves airlines, business aviation, <b>helicopter/UAV operators</b>, MROs and ATOs.</p>
+        <div class="kv"><b>Scale:</b> 750+ companies · 50,000+ users · 500,000 manuals<br><b>Price:</b> Essentials ~€4,000/yr (Reader + Editor licenses); Compliance Library +€50–60/mo</div>
+      </div>
+      <div class="card">
+        <h3>Comply365 <span class="role">+ Vistair</span></h3>
+        <p>Merged Jan 2024 (Liberty Hall + Insight Partners). Three connected systems — <b>ContentManager365</b> (docs/distribution), SafetyManager365, TrainingManager365 — linking procedure changes to training &amp; safety. Multi-OEM ingest (Boeing/Airbus/Rolls-Royce), offline latest-content viewer, regulator access.</p>
+        <div class="kv"><b>Scale:</b> 50+ airlines + defense / rail / MRO<br><b>Customers:</b> Aer Lingus, easyJet, Avianca, SunExpress; Vistair ran BA's 3,600-iPad rollout</div>
+      </div>
+      <div class="card">
+        <h3>Yonder <span class="role">Switzerland</span></h3>
+        <p>"Yonder Mind" — XML-powered. Auto-syncs OEM manuals (FCOM/MEL/QRH/FCTM) against operator customisations, flagging conflicts. Role-specific "smart viewer" shows only relevant content; offline app for pilots, cabin crew &amp; engineers.</p>
+        <div class="kv"><b>Angle:</b> operators juggling multiple OEMs<br><b>Model:</b> documentation-as-a-service</div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:12px">Engineering / maintenance tech pubs <span class="mono" style="font-size:12px;color:var(--muted);font-weight:400">— entirely out of Sonat's scope</span></h3>
+    <div class="callout">
+      <span class="eyebrow">Cluster A · reference only</span>
+      <b style="color:var(--ink)">TRAX eMRO · AMOS (Swiss-AS) · IFS Maintenix · Veryon</b> are M&amp;E/MRO platforms built for tier-1 carriers and MROs. They handle the structured engineering-data pipeline (S1000D / ATA iSpec 2200), work orders, airworthiness tracking and parts. This is an ERP-grade data problem, not a document-authoring one — Sonat has <b>no role here and should not position into it.</b>
+    </div>
+  </section>
+
+  <!-- 6. CAPABILITY MATRIX -->
+  <section id="matrix">
+    <div class="sec-head"><span class="sec-num">06</span><div><h2>Sonat vs the specialists — the honest readout</h2>
+      <p class="lead">Green where Sonat leads, red where the specialist is structurally required. The pattern tells the whole story: Sonat wins authoring, publishing &amp; reach; it loses everything that defines a <em>regulated controlled manual</em>.</p></div></div>
+    <div class="tablewrap matrix">
+      <table>
+        <colgroup><col class="c-cap"><col><col></colgroup>
+        <thead><tr><th>Capability</th><th>Sonat</th><th>Aviation specialist<br><span style="text-transform:none;letter-spacing:0;font-weight:400">(Web Manuals / Comply365)</span></th></tr></thead>
+        <tbody>
+          <tr><td class="cap">Authoring UX for non-technical staff<span>Edit in Google Docs / WYSIWYG</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full — signature strength</span></td>
+            <td><span class="stat part"><span class="dot"></span>Partial — proprietary editors</span></td></tr>
+          <tr><td class="cap">Approval / review workflows<span>Parallel &amp; sequential sign-off</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td></tr>
+          <tr><td class="cap">Version history &amp; revision control<span>Restore any prior version</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full + regulatory change bars</span></td></tr>
+          <tr><td class="cap">Multi-language content<span>Machine translation at scale</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full — 184 languages</span></td>
+            <td><span class="stat part"><span class="dot"></span>Partial / limited</span></td></tr>
+          <tr><td class="cap">Public publishing · custom domain · SEO<span>Outward-facing docs portals</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td>
+            <td><span class="stat none"><span class="dot"></span>None — internal only</span></td></tr>
+          <tr><td class="cap">Full-text search + RAG AI answers<span>Self-service &amp; case deflection</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full — Elasticsearch + GPT</span></td>
+            <td><span class="stat part"><span class="dot"></span>Partial — AI search, no public RAG</span></td></tr>
+          <tr><td class="cap">Pricing model<span>What the buyer actually pays</span></td>
+            <td><span class="stat full"><span class="dot"></span>Authors metered · free viewers · free tier</span></td>
+            <td><span class="stat part"><span class="dot"></span>Reader + Editor licenses · ~€4k+/yr</span></td></tr>
+          <tr><td class="cap">Live compliance libraries<span>EASA/FAA/IOSA rule linking + change alerts</span></td>
+            <td><span class="stat none"><span class="dot"></span>None</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full — core moat</span></td></tr>
+          <tr><td class="cap">Controlled crew distribution + read-confirmation<span>Prove the current revision reached every pilot</span></td>
+            <td><span class="stat none"><span class="dot"></span>None</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td></tr>
+          <tr><td class="cap">Type&nbsp;B EFB / offline pilot app<span>Certified-class app, works without connectivity</span></td>
+            <td><span class="stat none"><span class="dot"></span>None</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td></tr>
+          <tr><td class="cap">Audit trail for regulator sign-off<span>Approval evidence a DGAC/EASA auditor accepts</span></td>
+            <td><span class="stat none"><span class="dot"></span>None</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td></tr>
+          <tr><td class="cap">Aviation regulatory credibility<span>Reference customers &amp; audit track record</span></td>
+            <td><span class="stat none"><span class="dot"></span>None yet</span></td>
+            <td><span class="stat full"><span class="dot"></span>Full</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted)">Legend: <span class="stat full" style="font-size:11px"><span class="dot"></span>Full</span> leads / meets · <span class="stat part" style="font-size:11px"><span class="dot"></span>Partial</span> present but weaker · <span class="stat none" style="font-size:11px"><span class="dot"></span>None</span> absent. Sonat capabilities per the product's own positioning; specialist capabilities verified against vendor product/pricing pages.</p>
+  </section>
+
+  <!-- 7. FIT / GAP -->
+  <section id="fit">
+    <div class="sec-head"><span class="sec-num">07</span><div><h2>Where Sonat genuinely fits — and the walls not to walk into</h2></div></div>
+    <div class="fitgap">
+      <div class="panel win">
+        <h3><span class="mk">✓</span> Real wedges for SAF</h3>
+        <ul class="itemlist">
+          <li><b>Internal SOP knowledge base</b><span>Non-controlled operational know-how across bases, today scattered in Drive &amp; PDFs — searchable, versioned, one source of truth.</span></li>
+          <li><b>Ground-school &amp; training reference</b><span>X-Aero Training's study material, onboarding and reference content (not the approved training manual itself).</span></li>
+          <li><b>Multilingual reach</b><span>FR / EN / AR across France, Morocco &amp; Réunion via 184-language machine translation — a genuine pain the specialists don't solve well.</span></li>
+          <li><b>Partner / client / passenger docs</b><span>Public, custom-domain, SEO-indexed documentation portals — a capability the internal-only specialists simply don't have.</span></li>
+          <li><b>RAG AI answer surface</b><span>GPT-powered Q&amp;A over the knowledge base for staff self-service and case deflection.</span></li>
+        </ul>
+      </div>
+      <div class="panel lose">
+        <h3><span class="mk">✕</span> Where a specialist always wins</h3>
+        <ul class="itemlist">
+          <li><b>CAME / MOE / OM-A–D expositions</b><span>Regulator-reviewed, PDF-delivered, audit-tracked. Off-limits without machinery Sonat doesn't have.</span></li>
+          <li><b>Controlled distribution + read-confirmation</b><span>Proving the current revision reached every named pilot/engineer is a hard compliance requirement.</span></li>
+          <li><b>Type&nbsp;B EFB / offline app</b><span>Operationally-critical documents on pilot devices without connectivity.</span></li>
+          <li><b>Live compliance-library linking</b><span>Rule-to-paragraph mapping + regulation-change tracking against EASA/FAA/IOSA.</span></li>
+          <li><b>Engineering data (S1000D / iSpec 2200)</b><span>Structured OEM maintenance data — an ERP/pipeline problem, entirely out of scope.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. THE PLAY -->
+  <section id="play">
+    <div class="sec-head"><span class="sec-num">08</span><div><h2>The SAF trial play</h2>
+      <p class="lead">Land narrow and honest in the knowledge tier; expand across the group's brands and languages. Never over-claim the regulated core — it poisons trust.</p></div></div>
+    <div class="play">
+      <div class="step"><div class="n">1</div><div><h3>Land</h3><p>Target one painful, non-regulated body of knowledge — the internal SOP/knowledge base or X-Aero's ground-school reference — that lives today in Drive, PDFs and email. Fast time-to-value, zero regulatory risk.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>Demo the wedge, not the world</h3><p>Show Google-Docs → publish, one-click 184-language translation (FR/EN/AR), a custom-domain portal, an approval workflow, and a RAG answer over their own content. These are the exact five things the specialists do poorly or not at all.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>Expand across brands &amp; audiences</h3><p>SAF Hélicoptères, SAF International, Aero Support Force, X-Aero — each has public-facing and internal knowledge. Multilingual multi-brand publishing is a natural land-and-expand; viewers are free, so growth isn't gated by seat cost.</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>Draw the line explicitly</h3><p>Tell them plainly Sonat is <em>not</em> replacing their CAME/MOE/OM controlled-manual process. Naming the boundary builds the credibility that wins the knowledge-tier deal — and avoids a failed regulated-doc pilot that sinks the account.</p></div></div>
+    </div>
+
+    <h3 style="margin:28px 0 4px">Objections you'll hear — and the honest answers</h3>
+    <div class="qa">
+      <div class="q">"Is this an aviation-grade controlled-manual system for our approved documents?"</div>
+      <div class="a">No — and we won't pretend otherwise. Your CAME, MOE and OM suite stay in your specialist tool or DGAC-approved process. Sonat owns the large body of operational and training knowledge sitting <em>around</em> those approved manuals, which no one has purpose-built for you today.</div>
+    </div>
+    <div class="qa">
+      <div class="q">"We already have Web Manuals / a compliance tool — why add Sonat?"</div>
+      <div class="a">Those tools are built for controlled internal distribution, not public multilingual publishing, non-technical authoring or RAG self-service. Different job. Sonat sits alongside them, not against them — and its viewers are free, so it scales to your whole workforce and audience without per-seat cost.</div>
+    </div>
+    <div class="callout" style="margin-top:20px">
+      <span class="eyebrow">If Sonat ever wanted the regulated tier</span>
+      It would need read-confirmation/acknowledgement tracking, an aviation-grade audit trail &amp; e-signature, controlled distribution, and an offline EFB-class app — a multi-year investment against entrenched, audited incumbents. <b>Not today's positioning;</b> flagged here so the boundary is a deliberate choice, not an accident.
+    </div>
+  </section>
+
+  <!-- 9. GLOSSARY -->
+  <section id="glossary">
+    <div class="sec-head"><span class="sec-num">09</span><div><h2>Glossary</h2></div></div>
+    <dl class="glossary">
+      <dt>CAME</dt><dd>Continuing Airworthiness Management Exposition — the CAMO's approved procedures manual (AMC1 CAMO.A.300).</dd>
+      <dt>MOE</dt><dd>Maintenance Organisation Exposition — the Part-145 maintenance org's approved manual (§145.A.70).</dd>
+      <dt>OM-A/B/C/D</dt><dd>The four-part airline Operations Manual (general, aircraft, route/area, training).</dd>
+      <dt>CAMO</dt><dd>Continuing Airworthiness Management Organisation — manages an aircraft's airworthiness.</dd>
+      <dt>ATO</dt><dd>Approved Training Organisation — EASA-approved flight/ground training provider (Part-ORA).</dd>
+      <dt>SMS</dt><dd>Safety Management System — hazard ID, risk management, safety assurance (ICAO Annex 19).</dd>
+      <dt>EFB</dt><dd>Electronic Flight Bag — tablet/app delivering manuals &amp; charts to crew; Type B is a regulatory class.</dd>
+      <dt>MEL</dt><dd>Minimum Equipment List — what may be inoperative and still dispatch legally.</dd>
+      <dt>IOSA</dt><dd>IATA Operational Safety Audit — the industry audit program; mandates a Document Control System.</dd>
+      <dt>S1000D</dt><dd>International XML spec for structured technical publications / maintenance data.</dd>
+      <dt>ATA iSpec 2200</dt><dd>Aviation standard for structuring &amp; exchanging engineering/maintenance data (AMM, CMM, IPC…).</dd>
+      <dt>DGAC</dt><dd>France's civil aviation authority — SAF's competent authority under EASA rules.</dd>
+    </dl>
+  </section>
+
+  <!-- 10. SOURCES -->
+  <section id="sources">
+    <div class="sec-head"><span class="sec-num">10</span><div><h2>Sources</h2>
+      <p class="lead">Primary EASA/IATA regulation, vendor product &amp; pricing pages, and trade press. Every claim in this report was verified 3&#8209;0 by independent adversarial review.</p></div></div>
+    <div class="sources">
+      <div class="src"><span class="q primary">primary</span><a href="https://www.easa.europa.eu/en/downloads/136218/en">EASA — CAME User Guide (UG.CAO.00162-002)</a></div>
+      <div class="src"><span class="q primary">primary</span><a href="https://www.easa.europa.eu/en/downloads/136744/en">EASA — MOE User Guide (Part-145)</a></div>
+      <div class="src"><span class="q primary">primary</span><a href="https://www.easa.europa.eu/en/newsroom-and-events/news/implementation-safety-management-system-easa-part-145-maintenance">EASA — SMS in Part-145 (Reg (EU) 2021/1963)</a></div>
+      <div class="src"><span class="q primary">primary</span><a href="https://www.easa.europa.eu/sites/default/files/dfu/Part-ORA.pdf">EASA — Part-ORA (ORA.ATO.130 / ORA.GEN.200)</a></div>
+      <div class="src"><span class="q primary">primary</span><a href="https://www.iata.org/en/publications/newsletters/iata-knowledge-hub/document-control-systems/">IATA — Document Control Systems (IOSA)</a></div>
+      <div class="src"><span class="q secondary">reg ref</span><a href="https://webmanuals.aero/glossary/regulations/operations-manual-parts-a-d">Web Manuals — Operations Manual Parts A–D</a></div>
+      <div class="src"><span class="q primary">vendor</span><a href="https://webmanuals.aero/pricing">Web Manuals — Pricing</a></div>
+      <div class="src"><span class="q primary">vendor</span><a href="https://webmanuals.aero/product-tour/efb-app">Web Manuals — EFB App (Type B)</a></div>
+      <div class="src"><span class="q primary">vendor</span><a href="https://webmanuals.aero/operation-type/airline-charter">Web Manuals — Airline &amp; Charter</a></div>
+      <div class="src"><span class="q primary">vendor</span><a href="https://comply365.com/document-management/">Comply365 — Document Management (ContentManager365)</a></div>
+      <div class="src"><span class="q primary">vendor</span><a href="https://comply365.com/solutions/aviation-access-content/">Comply365 — Aviation Access &amp; Content</a></div>
+      <div class="src"><span class="q secondary">press</span><a href="https://www.prnewswire.com/news-releases/comply365-and-vistair-announce-merger-and-strategic-growth-investment-from-insight-partners-and-liberty-hall-capital-partners-302027613.html">Comply365 &amp; Vistair merger (Jan 2024)</a></div>
+      <div class="src"><span class="q secondary">vendor</span><a href="https://yonder.info/industries/aviation/">Yonder — Aviation ("Yonder Mind")</a></div>
+      <div class="src"><span class="q primary">customer</span><a href="https://safaerogroup.com/our-brands/">SAF Aerogroup — Our Brands</a></div>
+      <div class="src"><span class="q primary">customer</span><a href="https://saf-helico.com/en/saf-helicopteres-en/">SAF Hélicoptères — Overview</a></div>
+      <div class="src"><span class="q secondary">trade</span><a href="https://verticalmag.com/features/protection-and-service-in-the-french-alps-with-saf-group/">Vertical Mag — SAF Group feature</a></div>
+      <div class="src"><span class="q secondary">customer</span><a href="https://xaerotraining.com/about-us/">X-Aero Training — About</a></div>
+      <div class="src"><span class="q blog">market</span><a href="https://www.qoco.aero/blog/choosing-the-right-solution-for-aviation-maintenance">QOCO — Choosing MRO software (TRAX/AMOS/Maintenix)</a></div>
+      <div class="src"><span class="q blog">standards</span><a href="https://www.fieldlogs.com/FieldLogsStatic/fieldlogs-s1000d-ata-ispec-integration-2/">FieldLogs — S1000D &amp; ATA iSpec 2200</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Caveats.</b> Vendor-capability findings rest on the vendors' own product/pricing pages — they verify what is offered and positioned, not independently benchmarked effectiveness. EFB "Type B" is a vendor self-classification (operator responsibility under EASA), not a regulator certification. Web Manuals pricing is from its live page (one editor sub-figure slightly overstated in source material); Comply365 has no public list price. The SAF-to-EASA-Part mapping and the entire Sonat-fit assessment are reasoned inferences from the verified regulatory + vendor corpus, not verbatim-sourced facts — no source tested Sonat in a live aviation deployment. Open question worth answering before the trial call: <em>what does SAF use today for its CAME/MOE/OM suite, and where does its non-regulated ground-school &amp; internal knowledge live right now?</em></p>
+    <p style="margin-top:14px" class="mono">Sonat · Internal market research · Compiled July 2026 · Research: deep-research harness (109 agents, 25 claims verified 3-0)</p>
+  </footer>
+
+</div>
