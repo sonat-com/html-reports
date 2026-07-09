@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runbook vs Playbook: When to Use Each in IT</title>
+<meta name="description" content="Runbook vs playbook explained: what each is, when to use them, plus how to write IT runbooks your team trusts during an incident.">
+<style>
+  :root {
+    --ink: #1c2733;
+    --muted: #5b6b7a;
+    --accent: #2f6df6;
+    --line: #e6ebf1;
+    --bg: #ffffff;
+    --soft: #f6f9fc;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 18px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 8px 0 20px;
+  }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 44px 0 12px;
+  }
+  p { margin: 0 0 18px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    margin: 8px auto 6px;
+    background: var(--soft);
+  }
+  figure { margin: 28px 0; }
+  figcaption { color: var(--muted); font-size: 0.9rem; text-align: center; }
+  ul, ol { margin: 0 0 18px; padding-left: 1.3em; }
+  li { margin: 6px 0; }
+  strong { font-weight: 650; }
+  .lede { font-size: 1.12rem; color: var(--muted); }
+  .table-scroll { overflow-x: auto; margin: 22px 0; -webkit-overflow-scrolling: touch; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 520px;
+    font-size: 0.96rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  thead th { background: var(--soft); border-bottom: 2px solid var(--line); }
+  tbody th { font-weight: 650; white-space: nowrap; }
+  .callout {
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin: 28px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.25rem; }
+    .wrap { padding: 24px 16px 56px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>Runbook vs Playbook: The IT Team's Guide to Both (and When to Use Each)</h1>
+
+    <figure>
+      <img src="images/01-runbook-vs-playbook-hero.png" alt="On-call IT engineer calmly following a numbered step-by-step checklist to restart a server at night while a teammate points to a labeled binder of procedures">
+    </figure>
+
+    <p class="lede">It's 2 a.m. A service is down, an alert is buzzing, and the one person who knows how to fix it is on a plane. What your on-call engineer opens next decides whether the outage lasts five minutes or five hours. That document is either a <strong>runbook</strong> or a <strong>playbook</strong> — and knowing which is which is the difference between confident action and frantic guessing.</p>
+
+    <p>The two words get used interchangeably, but they solve different problems. This guide clears up the runbook vs playbook question, shows where standard operating procedures (SOPs) fit, and gives you a practical way to write runbooks your team will actually trust when it counts.</p>
+
+    <h2>Runbook vs playbook, in one sentence</h2>
+    <p>A <strong>runbook</strong> is a precise, step-by-step set of instructions for handling one specific, well-understood task — restart this service, rotate that certificate, restore this backup. A <strong>playbook</strong> is higher-level guidance for a broad, unpredictable situation — a major outage or a security breach — that tells responders how to coordinate and decide. Put simply: a playbook decides <em>what</em> to do; a runbook shows <em>exactly how</em> to do it.</p>
+
+    <h2>What is a runbook?</h2>
+    <p>A runbook is a documented procedure for a routine or repeatable operation. It assumes the situation is already understood and the goal is to execute reliably, the same way every time, no matter who's holding the pager.</p>
+    <p>Good IT runbooks read like a recipe. They cover a single scenario — "web application stuck or crashed: do a rolling restart" — and spell out the commands, the expected output, and how to confirm the fix worked. Because they're so concrete, runbooks are the backbone of IT operations: server restarts, failovers, disaster-recovery restores, onboarding a new environment, or clearing a stuck queue.</p>
+    <p>The value shows up under pressure. Site reliability engineering practice puts it bluntly: the first priority in an incident is to <em>mitigate</em>, not to fully understand the root cause. A runbook that captures a known-good mitigation — a rollback, a drain, a restart — lets a first responder act in minutes instead of reverse-engineering the system live.</p>
+
+    <h2>What is a playbook?</h2>
+    <p>A playbook is a strategic guide for a category of situations that are messy, high-stakes, and different every time. It doesn't try to script every keystroke, because it can't. Instead, it defines roles, decision points, communication paths, and the sequence of judgment calls a team makes together.</p>
+    <p>Incident response is the classic example. A mature playbook assigns clear roles — an incident commander who directs the response and decides on public announcements, a scribe who documents actions, subject-matter experts who investigate, and a liaison who updates stakeholders. It sets rules of engagement, too. In established incident-response practice, responders are told to announce suggestions to the incident commander and <em>not</em> to take action unless instructed — a coordination rule, not a technical step.</p>
+    <p>That's the tell: a playbook governs <em>how people work together</em> through uncertainty. The individual technical fixes they reach for along the way are runbooks.</p>
+
+    <h2>Runbook vs playbook: the core difference</h2>
+    <p>Here's the distinction at a glance.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th></th><th>Runbook</th><th>Playbook</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Scope</th><td>One specific, defined task</td><td>A broad, unpredictable scenario</td></tr>
+          <tr><th>Question it answers</th><td><em>How</em> do I do this exactly?</td><td><em>What's</em> our approach and who does what?</td></tr>
+          <tr><th>Predictability</th><td>High — same steps every time</td><td>Low — adapts to the situation</td></tr>
+          <tr><th>Detail level</th><td>Precise commands and checks</td><td>Roles, decisions, communication</td></tr>
+          <tr><th>Typical use</th><td>Restart, restore, failover, rotate</td><td>Major outage, security incident, crisis</td></tr>
+          <tr><th>Audience</th><td>The engineer executing the fix</td><td>The whole response team</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The two are partners, not rivals. During a serious incident, the playbook governs the overall response while responders reach for individual runbooks to carry out each concrete step. When a mature team declares an incident, they lean on a framework and set of defined procedures established beforehand — the playbook — and follow documented procedures for the specific fixes — the runbooks.</p>
+
+    <figure>
+      <img src="images/01-runbook-vs-playbook-anatomy.png" alt="Two IT colleagues organizing numbered procedure cards into a labeled step-by-step checklist on a wall board">
+    </figure>
+
+    <h2>Where SOPs fit: runbook vs playbook vs SOP</h2>
+    <p>A third term rounds out the picture. A <strong>standard operating procedure (SOP)</strong> is a formal, step-by-step instruction for a routine business task, written for consistency and often for compliance — how to offboard an employee's accounts, how to process a data request, how to run the monthly close.</p>
+    <p>The three form a natural hierarchy:</p>
+    <ul>
+      <li><strong>SOP</strong> — the foundation. Routine, predictable tasks done the same way every time, often for audit and governance reasons.</li>
+      <li><strong>Runbook</strong> — a technical, IT-focused SOP for a specific operational scenario, sometimes with conditional steps ("if the health check still fails, escalate").</li>
+      <li><strong>Playbook</strong> — the strategy layer that coordinates people and decisions when the situation is unpredictable.</li>
+    </ul>
+    <p>A useful way to remember it: SOPs keep the business consistent, runbooks keep systems running, and playbooks keep teams aligned when things break.</p>
+
+    <h2>What makes a good runbook</h2>
+    <p>Anyone can write a document titled "runbook." Writing one that works at 2 a.m. takes discipline. The best IT runbooks share a few traits.</p>
+    <ul>
+      <li><strong>One scenario, clearly named.</strong> State the trigger up front — which alert or symptom starts this runbook, and which service it affects. A responder should confirm they're in the right place in seconds.</li>
+      <li><strong>Copy-paste-ready steps.</strong> Commands should be exact and safe to run in order. Ambiguity ("restart the relevant service") is where mistakes happen; specificity ("run <code>systemctl restart api</code>, then verify with the health check below") is where confidence comes from.</li>
+      <li><strong>Expected results and checkpoints.</strong> Every step should tell the reader what "good" looks like, so they know whether to continue or escalate.</li>
+      <li><strong>Escalation and ownership.</strong> Name who owns the service and when to hand off. A runbook that ends in a dead end just moves the panic downstream.</li>
+      <li><strong>Written for a stranger.</strong> Assume the reader has never done this task and doesn't have tribal context. If it only makes sense to the person who wrote it, it isn't a runbook — it's a note.</li>
+    </ul>
+
+    <h2>How to write an IT runbook</h2>
+    <p>You don't need a heavyweight template to start. A dependable IT operations runbook usually has the same anatomy:</p>
+    <ol>
+      <li><strong>Title and trigger</strong> — the scenario and the alert or condition that activates it.</li>
+      <li><strong>Impact and severity</strong> — what breaks and who's affected, so the reader can gauge urgency.</li>
+      <li><strong>Prerequisites</strong> — access, tools, and credentials needed before starting.</li>
+      <li><strong>Step-by-step procedure</strong> — numbered actions with exact commands and verification after each.</li>
+      <li><strong>Rollback and safety notes</strong> — how to undo a step if it goes wrong.</li>
+      <li><strong>Escalation path</strong> — who to contact and when the runbook's scope ends.</li>
+      <li><strong>References</strong> — related runbooks, dashboards, and owners.</li>
+    </ol>
+    <p>Build your library from real events. After every incident, ask: <em>could a runbook have made this faster?</em> If yes, write it while the memory is fresh. Over time you'll cover your most common failure modes — and the value compounds, because each documented procedure is one less thing that depends on a single person being awake.</p>
+
+    <h2>Keep runbooks alive as a single source of truth</h2>
+    <p>The hardest part of runbooks isn't writing them — it's keeping them true. A runbook that references a decommissioned server or an old command is worse than none, because it sends a stressed responder down the wrong path. Documentation only helps if it's current, findable, and trusted.</p>
+    <p>That's a documentation problem, not just an IT one. Runbooks work best when they live in one place your whole team can reach, with a version history so you can see what changed and restore an earlier version if a procedure regresses. They need real search, so an on-call engineer finds the right steps by symptom in seconds rather than digging through scattered folders. And they should be easy enough to update that fixing a stale command takes a minute, not a change request.</p>
+    <div class="callout">
+      <p>This is exactly where a purpose-built documentation platform like <a href="https://sonat.com">Sonat</a> earns its place. Your team writes and organizes runbooks in a familiar editor, keeps every version tracked as a single source of truth, publishes to a fast, searchable site, and controls who can see internal procedures — so the knowledge lives in your documentation, not in someone's head. Fewer late-night guesses, fewer repeat tickets, and a team that can act the moment an alert fires.</p>
+    </div>
+
+    <h2>The bottom line</h2>
+    <p>Runbooks and playbooks aren't competing ideas — they're two layers of the same goal: acting well under pressure. Use a <strong>playbook</strong> to coordinate people through the unpredictable, and a <strong>runbook</strong> to execute the known fix precisely. Add SOPs for routine, auditable tasks, keep all of it current in one trusted home, and you turn hard-won operational knowledge into something your whole team can rely on — at 2 a.m. or any other time.</p>
+  </article>
+</main>
+</body>
+</html>
