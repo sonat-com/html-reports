@@ -4,142 +4,154 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Write Standard Operating Procedures (SOPs)</title>
-<meta name="description" content="Learn how to write standard operating procedures your team will follow: the 8 parts of an SOP, a 7-step process, formats, and version control.">
-<link rel="canonical" href="https://sonat.com">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Write Standard Operating Procedures (SOPs)",
-  "description": "A step-by-step guide to writing SOPs your team will follow: what belongs in an SOP, a seven-step writing process, choosing a format, and keeping procedures controlled and current.",
-  "step": [
-    {"@type": "HowToStep", "name": "Define the process and its boundaries", "text": "Name the exact process and where it starts and stops so the SOP is a writable unit of work."},
-    {"@type": "HowToStep", "name": "Gather details from the people who do the work", "text": "Watch the people who run the process today; they know the shortcuts, exceptions, and forgotten steps."},
-    {"@type": "HowToStep", "name": "Choose the right format", "text": "Match simple steps, hierarchical steps, or a flowchart to the complexity of the task."},
-    {"@type": "HowToStep", "name": "Write in plain, imperative language", "text": "Start each step with an action verb and use must, may, and should deliberately."},
-    {"@type": "HowToStep", "name": "Add visuals where words get heavy", "text": "Use screenshots and diagrams at the step they clarify."},
-    {"@type": "HowToStep", "name": "Test the draft with a fresh reader", "text": "Have practitioners and an unfamiliar reader follow the SOP to find gaps."},
-    {"@type": "HowToStep", "name": "Approve, publish, and version-control it", "text": "Route the SOP through approval, version it, and publish it to a single source of truth."}
-  ]
-}
-</script>
+<meta name="description" content="A practical guide to writing standard operating procedures your team will actually follow — structure, a step-by-step process, formats, and how to keep SOPs current.">
 <style>
-  :root { --ink:#1f2430; --muted:#5b6472; --accent:#2f6df6; --line:#e7eaf0; --bg:#ffffff; }
-  * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink);
+  :root{
+    --ink:#1f2733; --muted:#5b6675; --line:#e7eaf0; --bg:#ffffff;
+    --accent:#2f6df0; --accent-soft:#eef3fe; --maxw:720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.7; font-size:18px; -webkit-font-smoothing:antialiased; }
-  .wrap { max-width:760px; margin:0 auto; padding:32px 22px 72px; }
-  h1 { font-size:2.15rem; line-height:1.2; letter-spacing:-0.02em; margin:.4em 0 .5em; }
-  h2 { font-size:1.5rem; line-height:1.25; letter-spacing:-0.01em; margin:2.2rem 0 .7rem; }
-  h3 { font-size:1.18rem; margin:1.7rem 0 .5rem; }
-  p { margin:0 0 1.1rem; }
-  ul,ol { margin:0 0 1.2rem; padding-left:1.35rem; }
-  li { margin:.4rem 0; }
-  strong { font-weight:650; }
-  a { color:var(--accent); text-decoration:none; }
-  a:hover { text-decoration:underline; }
-  img { max-width:100%; height:auto; display:block; border-radius:14px; margin:1.6rem auto; background:#f7f8fa; }
-  .lead { font-size:1.15rem; color:var(--muted); }
-  hr { border:0; border-top:1px solid var(--line); margin:2.4rem 0; }
-  .cta { margin-top:2.4rem; padding:24px 26px; border:1px solid var(--line); border-radius:16px;
-    background:#f8fafc; }
-  .cta p { margin:0 0 .6rem; }
-  .btn { display:inline-block; margin-top:.5rem; padding:12px 22px; background:var(--accent); color:#fff;
-    border-radius:10px; font-weight:600; }
-  .btn:hover { text-decoration:none; opacity:.92; }
-  @media (max-width:600px){ body{font-size:17px;} h1{font-size:1.8rem;} .wrap{padding:22px 18px 56px;} }
+    line-height:1.7; font-size:18px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:32px 20px 72px}
+  header.hero{text-align:left; margin-bottom:8px}
+  h1{
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+    margin:.2em 0 .5em; font-weight:800;
+  }
+  .kicker{
+    display:inline-block; font-size:.78rem; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--accent); background:var(--accent-soft);
+    padding:5px 11px; border-radius:999px; margin-bottom:8px;
+  }
+  .lede{color:var(--muted); font-size:1.12rem}
+  img{max-width:100%; height:auto; display:block; border-radius:14px; margin:28px auto}
+  figure{margin:28px 0}
+  figure img{margin-bottom:8px}
+  h2{font-size:1.5rem; line-height:1.25; letter-spacing:-.01em; margin:2.2em 0 .5em; font-weight:750; font-weight:700}
+  h3{font-size:1.16rem; margin:1.7em 0 .3em; font-weight:700}
+  p{margin:0 0 1.1em}
+  ul{margin:0 0 1.2em; padding-left:1.25em}
+  li{margin:.5em 0}
+  strong{font-weight:700}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(47,109,240,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  hr{border:none; border-top:1px solid var(--line); margin:2.4em 0}
+  .cta{
+    margin-top:2.4em; padding:26px 24px; background:var(--accent-soft);
+    border-radius:16px; text-align:center;
+  }
+  .cta p{margin:0 0 14px; font-weight:600; font-size:1.08rem}
+  .btn{
+    display:inline-block; background:var(--accent); color:#fff; font-weight:700;
+    padding:12px 24px; border-radius:10px; border:none; font-size:1rem;
+  }
+  .btn:hover{border-bottom:none}
+  @media (max-width:600px){
+    body{font-size:17px}
+    h1{font-size:1.8rem}
+    h2{font-size:1.32rem}
+    .wrap{padding:24px 18px 56px}
+  }
 </style>
 </head>
 <body>
-<main class="wrap">
-  <img src="images/01-how-to-write-standard-operating-procedures-hero.png" alt="A team member pins a labeled step-by-step procedure card to a board while a colleague follows the same steps at a workbench">
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">Policies &amp; Procedures</span>
+    <h1>How to Write Standard Operating Procedures People Actually Follow</h1>
+  </header>
 
-  <h1>How to Write Standard Operating Procedures (SOPs) That People Actually Follow</h1>
+  <figure>
+    <img src="images/01-how-to-write-standard-operating-procedures-hero.png" alt="A team gathered around a wall of labeled steps and folders, one person pointing to a numbered checklist while a colleague follows along on a tablet">
+  </figure>
 
-  <p class="lead">You have a process that works &mdash; but only when the right person runs it. The moment they&rsquo;re on leave, someone new joins, or the work moves to another site, quality slips and the questions start. A standard operating procedure fixes that by turning &ldquo;how we do this&rdquo; into something anyone can pick up and repeat. This guide walks you through what belongs in an SOP, a seven-step process for writing one, and how to keep it accurate long after the first draft.</p>
+  <p class="lede">You have written the procedure. It is thorough, it is accurate, and it is sitting in a folder nobody opens. Meanwhile the task still gets done five different ways by five different people, and the questions still land in your inbox.</p>
 
-  <h2>What is a standard operating procedure (SOP)?</h2>
-  <p>A standard operating procedure is a documented set of step-by-step instructions that describes how to carry out a routine task the same way every time. Its job is to reduce variation between people, protect quality, and make training faster &mdash; so results depend on the process, not on who happens to be doing the work.</p>
-  <p>That single goal &mdash; consistency &mdash; is the test for every choice you make while writing. If a sentence doesn&rsquo;t help a real person get the same result in real conditions, it doesn&rsquo;t belong.</p>
+  <p>This is the real problem with standard operating procedures. Writing one is not hard. Writing one that people reach for, trust, and follow is a different skill. This guide walks through both: what a standard operating procedure actually is, why so many go unread, and a step-by-step way to write SOPs your team will use instead of route around.</p>
 
-  <h3>SOP vs. work instruction vs. policy</h3>
-  <p>These three terms get used interchangeably, and mixing them up is the fastest way to write an SOP nobody can use.</p>
+  <h2>What is a standard operating procedure?</h2>
+  <p>A standard operating procedure (SOP) is a set of written instructions that documents how to carry out a routine task the same way every time. It exists so that any qualified person can complete the work correctly, consistently, and safely — without guessing and without depending on the one colleague who happens to remember all the steps.</p>
+  <p>That last point matters more than it sounds. The value of an SOP is not the document; it is the <em>consistency</em> the document produces. Quality frameworks treat SOPs as core infrastructure for exactly this reason — the U.S. Environmental Protection Agency describes them as an integral part of a successful quality system, because they give people the information to do a job properly and keep the quality of the result consistent from one person, shift, or site to the next.</p>
+
+  <h2>Why standard operating procedures fail</h2>
+  <p>When people skip the SOP, the instinct is to blame the people. That is almost always the wrong diagnosis. Look closely and the same three failures show up again and again — and all three are about the document, not the reader.</p>
   <ul>
-    <li><strong>A policy</strong> says <em>what</em> the organization requires and <em>why</em> &mdash; the rule and its intent (for example, &ldquo;all refunds over $500 require manager approval&rdquo;).</li>
-    <li><strong>A standard operating procedure</strong> describes <em>how</em> a whole process gets done, end to end, and <em>who</em> does each part.</li>
-    <li><strong>A work instruction</strong> zooms in on a single task within that procedure &mdash; the granular &ldquo;how&rdquo; for one step (for example, the exact screens to click to issue the refund).</li>
+    <li><strong>It is not clear.</strong> The steps are written the way the author thinks, not the way the task is done. Vague verbs ("handle," "process," "manage") leave the reader to interpret, and interpretation is exactly what an SOP is supposed to remove.</li>
+    <li><strong>It cannot be found.</strong> A procedure locked in a PDF on a shared drive, three folders deep, does not exist at the moment someone needs it. If it is faster to ask a coworker than to find the document, people will ask the coworker every time.</li>
+    <li><strong>It is out of date.</strong> The moment an SOP describes a tool, screen, or step that no longer matches reality, the reader stops trusting all of it. One wrong step poisons the whole document.</li>
   </ul>
-  <p>Keep them in separate documents and link between them. A procedure buried inside a policy, or a policy padded with click-by-click detail, ages badly and confuses readers.</p>
+  <p>Notice what is <em>not</em> on that list: laziness. People follow procedures they can understand, find, and trust. Fix those three things and adoption follows.</p>
 
-  <h2>What should an SOP include?</h2>
-  <p>Most reliable SOPs share the same backbone. You don&rsquo;t need every section for every task, but starting from a consistent structure means readers always know where to look:</p>
-  <ol>
-    <li><strong>Header</strong> &mdash; a clear, descriptive title, a document number, and a version. Identifying every document by title, date, and reference number is a baseline control expectation under quality standards like ISO 9001.</li>
-    <li><strong>Purpose</strong> &mdash; one or two sentences on what the procedure achieves.</li>
-    <li><strong>Scope</strong> &mdash; what the procedure covers, and just as importantly, what it does not.</li>
-    <li><strong>Roles and responsibilities</strong> &mdash; who performs each part and who is accountable.</li>
-    <li><strong>Definitions</strong> &mdash; any terms or acronyms a new reader wouldn&rsquo;t know.</li>
-    <li><strong>Materials or tools</strong> &mdash; systems, equipment, or access required before starting.</li>
-    <li><strong>The procedure</strong> &mdash; the numbered steps themselves, the heart of the document.</li>
-    <li><strong>Revision history and approval</strong> &mdash; who approved the current version, when it took effect, and what changed.</li>
-  </ol>
-  <p>Name the author and the effective date on every SOP. When something goes wrong six months later, the first questions are always &ldquo;which version was live?&rdquo; and &ldquo;who owns this?&rdquo; &mdash; the header should answer both instantly.</p>
+  <figure>
+    <img src="images/01-how-to-write-standard-operating-procedures-inline.png" alt="A person at a desk turning a messy stack of notes into a clean, numbered step-by-step card, with a large checkmark on the wall behind them">
+  </figure>
 
-  <h2>How to write a standard operating procedure, step by step</h2>
-  <p>Here&rsquo;s a repeatable process you can apply to any SOP, from onboarding a new hire to closing the books at month-end.</p>
-
-  <h3>1. Define the process and its boundaries</h3>
-  <p>Name the exact process and where it starts and stops. &ldquo;Handle customer refunds&rdquo; is too broad; &ldquo;Process a refund request in the billing tool&rdquo; is a writable unit of work. A tight scope keeps the document short enough that people actually read it.</p>
-
-  <h3>2. Gather the details from the people who do the work</h3>
-  <p>Sit with the people who run the process today and watch them do it. They know the shortcuts, the exceptions, and the steps the manual forgets. This isn&rsquo;t just for accuracy &mdash; as the practitioners who study SOP writing put it, &ldquo;people support what they help create.&rdquo; Involving the doers early is what turns a procedure from paperwork into something the team defends.</p>
-
-  <h3>3. Choose the right format for the task</h3>
-  <p>Match the format to the complexity of the work rather than defaulting to a wall of numbered steps:</p>
+  <h2>The anatomy of an SOP that works</h2>
+  <p>Before writing steps, settle on a consistent structure. A predictable layout is not bureaucracy — it is what lets a reader jump straight to the part they need and what makes a growing library of procedures reviewable and auditable. Most effective SOP documentation shares the same building blocks:</p>
   <ul>
-    <li><strong>Simple steps</strong> &mdash; a plain numbered list, ideal for short, repetitive tasks with few decisions.</li>
-    <li><strong>Hierarchical steps</strong> &mdash; main steps with sub-steps underneath, so beginners get detail while experienced users can skim the top level.</li>
-    <li><strong>Flowchart</strong> &mdash; the right choice when the process branches on decisions (&ldquo;if the order shipped, do X; if not, do Y&rdquo;).</li>
+    <li><strong>Title and identifier.</strong> A plain-language title plus a unique ID and version number, so people can tell at a glance they are reading the current one.</li>
+    <li><strong>Purpose.</strong> One or two sentences on what this procedure accomplishes and why it exists.</li>
+    <li><strong>Scope.</strong> Where the procedure applies — which team, product, site, or situation — and, just as usefully, where it does not.</li>
+    <li><strong>Roles and responsibilities.</strong> Who performs each part, and who owns and approves the document.</li>
+    <li><strong>Materials or prerequisites.</strong> Tools, access, systems, or inputs the reader needs before they start.</li>
+    <li><strong>The procedure.</strong> The numbered steps themselves — the heart of the document.</li>
+    <li><strong>References and revision history.</strong> Related procedures, and a short log of what changed, when, and who approved it.</li>
   </ul>
-  <p>A five-step task doesn&rsquo;t need a flowchart, and a decision-heavy approval process shouldn&rsquo;t be forced into a flat list.</p>
+  <p>You do not need every section in every SOP. A three-step reset procedure does not need the apparatus of a safety-critical one. But keeping the <em>order</em> consistent across your policies and procedures manual means readers always know where to look.</p>
 
-  <img src="images/01-how-to-write-standard-operating-procedures-inline-1.png" alt="A simple flat checklist beside a branching flowchart, showing two ways to format the same procedure">
+  <h2>How to write a standard operating procedure step by step</h2>
+  <p>With the structure decided, the writing itself follows a repeatable path.</p>
 
-  <h3>4. Write in plain, imperative language</h3>
-  <p>Start each step with an action verb and keep sentences short: &ldquo;Record the invoice number,&rdquo; not &ldquo;The invoice number should be recorded.&rdquo; Imperative phrasing removes ambiguity about who acts and what they do.</p>
-  <p>Be deliberate about a handful of high-stakes words. In procedures, &ldquo;must&rdquo; is mandatory, &ldquo;may&rdquo; grants flexibility, and &ldquo;should&rdquo; is only a recommendation &mdash; so choose them on purpose. And cut vague qualifiers like &ldquo;periodic,&rdquo; &ldquo;typical,&rdquo; or &ldquo;as needed&rdquo;; they read fine but give no one a consistent instruction to follow.</p>
+  <h3>1. Watch the task before you write it</h3>
+  <p>The best SOP describes how the work is actually done, not how you assume it is done. Sit with the person who does it, or do it yourself and take notes. You will catch the small, undocumented moves that experienced staff make without thinking — the exact moves a new hire will miss.</p>
 
-  <h3>5. Add visuals where words get heavy</h3>
-  <p>A screenshot, photo, or diagram often replaces a paragraph. Visuals help people who learn by seeing and remove the guesswork from steps that are hard to describe in text. Add them at the exact step they clarify, not in an appendix readers never reach.</p>
+  <h3>2. Write for the least experienced person who will use it</h3>
+  <p>Pick your reader deliberately: the newest team member who could plausibly be handed this task. Write for them. That single choice sets your vocabulary, your level of detail, and how much context you spell out instead of assume.</p>
 
-  <h3>6. Test the draft with a fresh reader</h3>
-  <p>Before you call it done, have two kinds of people review it. First, the practitioners who run the process &mdash; they catch missing steps and assumptions that don&rsquo;t hold up. Then a fresh reader who has never done the task: ask them to follow the SOP exactly, step by step, and note wherever they hesitate. Every hesitation is a gap to fix. Testing with someone unfamiliar is the single most reliable way to find the holes you&rsquo;re too close to see.</p>
+  <h3>3. Use one action per step, in plain imperative language</h3>
+  <p>Start each step with a verb and describe a single action: "Click <strong>Export</strong>," not "The data should then be exported." Short, direct, sequential steps are faster to follow and far easier to keep accurate when something changes. If a step contains an "and," it is probably two steps.</p>
 
-  <h3>7. Approve, publish, and put it under version control</h3>
-  <p>An SOP isn&rsquo;t live until the right authority has reviewed and approved it. Give it a version number, record who signed off and when, and publish it where the team already works &mdash; one findable location, not a file buried on someone&rsquo;s drive. From here on, changes flow through the same review each time, so the approved version is always the one people see.</p>
+  <h3>4. Show, don't just tell</h3>
+  <p>A screenshot, a photo, or a simple diagram carries more than a paragraph of description — especially for anything visual or physical. Add an image wherever a reader might reasonably ask "which button?" or "does it look right?" Rich, visual instructions are consistently easier to follow than walls of text.</p>
 
-  <h2>Standard operating procedures best practices</h2>
-  <p>A few habits separate SOPs that get used from ones that gather dust:</p>
+  <h3>5. Add decision points where reality branches</h3>
+  <p>Real tasks are rarely a straight line. When the next action depends on a condition, say so explicitly: "If the status shows <strong>Pending</strong>, do X; if it shows <strong>Failed</strong>, do Y." Naming the branches keeps people from freezing the moment the happy path ends.</p>
+
+  <h3>6. Test it on someone who has never done the task</h3>
+  <p>This is the step most SOPs skip, and it is the one that separates a document that works from one that only looks finished. Hand it to someone unfamiliar and watch them follow it — no coaching. Every place they hesitate, backtrack, or ask a question is a place the document is unclear. Fix those, and only those.</p>
+
+  <h3>7. Get it reviewed and approved before it goes live</h3>
+  <p>An SOP is only authoritative if someone accountable has signed off. A short review and approval step — a subject-matter expert confirms it is correct, an owner approves it — is what turns a draft into the official way of working. It is also what keeps a policies and procedures manual audit-ready.</p>
+
+  <h2>Choosing a standard operating procedure format</h2>
+  <p>There is no single required SOP format. The right one depends on the task, and a good library usually mixes all three:</p>
   <ul>
-    <li><strong>One process per document.</strong> If you&rsquo;re tempted to write &ldquo;and also,&rdquo; it&rsquo;s probably a second SOP.</li>
-    <li><strong>Explain the why, not just the how.</strong> People follow steps more reliably &mdash; and improvise more safely when reality doesn&rsquo;t match the script &mdash; when they understand the reason behind them.</li>
-    <li><strong>Write for the least experienced person who&rsquo;ll use it.</strong> Detailed enough to eliminate real variation, without micromanaging skilled staff.</li>
-    <li><strong>Set a review date.</strong> A procedure that&rsquo;s silently gone out of date is worse than none, because people trust it. Give every SOP an owner and a review cadence.</li>
-    <li><strong>Keep one source of truth.</strong> Duplicated copies drift apart. There should be exactly one current version, and everyone should know where it lives.</li>
+    <li><strong>Step-by-step list.</strong> The default for linear tasks. Numbered actions, one after another. Easiest to write and to follow.</li>
+    <li><strong>Hierarchical steps.</strong> For longer procedures where main steps have sub-steps. Keeps detail available without cluttering the top-level flow.</li>
+    <li><strong>Flowchart.</strong> Best when the task has several decision points and branches. A reader can see the whole path at a glance.</li>
   </ul>
+  <p>A reusable standard operating procedures template — with your standard sections already laid out — removes the blank-page problem and keeps every new procedure consistent with the last. Start from the template, fill in the task, and your formatting decisions are already made.</p>
 
-  <h2>Keep SOPs controlled, current, and auditable</h2>
-  <p>Writing the SOP is the start; the harder part is keeping a growing library accurate as processes change. This is where documentation-management practice &mdash; and quality standards like ISO 9001 &mdash; draw a line between a <em>document</em> you can edit and a <em>record</em> that proves what happened. Controlled documentation needs to be identified by title, date, and owner; reviewed and approved before it goes live; protected from unintended changes; and traceable through a clear audit trail of who changed what, when.</p>
-  <p>Doing that in scattered files and email approvals doesn&rsquo;t scale past a handful of procedures. A purpose-built documentation platform like <a href="https://sonat.com">Sonat</a> is built for exactly this: draft in a familiar editor (or straight from Google Docs), route each change through an <strong>approval workflow</strong> so nothing publishes without sign-off, and rely on an unlimited <strong>version archive</strong> to see every past revision and restore any of them. Because everything lives in one <strong>single source of truth</strong>, your team reads the current, approved version every time &mdash; and when you operate across regions, machine translation turns one master SOP into consistent versions in the languages your sites actually use.</p>
+  <h2>Keep your SOPs alive: review, approval, and version control</h2>
+  <p>A procedure is not a one-time deliverable. It is a living document, and the day it drifts from reality is the day people stop trusting it. Three habits keep an SOP library healthy.</p>
+  <p><strong>Review on a schedule.</strong> Set a cadence — many teams review each SOP at least once a year, and sooner whenever the underlying process changes, a tool is replaced, or an audit surfaces a gap. A named owner and a review date on every document make this routine instead of heroic.</p>
+  <p><strong>Control versions.</strong> Everyone should be reading the current version, and no one should be reading last quarter's copy from their downloads folder. This is the discipline the ISO 9001 quality-management standard captures under "documented information": procedures need to be identified, version-controlled, reviewed, approved, and readily available to the people who use them. A single source of truth beats a scatter of near-identical files.</p>
+  <p><strong>Make updates easy.</strong> If changing an SOP is painful, it will not get changed — it will just quietly rot. The lower the friction to edit, review, and republish, the more current your documentation stays.</p>
 
-  <h2>The bottom line</h2>
-  <p>A good SOP isn&rsquo;t a formality &mdash; it&rsquo;s how a process survives the people who invented it. Keep the scope tight, write in plain imperative steps, build it with the people who do the work, and test it on someone who doesn&rsquo;t. Then treat it as a living document: reviewed, approved, versioned, and kept in one place everyone trusts. Do that, and &ldquo;the way we do things here&rdquo; stops living in someone&rsquo;s head and starts working for the whole team.</p>
+  <h2>From scattered documents to a living SOP library</h2>
+  <p>Most SOP problems are not writing problems. They are <em>system</em> problems: procedures spread across drives and inboxes, no clear owner, no review date, no reliable current version, and no fast way for the people doing the work to find the right document at the right moment.</p>
+  <p>This is the gap <a href="https://sonat.com">Sonat</a> is built to close. It gives non-technical teams one place to write procedures in a familiar editor, organize them into a searchable manual, route each one through review and approval before it goes live, keep a full version history, and publish to the web so the current SOP is always a search away — on a desktop at a workstation or a phone on the floor. When it is that easy to find and trust the procedure, following it stops being a choice people have to make.</p>
+  <p>Standard operating procedures are not about control. They are about giving everyone the same clear path to doing good work. Write them for the person who has to follow them, keep them current, and make them easy to reach — and they will finally do what you wrote them to do.</p>
 
   <div class="cta">
-    <p>Ready to give your policies and procedures a controlled, auditable home?</p>
-    <a class="btn" href="https://sonat.com">See how Sonat helps teams write, approve, and publish documentation</a>
+    <p>Ready to build SOPs your team will actually use?</p>
+    <a class="btn" href="https://sonat.com">Start creating with Sonat</a>
   </div>
-</main>
+</div>
 </body>
 </html>
