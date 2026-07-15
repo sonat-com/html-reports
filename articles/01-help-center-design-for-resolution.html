@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help Center Deflection Is the Wrong Goal — Design for Resolution Instead</title>
+<meta name="description" content="Help center deflection hides a problem: only 14% of self-service attempts fully resolve. Design your help center for resolution, not just fewer tickets.">
+<style>
+  :root {
+    --ink: #1c2430;
+    --muted: #5a6473;
+    --accent: #2563c9;
+    --line: #e7ebf1;
+    --bg: #ffffff;
+    --soft: #f5f8fc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 22px 72px; }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    font-weight: 750;
+  }
+  h2 {
+    font-size: 1.42rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 44px 0 14px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 1.12rem;
+    margin: 30px 0 8px;
+    font-weight: 650;
+    color: #26303d;
+  }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 680; color: #16202c; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(37,99,201,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+  img { max-width: 100%; height: auto; display: block; border-radius: 14px; }
+  figure { margin: 26px 0 32px; }
+  .hero { margin: 6px 0 34px; background: var(--soft); border-radius: 16px; padding: 8px; }
+  ul { margin: 0 0 20px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  li strong { color: #16202c; }
+  .lede { font-size: 1.14rem; color: #33404f; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    .wrap { padding: 28px 18px 56px; }
+    h1 { font-size: 1.72rem; }
+    h2 { font-size: 1.28rem; }
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <img class="hero" src="images/01-help-center-design-for-resolution-hero.png" alt="A support lead and a customer sitting together, following a step-by-step guide on a tablet until a checkmark appears">
+
+  <h1>Help Center Deflection Is the Wrong Goal — Design for Resolution Instead</h1>
+
+  <p class="lede">Most teams measure their help center by one number: how many tickets it deflects. Fewer tickets in the queue feels like a win. But deflection only tells you that someone didn't contact you — not that they got what they came for. A customer who gives up and closes the tab counts as "deflected" too.</p>
+
+  <p>That gap matters more than it sounds. By the end of this article you'll know why deflection is a misleading target, what a failed self-service visit actually costs you, and the specific design choices that move a help center from <em>avoiding</em> contact to <em>resolving</em> problems.</p>
+
+  <h2>What deflection really measures — and what it misses</h2>
+  <p>Deflection is the share of customer questions answered without a human agent. It's easy to track, which is exactly why it became the default metric. The trouble is that it counts attempts, not outcomes.</p>
+  <p>The data on outcomes is sobering. A Gartner survey found that only <strong>14% of customer service issues are fully resolved in self-service</strong>, even though 73% of customers use self-service at some point in their journey. Even for problems customers themselves described as "very simple," barely more than a third were solved without an agent. Nearly half of the people who started in self-service said the company didn't understand what they were trying to do.</p>
+  <p>Read that against a typical deflection dashboard and the picture flips. A high deflection rate sitting on top of a low resolution rate doesn't mean your help center is working. It means a lot of people are leaving without an answer — and you're calling that a success.</p>
+
+  <h2>The hidden cost of a failed help center visit</h2>
+  <p>A deflected-but-unresolved visit isn't neutral. It's negative, and it compounds.</p>
+  <p>Classic research from <em>Harvard Business Review</em> on customer effort found that the fastest way to lose loyalty is to make people work hard for an answer. Customers who fail in the channel they chose — say, a help center — and then have to pick up the phone are measurably more likely to become disloyal than customers who resolve their issue in one place. The effort of the failed attempt, not just the unresolved problem, is what drives them away.</p>
+  <p>So a weak help center does double damage. You pay for the article that didn't help, and then you pay again when a frustrated customer reaches an agent already primed for a bad conversation. "We deflected 60% of tickets" can quietly mean "we made 60% of customers try, fail, and start over."</p>
+  <p>This is why chasing deflection as a target can backfire. Optimize to keep people out of the queue and you'll happily ship an FAQ that technically answers a question while helping no one.</p>
+
+  <h2>Design your help center for resolution, not deflection</h2>
+  <p>Resolution is a design problem, not a reporting one. The shift is simple to state and harder to do: stop asking "how do we stop this ticket?" and start asking "how does this person finish their task?" These are the choices that get you there.</p>
+
+  <figure>
+    <img src="images/01-help-center-design-for-resolution-inline.png" alt="A person searching a help center on a laptop and reaching a clear, structured answer with steps and a helpful-or-not feedback prompt">
+  </figure>
+
+  <h3>Start with the questions people actually ask</h3>
+  <p>Your best source of help center content is your own support queue. Pull the most common and most costly tickets, group them by the underlying task the customer was trying to complete, and write to those tasks. This grounds your content in real language and real problems instead of the internal, feature-shaped view your team defaults to.</p>
+  <p>The test for every article: does it match a question a customer would actually type? If it reads like a product spec, rewrite it as an answer.</p>
+
+  <h3>Write task-oriented content people can act on</h3>
+  <p>A resolution-focused article walks someone from problem to done. Lead with the outcome, lay out numbered steps, and cut everything that isn't part of getting there. One task per article keeps each page scannable and keeps search from pointing people at a wall of loosely related text.</p>
+  <p>Plain language does a lot of the work here. A readability check — the kind built into Sonat's editor — flags long sentences and jargon before a customer ever hits them. If a reader has to decode the answer, you've added effort, and effort is the thing you're trying to remove.</p>
+
+  <h3>Make answers findable in seconds</h3>
+  <p>Content only resolves if people can reach it. That means fast, forgiving full-text search that tolerates the words customers use rather than your internal terms, plus a menu structure organized around tasks and topics instead of your org chart. Gartner projects that self-service will become one of the top customer service channels within the next few years — findability is what decides whether that growth helps or frustrates your customers.</p>
+  <p>A clear, consistent structure across every article also makes the whole help center easier to scan, so people build confidence that the answer is in here somewhere.</p>
+
+  <h3>Close the loop with feedback on every article</h3>
+  <p>You can't fix what you can't see. A simple "Was this helpful?" on every page turns your help center into a live signal of where self-service is breaking down. Pair that with search analytics — especially searches that return nothing — and you have a running list of the gaps costing you resolutions.</p>
+  <p>Sonat treats this feedback loop as a first-class part of the platform: readers can flag topics, and authors see which articles are pulling their weight and which need work. That's the difference between a static file dump and a help center that improves every week.</p>
+
+  <h3>Keep content current so self-service keeps working</h3>
+  <p>Nothing erodes trust faster than a confident answer that's out of date. Every product change is a potential wave of wrong articles, and a wrong article is worse than a missing one — it sends people down the incorrect path with full confidence.</p>
+  <p>Treat documentation the way engineers treat code. Version every topic so you can see what changed and roll back if needed. Use review and approval workflows so an update is checked before it goes live. Keep parallel variants when you support multiple product editions, so each audience sees the version that's true for them. Sonat brings all three — version history, approval workflows, and variants — to non-technical authors, which is what makes staying current sustainable instead of heroic.</p>
+
+  <h3>Let AI answer from your own docs, not from guesses</h3>
+  <p>AI is quickly becoming the front door to self-service, and it changes the math. A well-run AI assistant can synthesize an answer across several articles and hand the customer a direct resolution instead of a list of links to sift through.</p>
+  <p>The catch is grounding. An assistant is only as trustworthy as the content behind it. If your documentation is thin, stale, or contradictory, AI will confidently repeat those flaws at scale. Sonat's AI Answer Generator works across your published documents, so the quality of your answers rises and falls with the quality of your docs — which is exactly why the earlier steps matter. Good content is the moat. AI is the amplifier.</p>
+
+  <h2>Measure resolution, not just deflection</h2>
+  <p>If deflection is the wrong target, what replaces it? Track the signals that actually reflect a solved problem:</p>
+  <ul>
+    <li><strong>Self-service resolution rate</strong> — of people who started in the help center, how many finished there without opening a ticket.</li>
+    <li><strong>Article helpfulness</strong> — the yes/no feedback per page, so you can spot the articles quietly failing.</li>
+    <li><strong>Zero-result and repeat searches</strong> — the questions your content doesn't answer yet.</li>
+    <li><strong>Ticket-to-article traceability</strong> — which incoming tickets map to a topic that should have deflected them, but didn't.</li>
+  </ul>
+  <p>Deflection still has a place as one input. Just don't let it stand in for success. The number that matters is whether the customer walked away finished.</p>
+
+  <h2>The shift worth making</h2>
+  <p>Deflection asks, "Did we avoid this conversation?" Resolution asks, "Did we solve this person's problem?" Only one of those builds loyalty, and the research is clear that the failed attempts hiding inside a healthy-looking deflection rate are actively pushing customers away.</p>
+  <p>The fix isn't a better dashboard. It's a help center built to finish the job: grounded in real questions, written as tasks, easy to search, kept current, wired for feedback, and backed by AI that answers from your own documentation. That's the help center Sonat is built to help non-technical teams create — start free at <a href="https://sonat.com">sonat.com</a> and design yours for resolution.</p>
+</article>
+</body>
+</html>
