@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Technical Writing Style Guide Your Team Will Actually Use</title>
+<meta name="description" content="A practical playbook for building a technical writing style guide: what to include, how to keep it usable, and why consistency and plain language improve comprehension.">
+<style>
+  :root{
+    --ink:#1c2530; --muted:#5a6672; --line:#e7ebf0; --bg:#ffffff;
+    --accent:#2f6df6; --soft:#f5f8fc;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.7; font-size:18px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:740px; margin:0 auto; padding:32px 22px 80px}
+  header.hero{margin-bottom:8px}
+  h1{
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+    margin:.4em 0 .6em; font-weight:750;
+  }
+  h2{
+    font-size:1.5rem; line-height:1.25; letter-spacing:-.015em;
+    margin:2.2em 0 .5em; font-weight:700;
+  }
+  h3{font-size:1.18rem; margin:1.6em 0 .3em; font-weight:670}
+  p{margin:0 0 1.15em}
+  ul{margin:0 0 1.25em; padding-left:1.25em}
+  li{margin:.4em 0}
+  strong{font-weight:670}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(47,109,246,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  figure{margin:1.6em 0; text-align:center}
+  img{max-width:100%; height:auto; border-radius:14px; display:block; margin:0 auto}
+  .lead{font-size:1.18rem; color:var(--muted)}
+  .hero img{background:var(--soft)}
+  .divider{border:none; border-top:1px solid var(--line); margin:2.6em 0}
+  @media (max-width:600px){
+    body{font-size:17px}
+    .wrap{padding:24px 18px 64px}
+    h1{font-size:1.8rem}
+    h2{font-size:1.32rem}
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <header class="hero">
+    <figure>
+      <img src="images/01-technical-writing-style-guide-hero.png" alt="A small documentation team gathered around a shared table, comparing printed pages and adding sticky notes to a wall of labeled writing rules">
+    </figure>
+    <h1>How to Build a Technical Writing Style Guide Your Team Will Actually Use</h1>
+  </header>
+
+  <p class="lead">When two writers describe the same button three different ways, readers notice. One page says "click <strong>Save</strong>," another says "hit the save icon," a third says "select Save changes." None of them is wrong. Together, they make your documentation feel like it was assembled by strangers — because it was.</p>
+
+  <p>A technical writing style guide is how you fix that. It is the shared rulebook that decides the small, repeated questions before anyone has to argue about them, so every page reads like it came from one careful voice. This guide walks through what to put in one, how to keep it usable, and why the payoff shows up in comprehension, not just tidiness.</p>
+
+  <h2>What a technical writing style guide actually is</h2>
+  <p>A <strong>technical writing style guide</strong> is a documented set of decisions about how your team writes: word choices, formatting, tone, terminology, and structure. It is not a grammar textbook and not a brand-slogan sheet. It is the answer to "how do <em>we</em> write this," captured once so it does not get re-litigated in every review.</p>
+  <p>Think of it as three layers stacked together:</p>
+  <ul>
+    <li><strong>Language rules</strong> — voice, tense, reading level, how you handle jargon and abbreviations.</li>
+    <li><strong>Mechanics</strong> — capitalization, numbers, dates, UI element names, punctuation like the Oxford comma.</li>
+    <li><strong>Structure</strong> — how a procedure is formatted, when to use a list, how headings are phrased.</li>
+  </ul>
+  <p>You do not have to invent all of this from scratch. Mature editorial style guides already exist for the language and mechanics layers, and many teams adopt one as a base, then layer their own product-specific rules on top. That saves months and keeps you from debating settled questions.</p>
+
+  <h2>Why consistency and plain language are worth the effort</h2>
+  <p>It is tempting to treat a style guide as housekeeping. The research says otherwise: the way you write measurably changes whether people understand you.</p>
+  <p>Plain, consistent writing is not "dumbing down." Usability research from the Nielsen Norman Group found that even highly educated, expert readers prefer concise, scannable content — the IT manager and the professor want the same clarity as everyone else. Clear writing makes the author look more competent, not less.</p>
+  <p>The cost of ignoring this is real and measurable. One recent analysis of more than 1,200 plain-language research summaries found an average Flesch Reading Ease score of 39 — roughly undergraduate difficulty — and that only about a fifth met a reasonable threshold for jargon. None came close to the reading age of the general public they were written for. In other words, documents <em>labeled</em> as accessible routinely are not, because no shared standard held them to it.</p>
+  <p>A style guide is how you keep that gap from opening in your own docs. When rules about sentence length, jargon, and structure are written down, "readable" stops being a matter of who happened to draft the page.</p>
+  <p>There is a quieter benefit too. Consistent structure lowers cognitive load: when every procedure looks the same, readers build a mental model of where things live and spend their attention on the task instead of decoding your formatting.</p>
+  <figure>
+    <img src="images/01-technical-writing-style-guide-consistency.png" alt="A reader following a clearly organized manual with matching, consistent page layouts while a writer nearby aligns a set of identical labeled cards">
+  </figure>
+
+  <h2>How to create a style guide, step by step</h2>
+  <p>You do not need a hundred-page manual. A <strong>style guide for technical writing</strong> earns its keep when it is small enough to read and specific enough to settle real arguments. Here is a sequence that works.</p>
+
+  <h3>1. Start from a base, don't start from zero</h3>
+  <p>Adopt an established general editorial guide for the language-and-mechanics layer, then record only where you differ. Your custom guide should answer the questions the base guide leaves open — your product's terms, your UI conventions, your audience.</p>
+
+  <h3>2. Define voice and reading level</h3>
+  <p>Write down the voice in plain terms: <em>clear, direct, second person, present tense.</em> Pick a target reading level and state it as a number your tools can check. Plain-language guidance from public-sector writing standards is consistent on the fundamentals — write for your specific audience, prefer familiar words, use active voice, and keep sentences short.</p>
+
+  <h3>3. Lock down terminology</h3>
+  <p>Terminology drift is the single most visible inconsistency in docs. Maintain a short word list:</p>
+  <ul>
+    <li><strong>Use / don't use</strong> — "sign in," not "log in" or "login."</li>
+    <li><strong>Product and feature names</strong> — exact spelling and capitalization.</li>
+    <li><strong>Abbreviations</strong> — spell out on first use, or ban the ones you never want.</li>
+  </ul>
+  <p>Keep it to the terms that actually recur. A word list nobody can finish reading is a word list nobody reads.</p>
+
+  <h3>4. Standardize structure and formatting</h3>
+  <p>Decide the shape of your most common content types before writing them. For procedures, that usually means numbered steps, one action per step, the outcome stated when it matters. Two formatting rules do a lot of work here:</p>
+  <ul>
+    <li><strong>One idea per sentence.</strong> Established technical-writing guidance is blunt about this — focus each sentence on a single thought, the way a line of code does one job.</li>
+    <li><strong>Turn long sentences into lists.</strong> When a sentence piles up conditions or steps joined by "and" or "or," a bulleted or numbered list is almost always clearer.</li>
+  </ul>
+
+  <h3>5. Write the rules as examples, not lectures</h3>
+  <p>Every rule should carry one correct example and one incorrect one. "Use sentence case for headings" is forgettable; <em>"How to reset your password"</em> next to a crossed-out <em>"How To Reset Your Password"</em> is not. Examples are what people copy under deadline.</p>
+
+  <h2>What to put in your documentation style guide</h2>
+  <p>If you want a starting checklist, a practical <strong>documentation style guide</strong> covers these sections:</p>
+  <ul>
+    <li><strong>Voice and tone</strong> — persona, tense, point of view, formality.</li>
+    <li><strong>Plain language rules</strong> — sentence length target, jargon policy, active voice.</li>
+    <li><strong>Grammar and mechanics</strong> — capitalization, punctuation, Oxford comma, contractions.</li>
+    <li><strong>Numbers, dates, and units</strong> — formats and when to spell out.</li>
+    <li><strong>UI and product terminology</strong> — how to name buttons, menus, and features.</li>
+    <li><strong>Formatting patterns</strong> — procedures, notes and warnings, code and inline UI text.</li>
+    <li><strong>Accessibility</strong> — alt text rules, descriptive link text, heading hierarchy.</li>
+    <li><strong>Localization notes</strong> — what translators need, terms to leave untranslated.</li>
+  </ul>
+  <p>Do not try to ship all of it at once. Start with terminology and procedure formatting — the two that cause the most visible inconsistency — and grow the guide as real questions come up.</p>
+
+  <h2>How to keep a style guide from dying</h2>
+  <p>Most style guides fail the same way: they are written once, saved somewhere, and never opened again. A <strong>tech writing style guide</strong> stays alive only if using it is easier than ignoring it.</p>
+  <p>A few habits keep it breathing:</p>
+  <ul>
+    <li><strong>Put it where the writing happens.</strong> A rulebook in a folder nobody visits is already dead. It should sit beside the editor, searchable, one click from the draft.</li>
+    <li><strong>Grow it from real edits.</strong> When the same correction shows up three times in review, that is not a nagging habit — it is a missing rule. Add it, with an example, and stop making the correction by hand.</li>
+    <li><strong>Automate what you can.</strong> Reading-level and consistency checks catch drift before review, so humans spend their time on judgment, not policing capitalization.</li>
+    <li><strong>Give it an owner.</strong> Guides that belong to everyone belong to no one. One editor keeps it coherent so it does not fracture into three voices.</li>
+  </ul>
+  <p>This is where a documentation platform earns its place in the workflow. When your style guide, your templates, your readability checks, and your review process live in the same tool your writers already work in, the rules are applied as people write — not bolted on afterward. A single, version-tracked home for your content is what turns a style guide from a document into a habit. Platforms built for exactly this, like <a href="https://sonat.com">Sonat</a>, pair a familiar editor with built-in readability scoring and approval workflows so consistency is something the tool helps enforce, not something one reviewer holds in their head.</p>
+
+  <h2>The payoff</h2>
+  <p>A technical writing style guide is not about control for its own sake. It is the mechanism that turns individual good intentions into documentation that reads as one clear, trustworthy voice — the kind readers, including expert ones, actually prefer.</p>
+  <p>Start small: pick a base guide, write down your terminology and your procedure format, and capture every rule as a before-and-after example. Keep it next to the writing, grow it from the edits you keep repeating, and give it an owner. Do that, and "consistent" and "readable" stop being aspirations you hope each writer remembers — and become the default your team ships by.</p>
+</article>
+</body>
+</html>
