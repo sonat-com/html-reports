@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Single Source of Truth: How to Build One for Team Knowledge</title>
+<meta name="description" content="A practical guide to building a single source of truth for your team's knowledge: what it is, why fragmentation costs so much, and how to build one.">
+<style>
+  :root {
+    --ink: #1f2733;
+    --muted: #5a6675;
+    --line: #e7ebf0;
+    --accent: #2b6cb0;
+    --bg: #ffffff;
+    --soft: #f6f8fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 72px; }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 8px 0 20px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 44px 0 12px;
+  }
+  h3 {
+    font-size: 1.18rem;
+    margin: 28px 0 8px;
+  }
+  p { margin: 0 0 18px; }
+  ul { margin: 0 0 18px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(43,108,176,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    margin: 8px 0 8px;
+    background: var(--soft);
+  }
+  figure { margin: 28px 0; }
+  .hero { margin: 4px 0 8px; }
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.32rem; }
+    .wrap { padding: 28px 18px 56px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <figure class="hero">
+    <img src="images/01-single-source-of-truth-team-knowledge-hero.png" alt="A team gathering scattered documents into one labeled central binder on a shelf">
+  </figure>
+
+  <h1>Single Source of Truth: How to Build One for Your Team's Knowledge</h1>
+
+  <p>Your team already has the answer to almost every question it gets asked. The problem is where the answer lives: half of it is in someone's head, some is in an old doc, and the rest is buried in a chat thread from four months ago. So people ask again, guess, or rebuild something that already existed.</p>
+
+  <p>A single source of truth fixes that. This guide explains what one actually is, why scattered knowledge quietly drains so much time, and how to build a source of truth your team will trust and keep using — without a long, technical rollout.</p>
+
+  <h2>What is a single source of truth?</h2>
+
+  <p>A single source of truth is one authoritative, agreed-upon place where a piece of information lives, so everyone reads the same current version instead of their own copy. For a team's knowledge, it means every process, policy, and how-to has one home — one link you can share and trust.</p>
+
+  <p>That last part matters. A folder full of files is not a single source of truth if nobody knows which file is current. The "truth" comes from a shared agreement that this version is the one that counts, and a way to keep it that way.</p>
+
+  <h2>Why scattered knowledge costs more than it looks</h2>
+
+  <p>Fragmentation feels normal, so its cost stays invisible. The research says otherwise.</p>
+
+  <p>The McKinsey Global Institute found that the average interaction worker spends close to <strong>20% of the workweek</strong> just looking for internal information or tracking down a colleague who can help. That is roughly a full day, every week, spent hunting instead of doing. McKinsey also found that a searchable record of a company's knowledge can cut that search time by <strong>as much as 35%</strong> — time that goes straight back into real work.</p>
+
+  <p>The knowledge that never gets written down is even more expensive. In Panopto's Workplace Knowledge and Productivity Report, employees reported wasting about <strong>5.3 hours a week</strong> either waiting for information from a coworker or recreating something that already existed. The same research estimated that inefficient knowledge-sharing costs a large US business around <strong>$47 million a year</strong>, and that <strong>42% of institutional knowledge is unique to one person</strong> — held by an individual and never shared. When that person is on vacation, in a meeting, or gone for good, their part of the work stops.</p>
+
+  <p>None of this is a motivation problem. It is a structure problem. When there is no single place that counts, people default to the fastest source they can find, which is usually the least reliable one.</p>
+
+  <h2>What makes a real single source of truth</h2>
+
+  <p>A source of truth is defined by five traits, not by the tool you pick:</p>
+
+  <ul>
+    <li><strong>One authoritative home.</strong> Each topic has exactly one canonical version. If the same policy exists in three places, you have three sources and no truth.</li>
+    <li><strong>Structured and searchable.</strong> Knowledge is organized so people can browse it and find it, because an answer nobody can locate is the same as no answer.</li>
+    <li><strong>Owned.</strong> Every important topic has a named owner who is accountable for keeping it accurate. Knowledge decays fastest when no one is responsible for it.</li>
+    <li><strong>Versioned.</strong> You can see what changed, when, and by whom — and roll back if a change was wrong. History is what lets people trust the current version.</li>
+    <li><strong>Published to the people who need it.</strong> Internal teams, customers, or both can reach it in the moment they have the question, on any device.</li>
+  </ul>
+
+  <p>Miss one of these and the source quietly stops being trusted. Skip ownership and it goes stale; skip search and people give up and ask a human instead.</p>
+
+  <h2>How to build a single source of truth</h2>
+
+  <p>You don't need a six-month project. A focused knowledge management process, run in order, gets you a source of truth your team will actually adopt.</p>
+
+  <figure>
+    <img src="images/01-single-source-of-truth-team-knowledge-build.png" alt="A person mapping documentation topics into a clear tree structure on a wall while a colleague labels folders">
+  </figure>
+
+  <h3>1. Audit what you already have</h3>
+  <p>List where knowledge currently lives — shared drives, wikis, inboxes, chat, and the experts people quietly rely on. You are looking for duplicates, contradictions, and gaps. Most teams find the same answer written several ways in several places, which is exactly the fragmentation to eliminate.</p>
+
+  <h3>2. Pick one home and commit to it</h3>
+  <p>Choose a single destination for published knowledge and make it the default. The goal isn't more tools — it's fewer. The best internal knowledge base is the one your team will keep opening, so favor something non-technical people can write in without learning a new syntax or waiting on a developer.</p>
+
+  <h3>3. Structure it before you fill it</h3>
+  <p>Design a simple, shallow hierarchy around how people look for answers, not around your org chart. Group topics into clear sections, name them in plain language, and keep the tree shallow enough to scan. A clean structure is what turns a pile of documents into a source of truth someone can navigate.</p>
+
+  <h3>4. Assign an owner to every area</h3>
+  <p>Give each section a named owner responsible for accuracy and review timing. This is the single most important knowledge management best practice, because it is the only thing that reliably stops decay. Ownership also settles disputes: when two versions disagree, the owner decides which one is true.</p>
+
+  <h3>5. Write at the source and migrate deliberately</h3>
+  <p>Move the good content in, rewrite the contradictory content into one canonical version, and delete the rest. Going forward, capture knowledge where the work happens — when a process changes, the person who changed it updates the one document, rather than emailing an explanation to five people.</p>
+
+  <h3>6. Publish it and make it findable</h3>
+  <p>Put the knowledge in front of the people who need it, with fast full-text search and a clean, mobile-friendly reading experience. If teammates or customers can pull up the right answer in seconds, they stop interrupting each other — the case McKinsey's numbers make directly.</p>
+
+  <h3>7. Build a review rhythm</h3>
+  <p>Set a cadence: each owner reviews their area on a schedule, and every published topic shows when it was last checked. A source of truth is a living system, not a launch. The review rhythm is what keeps "current" actually current.</p>
+
+  <h2>Keep it from decaying</h2>
+
+  <p>Most knowledge bases don't fail on day one — they rot slowly until people stop trusting them, and once trust is gone it rarely comes back. Three habits prevent that.</p>
+
+  <p>First, protect the single-home rule. The moment a second "official" copy appears, start merging or deleting. Second, make updates lighter than workarounds; if fixing the doc is harder than pinging a colleague, people will always ping the colleague. Third, use AI to fight decay instead of just generating more content: modern knowledge platforms can surface stale or contradictory topics for a human owner to resolve, and answer questions directly from your approved content so readers get a trustworthy answer without digging. AI works best on top of a well-governed source of truth — clean, owned content in, reliable answers out.</p>
+
+  <h2>Common questions about a single source of truth</h2>
+
+  <h3>What does "single source of truth" mean in plain terms?</h3>
+  <p>It means one official place for each piece of information, so everyone reads the same current version instead of their own copy. The phrase is used in data teams too, but for knowledge work it simply means: one link per answer, and that link is always right.</p>
+
+  <h3>Is a single source of truth the same as a knowledge base?</h3>
+  <p>Close, but not identical. A knowledge base is where the content lives; a single source of truth is the promise that the content there is the one authoritative version. A knowledge base becomes a source of truth once you add ownership, versioning, and the rule that nothing important lives in two places at once.</p>
+
+  <h3>What should I look for in single source of truth software?</h3>
+  <p>Favor tools that non-technical teammates can write in without special training, that offer real search, version history, and clear ownership, and that publish to the people who need the answer — internal teams, customers, or both. The best tool is the one your team keeps using, so ease of writing usually matters more than any long feature list.</p>
+
+  <h2>Turn scattered knowledge into one source of truth</h2>
+
+  <p>The shift is simple to say and worth real money to make: stop letting the same knowledge live in ten half-current places, and give it one authoritative, searchable, owned home. Audit what you have, pick one home, structure it, assign owners, and keep a review rhythm — and you convert that lost day-a-week of searching into work that moves your team forward.</p>
+
+  <p><a href="https://sonat.com">Sonat</a> is built for exactly this: a single source of truth your whole team can write, translate, and publish without technical setup — with versioning, review workflows, and built-in AI answers on top of the content you trust. Start free and give your team's knowledge one home worth trusting.</p>
+
+</main>
+</body>
+</html>
