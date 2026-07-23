@@ -3,170 +3,156 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IT Documentation Best Practices (2026 Guide)</title>
-<meta name="description" content="IT documentation best practices to cut support tickets: what to document first, how to write runbooks and an internal knowledge base, and how to keep docs current.">
-<meta name="robots" content="index, follow">
-<meta property="og:type" content="article">
-<meta property="og:title" content="IT Documentation Best Practices: How to Build Internal Docs That Get Used">
-<meta property="og:description" content="A practical guide to IT documentation that reduces support tickets — runbooks, internal knowledge bases, onboarding docs, and how to keep them current.">
-<meta property="og:image" content="images/01-it-documentation-best-practices-hero.png">
+<title>IT Documentation Best Practices: A Practical Guide</title>
+<meta name="description" content="IT documentation best practices for IT and ops teams: what to document, how to structure runbooks and wikis, who owns them, and how to keep docs current.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "IT Documentation Best Practices: How to Build Internal Docs That Get Used",
-  "description": "A practical guide to IT documentation that reduces support tickets — runbooks, internal knowledge bases, onboarding docs, and how to keep them current.",
-  "image": "images/01-it-documentation-best-practices-hero.png",
-  "publisher": { "@type": "Organization", "name": "Sonat" },
-  "mainEntityOfPage": { "@type": "WebPage" }
+  "headline": "IT Documentation Best Practices: How to Build Docs Your Team Actually Uses",
+  "about": "IT documentation",
+  "publisher": { "@type": "Organization", "name": "Sonat" }
 }
 </script>
 <style>
   :root{
-    --ink:#1c2430; --body:#33404f; --muted:#5b6877; --line:#e8ecf1;
-    --accent:#2f6df0; --bg:#ffffff; --soft:#f6f8fb;
-    --maxw:720px;
+    --ink:#1f2430; --muted:#5b6472; --line:#e7e9ee; --bg:#ffffff;
+    --accent:#2f6df6; --accent-soft:#eef3ff; --maxw:720px;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0; background:var(--bg); color:var(--body);
+    margin:0; background:var(--bg); color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-size:18px; line-height:1.7;
-    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:48px 22px 88px}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:32px 22px 72px}
+  header.hero{margin-bottom:8px}
   h1{
-    color:var(--ink); font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
-    margin:.2em 0 .7em; font-weight:800;
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+    margin:.4em 0 .5em; font-weight:800;
   }
   h2{
-    color:var(--ink); font-size:1.5rem; line-height:1.3; letter-spacing:-.01em;
-    margin:2.2em 0 .6em; font-weight:750;
+    font-size:1.5rem; line-height:1.28; letter-spacing:-.01em;
+    margin:2.1em 0 .55em; font-weight:750;
   }
-  h3{color:var(--ink); font-size:1.2rem; margin:1.6em 0 .4em; font-weight:700}
+  h3{font-size:1.16rem; margin:1.7em 0 .4em; font-weight:700}
   p{margin:0 0 1.15em}
-  a{color:var(--accent); text-decoration:none}
-  a:hover{text-decoration:underline}
   ul,ol{margin:0 0 1.2em; padding-left:1.3em}
   li{margin:.4em 0}
-  li::marker{color:var(--muted)}
-  strong{color:var(--ink); font-weight:680}
-  figure{margin:1.8em 0}
-  img{display:block; width:100%; height:auto; border-radius:14px; background:var(--soft)}
-  .hero{margin:0 0 1.6em}
-  .lead{font-size:1.18rem; color:var(--muted)}
+  strong{font-weight:700}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(47,109,246,.3)}
+  a:hover{border-bottom-color:var(--accent)}
+  img{max-width:100%; height:auto; display:block; border-radius:14px; margin:0 auto}
+  figure{margin:0 0 1.6em}
+  .lead{font-size:1.15rem; color:var(--ink)}
   .cta{
-    margin-top:2.6em; padding:26px 26px; background:var(--soft);
-    border:1px solid var(--line); border-radius:16px;
+    margin-top:2.6em; padding:22px 24px; background:var(--accent-soft);
+    border:1px solid #dbe6ff; border-radius:16px;
   }
-  .cta h2{margin-top:0}
-  .cta p{margin-bottom:0}
-  @media (max-width:600px){
+  .cta p{margin:0}
+  hr{border:0; border-top:1px solid var(--line); margin:2.4em 0}
+  @media (max-width:520px){
     body{font-size:17px}
-    .wrap{padding:30px 18px 64px}
     h1{font-size:1.8rem}
     h2{font-size:1.32rem}
+    .wrap{padding:22px 18px 56px}
   }
 </style>
 </head>
 <body>
-<main class="wrap">
+<div class="wrap">
   <article>
-    <figure class="hero">
-      <img src="images/01-it-documentation-best-practices-hero.png" alt="A small IT team gathered around a shelf of labeled binders, one person updating a checklist on a whiteboard while a colleague follows a step-by-step guide on a laptop">
-    </figure>
+    <header class="hero">
+      <figure>
+        <img src="images/01-it-documentation-best-practices-hero.png" alt="An IT team gathered around a wall of labeled folders and a screen, one person following a step-by-step checklist while a colleague onboards a new teammate">
+      </figure>
+      <h1>IT Documentation Best Practices: How to Build Docs Your Team Actually Uses</h1>
+    </header>
 
-    <h1>IT Documentation Best Practices: How to Build Internal Docs That Get Used</h1>
+    <p class="lead">The server goes down at 2&nbsp;a.m. The one engineer who knows how it was configured is on a plane. The runbook, if it exists, lives in a personal folder no one else can open. This is what missing IT documentation costs you — not on the day you write it, but on the day you need it and it isn't there.</p>
 
-    <p class="lead">Your team already knows how to reset the VPN, rebuild the print server, and onboard a new hire's laptop. The problem is that the knowledge lives in three people's heads, a buried chat thread, and one spreadsheet nobody can find. So the same questions keep coming back as tickets, and every answer waits on whoever happens to be free.</p>
+    <p>Good IT documentation turns private knowledge into a shared resource. It shortens outages, cuts repeat support tickets, and lets a new hire find an answer without tapping a senior colleague on the shoulder. This guide covers what to document, how to structure it, who should own it, and how to keep it from going stale.</p>
 
-    <p>Good IT documentation breaks that cycle. It turns what your best people know into something the rest of the team — and your end users — can follow without asking. This guide walks through what to document first, how to write runbooks and a knowledge base that hold up under pressure, and how to keep all of it from going stale.</p>
+    <h2>What is IT documentation?</h2>
+    <p>IT documentation is the written record of how an organization's systems, processes, and infrastructure work — how to run them, fix them, and recover them. It includes runbooks, internal wikis, network and asset records, onboarding guides, and disaster-recovery plans. The goal is a single, trustworthy place to answer "how does this work, and what do I do when it breaks?"</p>
+    <p>Treated well, that record becomes your single source of truth. Treated as an afterthought, it becomes a pile of half-true files that people learn to ignore.</p>
 
-    <h2>What counts as IT documentation?</h2>
-    <p>IT documentation is the written record of how your systems, services, and processes actually work — and how to fix them when they don't. It usually spans four kinds of content:</p>
+    <h2>Why IT documentation matters</h2>
+    <p>The value shows up in three moments that every IT team recognizes.</p>
     <ul>
-      <li><strong>Runbooks</strong> — step-by-step procedures for routine and emergency tasks (restart a service, recover a database, respond to an outage).</li>
-      <li><strong>An internal knowledge base or wiki</strong> — searchable how-to articles, troubleshooting guides, and reference material.</li>
-      <li><strong>Onboarding documentation</strong> — what a new IT hire needs to get productive: access, tools, conventions, and who owns what.</li>
-      <li><strong>Asset and configuration records</strong> — what you run, where it lives, and how it's set up.</li>
+      <li><strong>During incidents.</strong> When something breaks, responders need proven steps, not improvisation. Clear procedures shrink the time between "something's wrong" and "it's fixed."</li>
+      <li><strong>During onboarding.</strong> A documented environment lets new engineers become useful in days, not months, because the answers live in a place they can search instead of a colleague's memory.</li>
+      <li><strong>During audits and recovery.</strong> When you need to prove a control or rebuild a system, written procedures are the difference between a calm recovery and a scramble.</li>
     </ul>
-    <p>Each type answers a different question, but they share one goal: getting the right answer to the right person without a synchronous interruption.</p>
+    <p>Every ticket that gets answered by a search instead of a chat message is time your team gets back. That compounds.</p>
 
-    <h2>Why IT documentation reduces support tickets</h2>
-    <p>Every undocumented fix is a future ticket. When the only path to an answer is a person, demand routes to that person — and queues behind them.</p>
-    <p>Documentation flips the default. A runbook lets a Level 1 technician resolve an issue that used to escalate. A searchable knowledge base lets an end user reset their own password instead of opening a request. Each self-serve fix keeps a ticket from ever reaching your queue, and each runbook keeps your team moving instead of debating the order of operations while users wait.</p>
-    <p>The compounding effect matters more than any single article. Knowledge isn't additive — it's multiplicative when it's connected. A ticket that surfaces the relevant device record, which links to the network diagram, which links to the runbook for that exact failure, resolves in minutes instead of hours.</p>
+    <h2>The core types of IT documentation to maintain</h2>
+    <p>You don't need to document everything at once. Start with the records that hurt most when they're missing.</p>
 
-    <h2>What to document first</h2>
-    <p>You can't document everything at once, and you shouldn't try. Start where the pain is loudest.</p>
-    <p>Look at the issues your team solves over and over. What do technicians search for most? What questions do new hires ask in their first week? What context is always missing when a ticket gets escalated? Document those first. Even ten well-written articles covering your highest-volume issues create immediate, measurable time savings — and they prove the value of the effort before you invest in breadth.</p>
-    <p>A quick knowledge audit helps here: ask the team which resources they reach for and where the gaps are. The answers tell you exactly which articles will earn their keep.</p>
+    <h3>Runbooks and incident playbooks</h3>
+    <p>A runbook is a step-by-step procedure for a specific operational task — restarting a service, rotating a certificate, restoring a database. The best ones are actionable and jargon-light, written so someone half-awake can follow them without guessing.</p>
+    <p>Google's site reliability practice makes a useful point here: during a serious incident, the most important artifact is a living document that everyone can edit at once, with the most important information at the top. Your runbooks should feed that document, not replace it — reusable steps for known problems, a live record for the problem in front of you.</p>
 
-    <h2>How to write an IT runbook that holds up under pressure</h2>
-    <p>A runbook is a standardized procedure for completing a repetitive IT process — the same way, every time, by whoever is on call. The concept is old and proven: operators have kept runbooks since the mainframe era precisely because incidents are a bad time to improvise.</p>
-    <p>A runbook that people actually trust shares five qualities:</p>
-    <ol>
-      <li><strong>Actionable</strong> — it states exactly what to do, in order, with no assumed steps.</li>
-      <li><strong>Accessible</strong> — the team knows where it lives and can reach it during an incident.</li>
-      <li><strong>Accurate</strong> — it reflects the current environment, not last year's.</li>
-      <li><strong>Authoritative</strong> — there is one runbook per process, not three half-right copies.</li>
-      <li><strong>Adaptable</strong> — it's easy to update as systems change, so it doesn't rot.</li>
-    </ol>
+    <h3>An internal wiki or knowledge base</h3>
+    <p>An internal wiki is the home for everything that isn't a single procedure: how systems fit together, why a decision was made, which team owns what. This is where tribal knowledge goes to become team knowledge. The test of a good internal wiki isn't how much is in it — it's whether people can find the right page in one search.</p>
+
+    <h3>Onboarding and access documentation</h3>
+    <p>IT onboarding documentation answers the questions every new hire asks in week one: which accounts do I need, how do I request access, where do the tools live, who approves what. Writing it down once saves the same conversation dozens of times and gives new people a sense of control on day one.</p>
+
+    <h3>Disaster recovery and continuity plans</h3>
+    <p>Recovery procedures deserve their own category because the stakes are highest and the reader is most stressed. Established contingency-planning guidance is blunt about this: recovery steps should be documented in a formal plan, that plan should assign specific responsibilities to named roles, and it should be reviewed and updated on a fixed schedule so it still works when you finally need it.</p>
+
+    <h3>Asset, network, and configuration records</h3>
+    <p>Finally, keep an accurate picture of what you actually run — hardware, software, network layout, key configurations. These records rarely feel urgent, which is exactly why they drift. Tie updates to a change process so the map matches the territory.</p>
 
     <figure>
-      <img src="images/01-it-documentation-best-practices-inline.png" alt="A flat-style illustration of two people reviewing a single runbook document together as it branches into clear, numbered steps">
+      <img src="images/01-it-documentation-best-practices-inline.png" alt="A person reviewing a clearly structured documentation page with a title, ordered steps, and an owner label, next to a calendar marking a scheduled review">
     </figure>
 
-    <h3>A simple IT runbook template</h3>
-    <p>You don't need a heavy format. A dependable runbook template covers:</p>
-    <ul>
-      <li><strong>Overview</strong> — what process or service this runbook is for, and when to use it.</li>
-      <li><strong>Owner and authorization</strong> — who maintains it and who's allowed to run it.</li>
-      <li><strong>Prerequisites</strong> — access, credentials location, and tools needed.</li>
-      <li><strong>Steps</strong> — numbered actions, including what to verify first and the expected result of each step.</li>
-      <li><strong>Escalation</strong> — who to notify, and the threshold for escalating.</li>
-      <li><strong>Recovery and rollback</strong> — how to undo, and any disaster-recovery notes.</li>
-    </ul>
-    <p>Write it with a subject-matter expert, then have a different team member follow it start to finish. If they can complete the task without asking questions, the runbook works. If they can't, you've found the gap before an outage does.</p>
+    <h2>IT documentation best practices</h2>
+    <p>Deciding what to document is the easy half. Keeping it accurate and used is where most teams struggle. These practices are what separate living documentation from a graveyard of stale pages.</p>
 
-    <h2>Build an internal knowledge base your team will actually use</h2>
-    <p>Runbooks handle procedures; an internal IT knowledge base handles everything else — troubleshooting steps, how-tos, reference docs, and the institutional knowledge that usually walks out the door when someone leaves.</p>
-    <p>The single most important principle is a <strong>single source of truth</strong>. When the same answer lives in five places, employees waste time finding it and can't trust what they find. Consolidating into one authoritative home reduces confusion and makes every other practice easier.</p>
-    <p>A few habits keep a knowledge base usable rather than just large:</p>
-    <ul>
-      <li><strong>Make it findable.</strong> Strong search and consistent naming matter more than perfect categorization. People should reach an answer in one search, not five clicks.</li>
-      <li><strong>Standardize your terms.</strong> Agree on what things are called so an article written by the network team is discoverable by the help desk.</li>
-      <li><strong>Assign owners.</strong> Every article, runbook, and FAQ should have a clear owner and a review schedule — quarterly at minimum.</li>
-      <li><strong>Drive adoption deliberately.</strong> A knowledge base isn't a launch event; it's a behavior change. Build "write it down" into how tickets get closed, so the base grows as a byproduct of normal work.</li>
-    </ul>
+    <h3>Write for the person who needs it at 2 a.m.</h3>
+    <p>Assume your reader is tired, under pressure, and unfamiliar with the system. Lead with the task, use short numbered steps, spell out commands exactly, and note what a successful result looks like. If a step has a risk, flag it before the step, not after.</p>
 
-    <h2>Don't forget IT onboarding documentation</h2>
-    <p>New IT hires are your best documentation reviewers — they hit every gap in their first month. Capture what they need in one place: how to get access, which tools you use and why, naming conventions, escalation paths, and a map of who owns which systems.</p>
-    <p>Good onboarding documentation shortens ramp time from months to weeks, and it pays a second dividend: a new hire who learns from clear docs becomes someone who writes clear docs.</p>
+    <h3>Give every document an owner</h3>
+    <p>A document with no owner is a document no one updates. Contingency-planning standards insist on assigning responsibility to specific roles for exactly this reason. Put an owner on every runbook and wiki page — a role, ideally, not just a person who might change teams — so there's always someone accountable for keeping it true.</p>
 
-    <h2>Keep your documentation from going stale</h2>
-    <p>Stale documentation is the reason most teams quietly stop trusting their docs — and once trust is gone, people go back to asking a human. But staleness isn't really a documentation problem; it's a process problem. Information goes out of date because the change didn't include a step to update the docs.</p>
-    <p>The fix is to connect documentation to the work that changes it:</p>
-    <ul>
-      <li><strong>Tie updates to change management.</strong> When you change a system, updating its runbook is part of "done," not a separate chore.</li>
-      <li><strong>Update as you go.</strong> Close a recurring ticket, improve the related article. Small, consistent edits beat periodic documentation sprints.</li>
-      <li><strong>Prune ruthlessly.</strong> Remove outdated and duplicate entries on a schedule so the good content stays easy to find.</li>
-      <li><strong>Keep a version history.</strong> Being able to see what changed — and restore a previous version — turns maintenance from risky into routine.</li>
-    </ul>
+    <h3>Keep a single source of truth</h3>
+    <p>The fastest way to lose trust in documentation is to have two versions of it. When the same procedure lives in three places, all three rot. Pick one home for each topic, link to it everywhere else, and delete the copies. People trust documentation they never catch being wrong.</p>
 
-    <h2>Make documentation self-service — and multilingual</h2>
-    <p>Internal docs reduce tickets between your technicians. Published docs reduce tickets from your users. The same VPN, password, and printer guides that help your help desk can deflect Tier Zero requests entirely when end users can find them on their own.</p>
-    <p>That means treating publishing, search, and feedback as first-class. Put answers where people already are, let them search in plain language, and give them a way to flag what's wrong so the docs improve from real usage. If your users span regions, machine translation lets one well-written article serve every language without rewriting it by hand.</p>
+    <h3>Version everything and track changes</h3>
+    <p>Systems change constantly, and your docs have to move with them. Keep a version history so anyone can see what changed, when, and why — and roll back if an edit made things worse. Treating content the way engineers treat code, with review and history, is what keeps a document reliable over years rather than weeks.</p>
+
+    <h3>Standardize with templates</h3>
+    <p>An IT documentation template removes the blank-page problem and makes every page predictable. When every runbook has the same sections — purpose, prerequisites, steps, rollback, owner — readers know where to look and writers know what to fill in. Consistency is a feature: it lowers the effort to both write and read.</p>
+
+    <h3>Make it findable</h3>
+    <p>Documentation that can't be found doesn't exist. Invest in structure and search: clear titles, a sensible hierarchy, and full-text search so a stressed responder types a symptom and lands on the fix. If finding the runbook takes longer than the fix, the runbook failed.</p>
+
+    <h3>Review on a schedule, not "when we remember"</h3>
+    <p>Every source of serious operational guidance agrees on this: documentation must be reviewed and updated on a cadence, or it silently goes out of date. Set a review interval per document type — tighter for runbooks, looser for stable reference pages — and make the review a scheduled task with an owner, not a good intention.</p>
+
+    <h2>How to write IT documentation people actually follow</h2>
+    <p>If you're starting from scratch, a simple sequence beats a grand plan:</p>
+    <ol>
+      <li><strong>List your top five failure points.</strong> The systems that page you most, or the questions that fill your ticket queue. Document those first.</li>
+      <li><strong>Write one runbook end to end.</strong> Follow your own steps on a real system. If a step doesn't work, the doc is wrong — fix it now.</li>
+      <li><strong>Give it a template and an owner.</strong> Reuse that shape for the next one.</li>
+      <li><strong>Put it where people already look,</strong> and make sure search returns it.</li>
+      <li><strong>Schedule the first review</strong> before you move on. A doc without a next review date is already aging.</li>
+    </ol>
+    <p>Repeat until the answers live in the documentation instead of in people's heads.</p>
+
+    <h2>Where Sonat fits</h2>
+    <p>Most of these practices are about discipline, but the right tool makes the discipline easier to keep. <a href="https://sonat.com">Sonat</a> is built for exactly this kind of documentation: draft in a familiar editor, keep a full version history on every topic, publish to a fast, searchable portal your team can reach in seconds, and control who can see internal material. Ownership, review workflows, and search stop being things you bolt on and become part of how the docs are written — so your IT documentation stays a single source of truth instead of drifting into scattered files.</p>
 
     <div class="cta">
-      <h2>Turn IT knowledge into self-service</h2>
-      <p>This is exactly the gap <a href="https://sonat.com">Sonat</a> was built to close. You draft in a familiar editor, keep a single source of truth with full version history, route changes through approval workflows, and publish a fast, searchable, mobile-friendly help center on your own domain — translated into any language your users need. The knowledge your best people carry becomes something the whole organization, and everyone you support, can use.</p>
+      <h2 style="margin-top:0">Start with one runbook</h2>
+      <p>You don't fix missing documentation with a project plan; you fix it one page at a time. Pick the system that scares you most, write the runbook you wish existed at 2&nbsp;a.m., give it an owner and a review date, and put it somewhere your team will actually find it. Do that five times and you'll have something rare — IT documentation people trust enough to use.</p>
     </div>
-
-    <h2>Where to start</h2>
-    <p>You don't need a documentation overhaul to see results. Pick your five highest-volume issues, write a clear runbook or article for each, give every one an owner and a review date, and make "update the docs" part of how work gets closed. That's enough to start bending the ticket curve — and once the habit takes hold, your documentation stops being a project and becomes the way your IT team works.</p>
   </article>
-</main>
+</div>
 </body>
 </html>
