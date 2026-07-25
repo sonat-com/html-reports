@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write Documentation People (and AI) Can Actually Use</title>
+<meta name="description" content="Learn how to write documentation readers and AI can actually use: structure topics around real questions, write scannable headings, and keep language plain.">
+<style>
+  :root {
+    --ink: #1a2230;
+    --muted: #5a6472;
+    --accent: #1f6feb;
+    --rule: #e7eaef;
+    --bg: #ffffff;
+    --soft: #f6f8fb;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    font-size: 18px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 22px 80px; }
+  h1 {
+    font-size: 2.15rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.1rem;
+    font-weight: 800;
+  }
+  .lede { font-size: 1.18rem; color: var(--muted); margin: 0 0 2.2rem; }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    margin: 2.6rem 0 0.8rem;
+    font-weight: 700;
+  }
+  p { margin: 0 0 1.15rem; }
+  ul { margin: 0 0 1.15rem; padding-left: 1.25rem; }
+  li { margin: 0 0 0.5rem; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(31,111,235,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+  hr { border: none; border-top: 1px solid var(--rule); margin: 2.4rem 0; }
+  .cta {
+    margin-top: 2.6rem;
+    padding: 24px 26px;
+    background: var(--soft);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+  }
+  .cta p { margin: 0; }
+  @media (max-width: 540px) {
+    body { font-size: 17px; }
+    .wrap { padding: 38px 18px 64px; }
+    h1 { font-size: 1.72rem; }
+    h2 { font-size: 1.25rem; }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #e8ecf3; --muted: #a2acbd; --accent: #6ea8fe; --rule: #2a303c; --bg: #12151b; --soft: #1a1f28; }
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <h1>How to Write Documentation People (and AI) Can Actually Use</h1>
+
+  <p class="lede">Most documentation isn't ignored because it's wrong. It's ignored because it's hard to get into. The answer is in there somewhere, buried three headings deep in a wall of text, and the reader gives up before they find it.</p>
+
+  <p>Learning how to write documentation well is less about writing more and more about structuring what you write so a busy person can land on the page, scan it, and leave with the one thing they came for. That same structure now does double duty: the AI assistants and search tools your readers ask first can only pull a clean answer out of a page that was organized cleanly in the first place.</p>
+
+  <p>This guide walks through the documentation best practices that make the difference — how to structure documentation around real questions, write headings that carry their weight, and keep the language plain enough that nobody has to read a sentence twice.</p>
+
+  <h2>Start with the questions your readers are actually asking</h2>
+  <p>Good documentation structure doesn't start with your product's feature list. It starts with the jobs a reader is trying to finish and the questions they'll type to get there.</p>
+  <p>A useful way to see this is that documentation isn't one thing — it serves a few distinct needs. Someone brand new needs a guided path to their first success. Someone with a specific task in hand needs step-by-step directions. Someone mid-task needs to look up an exact value or setting. And someone deciding whether a feature even fits needs the concepts explained. When a single page tries to serve all four at once, it serves none of them, because the reader has to sift the how-to out of the background and the reference out of the tutorial.</p>
+  <p>So before you write, sort your topics by the question behind them. "How do I invite a teammate?" is a task. "What does each permission level mean?" is reference. "Why do we use approval workflows?" is explanation. Naming the question a page answers is the fastest way to give it a clear shape — and it's the same phrasing a reader (or their AI assistant) will search with, so it doubles as your heading.</p>
+
+  <h2>Give every topic one job</h2>
+  <p>Once you know the questions, resist the urge to answer several of them on one page. The strongest technical documentation structure follows a simple rule: one topic, one job.</p>
+  <p>A page that does one job is easy to find, easy to link to, easy to update, and easy to translate. A page that quietly does five jobs is none of those things — change one part and you risk the other four, and readers scrolling for the second job have to wade past the first.</p>
+  <p>This is where a wiki-style structure earns its keep. Break the manual into focused topics, give each a plain title, and let a clear menu do the work of showing how they relate. In Sonat, topics and menus are the native unit of a manual for exactly this reason — small, self-contained pieces are what let you version, reorder, and reuse content without the whole thing turning brittle. When each section stands on its own, an AI search tool can also return that section as a complete answer instead of a fragment torn out of context.</p>
+
+  <h2>Write headings that answer, not label</h2>
+  <p>Here's a finding worth pinning to the wall: in usability research, about 79% of users scan a new page and only 16% read it word by word. Your reader is not reading your documentation. They're hunting through it.</p>
+  <p>Headings are what they hunt with, so headings have to earn their place:</p>
+  <ul>
+    <li><strong>Use a real hierarchy.</strong> H2s for the major sections, H3s for the steps or sub-points beneath them. Don't skip levels for looks — the outline is how both a person and a screen reader understand the page.</li>
+    <li><strong>Phrase headings as the reader's question or task.</strong> "Reset a user's password" beats "Password management." "When should you create a variant?" beats "Variants." A heading that names the task lets someone skim the page and jump straight to their spot.</li>
+    <li><strong>Keep each section about one idea.</strong> If a section drifts into a second topic, that's a sign it wants to be its own page.</li>
+  </ul>
+  <p>Descriptive headings help people, and they give AI-powered search a clean anchor to extract from. A vague label like "Overview" tells nobody — human or machine — what they'll find below it.</p>
+
+  <h2>Front-load the answer</h2>
+  <p>Readers who scanned their way to the right section will make a snap decision about whether to stay. Give them a reason to in the first line.</p>
+  <p>Lead each section with the answer, then add the detail — the inverted-pyramid style borrowed from newsrooms. If the section explains how to publish a manual, the opening sentence should say what publishing does and where the button is, not warm up with three sentences of context. The reader who needs more will keep going; the reader who just needed the answer is already gone, happily.</p>
+  <p>This habit pays off twice. A front-loaded section is faster for a person to confirm they're in the right place, and it's exactly what an AI assistant lifts when it quotes a source: a short, self-contained answer sitting right under a clear heading.</p>
+
+  <h2>Use plain, concrete language</h2>
+  <p>Once the structure is right, the words are what's left to get wrong. The public-sector plain-language guidance built on decades of practice lands on a short list that applies to any manual: know your audience, use everyday words instead of jargon, keep sentences short, and organize with headings and lists so the shape of the content supports understanding.</p>
+  <p>A few concrete moves:</p>
+  <ul>
+    <li><strong>Prefer the common word.</strong> "Use" over "utilize," "set up" over "provision," "turn on" over "enable" where it reads naturally.</li>
+    <li><strong>Keep sentences to one idea.</strong> If you're reaching for a second comma and a "however," start a new sentence.</li>
+    <li><strong>Write in the active voice.</strong> "Click Save" is a step. "The document should be saved" is a riddle about who does it.</li>
+    <li><strong>Cut the hype.</strong> Promotional language actually slows readers down — they spend effort filtering out the exaggeration to find the fact. In documentation, plain and direct isn't just cleaner; it's measurably faster to use.</li>
+  </ul>
+  <p>None of this dumbs the content down. It removes the friction between the reader and the thing they need to know.</p>
+
+  <h2>Keep it consistent with a light style guide</h2>
+  <p>Ten pages written by three people will read like ten pages written by three people — different terms for the same feature, headings in different formats, steps numbered one way here and bulleted another way there. That inconsistency quietly taxes the reader, who has to relearn the pattern on every page.</p>
+  <p>You don't need a hundred-page manual of style. A one-page guide that pins down the handful of decisions you'll make over and over is enough to start:</p>
+  <ul>
+    <li>The exact name of each product term (pick one and never vary it).</li>
+    <li>How headings are phrased — task-first, sentence case, no trailing punctuation.</li>
+    <li>When to use a numbered list (sequential steps) versus bullets (unordered options).</li>
+    <li>Voice and tense — usually second person, present tense, active voice.</li>
+  </ul>
+  <p>A built-in readability guide helps here too: automated scoring flags the long sentence or the dense paragraph before a reader ever hits it, so consistency isn't riding on any one author remembering every rule.</p>
+
+  <h2>Treat documentation as a living single source of truth</h2>
+  <p>The last practice is the one that keeps all the others from decaying. Documentation is never finished — the product changes, the questions change, and a page that was accurate last quarter can quietly go stale.</p>
+  <p>Two things keep it honest. First, a single source of truth: one canonical home for each topic, with a version history you can restore, so there's never a question of which copy is current. Second, a feedback loop — a way for readers to tell you a page didn't answer their question, so your next edit is aimed at a real gap instead of a guess. Sonat is built around both, because the structure you set up on day one only stays useful if it's easy to keep true.</p>
+
+  <h2>Where to start</h2>
+  <p>If you take one thing from this: how to write documentation well is mostly a structuring problem, not a writing problem. Sort your content by the questions readers ask, give each topic one job, write headings that answer instead of label, lead with the answer, and keep the language plain. Do that, and the same pages become easier for a person to scan and easier for an AI assistant to quote — without you writing a single extra word.</p>
+
+  <div class="cta">
+    <p>You don't have to fix everything at once. Pick your most-visited page, find the question it's really answering, and restructure that one. Then do the next. If you'd like a place to build that structure — topics, menus, versioning, and a readability guide in one editor — you can start free at <a href="https://sonat.com">sonat.com</a>.</p>
+  </div>
+</article>
+</body>
+</html>
