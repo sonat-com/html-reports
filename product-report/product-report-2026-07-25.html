@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sonat product report — 2026-07-25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root[data-theme="dark"] {
+    --bg:#0b0d12; --panel:#141822; --panel-2:#1a1f2c; --fg:#e7eaf2; --fg-dim:#9aa3b6;
+    --border:#1f2533; --accent:#7aa2f7; --accent-2:#bb9af7; --ok:#9ece6a; --warn:#e0af68;
+    --bad:#f7768e; --chart-grid:rgba(255,255,255,0.06);
+  }
+  :root[data-theme="light"] {
+    --bg:#f5f7fb; --panel:#fff; --panel-2:#f0f3fa; --fg:#1a2233; --fg-dim:#5a6478;
+    --border:#e3e8f2; --accent:#3b82f6; --accent-2:#8b5cf6; --ok:#16a34a; --warn:#d97706;
+    --bad:#dc2626; --chart-grid:rgba(0,0,0,0.06);
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:Inter,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:960px; margin:0 auto; padding:28px 20px 64px; }
+  header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+    flex-wrap:wrap; margin-bottom:20px; }
+  h1 { font-size:22px; font-weight:700; margin:0 0 4px; }
+  .meta { color:var(--fg-dim); font-size:13px; }
+  .controls button { background:var(--panel-2); color:var(--fg); border:1px solid var(--border);
+    border-radius:8px; padding:7px 12px; font-size:13px; cursor:pointer; }
+  .controls button:hover { border-color:var(--accent); }
+  .section-label { font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--accent); margin:26px 0 10px; }
+  .section-label.viewer { color:var(--accent-2); }
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:12px; }
+  .kpi { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .kpi .label { font-size:12px; color:var(--fg-dim); }
+  .kpi .value { font-size:26px; font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums; }
+  .kpi.accent .value { color:var(--accent); }
+  .kpi.viewer .value { color:var(--accent-2); }
+  .charts-grid { display:grid; grid-template-columns:2fr 1fr; gap:16px; margin-top:16px; }
+  @media (max-width:900px){ .charts-grid { grid-template-columns:1fr; } }
+  .chart-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .chart-card h3 { font-size:13px; font-weight:600; margin:0 0 10px; color:var(--fg-dim); }
+  /* Mandatory: every canvas lives in a fixed-height positioned box. */
+  .chartbox { position:relative; height:240px; }
+  .chartbox.tall { height:300px; }
+  .markdown-body { margin-top:28px; font-size:14.5px; line-height:1.6; }
+  .markdown-body h2 { font-size:19px; border-bottom:1px solid var(--border); padding-bottom:6px; margin-top:34px; }
+  .markdown-body table { border-collapse:collapse; width:100%; margin:12px 0; font-size:13px;
+    display:block; overflow-x:auto; }
+  .markdown-body th, .markdown-body td { border:1px solid var(--border); padding:6px 10px; text-align:left; }
+  .markdown-body th { background:var(--panel-2); }
+  .markdown-body code { background:var(--panel-2); padding:1px 5px; border-radius:4px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; }
+  .markdown-body strong { color:var(--fg); }
+  .footer { margin-top:40px; color:var(--fg-dim); font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Sonat product report — 2026-07-25</h1>
+      <div class="meta">Last 7 days &middot; generated 2026-07-25 13:27 UTC &middot;
+        Editor + Viewer &middot; aggregate, no PII</div>
+    </div>
+    <div class="controls"><button onclick="toggleTheme()">Toggle theme</button></div>
+  </header>
+
+  <div class="section-label">Editor &mdash; editor.sonat.com</div>
+  <div class="kpi-grid">
+    
+    <div class="kpi accent"><div class="label">Weekly active users</div><div class="value">34</div></div>
+    <div class="kpi"><div class="label">Active accounts</div><div class="value">15</div></div>
+    <div class="kpi"><div class="label">Paid accounts active</div><div class="value">0</div></div>
+    <div class="kpi"><div class="label">Signups</div><div class="value">5</div></div>
+    <div class="kpi"><div class="label">Documents published</div><div class="value">43</div></div>
+  </div>
+  <div class="charts-grid">
+    <div class="chart-card"><h3>Daily active users (editor)</h3><div class="chartbox tall"><canvas id="chart-dau"></canvas></div></div>
+    <div class="chart-card"><h3>Activation funnel</h3><div class="chartbox tall"><canvas id="chart-activation"></canvas></div></div>
+  </div>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-card"><h3>Top editor features &mdash; events vs unique users</h3><div class="chartbox tall"><canvas id="chart-editor-features"></canvas></div></div>
+  </div>
+
+  <div class="section-label viewer">Viewer &mdash; sonat.com</div>
+  <div class="kpi-grid">
+    
+    <div class="kpi viewer"><div class="label">Readers (unique)</div><div class="value">21</div></div>
+    <div class="kpi"><div class="label">Searches</div><div class="value">0</div></div>
+    <div class="kpi"><div class="label">AI questions</div><div class="value">0</div></div>
+    <div class="kpi"><div class="label">PDF downloads</div><div class="value">0</div></div>
+  </div>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-card"><h3>Top viewer features &mdash; events vs unique users</h3><div class="chartbox tall"><canvas id="chart-viewer-features"></canvas></div></div>
+  </div>
+
+  <div class="markdown-body"><h2>Editor</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>WoW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weekly active users</td>
+<td>34</td>
+<td>▲ 3.0% WoW</td>
+</tr>
+<tr>
+<td>Active accounts</td>
+<td>15</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Paid accounts active</td>
+<td>0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Signups</td>
+<td>5</td>
+<td>▼ 28.6% WoW</td>
+</tr>
+<tr>
+<td>Documents published</td>
+<td>43</td>
+<td>▼ 62.9% WoW</td>
+</tr>
+<tr>
+<td>Publishers</td>
+<td>4</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Feature usage (events / unique users)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Events</th>
+<th>Users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>topic_saved</code></td>
+<td>713</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>editor_session_ended</code></td>
+<td>211</td>
+<td>28</td>
+</tr>
+<tr>
+<td><code>editor_session_started</code></td>
+<td>203</td>
+<td>13</td>
+</tr>
+<tr>
+<td><code>topic_published</code></td>
+<td>56</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>publish_button_clicked</code></td>
+<td>46</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>document_published</code></td>
+<td>43</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>appbar_nav_clicked</code></td>
+<td>14</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>view_live_button_clicked</code></td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>page_viewed</code></td>
+<td>7</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>signup</code></td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>preview_button_clicked</code></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>publish_gate_opened</code></td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>page_created</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>translation_completed</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>translation_started</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>create_button_clicked</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>publish_gate_verify_clicked</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where users navigate (appbar sections)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Clicks</th>
+<th>Users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document-settings</td>
+<td>13</td>
+<td>1</td>
+</tr>
+<tr>
+<td>languages</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Activation funnel</strong> (unique users)</p>
+<ul>
+<li>Signed up: <strong>5</strong></li>
+<li>Created a topic: <strong>0</strong> (0.0% of signups)</li>
+<li>Created a document: <strong>0</strong></li>
+<li>Published: <strong>4</strong> (80.0% of signups)</li>
+</ul>
+<h2>Viewer</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>WoW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Readers (unique)</td>
+<td>21</td>
+<td>new</td>
+</tr>
+<tr>
+<td>Page views</td>
+<td>36</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Searches</td>
+<td>0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>AI questions</td>
+<td>0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Feedback submitted</td>
+<td>0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>PDF downloads</td>
+<td>0</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Viewer feature usage (events / unique users)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Events</th>
+<th>Users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>viewer_page_viewed</code></td>
+<td>36</td>
+<td>21</td>
+</tr>
+<tr>
+<td><code>viewer_image_zoomed</code></td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><em>Topic-view data (BigQuery) unavailable this run: bigquery query.py not found at /tmp/flow-sessions/bigquery/scripts/query.py</em></p>
+<h2>Weaknesses &amp; recommendations</h2>
+<ul>
+<li><strong>[Editor] Biggest activation drop-off is signed up → created a topic</strong> (5 → 0 users, −100.0%). This is where new users stall — investigate the 'created a topic' step's friction (empty states, unclear CTA, permissions).</li>
+<li><strong>[Editor] The publish paywall gate opened 2 times and was dismissed 0.0%</strong> of the time — publish intent blocked by billing. High dismissal warrants revisiting the gate copy or the free-tier publish allowance.</li>
+<li><strong>[Viewer] The AI assistant recorded zero questions</strong> despite active readers — either the AI answer surface has low discoverability, or the instrumentation is still propagating post-deploy. Confirm the event is firing, then consider promoting the assistant in the reader UI.</li>
+</ul></div>
+
+  <div class="footer">Generated by the Sonat product-report engine. Numbers come straight from PostHog / BigQuery — an empty section means the event is unused or newly instrumented, not zero-by-design.</div>
+</div>
+
+<script>
+  const data = {
+    dau: {"days": ["2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24"], "users": [1, 13, 5, 11, 4, 5, 3]},
+    activation: {"labels": ["Signed up", "Created topic", "Created doc", "Published"], "values": [5, 0, 0, 4]},
+    editorFeatures: {"events": [713, 211, 203, 56, 46, 43, 14, 8, 7, 5], "labels": ["topic_saved", "editor_session_ended", "editor_session_started", "topic_published", "publish_button_clicked", "document_published", "appbar_nav_clicked", "view_live_button_clicked", "page_viewed", "signup"], "users": [7, 28, 13, 4, 4, 4, 1, 3, 3, 5]},
+    viewerFeatures: {"events": [36, 3], "labels": ["viewer_page_viewed", "viewer_image_zoomed"], "users": [21, 1]},
+  };
+  let instances = [];
+  function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+  function toggleTheme(){
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('sonat-report-theme', next); } catch(e){}
+    renderCharts();
+  }
+  function renderCharts(){
+    instances.forEach(c => c.destroy()); instances = [];
+    const accent = css('--accent'), accent2 = css('--accent-2'), ok = css('--ok'),
+          warn = css('--warn'), bad = css('--bad'), grid = css('--chart-grid'), fg = css('--fg-dim');
+    Chart.defaults.color = fg; Chart.defaults.borderColor = grid;
+    Chart.defaults.font.family = "Inter, system-ui, sans-serif";
+    const base = { responsive:true, maintainAspectRatio:false };
+
+    if (document.getElementById('chart-dau')) instances.push(new Chart(
+      document.getElementById('chart-dau'), {
+        type:'line',
+        data:{ labels:data.dau.days, datasets:[{ label:'DAU', data:data.dau.users,
+          borderColor:accent, backgroundColor:accent+'33', fill:true, tension:.3, pointRadius:2 }] },
+        options:{ ...base, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, grid:{ color:grid } }, x:{ grid:{ display:false } } } },
+      }));
+
+    if (document.getElementById('chart-activation')) instances.push(new Chart(
+      document.getElementById('chart-activation'), {
+        type:'bar',
+        data:{ labels:data.activation.labels, datasets:[{ data:data.activation.values,
+          backgroundColor:[accent, accent2, warn, ok] }] },
+        options:{ ...base, indexAxis:'y', plugins:{ legend:{ display:false } }, scales:{ x:{ beginAtZero:true, grid:{ color:grid } }, y:{ grid:{ display:false } } } },
+      }));
+
+    function grouped(id, d){
+      if (!document.getElementById(id)) return;
+      instances.push(new Chart(document.getElementById(id), {
+        type:'bar',
+        data:{ labels:d.labels, datasets:[
+          { label:'Events', data:d.events, backgroundColor:accent },
+          { label:'Unique users', data:d.users, backgroundColor:accent2 } ] },
+        options:{ ...base, indexAxis:'y', plugins:{ legend:{ position:'bottom' } },
+          scales:{ x:{ beginAtZero:true, grid:{ color:grid } }, y:{ grid:{ display:false } } } },
+      }));
+    }
+    grouped('chart-editor-features', data.editorFeatures);
+    grouped('chart-viewer-features', data.viewerFeatures);
+  }
+  (function(){
+    try { const t = localStorage.getItem('sonat-report-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch(e){}
+    renderCharts();
+  })();
+</script>
+</body>
+</html>
