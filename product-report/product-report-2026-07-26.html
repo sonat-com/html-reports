@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sonat product report — 2026-07-26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root[data-theme="dark"] {
+    --bg:#0b0d12; --panel:#141822; --panel-2:#1a1f2c; --fg:#e7eaf2; --fg-dim:#9aa3b6;
+    --border:#1f2533; --accent:#7aa2f7; --accent-2:#bb9af7; --ok:#9ece6a; --warn:#e0af68;
+    --bad:#f7768e; --chart-grid:rgba(255,255,255,0.06);
+  }
+  :root[data-theme="light"] {
+    --bg:#f5f7fb; --panel:#fff; --panel-2:#f0f3fa; --fg:#1a2233; --fg-dim:#5a6478;
+    --border:#e3e8f2; --accent:#3b82f6; --accent-2:#8b5cf6; --ok:#16a34a; --warn:#d97706;
+    --bad:#dc2626; --chart-grid:rgba(0,0,0,0.06);
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:Inter,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:960px; margin:0 auto; padding:28px 20px 64px; }
+  header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+    flex-wrap:wrap; margin-bottom:20px; }
+  h1 { font-size:22px; font-weight:700; margin:0 0 4px; }
+  .meta { color:var(--fg-dim); font-size:13px; }
+  .controls button { background:var(--panel-2); color:var(--fg); border:1px solid var(--border);
+    border-radius:8px; padding:7px 12px; font-size:13px; cursor:pointer; }
+  .controls button:hover { border-color:var(--accent); }
+  .section-label { font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--accent); margin:26px 0 10px; }
+  .section-label.viewer { color:var(--accent-2); }
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:12px; }
+  .kpi { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .kpi .label { font-size:12px; color:var(--fg-dim); }
+  .kpi .value { font-size:26px; font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums; }
+  .kpi.accent .value { color:var(--accent); }
+  .kpi.viewer .value { color:var(--accent-2); }
+  .charts-grid { display:grid; grid-template-columns:2fr 1fr; gap:16px; margin-top:16px; }
+  @media (max-width:900px){ .charts-grid { grid-template-columns:1fr; } }
+  .chart-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .chart-card h3 { font-size:13px; font-weight:600; margin:0 0 10px; color:var(--fg-dim); }
+  /* Mandatory: every canvas lives in a fixed-height positioned box. */
+  .chartbox { position:relative; height:240px; }
+  .chartbox.tall { height:300px; }
+  /* Funnel: sequential magnitude across ordered stages. Bar width encodes count. */
+  .funnel { padding:6px 2px 2px; }
+  .funnel-row { display:flex; align-items:center; gap:14px; }
+  .funnel-bar-col { flex:1 1 auto; min-width:0; display:flex; justify-content:center; }
+  .funnel-seg { position:relative; min-width:150px; max-width:100%; padding:14px 18px;
+    border-radius:10px; color:#fff; text-align:center; border:1px solid rgba(255,255,255,.10);
+    box-shadow:0 1px 2px rgba(0,0,0,.18); overflow:hidden; }
+  .funnel-count { display:block; font-size:22px; font-weight:700; line-height:1.1;
+    font-variant-numeric:tabular-nums; text-shadow:0 1px 2px rgba(0,0,0,.45); }
+  .funnel-name { display:block; font-size:12.5px; font-weight:500; opacity:.95; margin-top:2px;
+    text-shadow:0 1px 2px rgba(0,0,0,.45); }
+  .funnel-metrics { flex:0 0 168px; display:flex; align-items:center; gap:8px; }
+  .funnel-dash { flex:1 1 auto; border-top:1.5px dashed var(--border); min-width:14px; }
+  .funnel-metric { display:flex; flex-direction:column; align-items:flex-end; line-height:1.15; }
+  .fm-num { font-size:16px; font-weight:700; color:var(--fg); font-variant-numeric:tabular-nums; }
+  .fm-num.churn { color:var(--bad); }
+  .fm-cap { font-size:10.5px; color:var(--fg-dim); text-transform:uppercase; letter-spacing:.03em; }
+  .funnel-gap { text-align:center; color:var(--fg-dim); font-size:15px; line-height:1;
+    margin:5px 0; padding-right:168px; }
+  .funnel-empty { color:var(--fg-dim); font-size:13px; padding:20px 4px; }
+  @media (max-width:640px){
+    .funnel-row { gap:8px; }
+    .funnel-metrics { flex-basis:96px; }
+    .funnel-dash { display:none; }
+    .funnel-gap { padding-right:96px; }
+  }
+  .markdown-body { margin-top:28px; font-size:14.5px; line-height:1.6; }
+  .markdown-body h2 { font-size:19px; border-bottom:1px solid var(--border); padding-bottom:6px; margin-top:34px; }
+  .markdown-body table { border-collapse:collapse; width:100%; margin:12px 0; font-size:13px;
+    display:block; overflow-x:auto; }
+  .markdown-body th, .markdown-body td { border:1px solid var(--border); padding:6px 10px; text-align:left; }
+  .markdown-body th { background:var(--panel-2); }
+  .markdown-body code { background:var(--panel-2); padding:1px 5px; border-radius:4px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; }
+  .markdown-body strong { color:var(--fg); }
+  .footer { margin-top:40px; color:var(--fg-dim); font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Sonat product report — 2026-07-26</h1>
+      <div class="meta">Last 7 days &middot; generated 2026-07-26 14:53 UTC &middot;
+        Editor + Viewer &middot; aggregate, no PII</div>
+    </div>
+    <div class="controls"><button onclick="toggleTheme()">Toggle theme</button></div>
+  </header>
+
+  <div class="section-label">Editor &mdash; editor.sonat.com</div>
+  <div class="kpi-grid">
+    
+    <div class="kpi accent"><div class="label">Weekly active users</div><div class="value">22</div></div>
+    <div class="kpi"><div class="label">Active accounts</div><div class="value">14</div></div>
+    <div class="kpi"><div class="label">Paid accounts active</div><div class="value">8</div></div>
+    <div class="kpi"><div class="label">Signups</div><div class="value">5</div></div>
+    <div class="kpi"><div class="label">Documents published</div><div class="value">43</div></div>
+  </div>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-card"><h3>Daily active users (editor)</h3><div class="chartbox tall"><canvas id="chart-dau"></canvas></div></div>
+  </div>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-card">
+      <h3>Editor funnel &mdash; active users &rarr; published (unique users, last 7 days)</h3>
+      
+      <div class="funnel">
+        
+        <div class="funnel-row">
+          <div class="funnel-bar-col">
+            <div class="funnel-seg" style="width:100.0%; background:#2563eb;">
+              <span class="funnel-count">22</span>
+              <span class="funnel-name">Active users</span>
+            </div>
+          </div>
+          <div class="funnel-metrics">
+            <div class="funnel-metric"><span class="fm-num">100.0%</span><span class="fm-cap">of entry</span></div>
+            <div class="funnel-dash"></div>
+            <div class="funnel-metric"><span class="fm-num churn">0.0%</span><span class="fm-cap">churn</span></div>
+          </div>
+        </div>
+        <div class="funnel-gap">&darr;</div>
+        
+        <div class="funnel-row">
+          <div class="funnel-bar-col">
+            <div class="funnel-seg" style="width:52.3%; background:#1e50c0;">
+              <span class="funnel-count">7</span>
+              <span class="funnel-name">Authored a topic</span>
+            </div>
+          </div>
+          <div class="funnel-metrics">
+            <div class="funnel-metric"><span class="fm-num">31.8%</span><span class="fm-cap">of entry</span></div>
+            <div class="funnel-dash"></div>
+            <div class="funnel-metric"><span class="fm-num churn">68.2%</span><span class="fm-cap">churn</span></div>
+          </div>
+        </div>
+        <div class="funnel-gap">&darr;</div>
+        
+        <div class="funnel-row">
+          <div class="funnel-bar-col">
+            <div class="funnel-seg" style="width:42.7%; background:#1a409a;">
+              <span class="funnel-count">4</span>
+              <span class="funnel-name">Clicked publish</span>
+            </div>
+          </div>
+          <div class="funnel-metrics">
+            <div class="funnel-metric"><span class="fm-num">18.2%</span><span class="fm-cap">of entry</span></div>
+            <div class="funnel-dash"></div>
+            <div class="funnel-metric"><span class="fm-num churn">81.8%</span><span class="fm-cap">churn</span></div>
+          </div>
+        </div>
+        <div class="funnel-gap">&darr;</div>
+        
+        <div class="funnel-row">
+          <div class="funnel-bar-col">
+            <div class="funnel-seg" style="width:42.7%; background:#163073;">
+              <span class="funnel-count">4</span>
+              <span class="funnel-name">Published</span>
+            </div>
+          </div>
+          <div class="funnel-metrics">
+            <div class="funnel-metric"><span class="fm-num">18.2%</span><span class="fm-cap">of entry</span></div>
+            <div class="funnel-dash"></div>
+            <div class="funnel-metric"><span class="fm-num churn">81.8%</span><span class="fm-cap">churn</span></div>
+          </div>
+        </div>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-card"><h3>Top editor features &mdash; events vs unique users</h3><div class="chartbox tall"><canvas id="chart-editor-features"></canvas></div></div>
+  </div>
+
+  <div class="section-label viewer">Viewer &mdash; sonat.com</div>
+  <div class="kpi-grid">
+    
+    <div class="kpi viewer"><div class="label">Readers (unique)</div><div class="value">335</div></div>
+    <div class="kpi"><div class="label">Searches</div><div class="value">16</div></div>
+    <div class="kpi"><div class="label">AI questions</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">PDF downloads</div><div class="value">1</div></div>
+  </div>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-card"><h3>Top viewer features &mdash; events vs unique users</h3><div class="chartbox tall"><canvas id="chart-viewer-features"></canvas></div></div>
+  </div>
+
+  <div class="markdown-body"><h2>Editor</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>WoW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weekly active users</td>
+<td>22</td>
+<td>▼ 51.1% WoW</td>
+</tr>
+<tr>
+<td>Active accounts</td>
+<td>14</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Paid accounts active</td>
+<td>8</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Signups</td>
+<td>5</td>
+<td>▼ 28.6% WoW</td>
+</tr>
+<tr>
+<td>Documents published</td>
+<td>43</td>
+<td>▼ 62.9% WoW</td>
+</tr>
+<tr>
+<td>Publishers</td>
+<td>4</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Feature usage (events / unique users)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Events</th>
+<th>Users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>topic_saved</code></td>
+<td>715</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>editor_session_started</code></td>
+<td>203</td>
+<td>13</td>
+</tr>
+<tr>
+<td><code>editor_session_ended</code></td>
+<td>199</td>
+<td>16</td>
+</tr>
+<tr>
+<td><code>topic_published</code></td>
+<td>56</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>publish_button_clicked</code></td>
+<td>46</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>document_published</code></td>
+<td>43</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>appbar_nav_clicked</code></td>
+<td>14</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>view_live_button_clicked</code></td>
+<td>10</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>page_viewed</code></td>
+<td>7</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>signup</code></td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>preview_button_clicked</code></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>publish_gate_opened</code></td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>page_created</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>translation_completed</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>translation_started</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>create_button_clicked</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>publish_gate_verify_clicked</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where users navigate (appbar sections)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Clicks</th>
+<th>Users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document-settings</td>
+<td>13</td>
+<td>1</td>
+</tr>
+<tr>
+<td>languages</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Activation funnel</strong> (unique users)</p>
+<ul>
+<li>Signed up: <strong>5</strong></li>
+<li>Created a topic: <strong>0</strong> (0.0% of signups)</li>
+<li>Created a document: <strong>0</strong></li>
+<li>Published: <strong>4</strong> (80.0% of signups)</li>
+</ul>
+<h2>Viewer</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>WoW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Readers (unique)</td>
+<td>335</td>
+<td>new</td>
+</tr>
+<tr>
+<td>Page views</td>
+<td>626</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Searches</td>
+<td>16</td>
+<td>new</td>
+</tr>
+<tr>
+<td>AI questions</td>
+<td>3</td>
+<td>new</td>
+</tr>
+<tr>
+<td>Feedback submitted</td>
+<td>0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>PDF downloads</td>
+<td>1</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Viewer feature usage (events / unique users)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Events</th>
+<th>Users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>viewer_page_viewed</code></td>
+<td>626</td>
+<td>335</td>
+</tr>
+<tr>
+<td><code>viewer_image_zoomed</code></td>
+<td>25</td>
+<td>6</td>
+</tr>
+<tr>
+<td><code>viewer_search_performed</code></td>
+<td>16</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>viewer_ai_qa_asked</code></td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>viewer_search_result_clicked</code></td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>viewer_pdf_downloaded</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><em>Topic-view data (BigQuery) unavailable this run: bigquery query.py not found at /tmp/flow-sessions/bigquery/scripts/query.py</em></p>
+<h2>Weaknesses &amp; recommendations</h2>
+<ul>
+<li><strong>[Editor] Biggest activation drop-off is signed up → created a topic</strong> (5 → 0 users, −100.0%). This is where new users stall — investigate the 'created a topic' step's friction (empty states, unclear CTA, permissions).</li>
+<li><strong>[Editor] The publish paywall gate opened 2 times and was dismissed 0.0%</strong> of the time — publish intent blocked by billing. High dismissal warrants revisiting the gate copy or the free-tier publish allowance.</li>
+<li><strong>[Viewer] Only 20.0% of searchers click a result</strong> (1/5). Low search→click suggests weak relevance or unhelpful snippets — review ranking and result titles for the top queries.</li>
+</ul></div>
+
+  <div class="footer">Generated by the Sonat product-report engine. Numbers come straight from PostHog / BigQuery — an empty section means the event is unused or newly instrumented, not zero-by-design.</div>
+</div>
+
+<script>
+  const data = {
+    dau: {"days": ["2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-26"], "users": [1, 5, 11, 4, 5, 3, 1]},
+    editorFeatures: {"events": [715, 203, 199, 56, 46, 43, 14, 10, 7, 5], "labels": ["topic_saved", "editor_session_started", "editor_session_ended", "topic_published", "publish_button_clicked", "document_published", "appbar_nav_clicked", "view_live_button_clicked", "page_viewed", "signup"], "users": [7, 13, 16, 4, 4, 4, 1, 3, 3, 5]},
+    viewerFeatures: {"events": [626, 25, 16, 3, 2, 1], "labels": ["viewer_page_viewed", "viewer_image_zoomed", "viewer_search_performed", "viewer_ai_qa_asked", "viewer_search_result_clicked", "viewer_pdf_downloaded"], "users": [335, 6, 5, 2, 1, 1]},
+  };
+  let instances = [];
+  function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+  function toggleTheme(){
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('sonat-report-theme', next); } catch(e){}
+    renderCharts();
+  }
+  function renderCharts(){
+    instances.forEach(c => c.destroy()); instances = [];
+    const accent = css('--accent'), accent2 = css('--accent-2'), ok = css('--ok'),
+          warn = css('--warn'), bad = css('--bad'), grid = css('--chart-grid'), fg = css('--fg-dim');
+    Chart.defaults.color = fg; Chart.defaults.borderColor = grid;
+    Chart.defaults.font.family = "Inter, system-ui, sans-serif";
+    const base = { responsive:true, maintainAspectRatio:false };
+
+    if (document.getElementById('chart-dau')) instances.push(new Chart(
+      document.getElementById('chart-dau'), {
+        type:'line',
+        data:{ labels:data.dau.days, datasets:[{ label:'DAU', data:data.dau.users,
+          borderColor:accent, backgroundColor:accent+'33', fill:true, tension:.3, pointRadius:2 }] },
+        options:{ ...base, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, grid:{ color:grid } }, x:{ grid:{ display:false } } } },
+      }));
+
+    function grouped(id, d){
+      if (!document.getElementById(id)) return;
+      instances.push(new Chart(document.getElementById(id), {
+        type:'bar',
+        data:{ labels:d.labels, datasets:[
+          { label:'Events', data:d.events, backgroundColor:accent },
+          { label:'Unique users', data:d.users, backgroundColor:accent2 } ] },
+        options:{ ...base, indexAxis:'y', plugins:{ legend:{ position:'bottom' } },
+          scales:{ x:{ beginAtZero:true, grid:{ color:grid } }, y:{ grid:{ display:false } } } },
+      }));
+    }
+    grouped('chart-editor-features', data.editorFeatures);
+    grouped('chart-viewer-features', data.viewerFeatures);
+  }
+  (function(){
+    try { const t = localStorage.getItem('sonat-report-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch(e){}
+    renderCharts();
+  })();
+</script>
+</body>
+</html>
