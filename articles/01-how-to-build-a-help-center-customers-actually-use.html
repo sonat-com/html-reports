@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Help Center Customers Actually Use</title>
+<meta name="description" content="Build a help center customers actually use: plan, structure, and write self-service docs that answer questions and deflect support tickets.">
+<style>
+  :root{
+    --ink:#1a2233; --muted:#5b6675; --line:#e7ebf1; --bg:#ffffff;
+    --accent:#1f6feb; --accent-soft:#eef4ff; --maxw:720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.68; font-size:18px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:64px 24px 96px}
+  header.mast{margin-bottom:40px}
+  .eyebrow{
+    display:inline-block; font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+    font-weight:600; color:var(--accent); background:var(--accent-soft);
+    padding:6px 12px; border-radius:999px; margin-bottom:20px;
+  }
+  h1{
+    font-size:2.35rem; line-height:1.18; margin:0; letter-spacing:-.02em; font-weight:800;
+  }
+  h2{
+    font-size:1.5rem; line-height:1.3; margin:56px 0 16px; letter-spacing:-.01em; font-weight:700;
+  }
+  h3{ font-size:1.18rem; margin:36px 0 12px; font-weight:700; }
+  p{margin:0 0 20px}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  ul,ol{margin:0 0 22px; padding-left:1.3em}
+  li{margin:0 0 10px}
+  strong{color:var(--ink)}
+  .lede{font-size:1.18rem; color:var(--muted); line-height:1.6}
+  hr{border:0; border-top:1px solid var(--line); margin:56px 0}
+  .cta{
+    margin-top:56px; padding:28px; border:1px solid var(--line); border-radius:16px;
+    background:linear-gradient(180deg,#fbfcfe,#f4f7fb);
+  }
+  .cta p{margin:0}
+  footer{margin-top:64px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:.92rem}
+  @media (max-width:600px){
+    body{font-size:17px}
+    .wrap{padding:40px 20px 72px}
+    h1{font-size:1.9rem}
+    h2{font-size:1.3rem}
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ink:#e8edf5; --muted:#9aa6b6; --line:#273040; --bg:#0f141c; --accent:#6aa1ff; --accent-soft:#182236}
+    .cta{background:linear-gradient(180deg,#141b26,#111722)}
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <header class="mast">
+    <span class="eyebrow">Help Centers</span>
+    <h1>How to Build a Help Center Customers Actually Use</h1>
+  </header>
+
+  <p class="lede">Most people would rather fix a problem themselves than talk to you about it. Across industries, 81% of customers try to sort things out on their own before they ever reach a live representative. That instinct is an opportunity: a help center that answers the common questions well can resolve most of them quietly, before a ticket is ever opened.</p>
+
+  <p>The catch is that a help center only works if customers can find the answer and understand it. Plenty of companies publish articles that technically cover everything and still watch the same questions land in their inbox every day. This guide walks through how to plan, structure, write, and maintain a help center customers actually use &mdash; one that earns its keep as a support channel instead of sitting there as digital shelf-ware.</p>
+
+  <h2>What a help center is</h2>
+  <p>A help center is a searchable, self-service collection of documentation &mdash; how-to guides, troubleshooting steps, FAQs, and reference material &mdash; that lets customers answer their own questions without contacting support. It sits on your website or a dedicated docs domain, is open to end users, and is designed to be found through search and browsing rather than read cover to cover.</p>
+  <p>That last point matters. A help center is not a manual someone reads front to back. It is a set of self-contained answers people arrive at mid-problem, usually from a search engine or an in-product link, needing one specific thing.</p>
+
+  <h2>Why a help center is your hardest-working support channel</h2>
+  <p>Every question a customer answers themselves is a ticket your team never has to touch. That is the core of <strong>case deflection</strong>: scaling support by letting your documentation carry the repetitive load so agents can spend their time on the genuinely hard, high-value conversations.</p>
+  <p>The economics are simple. Support tickets cost money and time per contact, and they scale linearly with your customer base &mdash; more users, more tickets. A help center article is written once and answers the same question thousands of times at no additional cost. Improve the article and every future reader benefits at once.</p>
+  <p>There is a customer-experience win too. People reach for self-service because it is faster than waiting in a queue. When your help center is good, you are not withholding human support &mdash; you are giving customers the quick, unblocked resolution they wanted first, and reserving your team&rsquo;s attention for the cases that truly need a person.</p>
+
+  <h2>Plan your help center around real questions, not your org chart</h2>
+  <p>The most common help center mistake is organizing content the way your company is organized &mdash; by department, product module, or internal jargon &mdash; instead of the way customers think.</p>
+  <p>Start from the questions people actually ask. You already have the raw material:</p>
+  <ul>
+    <li><strong>Support tickets and chat logs.</strong> The questions that come up again and again are your first articles. Sort by volume and start at the top.</li>
+    <li><strong>Search queries.</strong> What people type into your site search (and where they get zero results) tells you exactly what is missing.</li>
+    <li><strong>Sales and onboarding calls.</strong> The &ldquo;how do I&hellip;&rdquo; questions that come up before and just after purchase are prime self-service content.</li>
+  </ul>
+  <p>Group those questions into a handful of intuitive top-level categories &mdash; getting started, billing, common tasks, troubleshooting &mdash; named in your customers&rsquo; words. Aim for categories a first-time visitor could scan and immediately know where to click. If you need an internal diagram to explain the structure, it is too complicated.</p>
+
+  <h2>How to structure a self-service portal that is easy to navigate</h2>
+  <p>Once you know the questions, give them a home that is easy to move through. A workable structure for most <strong>customer self service portals</strong> has three layers and no more:</p>
+  <ol>
+    <li><strong>Categories</strong> &mdash; the broad buckets above, visible on the landing page.</li>
+    <li><strong>Articles</strong> &mdash; one focused answer each, living inside a category.</li>
+    <li><strong>Sections within an article</strong> &mdash; clear headings so readers can jump to the part they need.</li>
+  </ol>
+  <p>A few structural habits keep it usable as it grows:</p>
+  <ul>
+    <li><strong>Make search the front door.</strong> Most visitors search rather than browse, so put a prominent search bar at the top of every page and invest in results that surface the right article. Usability research is blunt on this point: help content has to be easy to find, or it may as well not exist.</li>
+    <li><strong>Write descriptive, literal titles.</strong> &ldquo;How to reset your password&rdquo; beats &ldquo;Account access.&rdquo; Titles are what people scan in search results and category lists.</li>
+    <li><strong>Keep one idea per article.</strong> If a piece is trying to answer three different questions, split it into three articles that each rank and resolve on their own.</li>
+    <li><strong>Link related articles inline.</strong> A troubleshooting article should link to the setup guide it assumes you have read.</li>
+  </ul>
+
+  <h2>Write help content people can actually use</h2>
+  <p>Structure gets people to the right page. Writing decides whether they leave satisfied or open a ticket anyway. Established usability guidance on help and documentation sets a clear bar: help should be easy to search, focused on the user&rsquo;s task, list concrete steps to carry out, and stay concise. Applied to a help center, that means:</p>
+  <ul>
+    <li><strong>Lead with the task, not the background.</strong> Readers arrive mid-problem. Open with what they are trying to do and the steps to do it. Save the &ldquo;why&rdquo; for later or leave it out.</li>
+    <li><strong>Use numbered steps for procedures.</strong> If there is an order of operations, number it. Each step should be one action a person can complete before moving to the next.</li>
+    <li><strong>Cut everything that is not load-bearing.</strong> Marketing language, long preambles, and restated headings add reading time without adding answers. If a sentence does not help the reader finish the task, remove it.</li>
+    <li><strong>Show, don&rsquo;t just tell.</strong> A screenshot or short clip at the exact step where people get stuck resolves confusion faster than another paragraph.</li>
+    <li><strong>Write for a scanner.</strong> Short paragraphs, meaningful subheadings, and bolded key terms let readers find their specific step without reading the whole page.</li>
+  </ul>
+  <p>Readability is not a nicety here &mdash; it is the difference between deflecting a question and generating a frustrated follow-up.</p>
+
+  <h3>Design FAQ pages that resolve, not frustrate</h3>
+  <p>FAQs are the most abused format in self-service. Done badly, they are a dumping ground of marketing questions no real customer ever asked. Done well, they are one of the most effective <strong>help center best practices</strong> you have.</p>
+  <p>Usability research on FAQ design makes the case that a strong FAQ improves findability and search visibility, lowers support cost, and doubles as a continuous-improvement signal about where customers are confused. To get there:</p>
+  <ul>
+    <li>Use only questions customers genuinely ask, phrased the way they ask them.</li>
+    <li>Give each answer directly and immediately &mdash; no burying the response three sentences in.</li>
+    <li>Link out to the full article when an answer needs more depth, so the FAQ stays scannable.</li>
+    <li>Prune ruthlessly. An FAQ that has grown to forty entries has usually become a place answers go to hide.</li>
+  </ul>
+
+  <h2>Choosing help center software</h2>
+  <p>You can build a help center on almost any platform, but the right <strong>help center software</strong> removes friction from the two things that matter most: publishing good content quickly and keeping it accurate over time. When you evaluate options, weigh:</p>
+  <ul>
+    <li><strong>Authoring that your whole team can use.</strong> The people who know the answers &mdash; support, product, onboarding &mdash; are rarely web developers. If publishing requires code or a ticket to engineering, your content will always lag behind reality.</li>
+    <li><strong>Fast, reliable search.</strong> Search is how most people use a help center, so it has to return the right article quickly.</li>
+    <li><strong>Custom domain and branding.</strong> Hosting docs on your own domain keeps the experience consistent and helps the content rank.</li>
+    <li><strong>Built-in translation and SEO.</strong> If you serve customers in more than one language or want articles to surface in search, these should be native, not bolt-ons.</li>
+    <li><strong>Versioning and review workflows.</strong> Documentation drifts out of date the moment a product changes. Version history and a review step keep published answers trustworthy.</li>
+  </ul>
+  <p>Sonat is built for exactly this: teams draft in a familiar editor (or straight from Google Docs), publish to their own domain with search, SEO, and machine translation built in, and keep everything under version control and review &mdash; no engineering required. An <a href="https://sonat.com">AI answer generator</a> can even answer customer questions directly from your published articles, extending the same content into a conversational self-service layer.</p>
+
+  <h2>Turn your help center into a ticket-deflection engine</h2>
+  <p>A help center is never finished. The teams that get real <strong>ticket deflection</strong> treat it as a living product and measure it like one:</p>
+  <ul>
+    <li><strong>Track search terms with no results.</strong> Every zero-result search is a missing article your customers just asked you to write.</li>
+    <li><strong>Watch article performance.</strong> Pages with high traffic but low helpfulness ratings &mdash; or that are followed by a support contact anyway &mdash; are your rewrite priorities.</li>
+    <li><strong>Close the loop from tickets.</strong> When a question reaches support that a help center should have answered, ask why: was the article missing, unfindable, or unclear? Fix that specific gap and the deflection compounds.</li>
+    <li><strong>Keep content current.</strong> Retire outdated articles and update the ones a product change just broke. Nothing erodes trust in self-service faster than a confidently wrong instruction.</li>
+  </ul>
+  <p>Do this consistently and the same feedback loop that support has always run &mdash; customer confusion in, better answers out &mdash; starts running at the scale of your whole audience instead of one conversation at a time.</p>
+
+  <h2>Getting started</h2>
+  <p>A help center customers actually use is not about publishing more articles. It is about answering the questions people really have, in a structure they can navigate, in words they can act on &mdash; and then improving it every week based on what they still can&rsquo;t find. Start with your ten most common tickets, write those answers clearly, put a good search box in front of them, and grow from there.</p>
+
+  <div class="cta">
+    <p>If you want a place to build and publish that help center &mdash; with search, SEO, translation, and version control ready out of the box &mdash; <a href="https://sonat.com">start for free with Sonat</a> and turn your most-asked questions into answers that work while you sleep.</p>
+  </div>
+
+  <footer>Published by Sonat &mdash; the online manual and documentation platform. Edit in Google Docs, publish anywhere.</footer>
+</article>
+</body>
+</html>
