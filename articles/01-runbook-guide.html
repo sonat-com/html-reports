@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runbooks: How to Write Ones Your Team Actually Uses</title>
+<meta name="description" content="Learn what a runbook is, what goes in one, and how to write and maintain IT runbooks your team actually uses — plus a reusable runbook template.">
+<style>
+  :root { --ink:#1a2230; --muted:#5b6472; --line:#e6e9ef; --accent:#0b6bcb; --bg:#ffffff; --soft:#f5f7fa; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 18px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 22px 88px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 28px; }
+  h2 { font-size: 1.4rem; line-height: 1.25; letter-spacing: -0.01em; margin: 48px 0 14px; }
+  p { margin: 0 0 20px; }
+  ul { margin: 0 0 22px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  strong { font-weight: 650; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(11,107,203,.35); }
+  a:hover { border-bottom-color: var(--accent); }
+  .lead { font-size: 1.18rem; color: var(--muted); }
+  .callout {
+    margin: 0 0 24px; padding: 18px 22px; background: var(--soft);
+    border-left: 4px solid var(--accent); border-radius: 8px; font-size: 0.98rem; line-height: 1.6;
+  }
+  .callout p { margin: 0 0 8px; }
+  .callout p:last-child { margin: 0; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 44px 0; }
+  @media (max-width: 540px) {
+    .wrap { padding: 36px 18px 64px; }
+    h1 { font-size: 1.7rem; }
+    body { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <h1>Runbooks: What They Are and How to Write Ones Your Team Will Actually Use</h1>
+
+  <p class="lead">It is 3 a.m. A checkout service is throwing errors, the one engineer who built it left the company in March, and the person on call is staring at a dashboard they have never seen before. This is the moment a runbook earns its keep — or the moment you find out you never really had one.</p>
+
+  <p>A good runbook turns that panic into a checklist. By the end of this guide you will know exactly what a runbook is, what belongs inside one, and how to write and maintain runbooks your team reaches for instead of ignores.</p>
+
+  <h2>What is a runbook?</h2>
+  <p>A <strong>runbook</strong> is a documented, step-by-step procedure for completing a specific operational task — restarting a service, rotating a credential, restoring a backup, or responding to a particular alert. It captures what a knowledgeable person would do, so anyone on the team can do it the same way, even under pressure.</p>
+  <p>The value is not theoretical. Google's Site Reliability Engineering team found that recording best practices ahead of time in a playbook produced roughly a <strong>3x improvement in mean time to repair</strong> compared with engineers improvising from scratch. The practiced responder with a runbook beats the lone hero every time.</p>
+
+  <h2>Runbook vs. playbook vs. SOP</h2>
+  <p>These terms get used interchangeably, which causes confusion. Here is the practical distinction most teams settle on:</p>
+  <ul>
+    <li><strong>Runbook</strong> — a tactical, single-task procedure. "How to fail over the primary database."</li>
+    <li><strong>Playbook</strong> — a broader response to a scenario that may chain several runbooks together. "How to handle a Sev-1 outage."</li>
+    <li><strong>SOP (standard operating procedure)</strong> — a policy-level document, often for compliance, describing how a process must be carried out and by whom.</li>
+  </ul>
+  <p>You do not need to police the vocabulary. You do need each document to have one clear job. A runbook that tries to be a policy manual gets too long to follow at 3 a.m.</p>
+
+  <h2>What goes in a good runbook: a reusable template</h2>
+  <p>The fastest way to make runbooks consistent is to write them against the same skeleton every time. Use this <strong>runbook template</strong> as a starting point and trim what you do not need:</p>
+  <ul>
+    <li><strong>Title and purpose</strong> — the task in one line, and when to use this runbook.</li>
+    <li><strong>Trigger</strong> — the alert, symptom, or request that sends someone here.</li>
+    <li><strong>Prerequisites</strong> — access, tools, and permissions required before starting.</li>
+    <li><strong>Severity and impact</strong> — what is affected and how urgent it is.</li>
+    <li><strong>Steps</strong> — numbered, specific, and copy-pasteable. Exact commands, exact button names, no "simply configure the service."</li>
+    <li><strong>Verification</strong> — how to confirm the problem is actually resolved.</li>
+    <li><strong>Rollback</strong> — how to undo the change if a step makes things worse.</li>
+    <li><strong>Escalation</strong> — who to contact, and when to stop and call for help.</li>
+    <li><strong>Owner and last reviewed</strong> — who maintains this and when it was last checked.</li>
+  </ul>
+  <p>The two sections teams skip most often — verification and rollback — are the ones that matter most when a fix goes sideways.</p>
+  <p>Filled in, a short runbook reads like this:</p>
+  <div class="callout">
+    <p><strong>Task:</strong> Restart the stuck email-notification worker.</p>
+    <p><strong>Trigger:</strong> Alert "notification queue depth &gt; 5,000" fires.</p>
+    <p><strong>Prerequisites:</strong> VPN access; <code>ops</code> role on the jobs cluster.</p>
+    <p><strong>Steps:</strong> 1. Confirm the queue is growing, not draining. 2. Run <code>jobs restart notify-worker --wait</code>. 3. Watch the queue depth fall for two minutes.</p>
+    <p><strong>Verify:</strong> Queue depth returns below 500 and no new alerts fire.</p>
+    <p><strong>Rollback:</strong> If depth keeps climbing, scale the worker down to zero, then back up.</p>
+    <p><strong>Escalate:</strong> Still climbing after ten minutes? Page the Platform on-call.</p>
+  </div>
+  <p>Notice there is nothing clever in it. It is short, specific, and testable — which is exactly why it works at 3 a.m.</p>
+
+  <h2>How to write a runbook, step by step</h2>
+  <p>Writing a runbook is less about polish and more about capturing real knowledge before it walks out the door.</p>
+  <ul>
+    <li><strong>Watch the task being done.</strong> Shadow whoever handles it today, or record yourself doing it. The steps people actually take are rarely the steps they remember.</li>
+    <li><strong>Write for the least experienced person who might use it.</strong> Assume the reader is competent but has never touched this system. Spell out the obvious.</li>
+    <li><strong>Be concrete.</strong> Replace "restart the relevant services" with the exact command and the exact host. Ambiguity is where runbooks fail.</li>
+    <li><strong>Add decision points explicitly.</strong> If a step branches — "if the queue is still growing, do X; otherwise do Y" — say so.</li>
+    <li><strong>Test it on a real person.</strong> Hand the runbook to a teammate who has not done the task and watch them follow it without help. Every place they pause is a place to rewrite.</li>
+  </ul>
+  <p>Make destructive steps — deleting data, restarting production — impossible to miss, and require a human confirmation before them. Guidance from NIST's incident-handling standard makes the same point for security incidents: response works best when it follows documented, repeatable procedures prepared in advance, not decisions invented mid-crisis.</p>
+
+  <h2>Runbook best practices: keeping them alive</h2>
+  <p>Most runbook problems are not writing problems. They are maintenance problems. A runbook that describes last year's infrastructure is worse than none, because it sends a tired responder confidently in the wrong direction.</p>
+  <ul>
+    <li><strong>Give every runbook an owner and a review date.</strong> Unowned docs rot. A visible "last reviewed" line tells readers whether to trust what they are reading.</li>
+    <li><strong>Update the runbook as part of the fix.</strong> When an incident reveals a stale step, correcting the runbook is part of closing the ticket — not a someday task. NIST's guidance frames this as the lessons-learned loop: every incident should feed back into better documentation.</li>
+    <li><strong>Version your changes.</strong> Being able to see what a runbook said last week — and who changed it — turns your documentation into a record you can trust rather than a mystery.</li>
+    <li><strong>Use review before publishing.</strong> A second set of eyes catches the missing prerequisite before an on-call engineer does.</li>
+    <li><strong>Keep them findable.</strong> The best runbook is useless if nobody can locate it during an incident. Search and clear structure matter as much as the writing.</li>
+  </ul>
+
+  <h2>Common runbook mistakes to avoid</h2>
+  <p>Most failed runbooks fail in the same few ways. Watch for these:</p>
+  <ul>
+    <li><strong>Writing for yourself.</strong> If the steps only make sense to the person who wrote them, the runbook fails the one time that person is asleep. Write for a capable stranger.</li>
+    <li><strong>Vague instructions.</strong> "Restart the service" is not a step; the exact command on the exact host is. Every ambiguity becomes a decision the reader is not equipped to make.</li>
+    <li><strong>No trigger.</strong> A runbook nobody can find at the moment they need it may as well not exist. Tie each one to the alert or symptom that should lead a responder to it.</li>
+    <li><strong>Skipping verification.</strong> Without a clear "how do I know it worked?", responders declare victory too early — or too late.</li>
+    <li><strong>Set-and-forget.</strong> Infrastructure changes; runbooks that do not are landmines. An out-of-date step read with full confidence at 3 a.m. is more dangerous than no step at all.</li>
+    <li><strong>One giant document.</strong> A single mega-runbook that covers every scenario is impossible to scan under pressure. One task, one runbook.</li>
+  </ul>
+
+  <h2>Where runbooks should live</h2>
+  <p>Scattered runbooks — some in a wiki, some in a chat thread, some in a folder on someone's laptop — recreate the exact problem they were meant to solve. Runbooks belong together, in a single searchable place your team already knows how to reach: an <strong>internal knowledge base</strong> that behaves like a single source of truth.</p>
+  <p>That is the case for a purpose-built documentation platform over a pile of loose files. <a href="https://sonat.com">Sonat</a> gives non-technical and technical teammates the same simple editor, keeps a full version history of every change, supports review and approval before anything publishes, and makes runbooks searchable across your whole IT documentation set. Authors write; the whole team finds what they need. When runbooks are easy to write, easy to review, and easy to find, people actually keep them current — which is the only version of documentation that helps at 3 a.m.</p>
+
+  <h2>The takeaway</h2>
+  <p>A runbook is not bureaucracy. It is the difference between an incident that takes ten minutes and one that takes all night. Start with one runbook for your most common task, write it concretely enough that a newcomer could follow it, give it an owner, and keep it in a place your team can search. Then write the next one. A living set of runbooks is one of the highest-return investments an IT team can make — and it compounds every time someone new joins or something breaks.</p>
+</article>
+</body>
+</html>
