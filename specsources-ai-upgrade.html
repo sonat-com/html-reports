@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SpecSources — AI Search Upgrade</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1c2530; margin: 0; font-size: 10.2pt; line-height: 1.5;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  h1 { font-size: 20pt; margin: 0 0 4px; letter-spacing: -0.3px; }
+  h2 { font-size: 12.5pt; margin: 26px 0 10px; padding-bottom: 5px;
+       border-bottom: 2px solid #e3e8ee; letter-spacing: -0.2px; }
+  h3 { font-size: 10.5pt; margin: 0 0 8px; }
+  p  { margin: 0 0 9px; }
+  .muted { color: #5c6b7a; }
+  .small { font-size: 8.7pt; }
+
+  header { border-bottom: 3px solid #1a73e8; padding-bottom: 12px; margin-bottom: 6px; }
+  .brand { font-size: 8.7pt; letter-spacing: 1.6px; text-transform: uppercase;
+           color: #1a73e8; font-weight: 700; margin-bottom: 8px; }
+  .sub { color: #5c6b7a; font-size: 10.5pt; margin-top: 4px; }
+
+  .kpis { display: flex; gap: 10px; margin: 18px 0 4px; }
+  .kpi { flex: 1; border: 1px solid #dfe5ec; border-radius: 7px; padding: 12px 13px; background: #fafbfc; }
+  .kpi .n { font-size: 19pt; font-weight: 700; color: #1a73e8; line-height: 1.1; }
+  .kpi .l { font-size: 8.4pt; color: #5c6b7a; margin-top: 4px; line-height: 1.35; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 9.4pt; }
+  th, td { text-align: left; padding: 7px 9px; border-bottom: 1px solid #e6ebf1; }
+  th { background: #f4f7fa; font-weight: 600; font-size: 8.8pt;
+       text-transform: uppercase; letter-spacing: 0.5px; color: #47576a; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.total td { font-weight: 700; border-top: 2px solid #cfd8e3; border-bottom: none; }
+
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 20px;
+          font-size: 8.2pt; font-weight: 600; }
+  .bad  { background: #fdecec; color: #b42318; }
+  .good { background: #e7f6ec; color: #17663a; }
+
+  .cmp { border: 1px solid #dfe5ec; border-radius: 7px; overflow: hidden;
+         margin: 0 0 13px; page-break-inside: avoid; }
+  .cmp .q { background: #f4f7fa; padding: 8px 12px; font-weight: 600;
+            border-bottom: 1px solid #dfe5ec; font-size: 9.8pt; }
+  .cmp .q span { font-weight: 400; color: #5c6b7a; }
+  .cols { display: flex; }
+  .col { flex: 1; padding: 11px 12px; }
+  .col + .col { border-left: 1px solid #e6ebf1; background: #fbfdfb; }
+  .col h4 { margin: 0 0 7px; font-size: 8.6pt; text-transform: uppercase;
+            letter-spacing: 0.6px; color: #47576a; }
+  .ans { font-size: 9pt; line-height: 1.5; white-space: pre-wrap; margin: 0; }
+  .ans.refused { color: #b42318; font-style: italic; }
+
+  .note { background: #f4f7fa; border-left: 3px solid #1a73e8;
+          padding: 10px 13px; border-radius: 0 5px 5px 0; margin: 12px 0; font-size: 9.2pt; }
+  ul { margin: 6px 0 9px; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  footer { margin-top: 26px; padding-top: 10px; border-top: 1px solid #e3e8ee;
+           color: #7a8898; font-size: 8.2pt; }
+  .pb { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Sonat &middot; Prepared for SpecSources</div>
+  <h1>Better answers from your existing documentation</h1>
+  <div class="sub">A measured comparison of AI search models, run against your live help centre</div>
+</header>
+
+<p style="margin-top:14px">
+  Your help centre at <strong>help.specsources.com</strong> answers reader questions with an AI model.
+  Today that model is <strong>GPT-4o-mini</strong>. We have since added newer models to Sonat, and we
+  tested them directly against <em>your</em> content to see what difference they make.
+</p>
+
+<p>
+  The short version: on the same questions, with the same documentation retrieved,
+  the newer model answered <strong>every</strong> question — and did it faster.
+  The older model declined to answer a third of them.
+</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="n">66% &rarr; 100%</div><div class="l">Questions answered, out of 6 tested</div></div>
+  <div class="kpi"><div class="n">33% faster</div><div class="l">4.8s &rarr; 3.2s average response</div></div>
+  <div class="kpi"><div class="n">0</div><div class="l">Changes needed to your documentation</div></div>
+</div>
+
+<h2>How this was measured</h2>
+<p class="muted small" style="margin-bottom:10px">
+  Method matters more than the headline, so here it is in full.
+</p>
+<ul>
+  <li>Six real support questions were asked against your live account on <strong>30 July 2026</strong>.</li>
+  <li>Each question was run twice — once on GPT-4o-mini, once on GPT-5.6&nbsp;Luna.</li>
+  <li><strong>Both runs retrieved the identical 10 documents</strong> from your help centre. Only the model changed.</li>
+  <li>Answers below are reproduced <strong>verbatim</strong>, with nothing edited, shortened or cherry-picked for tone.</li>
+</ul>
+<div class="note">
+  Because retrieval was identical, the difference in these answers is not about what your
+  documentation contains. The content was already there, and already found. The older model
+  simply did not use it.
+</div>
+
+<h2 class="pb">Side-by-side: your own content</h2>
+
+<div class="cmp">
+  <div class="q">1 &nbsp;<span>&ldquo;How do I add a new manufacturer source?&rdquo;</span></div>
+  <div class="cols">
+    <div class="col">
+      <h4>GPT-4o-mini &mdash; today <span class="pill bad">no answer</span></h4>
+      <p class="ans refused">I don't have enough information in the documentation to answer that completely.</p>
+    </div>
+    <div class="col">
+      <h4>GPT-5.6 Luna <span class="pill good">answered</span></h4>
+      <p class="ans">To add a new Manufacturer Source:
+
+1. In the left navigation, click Admin.
+2. Go to Address Books and select Manufacturer Source List.
+3. Click Create New Manufacturer Source.
+4. Choose one of these options:
+   - Add a Manufacturer Manually: Enter the manufacturer's information, add contacts, assign vendors and item types, review, and click Save Manufacturer.
+   - Upload a File (.xls, .xlsx, .csv): Download and complete the provided template, upload it, select the valid entries, and click Add to Manufacturers List.
+   - Import from Specsources Master List of Manufacturers: Select the manufacturers to add and click Add these Manufacturers to your Manufacturer Source List.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cmp">
+  <div class="q">2 &nbsp;<span>&ldquo;How do I create a spec sheet?&rdquo;</span></div>
+  <div class="cols">
+    <div class="col">
+      <h4>GPT-4o-mini &mdash; today <span class="pill bad">no answer</span></h4>
+      <p class="ans refused">I don't have enough information in the documentation to answer that completely.</p>
+    </div>
+    <div class="col">
+      <h4>GPT-5.6 Luna <span class="pill good">answered</span></h4>
+      <p class="ans">Step 1: Go to the Dashboard and click on a Project.
+
+Step 2: Click the blue "Create New Spec" button in the upper-right corner.
+
+Step 3: Select the required Spec Type.
+
+Step 4: Select the required Item Type.
+
+Step 5: Enter an Item Name.
+
+Step 6: Enter the Item Price. A default value of "0" is provided if pricing is not required.
+
+Step 7: Click the Save icon.
+
+Before saving, you may also add a primary image, issue date, furnished-by and installed-by information, status color, issued-by and revised-by users, and lead time.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cmp">
+  <div class="q">3 &nbsp;<span>&ldquo;How do I add more designers or users?&rdquo; &mdash; both answered, but not equally</span></div>
+  <div class="cols">
+    <div class="col">
+      <h4>GPT-4o-mini &mdash; today <span class="pill bad">incomplete</span></h4>
+      <p class="ans">The program lets Designers / Users be added as long as the quantity of licenses purchased permits it. If the purchased amount is 2, then only 2 Designers / Users can be added. For more information, please refer to the following link: https://help.specsources.com/l&hellip;</p>
+      <p class="small muted" style="margin-top:8px">
+        States the licence rule, never says how to add anyone, and ends on a truncated link.
+        The reader still has to go and find the page themselves.
+      </p>
+    </div>
+    <div class="col">
+      <h4>GPT-5.6 Luna <span class="pill good">complete</span></h4>
+      <p class="ans">Designers or Users can be added as long as your organization has enough purchased licenses. The number of active licenses determines how many Designers/Users can be added.
+
+To add one:
+
+1. Go to Dashboard.
+2. In the left navigation, click Admin.
+3. Go to User Management &gt; Designers / External Users.
+4. Click Create New Designer.
+5. Enter the required name and email; phone is optional.
+6. Select the office and assign a role.
+7. Click Save.
+
+The user will receive an email to verify their address and create a password.</p>
+    </div>
+  </div>
+</div>
+
+<h2>Full results</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>GPT-4o-mini (today)</th>
+      <th>GPT-5.6 Luna</th>
+      <th class="num">Time saved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Add a new manufacturer source</td><td><span class="pill bad">No answer</span></td><td><span class="pill good">Answered</span></td><td class="num">1.4s</td></tr>
+    <tr><td>What an address book is used for</td><td><span class="pill good">Answered</span></td><td><span class="pill good">Answered</span></td><td class="num">2.0s</td></tr>
+    <tr><td>Add more designers / users</td><td><span class="pill bad">Incomplete</span></td><td><span class="pill good">Answered</span></td><td class="num">1.7s</td></tr>
+    <tr><td>Create a spec sheet</td><td><span class="pill bad">No answer</span></td><td><span class="pill good">Answered</span></td><td class="num">1.1s</td></tr>
+    <tr><td>Resend a SpecWeb invitation</td><td><span class="pill good">Answered</span></td><td><span class="pill good">Answered</span></td><td class="num">1.8s</td></tr>
+    <tr><td>Get invoices and receipts</td><td><span class="pill good">Answered</span></td><td><span class="pill good">Answered</span></td><td class="num">1.9s</td></tr>
+    <tr class="total"><td>Answered</td><td>4 of 6 &mdash; 66%</td><td>6 of 6 &mdash; 100%</td><td class="num">avg 1.7s</td></tr>
+  </tbody>
+</table>
+<p class="small muted">
+  Average response time fell from 4.8s to 3.2s. Every question retrieved 10 source documents
+  in both runs.
+</p>
+
+<h2 class="pb">What the Enterprise plan gives you</h2>
+<p>
+  The newer models are part of the Enterprise plan. Enterprise lets you choose the model
+  behind your help centre's AI search, rather than staying on the default:
+</p>
+<table>
+  <thead>
+    <tr><th>Model</th><th>Best for</th><th class="num">Speed</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>GPT-5.6 Luna</strong> &mdash; recommended</td><td>Most capable, and the quickest to answer</td><td class="num">~3.2s</td></tr>
+    <tr><td>GPT-5.4 Mini</td><td>Thorough answers on complex questions</td><td class="num">~7s</td></tr>
+    <tr><td>GPT-5.4 Nano</td><td>Lowest cost for high question volumes</td><td class="num">~4s</td></tr>
+    <tr><td>GPT-4o-mini</td><td>Current default on your plan</td><td class="num">~4.8s</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <strong>Nothing changes on your side.</strong> Your documentation, structure, URLs and
+  branding stay exactly as they are. Switching model is a single setting in your
+  organisation settings, and takes effect immediately.
+</div>
+
+<h2>Next step</h2>
+<p>
+  We can enable Enterprise on your account and switch the model over, then re-run this
+  same set of questions with you so you can see the difference on your own help centre.
+</p>
+
+<footer>
+  Prepared by Sonat &middot; 30 July 2026<br>
+  All answers reproduced verbatim from live tests against the SpecSources help centre
+  (help.specsources.com). Results reflect the six questions listed; performance on other
+  questions may vary.
+</footer>
+
+</body>
+</html>
