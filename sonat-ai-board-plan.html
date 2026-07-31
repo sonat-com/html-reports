@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sonat AI — Board Plan</title>
+<style>
+  @page { size: A4; margin: 15mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1c2530; margin: 0; font-size: 10pt; line-height: 1.5;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  h1 { font-size: 21pt; margin: 0 0 4px; letter-spacing: -0.4px; }
+  h2 { font-size: 12.5pt; margin: 24px 0 10px; padding-bottom: 5px;
+       border-bottom: 2px solid #e3e8ee; letter-spacing: -0.2px; }
+  h3 { font-size: 10.4pt; margin: 16px 0 7px; }
+  p  { margin: 0 0 9px; }
+  .muted { color: #5c6b7a; }
+  .small { font-size: 8.7pt; }
+
+  header { border-bottom: 3px solid #1a73e8; padding-bottom: 12px; margin-bottom: 6px; }
+  .brand { font-size: 8.7pt; letter-spacing: 1.6px; text-transform: uppercase;
+           color: #1a73e8; font-weight: 700; margin-bottom: 8px; }
+  .sub { color: #5c6b7a; font-size: 10.5pt; margin-top: 5px; }
+  .meta { color: #7a8898; font-size: 8.4pt; margin-top: 9px; }
+
+  .kpis { display: flex; gap: 9px; margin: 16px 0 4px; }
+  .kpi { flex: 1; border: 1px solid #dfe5ec; border-radius: 7px; padding: 11px 12px; background: #fafbfc; }
+  .kpi .n { font-size: 17pt; font-weight: 700; color: #1a73e8; line-height: 1.1; letter-spacing: -0.5px; }
+  .kpi .n.warn { color: #b42318; }
+  .kpi .l { font-size: 8.2pt; color: #5c6b7a; margin-top: 5px; line-height: 1.35; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 9.1pt; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e6ebf1; vertical-align: top; }
+  th { background: #f4f7fa; font-weight: 600; font-size: 8.5pt;
+       text-transform: uppercase; letter-spacing: 0.5px; color: #47576a; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.c, th.c { text-align: center; }
+  tr.hl td { background: #f7fbff; }
+  table.tight td, table.tight th { padding: 5px 8px; font-size: 8.9pt; }
+
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 20px;
+          font-size: 8pt; font-weight: 600; white-space: nowrap; }
+  .bad  { background: #fdecec; color: #b42318; }
+  .good { background: #e7f6ec; color: #17663a; }
+  .warn { background: #fff4e5; color: #93500b; }
+  .info { background: #eaf1fd; color: #14509e; }
+
+  .note { background: #f4f7fa; border-left: 3px solid #1a73e8;
+          padding: 10px 13px; border-radius: 0 5px 5px 0; margin: 12px 0; font-size: 9.2pt; }
+  .note.red { background: #fdf3f2; border-left-color: #b42318; }
+  .note.amber { background: #fffaf2; border-left-color: #d98218; }
+  .note strong { color: #1c2530; }
+
+  ul { margin: 6px 0 9px; padding-left: 17px; }
+  li { margin-bottom: 4px; }
+  ol { margin: 6px 0 9px; padding-left: 19px; }
+
+  .cols2 { display: flex; gap: 14px; }
+  .cols2 > div { flex: 1; }
+  .box { border: 1px solid #dfe5ec; border-radius: 7px; padding: 11px 13px; page-break-inside: avoid; }
+  .box h4 { margin: 0 0 7px; font-size: 8.6pt; text-transform: uppercase;
+            letter-spacing: 0.6px; color: #47576a; }
+
+  .phase { border: 1px solid #dfe5ec; border-radius: 7px; margin-bottom: 9px;
+           page-break-inside: avoid; overflow: hidden; }
+  .phase .ph { background: #f4f7fa; padding: 7px 12px; border-bottom: 1px solid #dfe5ec;
+               font-size: 9.4pt; display: flex; justify-content: space-between; }
+  .phase .ph b { font-weight: 700; }
+  .phase .pb2 { padding: 10px 12px; }
+  .phase .gate { background: #f7fbff; border-top: 1px solid #e6ebf1; padding: 7px 12px;
+                 font-size: 8.8pt; color: #14509e; }
+
+  footer { margin-top: 24px; padding-top: 10px; border-top: 1px solid #e3e8ee;
+           color: #7a8898; font-size: 8pt; }
+  .pb { page-break-before: always; }
+  .avoid { page-break-inside: avoid; }
+  .lead { font-size: 10.6pt; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Sonat &middot; Board Paper</div>
+  <h1>Sonat AI</h1>
+  <div class="sub">A 14-week plan to make AI the strongest thing we sell &mdash; and to be found for it</div>
+  <div class="meta">Sonat leadership &middot; 31 July 2026 &middot; Covering 3 August &ndash; 6 November 2026 &middot; Decisions requested in section 10</div>
+</header>
+
+<h2 style="margin-top:18px">1 &nbsp;The ask, in one paragraph</h2>
+
+<p class="lead">
+  We have an AI answer engine that is <strong>refusing 81% of the questions customers ask it</strong>, and a
+  marketing site that promises things the product does not do. We also have the one asset no competitor
+  in this category has: <strong>we own both the documentation tool and the answer engine</strong>. This paper asks
+  the board to approve fourteen weeks of work that fixes the engine, turns it into a measurable product,
+  and makes Sonat the answer when a buyer &mdash; or a buyer's AI assistant &mdash; asks who does this.
+  It also asks for a hard rule: <strong>we do not market or price this until the engine is measurably fixed.</strong>
+</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="n warn">81%</div><div class="l">of production AI answers are refusals &mdash; 273 of 337 over 30 days</div></div>
+  <div class="kpi"><div class="n warn">85%</div><div class="l">of those refusals had the right documents already retrieved</div></div>
+  <div class="kpi"><div class="n">$375</div><div class="l">our full platform price vs <strong>$999+</strong> that kapa.ai charges for the AI layer alone</div></div>
+  <div class="kpi"><div class="n">45% <span style="font-size:11pt;color:#5c6b7a">vs</span> 18%</div><div class="l">deflection when docs are fresh vs stale &mdash; the variable we alone control</div></div>
+</div>
+
+<h2>2 &nbsp;The strategic position</h2>
+
+<h3>2.1 &nbsp;What we are actually selling</h3>
+
+<p>
+  The instinct was to sell <em>&ldquo;Enterprise gets the better AI model.&rdquo;</em> I am recommending against that,
+  for four reasons that survived research:
+</p>
+
+<ul>
+  <li><strong>It is copyable in a weekend.</strong> Every competitor buys models from the same three vendors and can switch backends by changing a string.</li>
+  <li><strong>It goes stale by construction.</strong> Our pricing page today sells &ldquo;AI Answer Generator with GPT&#8209;4&rdquo; &mdash; a model we have not offered for months.</li>
+  <li><strong>It does not fix our actual problem.</strong> 85% of our refusals happen <em>with</em> the right documents retrieved. That is retrieval and prompting, not model capability.</li>
+  <li><strong>It invites the one question we cannot answer:</strong> <em>&ldquo;if it's just GPT, why don't I paste my docs into ChatGPT?&rdquo;</em></li>
+</ul>
+
+<div class="note">
+  <strong>The defensible position instead:</strong> kapa.ai, Intercom Fin, Docsbot and Document360's Eddy all answer
+  questions over documentation they <strong>do not own and cannot edit</strong>. They can tell a customer their docs
+  have a hole. <strong>Only Sonat can fix the hole in the same tool</strong> &mdash; because we own the authoring app, the
+  viewer, the search index and the answer engine. And the category's own benchmark says that loop is
+  the variable that decides outcomes: <strong>45% ticket deflection when the knowledge base was updated in
+  the last 30 days, against 18% when it had not been touched in six months.</strong> Freshness beats model.
+  Freshness is what we control and nobody else does.
+</div>
+
+<h3>2.2 &nbsp;So &ldquo;Sonat AI&rdquo; means four things, in this order</h3>
+
+<table>
+  <tr>
+    <th style="width:22%">Layer</th><th>What it is</th><th style="width:26%">Why it is defensible</th>
+  </tr>
+  <tr>
+    <td><strong>1. Answers</strong></td>
+    <td>Cited, fast, multi-turn chat on the viewer and in the widget &mdash; and inside the customer's own Claude, ChatGPT and Cursor via our MCP server</td>
+    <td>Table stakes in 2026. Not having chat is the gap.</td>
+  </tr>
+  <tr>
+    <td><strong>2. Proof</strong></td>
+    <td>A dashboard showing every question asked, what was answered, what failed, and the deflection value in dollars</td>
+    <td>The only AI feature that produces a number a buyer puts in a business case.</td>
+  </tr>
+  <tr class="hl">
+    <td><strong>3. The loop</strong></td>
+    <td>Every question the docs could not answer becomes a one-click draft topic in the editor</td>
+    <td><strong>The moat.</strong> No pure-AI vendor can build it &mdash; they do not own the editor.</td>
+  </tr>
+  <tr>
+    <td><strong>4. Control</strong></td>
+    <td>Scope, per-document exclusions, audit log, provider choice, no-training guarantee, DPA</td>
+    <td>The procurement gate. Legal kills more deals in this category than features do.</td>
+  </tr>
+</table>
+
+<p class="small muted">
+  Advanced model selection &mdash; which we shipped on 30 July &mdash; becomes a line item inside layer 4.
+  It is a fine cost decision and a poor value story.
+</p>
+
+<h2 class="pb">3 &nbsp;Where we are today &mdash; the evidence</h2>
+
+<p>
+  Everything below is measured from production, not estimated. The uncomfortable parts are here because
+  the board should see them before the plan, not after.
+</p>
+
+<table>
+  <tr><th style="width:38%">Finding</th><th>Detail</th><th style="width:14%" class="c">Confidence</th></tr>
+  <tr>
+    <td><strong>81% of AI answers are refusals</strong></td>
+    <td>273 of 337 calls over 30 days returned &ldquo;I don't have enough information.&rdquo; Five accounts sit at 98&ndash;100%.</td>
+    <td class="c"><span class="pill warn">reconstructed</span></td>
+  </tr>
+  <tr>
+    <td><strong>85% of refusals had context in hand</strong></td>
+    <td>232 of 273. The documents reached the model and it still refused. Ranking and prompting, not model quality.</td>
+    <td class="c"><span class="pill warn">reconstructed</span></td>
+  </tr>
+  <tr>
+    <td><strong>Our own templates outrank our real content</strong></td>
+    <td>For &ldquo;how to use seo feature?&rdquo;, seven of ten documents sent to the AI were placeholder text from our free manual templates. The model was handed instructions-to-an-author and correctly concluded it had nothing to answer with.</td>
+    <td class="c"><span class="pill good">verified</span></td>
+  </tr>
+  <tr>
+    <td><strong>One account has zero indexed content</strong></td>
+    <td>36 of 36 customer questions returned nothing, for 30 days. Nothing alerted.</td>
+    <td class="c"><span class="pill good">verified</span></td>
+  </tr>
+  <tr>
+    <td><strong>We cannot measure any of this</strong></td>
+    <td>The analytics table built for exactly this question has <strong>zero rows</strong>. Every number above was reconstructed by hand from gateway logs.</td>
+    <td class="c"><span class="pill good">verified</span></td>
+  </tr>
+  <tr>
+    <td><strong>Answers take 10&ndash;23 seconds</strong></td>
+    <td>Peak 37.8s. The AI model is only ~3.2s of that; the rest is our own retrieval and cold starts. The site promises &ldquo;within seconds.&rdquo;</td>
+    <td class="c"><span class="pill warn">reconstructed</span></td>
+  </tr>
+  <tr>
+    <td><strong>We only ever ask the AI the questions it is worst at</strong></td>
+    <td>The viewer suppresses AI for queries under three words. Short queries rank beautifully; long natural-language ones are exactly what breaks the ranking. We manufactured part of our own refusal rate.</td>
+    <td class="c"><span class="pill good">verified</span></td>
+  </tr>
+  <tr>
+    <td><strong>The paid differentiator is a URL parameter away</strong></td>
+    <td>Model entitlement is enforced only when saving a setting. Any anonymous caller can request our premium model for any account, billed to us at 6.7&times; the cost.</td>
+    <td class="c"><span class="pill good">verified</span></td>
+  </tr>
+  <tr>
+    <td><strong>Total AI usage is 337 calls per month</strong></td>
+    <td>Platform-wide. Roughly 11 a day. <strong>This is the number that should worry us most</strong> &mdash; see §7.</td>
+    <td class="c"><span class="pill warn">reconstructed</span></td>
+  </tr>
+  <tr>
+    <td><strong>Marketing is ahead of the product on every axis we tested</strong></td>
+    <td>The site sells &ldquo;GPT-4&rdquo; (not shipped), &ldquo;instantly&rdquo; (10&ndash;23s), and that the AI &ldquo;learns the content&rdquo; (there is no training, no embeddings &mdash; it is keyword search plus a prompt).</td>
+    <td class="c"><span class="pill good">verified</span></td>
+  </tr>
+  <tr>
+    <td><strong>The site is invisible to AI assistants</strong></td>
+    <td>Zero structured data anywhere on sonat.com, and no <code>llms.txt</code>. Nothing tells a model what we do.</td>
+    <td class="c"><span class="pill good">verified</span></td>
+  </tr>
+</table>
+
+<div class="note red">
+  <strong>The consequence, stated plainly.</strong> SpecSources is already on Enterprise, already on our best
+  model, and still refused 82.9% of questions. If we brand, price and market AI in this state, we convert
+  a quality bug into a <em>paid promise</em> &mdash; and churn on a paid promise costs far more than churn on a
+  free feature. <strong>I am asking the board to hold me to a gate: no launch, no price change, no comparison
+  marketing until refusals are measurably below 20% on three or more accounts.</strong>
+</div>
+
+<h2>4 &nbsp;What the market charges &mdash; and our headroom</h2>
+
+<table class="tight">
+  <tr><th>Vendor</th><th>What you get</th><th class="num">Headline price</th><th>AI billing</th></tr>
+  <tr class="hl"><td><strong>Sonat Enterprise (today)</strong></td><td>Full platform + unlimited AI answers + unlimited viewers</td><td class="num"><strong>$375/mo</strong></td><td>None &mdash; unmetered</td></tr>
+  <tr><td>kapa.ai Enterprise</td><td><strong>AI answer layer only &mdash; no authoring</strong></td><td class="num">$999+/mo</td><td>+ $0.10 per answer</td></tr>
+  <tr><td>Document360 Enterprise</td><td>KB platform + Eddy AI suite</td><td class="num">$799+/project/mo</td><td>~$0.50&ndash;1.00 per resolution</td></tr>
+  <tr><td>Mintlify Pro</td><td>Docs platform + in-doc AI</td><td class="num">$450/mo</td><td>$0.25 per message overage</td></tr>
+  <tr><td>Intercom Fin</td><td>AI support agent</td><td class="num">$49/mo base</td><td><strong>$0.99 per resolution</strong></td></tr>
+  <tr><td>Zendesk Advanced AI</td><td>Add-on to Zendesk</td><td class="num">$50/agent/mo</td><td>$1.50&ndash;2.00 per resolution</td></tr>
+</table>
+
+<div class="cols2">
+  <div class="box">
+    <h4>The wedge we are not using</h4>
+    <p style="margin:0">
+      A customer deflecting 500 tickets a month pays <strong>$500&ndash;1,000/mo for AI alone</strong> at
+      Intercom or Zendesk prices. We charge <strong>$375 for everything, with no per-answer fee and no
+      per-viewer fee.</strong> That headline &mdash; <em>unlimited AI answers, unlimited viewers, one price</em> &mdash;
+      costs nothing to say and no competitor can match it.
+    </p>
+  </div>
+  <div class="box">
+    <h4>The pricing headroom</h4>
+    <p style="margin:0">
+      Once chat and analytics ship and refusals are down, Enterprise supports <strong>$500&ndash;650/mo</strong>
+      and still undercuts Document360's platform ($799) and kapa.ai's AI layer alone ($999).
+      That is roughly <strong>2&times; headroom</strong> before we reach market price &mdash; but only after the gate.
+    </p>
+  </div>
+</div>
+
+<h2>5 &nbsp;The 14-week plan</h2>
+
+<div class="phase">
+  <div class="ph"><b>Week 0 &mdash; 3&ndash;7 August</b><span class="muted">One day of work. Can redirect the whole quarter.</span></div>
+  <div class="pb2">
+    Six questions we have never answered, each cheap: how many accounts even have AI switched on;
+    how many Business accounts have <em>ever</em> converted to Enterprise; what plans the worst-affected
+    accounts are on; whether our top tier is being wrongly blocked from the models it pays for;
+    whether anyone is using the MCP tool yet; and what an answer actually costs us.
+    <strong>In parallel and needing no answers: correct every false claim on the website.</strong>
+  </div>
+  <div class="gate">Decision meeting Friday 7 August. Go / no-go for the quarter.</div>
+</div>
+
+<div class="phase">
+  <div class="ph"><b>Phase 1 &mdash; Weeks 1&ndash;4 &mdash; Make it work</b><span class="muted">~18 dev-days</span></div>
+  <div class="pb2">
+    Fix ranking so real content outranks placeholder text. Filter template stubs out of the AI's context.
+    Rewrite the prompt so it answers partially instead of refusing wholesale. Make the search staleness
+    check parallel and fail-open instead of silently deleting results. Reindex the broken account and
+    alert on it happening again. Keep the answer service warm. <strong>And restore the analytics pipeline
+    first</strong> &mdash; otherwise we ship blind and cannot prove any of it worked. Security fixes ride along,
+    because the rate limiter we need for safety is the same one we will need for metering.
+  </div>
+  <div class="gate"><strong>Exit gate:</strong> refusals under 20% on 3+ accounts &middot; median answer under 5 seconds &middot; no account at 100% &middot; measured, not inferred, for 7 consecutive days. <strong>Nothing downstream starts until this passes.</strong></div>
+</div>
+
+<div class="phase">
+  <div class="ph"><b>Phase 2 &mdash; Weeks 5&ndash;8 &mdash; Make it provable</b><span class="muted">~20 dev-days</span></div>
+  <div class="pb2">
+    Ship <strong>AI Insights</strong>: every question asked, answered versus failed, which topics were cited,
+    the ranked list of questions the documentation could not answer, and a deflection estimate in dollars.
+    Ship the exclude-from-AI flag and the audit log. Unblock the editor AI assistant (five pull requests
+    have been open since 23 July). Begin SOC&nbsp;2 Type&nbsp;2 &mdash; it is a 6&ndash;12 month clock and Type&nbsp;1 is no longer
+    accepted by enterprise buyers.
+    <br><br>
+    <strong>And run the cheapest possible test of this entire thesis:</strong> hand-build a
+    <em>Documentation Performance Review</em> for five Business accounts &mdash; their traffic, their top
+    searches, the searches that returned nothing useful, and what that cost them in support tickets.
+    We can build these today from BigQuery with no new engineering. If nobody replies, we do not build
+    the rest.
+  </div>
+  <div class="gate"><strong>Exit gate:</strong> 2+ replies from the 5 review pilots &middot; Insights live for 3 accounts.</div>
+</div>
+
+<div class="phase">
+  <div class="ph"><b>Phase 3 &mdash; Weeks 9&ndash;12 &mdash; Make it a product, and make it visible</b><span class="muted">~33 dev-days</span></div>
+  <div class="pb2">
+    <strong>Sonat AI Chat</strong> on the viewer &mdash; multi-turn, cited, customer-branded, with escalation to
+    support. <strong>Enterprise MCP</strong> &mdash; authenticated tokens so a customer's own Claude or ChatGPT can
+    query their <em>private</em> manuals, with an audit trail. Something a public help centre cannot do.
+    <strong>The content-gap loop</strong> &mdash; failed questions become one-click drafts. Then the launch:
+    website, comparison pages, blog series, release notes, Product Hunt, and the visibility work in §6.
+  </div>
+  <div class="gate"><strong>Exit gate:</strong> every public claim we make is provable on demand.</div>
+</div>
+
+<div class="phase">
+  <div class="ph"><b>Phase 4 &mdash; Weeks 13&ndash;14 &mdash; Make it priced</b><span class="muted">Commercial only</span></div>
+  <div class="pb2">
+    Enterprise moves to <strong>$500&ndash;650</strong>, existing accounts grandfathered 12 months. Answer allowances
+    enforced as cost control. Upgrade offers go to the Business base &mdash; carried by their own performance
+    review, not a feature list. Enterprise Plus stays custom, differentiated by a
+    <strong>CSM-led quarterly content-gap review</strong>: a service wrapper that costs us nothing to build and
+    cannot be commoditised.
+  </div>
+</div>
+
+<h2>6 &nbsp;Being found &mdash; by Google and by the AI assistants</h2>
+
+<p>
+  Buyers increasingly do not start on Google. They ask Claude, ChatGPT or Perplexity <em>&ldquo;what's the best
+  AI documentation platform?&rdquo;</em> or <em>&ldquo;what are the alternatives to Document360?&rdquo;</em> Today those
+  assistants do not name us &mdash; and the reason is structural, not reputational: <strong>there is no structured
+  data anywhere on sonat.com, and no machine-readable description of what we do.</strong> We are asking models
+  to infer us from prose.
+</p>
+
+<p>This is a first-class workstream with its own scoreboard line, in four parts:</p>
+
+<table>
+  <tr><th style="width:20%">Part</th><th>What we do</th><th style="width:17%">Effort</th></tr>
+  <tr>
+    <td><strong>Machine-readable site</strong></td>
+    <td>Publish <code>llms.txt</code> and <code>llms-full.txt</code>. Add structured data across the site &mdash; product, pricing tiers, FAQs, how-tos, articles. Explicitly welcome the AI crawlers by name. Give every feature page a heading that <em>is</em> a question with a 40&ndash;60 word answer directly beneath it &mdash; that paragraph is what gets quoted. Real HTML tables, never screenshots: models cannot read pictures of comparisons.</td>
+    <td>~3 days<br><span class="small muted">Highest ratio on the page</span></td>
+  </tr>
+  <tr class="hl">
+    <td><strong>Be in the data models already read</strong></td>
+    <td>Assistants answer from aggregators, listicles and forums &mdash; not vendor sites. Submit our <strong>MCP server to the public registries</strong> (the official servers list, Smithery, mcp.so, Glama, PulseMCP, Anthropic's connector directory). Complete G2, Capterra, AlternativeTo and TrustRadius profiles. Get into the &ldquo;best AI knowledge base 2026&rdquo; roundups we ourselves cited in research. Product Hunt at launch. Ask our paying accounts for reviews.</td>
+    <td>Ongoing<br><span class="small muted">Start Phase 2 &mdash; lead times are months</span></td>
+  </tr>
+  <tr>
+    <td><strong>Say the same thing everywhere</strong></td>
+    <td>Models synthesize across sources; the same claim, worded identically, in many places is what makes a model confident enough to state it. One approved claim set renders into the site, the docs, every directory profile, the sales deck and the support macros. Contradictions are why a model hedges or omits you.</td>
+    <td>Process, not build</td>
+  </tr>
+  <tr>
+    <td><strong>Measure it</strong></td>
+    <td>Track referrals from chatgpt.com, perplexity.ai and claude.ai. And run a <strong>monthly LLM audit</strong>: twenty fixed questions asked of the four major assistants, logging whether Sonat appears, where, and whether the description is accurate. <strong>We baseline it in Week 5, before any of the work lands</strong>, so movement is provable rather than asserted.</td>
+    <td>Ongoing</td>
+  </tr>
+</table>
+
+<div class="note amber">
+  <strong>The MCP registries are the single highest-leverage item here.</strong> We have already shipped an MCP
+  server and our homepage already leads with it &mdash; we are genuinely early, and no other documentation
+  platform is in those catalogues yet. Listing it puts Sonat inside the tool directories that Claude and
+  ChatGPT users browse directly. It costs days, not weeks.
+</div>
+
+<h3>6.1 &nbsp;What we publish alongside it</h3>
+
+<div class="cols2">
+  <div class="box">
+    <h4>New website pages</h4>
+    <ul style="margin-bottom:0">
+      <li>A <strong>Sonat AI hub page</strong> &mdash; the URL we want cited</li>
+      <li>Feature pages: Chat, Insights, the content-gap loop, Enterprise MCP</li>
+      <li>A <strong>Trust page</strong> &mdash; no-training guarantee, DPA, retention, residency, SOC 2 status. Procurement lands here.</li>
+      <li><strong>Six comparison pages</strong> &mdash; versus Document360, GitBook, Mintlify, kapa.ai, Intercom Fin, Zendesk AI</li>
+      <li>An <strong>interactive deflection calculator</strong> &mdash; lead magnet and the number that sells the tier</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Content, one piece a week from Week 4</h4>
+    <ul style="margin-bottom:0">
+      <li>Ticket deflection benchmarks for 2026</li>
+      <li><strong>Freshness beats model choice: 45% vs 18%</strong> &mdash; our thesis piece, the most linkable idea we have</li>
+      <li>What AI documentation tooling should cost in 2026</li>
+      <li>MCP for documentation &mdash; highest citation potential</li>
+      <li>The procurement checklist for buying AI documentation tools</li>
+      <li>Monthly release notes, resuming in August &mdash; and a rewrite of our own product documentation, which still describes GPT-4 and GPT-3.5</li>
+    </ul>
+  </div>
+</div>
+
+<p class="small muted" style="margin-top:10px">
+  Comparison pages compare <strong>capabilities, never quality scores.</strong> We will not publish a
+  model-versus-model benchmark: it tells our own Business customers we knowingly ship them a worse
+  product, and our current benchmark &mdash; six questions, one account, one run &mdash; would not survive the
+  first prospect who asked about methodology.
+</p>
+
+<h2>7 &nbsp;The commercial reality, honestly</h2>
+
+<h3>7.1 &nbsp;Converting the Business base has a low ceiling</h3>
+
+<table class="tight" style="width:60%">
+  <tr><th></th><th class="num">Business</th><th class="num">Enterprise</th><th class="num">Step</th></tr>
+  <tr><td>Entry price</td><td class="num">$40/mo</td><td class="num">$375/mo</td><td class="num"><strong>9.4&times;</strong></td></tr>
+  <tr><td>Seats included</td><td class="num">5</td><td class="num">15</td><td class="num">+10 unneeded</td></tr>
+  <tr><td>Per user</td><td class="num">$8</td><td class="num">$25</td><td class="num">3.1&times;</td></tr>
+</table>
+
+<p>
+  Thirteen active Business accounts at $375 is <strong>~$4.9k MRR &mdash; the entire theoretical ceiling</strong> of
+  &ldquo;convert our Business base.&rdquo; And a five-person team cannot take that step: they must pay 9.4&times; and buy
+  ten seats they will never use. <strong>We could build every feature in this plan and convert nobody</strong>, because
+  the price step has no relationship to the value step.
+</p>
+
+<div class="note">
+  <strong>Recommendation:</strong> let Enterprise start at five seats, around <strong>$125&ndash;175/mo</strong>, decoupling
+  capability from seat count. The trade-off is real &mdash; we would earn less from customers who would have paid
+  $375 &mdash; so this is <strong>gated on one Stripe query in Week 0</strong>. If Business&nbsp;&rarr;&nbsp;Enterprise conversions are
+  near zero, 3&times; from a customer who converts beats 9.4&times; from one who never moves. If they are healthy,
+  we leave pricing alone.
+</div>
+
+<p>
+  <strong>The larger prize is new logos and retention</strong>, not upsell. An enterprise-credible AI story is a
+  win-rate and price-point lever on new business. And separately: <strong>1,044 free accounts sit at 11&ndash;40 topics</strong>,
+  pressed against the limit and not upgrading. AI will not move them &mdash; the topic cliff will. That is a
+  different campaign and we should not conflate the two.
+</p>
+
+<h3>7.2 &nbsp;The number that could invalidate all of this</h3>
+
+<div class="note red">
+  <strong>337 AI answers per month, platform-wide.</strong> About eleven a day, across every account we have.
+  There are four possible explanations and they demand four different responses:
+  <ul style="margin-bottom:0">
+    <li><strong>AI is switched off for most accounts</strong> &rarr; this is an onboarding and defaults problem. Cheapest win available to us.</li>
+    <li><strong>It is on but nobody can find it</strong> &rarr; a viewer UI problem, not an AI problem.</li>
+    <li><strong>Users tried it, got refused, and stopped</strong> &rarr; the engine fix is the whole job and demand follows.</li>
+    <li><strong>End users do not search at all</strong> &rarr; <strong>the AI investment thesis is weak and we should spend this quarter elsewhere.</strong></li>
+  </ul>
+</div>
+
+<p>
+  Week 0 answers this with a single database query. <strong>I want that answer before we commit the quarter</strong>,
+  and I am flagging to the board that it is a genuine kill criterion rather than a formality.
+</p>
+
+<h2>8 &nbsp;Scoreboard</h2>
+
+<table class="tight">
+  <tr><th>Measure</th><th class="num">Today</th><th class="num">Week 4 gate</th><th class="num">Week 14 target</th></tr>
+  <tr><td>AI refusal rate</td><td class="num">81%</td><td class="num"><strong>&lt; 20%</strong> on 3+ accounts</td><td class="num">&lt; 15% platform-wide</td></tr>
+  <tr><td>Accounts refusing 98&ndash;100%</td><td class="num">5</td><td class="num">0</td><td class="num">0</td></tr>
+  <tr><td>Median answer time</td><td class="num">10&ndash;23s</td><td class="num"><strong>&lt; 5s</strong></td><td class="num">&lt; 3s</td></tr>
+  <tr><td>Answers per month</td><td class="num">337</td><td class="num">1,000</td><td class="num">5,000</td></tr>
+  <tr><td>Accounts with AI enabled</td><td class="num">unknown</td><td class="num">measured</td><td class="num">80% of paying</td></tr>
+  <tr><td>Analytics pipeline</td><td class="num">0 rows</td><td class="num">writing</td><td class="num">writing</td></tr>
+  <tr><td>Enterprise price</td><td class="num">$375</td><td class="num">$375</td><td class="num">$500&ndash;650</td></tr>
+  <tr><td>New Enterprise logos</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">4</td></tr>
+  <tr class="hl"><td><strong>Named by AI assistants</strong> (20-question audit)</td><td class="num">baseline Wk 5</td><td class="num">&mdash;</td><td class="num"><strong>8 of 20</strong></td></tr>
+  <tr><td>Referrals from AI assistants</td><td class="num">~0</td><td class="num">&mdash;</td><td class="num">200/mo</td></tr>
+  <tr><td>Public reviews (G2 / Capterra)</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">15</td></tr>
+  <tr><td>SOC 2 Type 2</td><td class="num">not started</td><td class="num">in progress</td><td class="num">audit window open</td></tr>
+</table>
+
+<h2>9 &nbsp;Risks</h2>
+
+<table>
+  <tr><th style="width:44%">Risk</th><th>How it is managed</th></tr>
+  <tr><td><strong>We launch on a broken engine and turn a bug into a paid promise</strong></td><td>The Week 4 exit gate. I am asking the board to hold it against me if I try to move it.</td></tr>
+  <tr><td><strong>Week 0 reveals end users do not search at all</strong></td><td>We stop and spend the quarter on the topic cliff and the 1,044 stuck free accounts. Real kill criterion.</td></tr>
+  <tr><td>We build everything and nobody converts, because of the 9.4&times; seat step</td><td>Five-seat Enterprise, gated on the Stripe number in Week 0.</td></tr>
+  <tr><td>Marketing runs ahead of the product again</td><td>One approved claim set. A claim only goes public when a named command or dashboard proves it. This is the discipline that was missing.</td></tr>
+  <tr><td>The 81% figure is itself wrong &mdash; it is one hand reconstruction from truncated logs</td><td>Restoring the analytics pipeline is the <em>first</em> engineering item, not a later one. The independently verified findings justify the work regardless of where the headline lands.</td></tr>
+  <tr><td>Competitors copy us</td><td>They can copy a model choice in a weekend. They cannot copy owning the editor. That is precisely why the pitch is the loop.</td></tr>
+  <tr><td>We overpromise to a Business customer who upgrades and finds the feature missing</td><td>During the pilot, analytics is sold as a <strong>manually delivered service</strong> &mdash; which is true today. Chat and the loop are sold <strong>with dates</strong>, not in the present tense. Only shipped capability is described in the present tense.</td></tr>
+  <tr><td>The AI-visibility work produces nothing measurable</td><td>Baselined in Week 5 and audited monthly. The machine-readable work is cheap and permanent regardless; only the outreach spend would be reconsidered.</td></tr>
+</table>
+
+<h2>10 &nbsp;Decisions requested</h2>
+
+<table>
+  <tr><th style="width:5%" class="c">#</th><th style="width:52%">Decision</th><th>Recommendation</th></tr>
+  <tr><td class="c">1</td><td>Approve 14 weeks of engineering to fix and productise the AI answer engine</td><td><span class="pill good">Approve</span> ~70 dev-days across four phases</td></tr>
+  <tr class="hl"><td class="c">2</td><td><strong>Adopt the Week 4 quality gate as binding</strong> &mdash; no launch, no price change, no comparison marketing until refusals are below 20% on 3+ accounts</td><td><span class="pill good">Approve</span> This is the item I most want on the record</td></tr>
+  <tr><td class="c">3</td><td>Brand it <strong>Sonat AI</strong>, and stop selling a model number</td><td><span class="pill good">Approve</span> It also retires a currently false pricing-page claim</td></tr>
+  <tr><td class="c">4</td><td>Correct the false marketing claims this week, independent of everything else</td><td><span class="pill good">Approve</span> Days of writing, no engineering</td></tr>
+  <tr><td class="c">5</td><td>Publish a model-versus-model quality benchmark to justify the upgrade</td><td><span class="pill bad">Decline</span> Compare capabilities, never scores</td></tr>
+  <tr><td class="c">6</td><td>Begin <strong>SOC 2 Type 2</strong> in Week 2</td><td><span class="pill good">Approve</span> 6&ndash;12 month clock; every week of delay is a deal we cannot close</td></tr>
+  <tr><td class="c">7</td><td>Five-seat Enterprise at ~$125&ndash;175/mo</td><td><span class="pill info">Conditional</span> On the Week 0 Stripe conversion count</td></tr>
+  <tr><td class="c">8</td><td>Enterprise price increase to $500&ndash;650</td><td><span class="pill info">Defer</span> To Week 13, after the gate and after chat ships</td></tr>
+  <tr><td class="c">9</td><td>Fund AI-assistant visibility as a first-class workstream with its own metric</td><td><span class="pill good">Approve</span> Cheap, structural, and we are early on MCP</td></tr>
+  <tr><td class="c">10</td><td>Accept the Week 0 kill criterion &mdash; if end users do not search, we redirect the quarter</td><td><span class="pill good">Approve</span> Answer due Friday 7 August</td></tr>
+</table>
+
+<div class="note">
+  <strong>If the board approves only one thing:</strong> approve decision 2. Everything that has gone wrong here
+  &mdash; the false claims on the site, the account that failed silently for thirty days, the refusal rate nobody
+  noticed &mdash; came from the same root cause: <strong>we shipped and sold faster than we measured.</strong> The gate is
+  the correction, and it costs nothing but patience.
+</div>
+
+<footer>
+  Sonat &middot; Board paper, 31 July 2026 &middot; Prepared by Sonat leadership.
+  Production figures marked <em>reconstructed</em> were derived by hand from API gateway logs because the
+  analytics pipeline is not writing; restoring it is the first engineering item in Phase 1. Figures marked
+  <em>verified</em> are independently reproducible. Competitor pricing is drawn from published pricing pages
+  and third-party comparison sources, and should be re-checked against primary sources before external
+  quotation. Full working plan and backlog: <code>.claude/docs/sonat-ai-launch-plan.md</code>.
+</footer>
+
+</body>
+</html>
