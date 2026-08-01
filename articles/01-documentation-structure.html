@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Structure Technical Documentation People Actually Read</title>
+<meta name="description" content="Learn how to structure technical documentation around reader goals — the four documentation types, information architecture, and page layout for how people actually scan and read.">
+<style>
+  :root {
+    --ink: #1c2530;
+    --muted: #55606d;
+    --accent: #1a7f8e;
+    --line: #e7ebef;
+    --bg: #ffffff;
+    --soft: #f5f8fa;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 18px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 {
+    font-size: 2.15rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 52px 0 14px;
+    padding-top: 8px;
+  }
+  h3 {
+    font-size: 1.18rem;
+    margin: 32px 0 10px;
+    color: var(--ink);
+  }
+  p { margin: 0 0 20px; color: var(--ink); }
+  ul { margin: 0 0 22px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(26,127,142,0.3); }
+  a:hover { border-bottom-color: var(--accent); }
+  .lede {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 34px;
+  }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 44px 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .wrap { padding: 36px 20px 60px; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.35rem; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>How to Structure Technical Documentation People Actually Read</h1>
+
+    <p class="lede">Most documentation isn't unclear because the writing is bad. It's unclear because the pieces are in the wrong order.</p>
+
+    <p>A reader who wants a quick answer lands on a page of background theory. Someone trying to understand a concept gets a bare list of settings. The words are fine; the <strong>documentation structure</strong> is working against them.</p>
+
+    <p>Structure is the part of technical writing that readers never thank you for and always notice when it's missing. Get it right and people find what they need in seconds. Get it wrong and even accurate, well-edited content feels like a maze. This guide walks through how to structure technical documentation around what readers are actually trying to do, and how to lay each page out for the way people really read.</p>
+
+    <h2>Start with the reader's goal, not your product</h2>
+    <p>The most common structural mistake is organizing docs around how the <em>product</em> is built — a page per feature, a section per menu — instead of around what the <em>reader</em> came to do. Feature-shaped documentation feels logical to the team that made it and confusing to everyone else, because no reader wakes up wanting to "learn the Settings panel." They want to finish a task, answer a question, or understand how something works.</p>
+    <p>Good structure starts by naming those needs. Before you outline anything, write down the jobs your readers arrive with:</p>
+    <ul>
+      <li><strong>I'm brand new and want to get started.</strong></li>
+      <li><strong>I know what I'm doing and need to complete a specific task.</strong></li>
+      <li><strong>I need to look up an exact detail</strong> — a value, a limit, a field.</li>
+      <li><strong>I want to understand how or why something works.</strong></li>
+    </ul>
+    <p>Those four intents aren't arbitrary. They map to a widely adopted model for organizing technical documentation.</p>
+
+    <h2>The four types of documentation</h2>
+    <p>One widely adopted framework argues that technical documentation serves four distinct needs — and that mixing them on one page is what makes docs feel muddled. Keep them separate and each type gets clearer.</p>
+
+    <h3>Tutorials — learning by doing</h3>
+    <p>A tutorial takes a newcomer by the hand through a first success. It's a lesson, not a task list: the reader learns by doing something concrete under your guidance. Tutorials are the one place background is welcome, because the reader has no map yet. The goal isn't to cover every option — it's to build enough confidence to keep going.</p>
+
+    <h3>How-to guides — getting a task done</h3>
+    <p>A how-to guide serves a competent reader who already knows roughly what they want and needs the steps to do it. These should be crisp and task-focused: skip the theory, name the task in the heading ("How to publish a manual to a custom domain"), and get to the steps. If a reader has to wade through <em>why</em> before reaching <em>how</em>, the guide is doing the wrong job.</p>
+
+    <h3>Reference — the facts, fast</h3>
+    <p>Reference is the material people consult while working: settings, limits, fields, parameters, definitions. It should be factual, precise, and consistent — closer to a map or dictionary than an article. Nobody reads reference for pleasure; they scan it to confirm a detail and leave. Structure it predictably so the same kind of fact always lives in the same kind of place.</p>
+
+    <h3>Explanation — the why behind it</h3>
+    <p>Explanation gives context and background. It answers "why is it built this way?" and connects ideas that the other three types deliberately keep out of the reader's path. Explanation is where you can discuss trade-offs, history, and alternatives — as long as you don't smuggle it into a how-to guide where a task-focused reader will trip over it.</p>
+
+    <p>The point isn't to build four rigid silos. It's to notice, for every page, <em>which single need</em> it serves — and to resist letting a reference table sprout a tutorial or a how-to guide drift into an essay. When each page has one job, the whole library becomes navigable.</p>
+
+    <h2>Turn the model into an information architecture</h2>
+    <p>Naming the four types is the thinking; your navigation is where readers feel it. A clear <strong>information architecture for documentation</strong> guides different journeys to different starting points without making anyone hunt.</p>
+    <p>A few structural rules travel well across almost any documentation set:</p>
+    <ul>
+      <li><strong>Give newcomers an obvious front door.</strong> A "Getting started" path should be the first thing a first-time reader sees, separated from deep reference they aren't ready for.</li>
+      <li><strong>Group by task, then by type.</strong> Top-level sections should read like reader goals ("Set up," "Publish," "Manage access"), with tutorials, how-to guides, and reference sitting where each journey needs them.</li>
+      <li><strong>Keep one page to one job.</strong> If a page tries to teach, instruct, and define all at once, split it. Shorter, single-purpose pages are easier to search, link, and translate.</li>
+      <li><strong>Make troubleshooting its own destination.</strong> People arrive at problems from search, not from your table of contents — give errors and fixes a predictable home.</li>
+    </ul>
+    <p>This is also where <strong>topic-based documentation</strong> earns its keep. When content is written as self-contained topics rather than long linear chapters, you can reorganize, reuse, and reorder without rewriting. A topic that explains one concept or one task can be slotted into whatever journey needs it — and updated in one place when the product changes.</p>
+
+    <h2>Structure the page for how people actually read</h2>
+    <p>Even a perfectly organized library fails if the individual page is a wall of text, because people don't read documentation the way they read a novel. Decades of eye-tracking research show that users <em>scan</em> far more than they read, often tracing an <strong>F-shaped pattern</strong>: a horizontal sweep across the top, a shorter sweep lower down, then a vertical run down the left edge. The first lines get the most attention; the first words of each line get more than the rest.</p>
+    <p>That behavior has direct consequences for how you structure a page:</p>
+    <ul>
+      <li><strong>Front-load the answer.</strong> Put the most important point in the first paragraph or two. Don't make a scanning reader earn it.</li>
+      <li><strong>Start headings and list items with information-carrying words.</strong> Because readers scan down the left edge, "Publishing to a custom domain" beats "How you can go about publishing." The first two words should carry the meaning.</li>
+      <li><strong>Use real headings and subheadings.</strong> They're the rails a scanning reader follows. Descriptive headings also double as anchors and search results.</li>
+      <li><strong>Break text into lists and short paragraphs.</strong> Bullets, numbered steps, and tight paragraphs create the visual footholds scanning eyes look for.</li>
+      <li><strong>Cut anything that isn't pulling weight.</strong> Every sentence a reader skips is friction. Ruthless trimming is a structural act, not just an editorial one.</li>
+    </ul>
+    <p>Readability and structure aren't separate concerns — the layout of a single page <em>is</em> structure at the smallest scale. A predictable page shape (goal up top, steps in the middle, related links at the end) lets readers build a mental template and move faster through every page after the first.</p>
+
+    <h2>Keep the structure alive</h2>
+    <p>Documentation structure isn't a one-time information-architecture project; it degrades as products change. New features get bolted onto whatever page is nearest, tutorials quietly rot, and reference drifts out of date. A little maintenance keeps the shape intact:</p>
+    <ul>
+      <li><strong>Review structure, not just content.</strong> When you audit docs, ask whether each page still serves one clear need — not only whether the words are accurate.</li>
+      <li><strong>Watch what readers do.</strong> Search terms that return nothing, pages with high exits, and repeat support questions all point at structural gaps. Analytics and reader feedback turn guesswork into a to-do list.</li>
+      <li><strong>Refactor in small passes.</strong> Splitting one overloaded page or renaming a vague heading is cheap and compounds. You don't need a full rewrite to keep a library usable.</li>
+    </ul>
+    <p>This is where an authoring platform helps rather than gets in the way. Because <a href="https://sonat.com">Sonat</a> is built for topic-based, published documentation — with versioning, a menu builder, built-in readability scoring, and analytics on how readers actually use each page — the structure you design is something you can see, measure, and adjust over time, not a diagram that lives only in someone's head. Non-technical teams can reorganize a manual without rebuilding it, so good structure stays good as the product grows.</p>
+
+    <h2>Structure is a promise to the reader</h2>
+    <p>Every well-structured doc set makes the same quiet promise: <em>whatever you came here to do, there's an obvious place for it, and you'll know it when you see it.</em> You keep that promise by organizing around reader goals instead of product internals, by keeping each page to a single job, and by laying pages out for scanning eyes rather than patient ones.</p>
+    <p>None of it requires a heroic rewrite. Name the four things readers come for, give each its own clear home, and shape every page so the important words land where people are already looking. Do that consistently and your documentation stops being something readers endure — and starts being something they trust.</p>
+  </article>
+</main>
+</body>
+</html>
