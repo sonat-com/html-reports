@@ -4,169 +4,196 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Answer Engine Optimization for Documentation</title>
-<meta name="description" content="Answer engine optimization for documentation: structure help docs so AI answer engines and search find, trust, and cite them. Practical checklist inside.">
+<meta name="description" content="Answer engine optimization makes your documentation the source AI assistants cite. A playbook to structure docs so AI can find and quote them.">
+<link rel="canonical" href="https://sonat-com.github.io/html-reports/articles/01-answer-engine-optimization-documentation.html">
 <style>
-  :root {
-    --ink: #1a2230;
-    --muted: #5b6676;
-    --accent: #1f6feb;
-    --line: #e6e9ef;
-    --bg: #ffffff;
-    --soft: #f6f8fb;
+  :root{
+    --ink:#1c2230; --muted:#5b6577; --line:#e7eaf0; --bg:#ffffff;
+    --accent:#1f6feb; --accent-soft:#eef4ff; --card:#f7f9fc;
+    --maxw:720px;
   }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#e8ecf3; --muted:#a2acbd; --line:#2a3140; --bg:#12151b;
+      --accent:#6ea8fe; --accent-soft:#182437; --card:#181c24; }
   }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 22px 80px; }
-  h1 {
-    font-size: 2.15rem;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin: 0 0 26px;
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; font-size:18px;
+    -webkit-font-smoothing:antialiased;
   }
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    margin: 52px 0 14px;
-    padding-top: 6px;
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:56px 22px 80px;}
+  .eyebrow{
+    display:inline-block; font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+    font-weight:700; color:var(--accent); background:var(--accent-soft);
+    padding:5px 12px; border-radius:999px; margin-bottom:20px;
   }
-  h3 {
-    font-size: 1.17rem;
-    margin: 30px 0 8px;
-    color: var(--ink);
+  h1{
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em; font-weight:800;
+    margin:0 0 20px;
   }
-  p { margin: 0 0 18px; }
-  ul { margin: 0 0 18px; padding-left: 1.25em; }
-  li { margin: 0 0 10px; }
-  strong { color: var(--ink); font-weight: 650; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .lede { font-size: 1.16rem; color: var(--muted); }
-  .checklist {
-    background: var(--soft);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 22px 24px 8px;
-    margin: 8px 0 18px;
+  h2{
+    font-size:1.4rem; line-height:1.3; letter-spacing:-.01em; font-weight:750;
+    margin:44px 0 12px; padding-top:8px;
   }
-  .checklist ul { list-style: none; padding-left: 0; }
-  .checklist li { position: relative; padding-left: 30px; }
-  .checklist li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--accent);
-    font-weight: 700;
+  p{margin:0 0 18px; color:var(--ink)}
+  .lede{font-size:1.12rem; color:var(--muted)}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:var(--accent)}
+  ul{margin:0 0 20px; padding-left:1.25em}
+  li{margin:0 0 9px}
+  ul.checks{list-style:none; padding-left:0}
+  ul.checks li{position:relative; padding-left:30px; margin-bottom:11px}
+  ul.checks li::before{
+    content:""; position:absolute; left:0; top:.28em; width:17px; height:17px;
+    border-radius:5px; background:var(--accent-soft);
+    border:1.5px solid var(--accent);
   }
-  hr { border: none; border-top: 1px solid var(--line); margin: 46px 0; }
-  @media (max-width: 600px) {
-    body { font-size: 17px; }
-    .wrap { padding: 36px 18px 60px; }
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.32rem; }
+  ul.checks li::after{
+    content:""; position:absolute; left:5px; top:.42em; width:5px; height:9px;
+    border:solid var(--accent); border-width:0 2px 2px 0; transform:rotate(45deg);
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ink: #e8ecf3;
-      --muted: #a2adbd;
-      --accent: #6ea8ff;
-      --line: #2a323f;
-      --bg: #12151b;
-      --soft: #1a1f27;
-    }
+  strong{font-weight:700}
+  hr{border:0; border-top:1px solid var(--line); margin:40px 0}
+  .cta{
+    margin-top:44px; padding:26px 24px; background:var(--card);
+    border:1px solid var(--line); border-radius:14px;
+  }
+  .cta p{margin:0 0 16px; font-size:1.05rem}
+  .btn{
+    display:inline-block; background:var(--accent); color:#fff; font-weight:650;
+    padding:11px 20px; border-radius:9px; border-bottom:none;
+  }
+  .btn:hover{border-bottom:none; opacity:.92}
+  @media (max-width:540px){
+    body{font-size:17px}
+    .wrap{padding:40px 18px 64px}
+    h1{font-size:1.8rem}
+    h2{font-size:1.25rem}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Answer Engine Optimization for Documentation: How to Get Your Docs Cited by AI",
+  "description":"Answer engine optimization makes your documentation the source AI assistants cite. A practical playbook to structure docs so AI can find, trust, and quote them.",
+  "author":{"@type":"Organization","name":"Sonat"},
+  "publisher":{"@type":"Organization","name":"Sonat"},
+  "mainEntityOfPage":"https://sonat-com.github.io/html-reports/articles/01-answer-engine-optimization-documentation.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"What is answer engine optimization?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Answer engine optimization (AEO) is the practice of structuring your content so AI answer engines can retrieve it, understand it, and cite it in their responses. It is also called generative engine optimization (GEO). Unlike traditional SEO, which competes for a position in a list of links, AEO competes for inclusion in a single generated answer."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"How is AEO different from traditional SEO?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Traditional SEO optimizes to rank among ten links a user can click. AEO optimizes to be one of the handful of sources an AI answer engine quotes in a single reply. You are no longer optimizing to be clickable, but to be quotable."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <main class="wrap">
-  <h1>Answer Engine Optimization for Documentation</h1>
+  <span class="eyebrow">Documentation Strategy</span>
+  <h1>Answer Engine Optimization for Documentation: How to Get Your Docs Cited by AI</h1>
 
-  <p class="lede">Your customers used to search for an answer, click your help center, and read. Now many of them ask an AI assistant instead — and read whatever it hands back. If your documentation is the source that assistant quotes, you win the moment. If it isn't, a shorter, less accurate answer takes your place.</p>
+  <p class="lede">More of your readers are getting their answers without ever visiting your site. They ask an AI assistant a question, and it replies in a few sentences &mdash; sometimes citing a source, sometimes not. If your documentation is the source it quotes, you win the moment. If it isn&rsquo;t, someone else&rsquo;s content is teaching your users how your product works.</p>
 
-  <p>This guide is for documentation, support, and product teams who want their help docs to show up in both places: the classic search results and the AI-generated answers on top of them. You'll learn what answer engine optimization actually means, why documentation is unusually well-suited to it, and the concrete structural habits that make your pages easy for an AI to quote correctly.</p>
+  <p>That shift has a name: <strong>answer engine optimization</strong>. By the end of this guide you&rsquo;ll know what it is, why your documentation is your strongest asset for it, and the concrete changes that make an AI engine more likely to find, trust, and cite your docs.</p>
 
   <h2>What is answer engine optimization?</h2>
-  <p>Answer engine optimization (AEO) is the practice of structuring your content so AI answer engines — assistants and AI search results — can find it, understand it, and cite it in the response they generate for a user. Generative engine optimization (GEO) is the closely related term for the same goal across large language models.</p>
-  <p>Here's the reassuring part: this is not a separate discipline you have to learn from scratch. Google's own position is that optimizing for generative AI search is optimizing for the search experience — and thus still SEO. Industry analysts agree the practices are meaningfully, but not fundamentally, different from the SEO you already know. What has shifted is emphasis. Instead of chasing a keyword into a ranking slot, you're writing content clear and well-structured enough that a machine can lift a correct, self-contained answer straight out of it.</p>
+  <p>Answer engine optimization (AEO) is the practice of structuring your content so AI answer engines &mdash; the assistants and AI-powered search results people now ask instead of scrolling a list of links &mdash; can retrieve it, understand it, and cite it in their responses. It&rsquo;s also called generative engine optimization (GEO).</p>
+  <p>The difference from classic SEO is where you&rsquo;re competing. Traditional SEO fights for a position in a list of ten blue links. AEO fights for inclusion in a single generated answer that usually draws on just a handful of sources. You&rsquo;re no longer optimizing to be clickable &mdash; you&rsquo;re optimizing to be quotable.</p>
+  <p>Here&rsquo;s the good news for documentation teams: the qualities an answer engine looks for are the same qualities that make documentation genuinely useful. Clear, accurate, well-structured content that answers one question at a time is already the goal. AEO just raises the stakes.</p>
 
-  <h2>Why documentation is built for AI answers</h2>
-  <p>Most teams treat AEO as a marketing problem. It's really a documentation problem — and that's good news, because well-made docs already do most of what answer engines reward.</p>
+  <h2>Why your documentation is your best AEO asset</h2>
+  <p>Marketing pages are written to persuade. Documentation is written to explain &mdash; and explanation is exactly what an answer engine is trying to assemble.</p>
+  <p>Your docs have three properties that AI systems reward:</p>
   <ul>
-    <li><strong>You answer real questions.</strong> A help center is a library of "how do I…" and "what is…" pages. Those map directly to the prompts people type into an assistant.</li>
-    <li><strong>You're a primary source.</strong> Nobody knows your product better than your own documentation. Answer engines lean toward content that reads as first-hand and authoritative on its subject.</li>
-    <li><strong>You're already structured.</strong> Topics, sections, and step lists are exactly the scannable shape both readers and machines prefer.</li>
+    <li><strong>They&rsquo;re factual and first-party.</strong> You are the authoritative source on how your own product works. No third-party blog can out-rank you on that.</li>
+    <li><strong>They&rsquo;re structured.</strong> Manuals, help centers, and knowledge bases are already broken into topics, sections, and steps &mdash; the shape retrieval systems prefer.</li>
+    <li><strong>They&rsquo;re specific.</strong> A good help article answers a precise question in precise language, which is what a model needs to quote confidently.</li>
   </ul>
-  <p>The catch is that "good enough for a human who's already on the page" is a lower bar than "good enough for a machine to quote out of context." Closing that gap is the work.</p>
+  <p>The catch is that most documentation was structured for human navigation &mdash; a menu, a search box, a page you scroll. AEO asks you to also structure it for machine retrieval, where each piece may be pulled out of context and read on its own.</p>
 
-  <h2>How to structure documentation so AI answer engines can cite it</h2>
-  <p>Decades of user research from the Nielsen Norman Group found something that still holds: people rarely read online — they scan. Their eyes move in an F-shaped pattern, catching headings, the first words of lines, and bold text, then moving on. The remedy is the same one that helps a machine: put the answer up front and make the page easy to skim.</p>
-  <p>The habits below are small on their own. Together they turn a page a human tolerates into one a machine can quote without guessing.</p>
-
-  <h3>Lead with the answer, then explain</h3>
-  <p>Open each section with a direct, self-contained answer in one or two sentences, then expand with context, caveats, and steps. An answer engine can extract that opening and get the point without parsing the whole page — and a scanning human gets it too. Bury the answer in paragraph four and both give up.</p>
-
-  <h3>Give every section a descriptive heading</h3>
-  <p>Write headings the way a person would ask the question: "How do I reset a password?" beats "Password management." Descriptive, natural-language headings tell both readers and machines exactly what each block answers, so the right passage gets matched to the right prompt.</p>
-
-  <h3>Keep one idea per section</h3>
-  <p>A section that answers exactly one question is easy to quote. A section that answers five is a paragraph a machine has to guess its way through. Split multi-topic pages so each unit stands alone as a complete answer.</p>
-
-  <h3>Add FAQs and plain definitions</h3>
-  <p>A short question-and-answer block near the end of an article captures the follow-up questions readers actually ask — and it's the format answer engines cite most consistently. Define key terms in a single clear sentence near the top of the page, too; that's the snippet a machine reaches for when someone asks "what is X?"</p>
-
-  <h3>Maintain a single source of truth</h3>
-  <p>If three pages describe the same setting three different ways, an answer engine may surface the wrong one — or blend them into something false. Keeping one authoritative, version-tracked home for each topic removes the contradictions that produce bad AI answers. This is where a documentation platform earns its keep: Sonat keeps every topic in one place with a full version archive, so there's a single, current answer for both your readers and the machines reading on their behalf.</p>
-
-  <h2>Earn trust: E-E-A-T for documentation</h2>
-  <p>Google evaluates content on Experience, Expertise, Authoritativeness, and Trustworthiness — and it's explicit that trust matters most. The same signals that earn that trust help an answer engine decide your page is safe to quote. Google frames them as three questions worth answering on every page:</p>
+  <h2>Structure every topic to answer a single question</h2>
+  <p>Answer engines rarely read a whole page. They retrieve and evaluate individual passages, then stitch the best ones into a reply. So the unit that matters is no longer the page &mdash; it&rsquo;s the self-contained chunk.</p>
+  <p>Usability research has long shown that readers don&rsquo;t read online, they scan &mdash; and that breaking content into meaningful, visually distinct chunks is what makes it scannable in the first place. The same chunking that helps a human skim helps a machine retrieve. A well-formed section carries its own context: it names its subject, answers one question, and makes sense even when it&rsquo;s lifted away from everything around it.</p>
+  <p>Practical rules that hold up for both audiences:</p>
   <ul>
-    <li><strong>Who</strong> created it? Make ownership clear — a named team or author and a visible About or company context beats an anonymous wall of text.</li>
-    <li><strong>How</strong> was it made? Be transparent about your process, and if you use AI to help draft content, say so and explain why it served the reader.</li>
-    <li><strong>Why</strong> does it exist? The page should exist to help someone succeed, not to catch search traffic. Google calls this the most important question of the three.</li>
+    <li><strong>One question per section.</strong> If a heading covers two ideas, split it.</li>
+    <li><strong>Write headings as real questions or clear statements.</strong> &ldquo;How do I reset my password?&rdquo; beats &ldquo;Password management.&rdquo; Retrieval systems often match the reader&rsquo;s question against your heading before they read the body.</li>
+    <li><strong>Keep each section self-explanatory.</strong> Avoid &ldquo;as mentioned above&rdquo; and unresolved &ldquo;it&rdquo; references &mdash; the passage may be read with nothing above it.</li>
+    <li><strong>Use a clean heading hierarchy.</strong> Structure is the metadata that tells a machine what each chunk is about.</li>
   </ul>
-  <p>For documentation, this is native territory. Your docs already exist to help users succeed — surface the "who" and "how," and you turn an implicit strength into an explicit trust signal.</p>
 
-  <h2>Don't abandon SEO fundamentals</h2>
-  <p>AEO is a layer on top of good SEO, not a replacement for it. An answer engine can't cite a page it never discovered. The basics still carry weight:</p>
+  <h2>Lead with the answer, then explain</h2>
+  <p>Answer engines weigh the opening of a passage heavily when deciding whether it&rsquo;s relevant. So does a busy reader. Both are scanning for a fast, direct answer before they commit to reading more.</p>
+  <p>Start each section with the answer in one or two plain sentences, then expand with the context, caveats, and steps. If a reader &mdash; or a model &mdash; can lift your first two sentences and have a correct, complete answer, you&rsquo;ve written a passage that&rsquo;s easy to cite.</p>
+  <p>This is also the most reliable way to earn a featured snippet or a spot in an AI overview: define the term or resolve the question near the top, in under fifty words, before you elaborate.</p>
+
+  <h2>Keep one source of truth, and keep it fresh</h2>
+  <p>Answer engines favor content that&rsquo;s current, and they lose trust in sources that contradict themselves. That&rsquo;s a problem when the same instruction lives in four half-updated places &mdash; an old PDF, a support macro, a wiki page, and your live docs. When those disagree, a model can&rsquo;t tell which is right, and neither can your users.</p>
+  <p>The fix is a single source of truth: one canonical home for each topic, versioned, with a clear update trail. When you change how the product works, you change it in one place and every reader &mdash; human or machine &mdash; sees the same current answer.</p>
+  <p>This is where a purpose-built documentation platform earns its keep. In <a href="https://sonat.com">Sonat</a>, every topic is a versioned, centrally managed unit rather than a loose file, so your knowledge base stays consistent as it grows &mdash; and consistency is exactly what an answer engine is checking for.</p>
+
+  <h2>Make sure the engines can actually reach your docs</h2>
+  <p>None of this matters if AI crawlers can&rsquo;t read your pages. Before optimizing anything, confirm the fundamentals:</p>
   <ul>
-    <li><strong>Descriptive titles and meta descriptions</strong> that state what the page answers.</li>
-    <li><strong>A clean, crawlable structure</strong> with a current sitemap so every topic is indexable.</li>
-    <li><strong>Structured data</strong> where it fits — FAQ and article markup help machines parse your content's shape.</li>
-    <li><strong>Internal links</strong> between related topics, so both crawlers and readers can follow a trail through your knowledge.</li>
+    <li><strong>Don&rsquo;t block the crawlers you want.</strong> Check your <code>robots.txt</code> isn&rsquo;t quietly excluding AI user agents you&rsquo;d be happy to be cited by.</li>
+    <li><strong>Publish real, indexable HTML.</strong> Content that only appears after heavy client-side rendering is harder to retrieve reliably.</li>
+    <li><strong>Keep your internal linking clean.</strong> Clear links between related topics help both people and machines understand how your knowledge fits together.</li>
   </ul>
-  <p>A good documentation platform should hand you these without a plugin project. Sonat generates meta tags, sitemaps, and structured data, connects to Search Console, and includes a readability guide that scores pages for clarity — the same clarity that makes content quotable.</p>
+  <p>It&rsquo;s worth setting expectations here. Search platforms themselves are clear that there&rsquo;s no secret markup or special file that guarantees inclusion in AI answers &mdash; the fundamentals are still quality, structure, and crawlability. Where structured data (like FAQ or How-To markup) is supported, it can help a machine parse your content, but it&rsquo;s an amplifier, not a magic switch. Don&rsquo;t chase tricks; get the foundations right.</p>
 
-  <h2>Measure what search and AI engines see</h2>
-  <p>You can't improve what you can't see, and the visibility tooling has caught up. Google Search Console now reports on how your content performs in generative AI experiences, and Bing Webmaster Tools offers an AI performance view of its own. Check them the way you already check rankings: watch which pages get surfaced, spot the questions where a thin page is standing in for a better one you could write, and prioritize accordingly.</p>
-
-  <h2>An answer-engine checklist for documentation teams</h2>
-  <p>Run each published article past this list:</p>
-  <div class="checklist">
+  <h2>Measure what AI sends you</h2>
+  <p>You can&rsquo;t improve what you don&rsquo;t watch, and AEO is measurable &mdash; just with newer signals than a keyword ranking.</p>
+  <p>Track a few things over time:</p>
   <ul>
-    <li>Does the first sentence of each section answer its heading directly?</li>
-    <li>Is every heading phrased as the question a reader would actually ask?</li>
-    <li>Does each section cover exactly one idea?</li>
-    <li>Is there a short FAQ for the common follow-ups?</li>
-    <li>Are key terms defined in one plain sentence near the top?</li>
-    <li>Is this the single, current source for its topic — no contradicting pages?</li>
-    <li>Are the title, meta description, and sitemap in place so it can be found at all?</li>
-    <li>Is the "who, how, and why" behind the page clear enough to trust?</li>
+    <li><strong>Referrals from AI assistants and AI-powered search</strong> in your analytics, so you can see AI-driven traffic as its own trend rather than losing it inside &ldquo;direct&rdquo; or &ldquo;organic.&rdquo;</li>
+    <li><strong>On-page engagement for your top help topics</strong> &mdash; the pages an engine is most likely to pull from are usually the ones humans already find clearest.</li>
+    <li><strong>Search and question logs inside your own docs.</strong> The questions users ask your help center are the exact phrasings you should be answering in a heading.</li>
   </ul>
-  </div>
+  <p>Documentation analytics closes the loop: it tells you which topics are getting cited and used, and which gaps are sending users &mdash; and answer engines &mdash; away empty-handed.</p>
+
+  <h2>A practical AEO checklist for documentation teams</h2>
+  <p>Run each important help topic through this before you publish:</p>
+  <ul class="checks">
+    <li>The heading is the question a real user would ask.</li>
+    <li>The first two sentences answer that question completely.</li>
+    <li>The section stands alone with no unresolved references.</li>
+    <li>One question per section; long topics are split, not padded.</li>
+    <li>The information matches every other place it appears (single source of truth).</li>
+    <li>The page is crawlable and the content is real HTML.</li>
+    <li>The facts are current, with a clear update trail.</li>
+    <li>You&rsquo;re tracking AI referrals and on-page engagement for the topic.</li>
+  </ul>
 
   <h2>The shift worth making</h2>
-  <p>The goal hasn't changed: help a person get an answer. What's changed is that the person now arrives with a machine in the middle, reading your documentation and speaking on its behalf. Write pages that lead with the answer, keep one idea per section, tell the truth in one place, and make the source clear — and you'll be the one getting quoted.</p>
-  <p>Sonat gives documentation teams the foundation for that work: structured, single-source topics with built-in SEO metadata, a readability guide, and an AI Answer Generator that turns your docs into direct answers for your own users. Write the clearest version once, and let both your readers and the answer engines find it.</p>
+  <p>Answer engine optimization isn&rsquo;t a new discipline bolted onto your docs &mdash; it&rsquo;s what happens when clear, accurate, well-structured documentation meets a world where machines do the answering. Write each topic to answer one question, lead with the answer, keep a single fresh source of truth, and measure what the engines send back.</p>
+
+  <div class="cta">
+    <p>Do that, and when a reader asks an AI how your product works, the answer they get is yours.</p>
+    <a class="btn" href="https://sonat.com">See how Sonat helps teams publish docs people and answer engines rely on</a>
+  </div>
 </main>
 </body>
 </html>
