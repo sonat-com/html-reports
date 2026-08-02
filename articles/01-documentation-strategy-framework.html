@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Documentation Strategy</title>
+<meta name="description" content="A practical framework for a documentation strategy: build a single source of truth, get found in search and AI answers, localize, and measure what matters.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Build a Documentation Strategy That Gets Found, Read, and Trusted",
+  "description": "A practical framework for a documentation strategy: build a single source of truth, get found in search and AI answers, localize, and measure what matters.",
+  "author": { "@type": "Organization", "name": "Sonat" },
+  "publisher": { "@type": "Organization", "name": "Sonat" },
+  "keywords": "documentation strategy, documentation content strategy, multilingual documentation, documentation localization, documentation analytics"
+}
+</script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1f2733;
+    --muted: #55606e;
+    --accent: #1f6feb;
+    --rule: #e6e9ee;
+    --card: #f6f8fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1319;
+      --fg: #e6eaf0;
+      --muted: #9aa4b2;
+      --accent: #6aa6ff;
+      --rule: #232a34;
+      --card: #161b22;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 {
+    font-size: 2.15rem;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    font-weight: 750;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 48px 0 14px;
+    padding-top: 8px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 1.18rem;
+    margin: 32px 0 10px;
+    font-weight: 650;
+  }
+  p { margin: 0 0 20px; }
+  ul { margin: 0 0 22px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  li strong { color: var(--fg); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+  a:hover { border-bottom-color: var(--accent); }
+  .lead { font-size: 1.15rem; color: var(--muted); }
+  .definition {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 0 0 24px;
+  }
+  .definition p { margin: 0; }
+  hr { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
+  .cta {
+    margin-top: 40px;
+    padding: 22px 24px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+  }
+  .cta p { margin: 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .wrap { padding: 36px 18px 60px; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.32rem; }
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <h1>How to Build a Documentation Strategy That Gets Found, Read, and Trusted</h1>
+
+  <p class="lead">Most teams don't set out to write bad documentation. They set out to ship a feature, answer a ticket, or fill a gap before a launch — and the docs pile up one page at a time. A year later there are hundreds of articles, no clear owner, and a search box that returns the wrong answer first. The writing was never the problem. The strategy was missing.</p>
+
+  <p>A documentation strategy is the plan that decides what you document, where it lives, how people find it, and how you know it's working. This guide lays out a practical framework built on four levers you can pull in any order: a single source of truth, findability, localization, and analytics. Get these four right and your documentation stops being a cost you tolerate and starts being a channel you invest in.</p>
+
+  <h2>What a documentation strategy actually is</h2>
+  <div class="definition">
+    <p>A documentation strategy is a set of deliberate decisions about your content's purpose, structure, ownership, and success metrics — written down and applied consistently, so every new page fits a system instead of adding to a pile.</p>
+  </div>
+  <p>That definition matters because it separates strategy from tooling. A better editor helps you write faster. A strategy decides whether the page should exist, who it serves, and how you'll know if it lands. Tools change; the strategy is what keeps a growing library coherent.</p>
+  <p>The four levers below are the working parts. None of them is new on its own. What's changed recently is how they connect — findability now means being surfaced by AI answer engines as well as search results, and localization now carries its own analytics. A modern strategy treats all four as one system.</p>
+
+  <h2>Lever 1: Build a single source of truth</h2>
+  <p>Every documentation problem gets worse when the same answer lives in three places. Someone updates one copy, the other two go stale, and readers lose trust the first time they follow outdated steps.</p>
+  <p>A single source of truth means one canonical home for each topic, with a clear owner and a visible history of changes. Good documentation is a living guide rather than a one-time deliverable — something maintained, reviewed, and improved over time, not shipped and forgotten. That only works when there's one version to maintain.</p>
+  <p>Three practices make it real:</p>
+  <ul>
+    <li><strong>One canonical page per topic.</strong> Decide where a subject lives and link everything else to it. Duplicates compete with each other and confuse both readers and search engines.</li>
+    <li><strong>Version control and review.</strong> Treat content changes the way engineering treats code — draft, review, approve, publish. An unlimited version history means you can restore any earlier state instead of guessing what changed.</li>
+    <li><strong>A structure people can navigate.</strong> Group related topics into a clear menu and hierarchy. Structure is what lets a reader — and later, a machine — predict where an answer should be.</li>
+  </ul>
+  <p>This is where Sonat starts: a wiki-style structure with topics and menus, version archiving on every topic, and approval workflows borrowed from software engineering. The goal isn't process for its own sake. It's one trustworthy answer, kept current.</p>
+
+  <h2>Lever 2: Make your documentation findable</h2>
+  <p>Great documentation nobody can find is a private diary. Findability is the difference between a help center that deflects tickets and one that generates them.</p>
+  <p>Search engines still reach most readers, and the fundamentals are unglamorous but decisive. Search engines find pages primarily through links from pages they already know, so internal linking between related topics is both a reader convenience and a discovery mechanism. Beyond that, a handful of on-page basics do most of the work:</p>
+  <ul>
+    <li><strong>Descriptive titles</strong>, unique to each page and clear about what the page covers.</li>
+    <li><strong>Concise meta descriptions</strong> that summarize the page in a sentence a searcher would recognize.</li>
+    <li><strong>Clean, readable URLs</strong> grouped into logical directories.</li>
+    <li><strong>Canonical URLs</strong> so duplicate paths don't split your ranking signals.</li>
+  </ul>
+
+  <h3>Write for AI answer engines, too</h3>
+  <p>Readers increasingly get answers from AI overviews and chat-style search before they ever click. The reassuring news is that there's no separate checklist and no special markup that gets you into these features. The same fundamentals — helpful, people-first content, sound technical health, structured data where it fits, prominent text, and strong internal linking — are what make content eligible.</p>
+  <p>What does help is format. AI systems, like human scanners, reward pages that answer the question early and support it with evidence. Lead each section with a direct answer in the first sentence or two, then explain. Use question-shaped headings that match how people actually ask. Keep the substance in real text rather than locked inside images. None of that is a trick; it's just clear writing that both people and machines can parse.</p>
+  <p>The practical takeaway: don't chase a second "AI SEO" strategy. Do the documentation fundamentals well, structure answers up front, and you're optimizing for both at once.</p>
+
+  <h2>Lever 3: Localize for a global audience</h2>
+  <p>If your product crosses borders, your documentation has to as well. But localization done carelessly can hurt more than it helps — and the mistakes are predictable.</p>
+  <p>The guidance on multilingual sites is clear on the pitfalls. Give each language its own stable URL rather than swapping content behind a cookie. Don't auto-redirect visitors based on an assumed language; let them choose. And don't translate only the navigation while leaving the body in one language — half-translated pages read as broken and dilute your search presence in every market. Search engines read a page's language from its visible content, so a genuinely translated page is what earns visibility in that language.</p>
+  <p>The strategic shift is that localization is no longer a one-off project. It's an ongoing capability: new source content triggers translation, translations stay in sync with the original, and each language has its own indexed, searchable home. Machine translation makes the first pass affordable at scale — Sonat supports translation across 184 languages, each with its own search index — while human review keeps high-stakes content accurate. A good strategy decides up front which content gets which treatment.</p>
+
+  <h2>Lever 4: Measure what actually matters</h2>
+  <p>You can't improve what you don't watch. Yet many teams measure documentation by page count — the one number that says nothing about whether readers succeed.</p>
+  <p>Better signals come in two layers. Search-side data shows how people arrive: which queries surface your pages, where you appear, and which topics get no traffic because no one can find them. Behavior-side data shows what happens next: which pages readers abandon, where search returns nothing useful, and which articles quietly deflect the most tickets.</p>
+  <p>Two habits turn those numbers into decisions:</p>
+  <ul>
+    <li><strong>Watch language performance separately.</strong> A page that converts in one language and stalls in another is telling you something specific — maybe the translation, maybe the market. Blended metrics hide it.</li>
+    <li><strong>Close the loop on every topic.</strong> Feedback on individual pages tells you what to fix next far more reliably than a monthly traffic chart. Sonat builds this in with per-topic feedback and AI-powered analytics, so the signal reaches the person who owns the page.</li>
+  </ul>
+  <p>The point of measurement isn't a dashboard. It's a short, honest list of what to fix next.</p>
+
+  <h2>Write so people actually read</h2>
+  <p>None of the four levers matters if the writing repels the reader who finally lands on the page. Decades of usability research are blunt about this: on the web, people scan far more than they read — one landmark study found 79% of users scanned any new page while only 16% read word for word. The same research found that concise, scannable, objective writing improved measured usability by well over 100% compared with dense, promotional prose.</p>
+  <p>So write for the scanner: meaningful headings, one idea per paragraph, short lists where items are truly parallel, and the conclusion first. Cut the marketing adjectives — usability research shows objective language actually outperforms hype, because readers trust facts and tune out claims. Clear beats clever every time someone is stuck and looking for the next step.</p>
+
+  <hr>
+
+  <h2>Turning the framework into a strategy</h2>
+  <p>A documentation strategy isn't a document you write once and file. It's four commitments you keep: one source of truth, findable content, real localization, and honest measurement — plus writing that respects the reader's time.</p>
+  <p>Start with the lever that hurts most right now. If answers conflict, fix the source of truth. If traffic is flat, work on findability. If you're expanding, invest in localization. Then let analytics tell you where to go next. A platform built for published, end-user documentation — with structure, version control, translation, SEO, and analytics in one place — is what keeps all four working together instead of drifting apart.</p>
+
+  <div class="cta">
+    <p>You don't need a hundred more pages. You need a strategy for the ones you have. <a href="https://sonat.com">See how Sonat helps teams create, translate, and publish documentation</a> that gets found, read, and trusted.</p>
+  </div>
+</article>
+</body>
+</html>
