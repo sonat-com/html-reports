@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write a Software User Manual: A Step-by-Step Guide</title>
+<meta name="description" content="Learn how to write a software user manual people actually read: plan around real jobs, structure for fast answers, write for scanning, and keep it current.">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    color: #1f2733;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 {
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.2rem;
+    color: #0f1826;
+  }
+  .lede { font-size: 1.18rem; color: #3a4655; }
+  h2 {
+    font-size: clamp(1.35rem, 3.4vw, 1.7rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 2.6rem 0 0.9rem;
+    color: #0f1826;
+  }
+  p { margin: 0 0 1.15rem; }
+  ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+  li { margin: 0 0 0.55rem; }
+  strong { color: #0f1826; }
+  a { color: #1a6dff; text-decoration: none; border-bottom: 1px solid rgba(26,109,255,0.35); }
+  a:hover { border-bottom-color: #1a6dff; }
+  hr { border: 0; border-top: 1px solid #e7ebf1; margin: 3rem 0; }
+  @media (max-width: 480px) { .wrap { padding: 36px 18px 60px; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>How to Write a Software User Manual</h1>
+
+    <p class="lede">A great software user manual does one quiet, valuable thing: it answers a user's question at the exact moment they get stuck, without a support ticket. A weak one sits unread while the same questions pile up in your inbox.</p>
+
+    <p>The good news is that clear documentation is a craft with repeatable steps, not a talent you either have or don't. This guide walks through how to write a software user manual end to end &mdash; how to plan it around real users, structure it so people can find answers, write instructions they can follow, and keep it accurate as your product changes.</p>
+
+    <h2>What a software user manual is (and isn't)</h2>
+    <p>A software user manual is a structured set of documents that explains how to install, set up, and use a software product to get real work done. It is written for the people who <em>use</em> the software &mdash; not the people who build it &mdash; so it favors tasks and outcomes over internal architecture.</p>
+    <p>That distinction matters. User documentation is not a feature list, and it isn't developer documentation. A feature list tells readers what exists; a user manual tells them what to <em>do</em>. Every section should map to a job the reader is trying to finish: create their first project, invite a teammate, connect an integration, recover a deleted file.</p>
+    <p>Keep two audiences in mind at once. New users need a confident path from zero to their first success. Returning users need to look up one specific answer fast and leave. A good manual serves both without making either group wade through the other's content.</p>
+
+    <h2>Step 1: Plan around users and their jobs</h2>
+    <p>Before writing a single instruction, get specific about who reads this and why.</p>
+    <ul>
+      <li><strong>List the roles.</strong> An admin configuring permissions has different questions than an everyday user creating content. Sketch two or three personas and the top jobs each one needs to complete.</li>
+      <li><strong>Map the journey.</strong> Group those jobs into phases &mdash; onboarding, day-to-day use, administration, troubleshooting. These phases usually become your top-level sections.</li>
+      <li><strong>Name the outcomes, not the buttons.</strong> "Set up single sign-on" is a job. "The SSO settings page" is a screen. Organize around the job; the screen is a detail inside it.</li>
+    </ul>
+    <p>This planning is what separates documentation people rely on from a pile of pages nobody reads. When your outline mirrors the way users actually work, they can predict where an answer lives before they even search.</p>
+
+    <h2>Step 2: Structure the manual so answers are findable</h2>
+    <p>Structure is navigation. If readers can't locate the right section in a few seconds, the quality of the writing inside it never gets a chance to matter.</p>
+    <p>A dependable structure for most software products looks like this:</p>
+    <ol>
+      <li><strong>Getting started</strong> &mdash; a short quick-start that takes a new user to their first win. Impatient readers often want only this.</li>
+      <li><strong>Core features</strong> &mdash; one section per major job, in the order users typically meet them.</li>
+      <li><strong>Administration</strong> &mdash; accounts, roles, permissions, billing, and other settings owners manage.</li>
+      <li><strong>Integrations</strong> &mdash; how to connect the tools your users already rely on.</li>
+      <li><strong>Troubleshooting and FAQs</strong> &mdash; the errors and edge cases that otherwise become support tickets.</li>
+      <li><strong>Reference</strong> &mdash; a glossary, keyboard shortcuts, and an index for lookup.</li>
+    </ol>
+    <p>Within each section, keep headings in natural language and phrase them the way a reader would ask the question &mdash; "How to reset a password," not "Password subsystem." Descriptive headings do double duty: they help humans scan, and they help your manual surface for the long-tail searches people actually type.</p>
+
+    <h2>Step 3: Write for scanning, not for reading</h2>
+    <p>Here's the uncomfortable truth that should shape every page: people don't read documentation, they scan it. Eye-tracking research from the Nielsen Norman Group &mdash; including a foundational study of 232 users &mdash; found that readers move through screen content in predictable shortcuts rather than reading word by word. The best-known is the "F-shaped pattern": two horizontal sweeps near the top, then a vertical scan down the left edge.</p>
+    <p>That same research points to what works better. When a page is well structured with clear headings and lists, readers shift into a far more effective "layer-cake" pattern: they scan headings and subheadings first, then drop into the one section that matches their goal. Your job is to design pages that reward that behavior.</p>
+    <p>Three habits do most of the work:</p>
+    <ul>
+      <li><strong>Front-load information.</strong> Put the most important point in the first sentence of a section and the first two words of a heading or bullet. Readers notice the start of a line far more than the end.</li>
+      <li><strong>Chunk everything.</strong> Break walls of text into short sections with meaningful subheadings. A page of solid prose forces the inefficient F-pattern; headings and lists invite the efficient one.</li>
+      <li><strong>Make keywords visible.</strong> Bold the term a scanner is hunting for so it stands out from the surrounding text.</li>
+    </ul>
+
+    <h2>Step 4: Write instructions people can actually follow</h2>
+    <p>Once a reader lands on the right section, clarity is everything. Plain-language principles &mdash; the same ones the U.S. government adopted under the Plain Writing Act of 2010 &mdash; are the reliable playbook here: write for your specific audience, use common words, keep sentences short, and prefer the active voice.</p>
+    <p>For procedures, a few concrete rules go a long way:</p>
+    <ul>
+      <li><strong>Use numbered steps for anything sequential.</strong> One action per step, in the order the user performs it. Number them so someone can pause halfway and find their place again.</li>
+      <li><strong>Start each step with the verb.</strong> "Click <strong>Settings</strong>," "Select your workspace," "Enter your email." The action comes first because that's what the reader is scanning for.</li>
+      <li><strong>State the result.</strong> Tell users what they should see after a step so they know it worked &mdash; "A confirmation banner appears at the top of the screen."</li>
+      <li><strong>Write to the reader as "you."</strong> It's more direct, and it's easier to follow than passive, impersonal phrasing.</li>
+      <li><strong>Cut the jargon.</strong> If a technical term is unavoidable, define it the first time and add it to your glossary.</li>
+    </ul>
+    <p>A quick test: hand a draft procedure to someone who has never used the feature and watch them follow it. Every place they hesitate is a place your instructions need work.</p>
+
+    <h2>Step 5: Add visuals that carry their weight</h2>
+    <p>Screenshots, short clips, and simple diagrams reduce the number of words a reader has to decode &mdash; but only when they add information. Annotate screenshots to point at the exact control you mean. Use a short recording for a multi-step flow that's hard to describe in text. Skip decorative images that just fill space; they slow scanning down instead of speeding it up.</p>
+    <p>Give every image descriptive alt text as well. It keeps your manual accessible to readers using screen readers and helps search engines understand the page.</p>
+
+    <h2>Step 6: Keep the manual a living document</h2>
+    <p>Software changes, and documentation that lags behind quietly erodes trust &mdash; a wrong instruction is worse than a missing one. Treat your user documentation as a living product, not a one-time deliverable.</p>
+    <ul>
+      <li><strong>Version with your releases.</strong> Update the relevant pages as part of shipping a feature, and keep documentation for older versions available if customers still run them.</li>
+      <li><strong>Close the loop with readers.</strong> Let users flag a page that didn't help, and route that feedback to whoever owns the section. Recurring support tickets are a to-do list for your docs.</li>
+      <li><strong>Review on a schedule.</strong> Put a recurring date on the calendar to re-check high-traffic pages for accuracy and dead ends.</li>
+    </ul>
+    <p>Modern documentation tools also use AI to help draft, audit, and search content &mdash; useful for a first pass or for catching stale pages, as long as a human still owns accuracy.</p>
+
+    <h2>A simple software user manual outline you can reuse</h2>
+    <p>If you want a software user manual example to start from, this bare-bones outline adapts to most products:</p>
+    <ol>
+      <li><strong>Introduction</strong> &mdash; what the software does and who it's for</li>
+      <li><strong>Quick start</strong> &mdash; from sign-up to first success in a handful of steps</li>
+      <li><strong>Core tasks</strong> &mdash; one short section per major job</li>
+      <li><strong>Settings and administration</strong> &mdash; for owners and admins</li>
+      <li><strong>Integrations</strong> &mdash; connecting other tools</li>
+      <li><strong>Troubleshooting and FAQ</strong> &mdash; common errors and fixes</li>
+      <li><strong>Glossary and reference</strong> &mdash; terms, shortcuts, and an index</li>
+    </ol>
+    <p>Fill each section using the steps above &mdash; plan the jobs, structure for findability, write for scanning, and keep it current.</p>
+
+    <h2>Bring it all together</h2>
+    <p>Writing a software user manual comes down to a simple shift: stop documenting the product and start documenting the reader's next action. Plan around the jobs people actually do, structure the manual so answers surface in seconds, write for the way people scan, and keep every page honest as your product evolves.</p>
+    <p>You don't need a heavyweight, technical setup to get there. A purpose-built manual-creation platform like <a href="https://sonat.com">Sonat</a> lets non-technical teams write, organize, translate, and publish user documentation &mdash; with search, versioning, and a mobile-friendly viewer built in &mdash; so your manual stays clear, findable, and current without becoming a project of its own.</p>
+  </article>
+</main>
+</body>
+</html>
