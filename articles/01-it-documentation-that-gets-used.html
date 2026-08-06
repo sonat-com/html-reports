@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT Documentation That Gets Used: A Guide for IT Teams</title>
+  <meta name="description" content="Learn what to document, how to structure a single source of truth, and how strong IT documentation cuts support tickets and reduces tribal knowledge.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "IT Documentation That Gets Used: A Practical Playbook for Lean IT Teams",
+    "description": "A practical guide to building IT documentation your team actually reads: what to document, how to structure a single source of truth, how to keep it current, and how good docs cut support tickets.",
+    "articleSection": "IT Documentation",
+    "keywords": "IT documentation, IT documentation best practices, IT runbook, IT SOPs, internal IT knowledge base, IT onboarding documentation",
+    "author": { "@type": "Organization", "name": "Sonat", "url": "https://sonat.com" },
+    "publisher": { "@type": "Organization", "name": "Sonat", "url": "https://sonat.com" }
+  }
+  </script>
+  <style>
+    :root {
+      --ink: #1c2530;
+      --muted: #55606d;
+      --accent: #1f6feb;
+      --line: #e6e9ee;
+      --bg: #ffffff;
+      --soft: #f6f8fa;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.25rem 4.5rem; }
+    h1 {
+      font-size: 2.15rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.25rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin: 2.75rem 0 0.85rem;
+      padding-top: 0.4rem;
+    }
+    h3 { font-size: 1.18rem; margin: 1.9rem 0 0.6rem; }
+    p { margin: 0 0 1.15rem; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(31,111,235,0.35); }
+    a:hover { border-bottom-color: var(--accent); }
+    strong { font-weight: 650; }
+    ul { margin: 0 0 1.25rem; padding-left: 1.25rem; }
+    li { margin: 0 0 0.55rem; }
+    .lede { font-size: 1.18rem; color: var(--muted); }
+    hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+    .cta {
+      margin-top: 2.75rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .cta p { margin: 0; }
+    @media (max-width: 600px) {
+      body { font-size: 17px; }
+      .wrap { padding: 2.5rem 1.1rem 3.5rem; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <article>
+      <h1>IT Documentation That Gets Used: A Practical Playbook for Lean IT Teams</h1>
+
+      <p class="lede">Every IT team has a version of the same story. A critical service goes down at the worst possible time, and the only person who knows how to fix it is on a plane. The steps live in someone's head, a buried chat thread, and a spreadsheet nobody has opened since last year. The outage lasts longer than it should &mdash; not because the problem was hard, but because the knowledge wasn't written down where anyone could find it.</p>
+
+      <p>Good IT documentation fixes that. By the end of this guide you'll know what to document, how to structure it so people can actually find answers, how to keep it from going stale, and how strong docs quietly cut your support ticket load.</p>
+
+      <h2>What IT documentation actually covers</h2>
+      <p>IT documentation is the written record of how your systems, tools, and processes work &mdash; the runbooks, configurations, procedures, and onboarding guides a team relies on to run and support its technology without depending on any single person's memory.</p>
+      <p>That's broader than a wiki page or two. In practice it spans four things: step-by-step <strong>runbooks</strong> for recurring tasks, <strong>records</strong> of what you have and how it's configured, <strong>procedures and policies</strong> that define how work gets done, and <strong>onboarding docs</strong> that get new hires productive. Miss any one of them and the gaps fill with tribal knowledge &mdash; which is another way of saying single points of failure.</p>
+
+      <h2>Why most IT documentation goes stale</h2>
+      <p>The problem is rarely that teams don't write anything. It's that what they write drifts out of date and quietly stops being trusted.</p>
+      <p>Documentation decays at roughly the same speed as the environment it describes. Site reliability research is blunt about this: the details in operational playbooks go out of date as fast as production changes, so a system that ships daily may need doc updates on any given day. Once a runbook burns someone with a stale step, they stop opening it &mdash; and the moment people stop trusting the docs, they go back to asking the one person who "just knows."</p>
+      <p>So the goal isn't a big documentation push once a year. It's a small, living system that's easy to update and easy to search. Everything below serves that goal.</p>
+
+      <h2>The core documents every IT team needs</h2>
+      <p>Start with the four document types that carry the most weight. You don't need all of them on day one &mdash; you need the ones that map to the questions your team asks most often.</p>
+
+      <h3>Runbooks for repeatable operations</h3>
+      <p>A runbook is a step-by-step procedure for one specific task: restarting a service, rotating a certificate, restoring a backup, responding to a specific alert. Site reliability practice found that thinking a response through ahead of time and recording it reduces mean time to repair, lowers stress, and cuts the risk of human error compared with improvising under pressure.</p>
+      <p>A useful runbook entry states the alert's severity and impact, then gives clear debugging suggestions and the concrete actions to mitigate and fully resolve the problem. Keep each one narrow and outcome-focused. Ten precise runbooks beat one sprawling "operations" page nobody can navigate mid-incident.</p>
+
+      <h3>Configuration and asset records</h3>
+      <p>This is the boring documentation that saves the worst afternoons: what systems you run, how they're configured, what depends on what, and where the important settings live. When credentials, processes, and configuration details are recorded in one known place, technicians stop losing time hunting across tools and chat history for something that should take seconds to find.</p>
+
+      <h3>SOPs and policies</h3>
+      <p>Standard operating procedures and IT policies define how work gets done consistently &mdash; access requests, change management, offboarding, incident escalation. Where runbooks answer "how do I fix this," <strong>IT SOPs</strong> answer "how do we handle this, every time, no matter who's on shift." For anything with a compliance or audit dimension, this is also where an approval trail matters: who wrote it, who signed off, and when it last changed.</p>
+
+      <h3>Onboarding documentation</h3>
+      <p><strong>IT onboarding documentation</strong> turns a new hire's first two weeks from a scavenger hunt into a checklist. Accounts and access, the tools they'll use, the systems they'll own, where the runbooks live, and who to ask when they're stuck. Good onboarding docs are also the best test of the rest of your library &mdash; if a new person can't self-serve from them, your documentation has gaps the rest of the team has simply learned to work around.</p>
+
+      <h2>Structure it as a single source of truth</h2>
+      <p>Content is only half the job. If your runbooks live in one tool, your SOPs in another, and half of everything in a shared drive, people will keep asking a human because searching four places is slower than sending one message.</p>
+      <p>Pull everything into one searchable home with a shape people can predict:</p>
+      <ul>
+        <li><strong>Group by the job to be done,</strong> not by the team that owns it. Readers look for "restore a backup," not "the storage team's folder."</li>
+        <li><strong>Make search the front door.</strong> Most people arrive by searching a symptom or a tool name, so full-text search across every doc matters more than a perfect menu tree.</li>
+        <li><strong>Link runbooks from where they're needed</strong> &mdash; an alert or escalation path should point straight to the runbook that resolves it, not force a reader to go hunting.</li>
+        <li><strong>Keep one canonical version of each doc.</strong> Duplicates are how contradictions get born; when two pages disagree, readers stop trusting both.</li>
+      </ul>
+      <p>A platform like <a href="https://sonat.com">Sonat</a> is built for exactly this: a single, version-tracked home where non-technical and technical teammates alike can write, organize, and publish documentation with real search over all of it.</p>
+
+      <h2>Write it so people actually read it</h2>
+      <p>Even the most accurate runbook fails if it's a wall of text. Decades of usability research show that people don't read digital content top to bottom &mdash; they scan it, hunting for the few words that answer their question. The same research found that writing which is concise, scannable, and objective measurably improves how well readers complete tasks, with the gains compounding when you do all three at once.</p>
+      <p>For IT docs, that translates to a few concrete habits:</p>
+      <ul>
+        <li><strong>Front-load the answer.</strong> State what the reader will accomplish in the first line, before any background.</li>
+        <li><strong>Use descriptive headings</strong> a scanner can jump to &mdash; "Rotate the API certificate," not "Certificates."</li>
+        <li><strong>Number every procedure</strong> and keep one action per step.</li>
+        <li><strong>Cut the throat-clearing.</strong> No "as we all know" preambles; readers want the fix, not the framing.</li>
+        <li><strong>Show the exact command, path, or value.</strong> Specifics beat descriptions the reader has to translate.</li>
+      </ul>
+      <p>Writing for scanners isn't dumbing down. Usability studies consistently find that even expert readers prefer succinct, scannable content &mdash; being thorough and being brief are not in conflict.</p>
+
+      <h2>Keep it current without a heroic effort</h2>
+      <p>Documentation stays trusted only if it stays true. The maintenance burden is what kills most libraries, so make upkeep lightweight and built-in rather than a quarterly fire drill.</p>
+      <ul>
+        <li><strong>Give every critical doc an owner.</strong> A runbook or policy with no name attached is a runbook no one will update.</li>
+        <li><strong>Update docs as part of the change,</strong> not after it. When a process changes, the doc edit is part of "done" &mdash; the same discipline software teams apply to code.</li>
+        <li><strong>Keep a version history</strong> so you can see what changed, when, and by whom &mdash; and roll back a bad edit instead of rewriting from memory.</li>
+        <li><strong>Prune on a schedule.</strong> Archive what's dead. A smaller library people trust beats a huge one they don't.</li>
+      </ul>
+      <p>Review and approval workflows help here too: for policies and any audit-sensitive procedure, a clear record of who reviewed and published a change turns "we think this is current" into "we know it is."</p>
+
+      <h2>How good documentation cuts support tickets</h2>
+      <p>This is the payoff that gets IT documentation funded. Every answer that lives in a searchable doc is an answer someone can find without opening a ticket or tapping a teammate on the shoulder.</p>
+      <p>The effect stacks. Runbooks let more people resolve common incidents without escalating to your one expert. Onboarding docs cut the flood of first-week questions. Clear SOPs mean fewer "how do we do this again?" interruptions. And a searchable internal knowledge base means repeat questions get answered once, by the doc, instead of a dozen times, by a person. The reliance on individual heroics drops, and the whole team gets faster and calmer &mdash; which is the entire point.</p>
+
+      <h2>Where to start</h2>
+      <p>You don't need a documentation department. You need to write down the three procedures your team explains most often, put them somewhere searchable, give each an owner, and update them the next time something changes. That's a working system &mdash; and it will pay for itself the first time the expert is on a plane.</p>
+
+      <div class="cta">
+        <p>If you're ready to give that system a real home, <a href="https://sonat.com">Sonat</a> brings your runbooks, procedures, and onboarding docs into one searchable, version-tracked library your whole team can trust &mdash; no technical setup required.</p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
