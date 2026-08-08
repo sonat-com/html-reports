@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technical Documentation for People and AI: A Practical Guide</title>
+  <meta name="description" content="Technical documentation works best when one page serves both readers and AI. Learn how structure, plain language, and content design do both at once.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1f2733;
+      --muted: #5b6472;
+      --accent: #1a73c1;
+      --rule: #e6e9ee;
+      --card: #f6f8fa;
+      --maxw: 720px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f141a;
+        --fg: #e7ecf2;
+        --muted: #a4adba;
+        --accent: #6db2f2;
+        --rule: #26303b;
+        --card: #161d25;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    h1 {
+      font-size: 2.1rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin: 0 0 1.25rem;
+    }
+    h2 {
+      font-size: 1.45rem;
+      line-height: 1.25;
+      margin: 2.75rem 0 0.85rem;
+      letter-spacing: -0.005em;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin: 1.75rem 0 0.6rem;
+    }
+    p { margin: 0 0 1.1rem; }
+    ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+    li { margin: 0 0 0.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { font-weight: 650; }
+    .lead { font-size: 1.2rem; color: var(--fg); }
+    .checklist {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem 1.25rem 2.6rem;
+      margin: 1.25rem 0 1.4rem;
+    }
+    hr { border: 0; border-top: 1px solid var(--rule); margin: 3rem 0; }
+    .end {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 1.05rem;
+    }
+    @media (max-width: 480px) {
+      body { font-size: 17px; }
+      .wrap { padding: 2rem 1.1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <article>
+      <h1>Technical Documentation That Works for People and AI</h1>
+
+      <p class="lead">Your technical documentation now has two kinds of reader. The first is the person who lands on a page, scans it, and wants an answer before they lose patience. The second is the AI assistant that reads the same page, breaks it into pieces, and tries to quote you accurately when someone asks it a question.</p>
+
+      <p>Here is the good news: you do not have to write twice. The structure and clarity that keep a human reader oriented are the same qualities that make a page easy for a machine to parse. Get the fundamentals right and you serve both at once. This guide walks through the technical writing best practices that do double duty &mdash; and how to apply them to your own documentation.</p>
+
+      <h2>You are already writing for two readers</h2>
+      <p>People do not read documentation start to finish. They arrive mid-task, with a specific problem, and they scan for the part that helps. If the answer is buried, they leave.</p>
+      <p>An AI answer engine behaves in a surprisingly similar way. It does not absorb your manual as one long story either. It splits each page into chunks, matches a chunk to the question it was asked, and surfaces that piece &mdash; often on its own, stripped of the paragraphs around it. If your context lives three headings away from the sentence that needs it, the machine misses it for the same reason a hurried human does.</p>
+      <p>That shared behavior is the whole point. Writing clearly for a distracted person and writing clearly for an answer engine are not two projects. They are one.</p>
+
+      <h2>Structure is the shared language of readers and machines</h2>
+      <p>Most documentation problems are not writing problems. They are structure problems. When readers can predict where a page is going, they spend their effort on the task instead of on decoding your layout &mdash; and a machine that can follow the same signals chunks your content cleanly.</p>
+
+      <h3>Give every page one clear job</h3>
+      <p>The fastest way to confuse both readers is to make a single page do several jobs at once &mdash; part tutorial, part reference, part troubleshooting. The Di&aacute;taxis framework, widely adopted across the documentation field, is a useful correction here. It sorts documentation into four distinct needs:</p>
+      <ul>
+        <li><strong>Tutorials</strong> &mdash; learning-oriented lessons that take a newcomer through a first success.</li>
+        <li><strong>How-to guides</strong> &mdash; task-oriented steps for a reader who already knows the goal.</li>
+        <li><strong>Reference</strong> &mdash; precise, factual information people consult while working.</li>
+        <li><strong>Explanation</strong> &mdash; background that answers the "why" behind a feature or decision.</li>
+      </ul>
+      <p>You do not have to adopt the framework wholesale to benefit from its core lesson: keep each page focused on one intent. A how-to guide that suddenly explains architecture loses the reader who just wanted the steps &mdash; and gives an answer engine a muddy chunk that fits no clean question. One page, one job.</p>
+
+      <h3>Build a heading hierarchy you could navigate blind</h3>
+      <p>Headings are the skeleton of documentation structure. They tell a scanning reader where they are, and they tell assistive technology and answer engines how the parts relate. Treat them as structure, not decoration.</p>
+      <p>A few durable rules:</p>
+      <ul>
+        <li>Use exactly one H1 per page &mdash; the page's real title.</li>
+        <li>Descend in order. Do not jump from an H2 straight to an H4 because the smaller size looks nicer.</li>
+        <li>Write headings that describe their section on their own, so a table of contents reads like an outline of answers.</li>
+        <li>Prefer sentence case and plain, task-based phrasing &mdash; "Reset a password," not a vague noun like "Passwords."</li>
+      </ul>
+      <p>Formatting alone is not structure. A line that is merely bigger and bold is invisible to the tools that navigate by real heading levels. Mark it up as a heading and both a screen reader and a machine can jump straight to it.</p>
+
+      <h2>Readability is not decoration</h2>
+      <p>Once the structure holds, readability carries the rest. Clear language is not about dumbing content down; it is about removing the effort between the reader and the answer. Public-sector plain-language guidance &mdash; rooted in the U.S. Plain Writing Act &mdash; starts from a single instruction that applies to any manual: write for your specific audience, and organize the content around what that audience needs to do.</p>
+      <p>The mechanics are unglamorous and they work:</p>
+      <ul>
+        <li><strong>Short sentences carry one idea.</strong> When a sentence forces a reader to hold three clauses in their head, split it.</li>
+        <li><strong>Prefer the active voice.</strong> "Click Save" beats "the Save button should be clicked" &mdash; it is shorter, and it names who does what.</li>
+        <li><strong>Expand an acronym the first time you use it.</strong> The reader who does not know it is exactly the reader consulting the docs.</li>
+        <li><strong>Cut the throat-clearing.</strong> "In order to configure the system, you will want to begin by" is nine words of nothing. "To configure the system:" gets there.</li>
+      </ul>
+      <p>None of this is about a lower reading level for its own sake. Plainer language is simply less ambiguous, and less ambiguous text is what a person under time pressure &mdash; and a model trying to quote you &mdash; can both rely on.</p>
+
+      <h2>Content design: format for the scan</h2>
+      <p>Content design is the craft of shaping information so it can be <em>used</em>, not just read. On a screen, that means designing for the scan.</p>
+      <ul>
+        <li><strong>Break dense prose into lists</strong> when the items are genuinely parallel &mdash; steps, options, requirements. A wall of text hides its own structure.</li>
+        <li><strong>Use a table</strong> when readers are comparing values across the same set of attributes. Tables let the eye move in two directions at once.</li>
+        <li><strong>Front-load each section.</strong> State the conclusion first, then the detail. A reader who only reads the first line should still leave with the main point &mdash; and that first line is often exactly what an answer engine lifts.</li>
+        <li><strong>Write descriptive link text.</strong> "See the billing settings guide" tells the reader and the machine where the link goes; "click here" tells neither.</li>
+        <li><strong>Give every image real alt text.</strong> Describe what the image conveys, not "screenshot." It is how some readers experience the visual at all, and how a machine reads it.</li>
+      </ul>
+      <p>Chunking content this way is not styling applied at the end. It is part of writing the page.</p>
+
+      <h2>Consistency is what makes documentation answerable</h2>
+      <p>A single clear page is good. A whole library that stays consistent is what actually scales &mdash; and what an answer engine can trust. When the same feature is called three different names across your docs, a human hesitates and a machine splinters the topic into three weaker fragments.</p>
+      <p>Consistency is a system, not willpower:</p>
+      <ul>
+        <li><strong>Keep one term for one thing.</strong> Decide whether it is a "workspace" or a "project," and hold the line everywhere.</li>
+        <li><strong>Adopt a style guide</strong> so decisions about capitalization, voice, and terminology are made once, not re-argued in every review.</li>
+        <li><strong>Reuse templates</strong> so every how-to guide follows the same shape &mdash; overview, prerequisites, steps, result. Familiar structure means a returning reader already knows where to look.</li>
+      </ul>
+      <p>This is where a documentation platform earns its keep. Sonat's readability guide flags where a draft drifts from plain, scannable writing, and its structured topics and menus keep a growing manual on one predictable architecture &mdash; a genuine single source of truth rather than a pile of pages that quietly disagree with each other.</p>
+
+      <h2>How to structure technical documentation: a quick checklist</h2>
+      <p>When you are ready to audit or start a page, run it against these technical documentation best practices:</p>
+      <ol class="checklist">
+        <li><strong>One job per page</strong> &mdash; is this a tutorial, a how-to, reference, or explanation? Pick one.</li>
+        <li><strong>One H1, ordered headings</strong> &mdash; could someone rebuild your outline from the headings alone?</li>
+        <li><strong>Answer first</strong> &mdash; does the opening line state the point before the detail?</li>
+        <li><strong>Plain sentences</strong> &mdash; active voice, one idea each, acronyms expanded on first use.</li>
+        <li><strong>Scannable format</strong> &mdash; lists, tables, and short paragraphs instead of dense blocks.</li>
+        <li><strong>Descriptive links and alt text</strong> &mdash; every link and image says what it is.</li>
+        <li><strong>Consistent terms</strong> &mdash; one name per concept, backed by a style guide and templates.</li>
+      </ol>
+
+      <h2>Write once, serve everyone</h2>
+      <p>The shift worth internalizing is that "optimizing for AI" and "writing well for people" have collapsed into the same task. There is no separate machine-friendly version of your documentation to maintain. Structure each page around one clear job, keep the language plain, format for the scan, and stay consistent across the library &mdash; and the same page answers the hurried reader and the answer engine alike.</p>
+      <p class="end">Start with one page you already have. Give it a single job, fix its headings, and cut it until only the answer remains. Then do the next one. Clear technical documentation is not a rewrite; it is a habit &mdash; and <a href="https://sonat.com">Sonat</a> is built to make that habit easy to keep.</p>
+    </article>
+  </main>
+</body>
+</html>
