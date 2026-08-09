@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Translate Your Documentation for a Global Audience</title>
+<meta name="description" content="Translate your documentation the smart way: pick languages by data, write to localize, keep every language in sync, and make each one easy to find.">
+<style>
+  :root {
+    --ink: #1c2430;
+    --muted: #55627a;
+    --accent: #1f6feb;
+    --line: #e6e9f0;
+    --bg: #ffffff;
+    --soft: #f6f8fc;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 18px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 22px 88px; }
+  h1 {
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px;
+    font-weight: 800;
+  }
+  h2 {
+    font-size: clamp(1.3rem, 3.4vw, 1.6rem);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 46px 0 14px;
+    font-weight: 700;
+  }
+  p { margin: 0 0 18px; }
+  ul { margin: 0 0 18px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  strong { font-weight: 700; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(31,111,235,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+  code {
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 0.86em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .lede { font-size: 1.12rem; color: var(--muted); }
+  .rule { height: 1px; background: var(--line); border: 0; margin: 40px 0 0; }
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .wrap { padding: 40px 18px 64px; }
+  }
+</style>
+</head>
+<body>
+  <article class="wrap">
+    <h1>How to Translate Your Documentation for a Global Audience</h1>
+
+    <p class="lede">Your product already has users who don't read your documentation in English. They open a page, skim a paragraph they half-understand, and file a support ticket instead. Research from the market-research firm CSA Research puts a number on that gap: across 29 countries, 76% of people prefer to buy when the information is in their own language, and 40% won't buy from a site in another language at all.</p>
+
+    <p>So the question isn't really <em>whether</em> to translate your documentation. It's how to do it without creating ten copies you can never keep straight. This guide walks through a documentation localization strategy a small team can actually run: which languages to start with, how to write so translation goes smoothly, how to keep every language in sync, and how to tell whether any of it is working.</p>
+
+    <h2>Translation, localization, internationalization: what's the difference?</h2>
+    <p><strong>Localization</strong> is adapting your content so it fits the language, culture, and expectations of a specific market. Translation — converting the words — is one part of it. The W3C defines localization as adapting a product or document "to meet the language, cultural and other requirements of a specific target market," and internationalization as designing that content so it's <em>easy</em> to localize in the first place.</p>
+    <p>That order matters. You internationalize once, then localize many times. In documentation terms: write your source content so it's clean and adaptable <em>before</em> you send a single page to a translator. Retrofitting docs that were written with idioms, screenshots full of baked-in English, and inconsistent terminology is, as the W3C puts it, "much more difficult and time-consuming" than doing it right from the start.</p>
+
+    <h2>Decide which languages to translate first</h2>
+    <p>The most common localization mistake is trying to cover everyone at once. Even the largest companies don't localize for every market — they pick. You should too.</p>
+    <p>Rank candidate languages against three signals you already have:</p>
+    <ul>
+      <li><strong>Where your users are.</strong> Pull the language and country breakdown from your product analytics and your docs' search logs. Real usage beats guesses.</li>
+      <li><strong>Where the revenue is.</strong> A language spoken by a smaller group of high-value customers can outrank a larger group that rarely converts.</li>
+      <li><strong>Where support hurts most.</strong> If a region generates a disproportionate share of tickets, translated docs will deflect the most work there.</li>
+    </ul>
+    <p>Start with one or two languages, prove the workflow end to end, then expand. A shorter list you keep current always beats a long list that rots.</p>
+
+    <h2>Write documentation that's ready to translate</h2>
+    <p>Good source content is the cheapest localization investment you'll ever make. Every ambiguity in English becomes an ambiguity in twelve languages. A few habits keep multilingual documentation manageable:</p>
+    <ul>
+      <li><strong>Write in plain, literal language.</strong> Short sentences, one idea each. Skip idioms, sports metaphors, and puns — they don't survive the border.</li>
+      <li><strong>Keep terminology consistent.</strong> Pick one word for each concept and reuse it. A glossary of approved terms gives translators — human or machine — a fixed target and keeps your brand voice steady across languages.</li>
+      <li><strong>Structure content as modular topics.</strong> Self-contained topics translate and update far more cleanly than one sprawling page, because a change touches a small unit instead of the whole document.</li>
+      <li><strong>Keep text out of images.</strong> Words baked into a screenshot can't be translated without redrawing the image. Put labels in the caption or the body instead.</li>
+      <li><strong>Leave room for expansion.</strong> Translated text often runs longer than English. Layouts that only work at exactly the source length break the moment you localize them.</li>
+    </ul>
+    <p>Notice that none of this is about translation tooling. It's editorial discipline, and it's the part that pays off in every language you add.</p>
+
+    <h2>Build a translation workflow that stays in sync</h2>
+    <p>The hard part of translating documentation isn't the first pass. It's the second, third, and fiftieth — keeping every language current as the product changes. A workflow that survives contact with a real roadmap has four traits.</p>
+    <p><strong>A single source of truth.</strong> One canonical version of each topic, with every language linked to it. When the source changes, you know exactly which translations fall out of date. Scattering languages across disconnected files is how you end up shipping instructions for a button that no longer exists.</p>
+    <p><strong>Machine translation with a human check.</strong> Modern machine translation gets you a fast, usable first draft; a human reviewer catches the tone, the product terms, and the sentence that technically parses but reads wrong. Platforms built for documentation — <a href="https://sonat.com">Sonat</a> among them — let you generate translations across a large set of languages and then edit them in place, so you get the speed of automation without shipping something no human ever read.</p>
+    <p><strong>Versioning you can roll back.</strong> Documentation is never finished, and neither are its translations. A full version history lets you restore any earlier state of a topic in any language when an edit goes wrong.</p>
+    <p><strong>A clear trigger for updates.</strong> Decide what counts as a change big enough to re-translate. A fixed typo can wait for the next batch; a changed procedure can't. Writing that rule down keeps languages from quietly drifting apart.</p>
+
+    <h2>Make your translated documentation discoverable</h2>
+    <p>Translating a page does nothing if search engines and readers can't find the right language version. Google's guidance for multilingual sites is specific: give each language its own URL rather than swapping content based on cookies or browser settings, and connect the versions with <code>hreflang</code> annotations so search results point people to the language they actually read.</p>
+    <p>Two more details from Google's guidance are easy to get wrong:</p>
+    <ul>
+      <li><strong>Google reads the visible words on the page</strong> to decide its language — not a <code>lang</code> attribute or the URL. Translate the content that readers see, including headings and navigation, not just the body.</li>
+      <li><strong>Don't translate only the boilerplate.</strong> A page whose menus are localized but whose main content stays in English creates a poor experience and can look like duplicate content across your site.</li>
+    </ul>
+    <p>This is where the earlier work compounds. Separate per-language URLs, a language-aware search index, and clean <code>hreflang</code> wiring turn your translated documentation into pages people find in their own language — the exact experience CSA Research says most buyers want. A documentation platform that publishes each language as its own indexed, SEO-ready page handles this plumbing for you; if you're wiring it up yourself, treat per-language URLs and <code>hreflang</code> as non-negotiable.</p>
+
+    <h2>Measure whether localization is actually working</h2>
+    <p>Localization is a continuous process, not a one-time project, so give it metrics you check on a schedule:</p>
+    <ul>
+      <li><strong>Coverage and freshness.</strong> What share of your key topics exist in each target language, and how many are behind the current source version? Drift is the number that quietly kills trust.</li>
+      <li><strong>Search success by language.</strong> Are readers in each language finding answers, or searching and leaving empty-handed? Failed searches point straight at your next translation priorities.</li>
+      <li><strong>Support deflection by region.</strong> Ticket volume in a localized region is the clearest signal that translated docs are doing their job.</li>
+      <li><strong>On-page feedback.</strong> A simple "was this helpful?" per language surfaces the pages where a translation is technically correct but practically useless.</li>
+    </ul>
+    <p>Watch these, and localization stops being a leap of faith. You can see which languages earn their keep and where to invest next.</p>
+
+    <h2>Start small, stay in sync</h2>
+    <p>Translating your documentation isn't a one-time heroic push — it's a habit. Write source content that's ready to localize, pick the languages your data points to, run every translation through a workflow with a single source of truth, publish each language as its own discoverable page, and measure the result. Do that, and a global audience gets to read your product in the language they think in.</p>
+    <p>That's the whole promise of good documentation: make knowledge accessible to everyone. If you'd rather spend your time writing than wiring up translation plumbing, <a href="https://sonat.com">see how Sonat handles multilingual documentation</a> — draft once, publish in the languages your users actually speak.</p>
+
+    <hr class="rule">
+  </article>
+</body>
+</html>
