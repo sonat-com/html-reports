@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to Write a User Manual: A Step-by-Step Guide | Sonat</title>
-<meta name="description" content="Learn how to write a user manual step by step: plan by task, write scannable instructions in plain language, add visuals, test with users, and keep it current.">
+<title>How to Write a User Manual: A Step-by-Step Guide</title>
+<meta name="description" content="A practical, standards-based process for writing a user manual your customers can actually find and follow — plus a reusable template.">
 <style>
   :root{
-    --ink:#1c2530; --muted:#5b6b7b; --bg:#ffffff; --soft:#f5f7fa;
-    --line:#e4e9ef; --accent:#1a73c2; --accent-soft:#eaf2fb;
-    --maxw:720px;
+    --ink:#1c2430; --muted:#5a6675; --line:#e6e9ef; --bg:#ffffff;
+    --accent:#1f6feb; --accent-soft:#eef4ff; --maxw:720px;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -18,149 +17,150 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:56px 22px 80px}
-  header.hero{margin-bottom:36px}
-  .eyebrow{
-    display:inline-block; font-size:13px; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--accent); font-weight:700; background:var(--accent-soft);
-    padding:5px 12px; border-radius:999px; margin-bottom:18px;
-  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:56px 22px 80px;}
+  header{margin-bottom:36px}
   h1{
-    font-size:2.15rem; line-height:1.18; margin:0 0 .35em; letter-spacing:-.01em; font-weight:800;
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+    margin:0 0 .5em; font-weight:800;
   }
-  h2{font-size:1.5rem; line-height:1.28; margin:2.2em 0 .55em; letter-spacing:-.01em; font-weight:750}
-  h3{font-size:1.16rem; margin:1.7em 0 .4em; font-weight:700}
+  .lede{font-size:1.18rem; color:var(--muted); margin:0}
+  h2{
+    font-size:1.5rem; line-height:1.25; letter-spacing:-.01em;
+    margin:2.4em 0 .6em; font-weight:750;
+  }
+  h2::after{content:""; display:block; width:42px; height:3px; background:var(--accent); border-radius:3px; margin-top:.5em;}
   p{margin:0 0 1.15em}
-  ul,ol{margin:0 0 1.25em; padding-left:1.35em}
+  ul,ol{margin:0 0 1.3em; padding-left:1.35em}
   li{margin:.4em 0}
-  strong{font-weight:700}
-  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(26,115,194,.35)}
+  strong{color:var(--ink); font-weight:700}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35)}
   a:hover{border-bottom-color:var(--accent)}
-  blockquote{
-    margin:1.5em 0; padding:.9em 1.2em; background:var(--soft);
-    border-left:4px solid var(--accent); border-radius:6px; color:var(--muted); font-style:italic;
+  code,kbd{
+    background:var(--accent-soft); color:#1a4fb0; padding:.08em .38em;
+    border-radius:5px; font-size:.9em; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
-  blockquote p{margin:0}
-  .lead{font-size:1.18rem; color:var(--muted)}
-  hr{border:0; border-top:1px solid var(--line); margin:2.4em 0}
-  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); color:var(--muted); font-size:.95rem}
-  @media (max-width:560px){
+  .callout{
+    background:var(--accent-soft); border:1px solid #d7e3ff; border-radius:14px;
+    padding:22px 24px; margin:2em 0;
+  }
+  .callout h2{margin-top:0}
+  .callout ol{margin-bottom:.2em}
+  hr{border:0; border-top:1px solid var(--line); margin:3em 0}
+  @media (max-width:600px){
     body{font-size:17px}
-    .wrap{padding:38px 18px 60px}
-    h1{font-size:1.8rem}
-    h2{font-size:1.32rem}
-  }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --ink:#e7edf3; --muted:#a2b0bf; --bg:#12171d; --soft:#1b222b;
-      --line:#2a333d; --accent:#5aa9e6; --accent-soft:#1b2a3a;
-    }
-    a{border-bottom-color:rgba(90,169,230,.4)}
+    .wrap{padding:40px 18px 64px}
+    h1{font-size:1.7rem}
+    h2{font-size:1.3rem}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="hero">
-  <span class="eyebrow">Product Documentation</span>
+<header>
   <h1>How to Write a User Manual: A Step-by-Step Guide</h1>
-  <p class="lead">A good user manual answers a question before the reader has to ask it. Here's a repeatable way to write one that actually gets used.</p>
+  <p class="lede">Map the tasks, structure the information, write steps people can scan, then test and maintain — a repeatable method, plus a template you can reuse.</p>
 </header>
 
 <main>
-<p>A good user manual answers a question before the reader has to ask it. A bad one sends that reader straight to your support inbox. The difference is rarely talent — it's process. When you plan around the reader's tasks, write in plain language, and test what you produce, a manual stops being a chore and starts deflecting tickets.</p>
+<p>A good user manual answers the reader's question before they finish asking it. A bad one sends them straight to your support inbox. The difference is rarely writing talent — it's method. When you know your readers, map the tasks they need to finish, and structure the information so they can find their answer in seconds, writing the manual becomes almost mechanical.</p>
 
-<p>This guide walks through how to write a user manual from a blank page to a published, maintainable document. It's written for product, support, and technical writing teams who own the words but don't want to wrestle with tooling. By the end you'll have a repeatable method and a simple structure you can reuse for every product.</p>
+<p>This guide walks through that method end to end: who you're writing for, how to structure the content, how to write instructions people can actually follow, and how to test and maintain the manual once it's live. By the end you'll have a repeatable process and a template you can reuse for the next product.</p>
 
-<h2>What a user manual is (and what makes one useful)</h2>
-<p>A user manual is a document that helps someone use a product safely and successfully — set it up, complete common tasks, and recover when something goes wrong. It's written for the person using the product, not the person who built it.</p>
-<p>That last point is where most manuals drift. Internal teams know the product as a set of features, so they document features. Readers arrive with a <em>goal</em> — "connect the printer," "invite a teammate," "cancel my plan" — and want the shortest path to it. A useful manual is organized around those goals, not your feature list or your org chart.</p>
-
-<h2>Before you write: plan by audience and task</h2>
-<p>Writing is the easy part. The planning you do first determines whether anyone can follow the result.</p>
-
-<h3>Know who you're writing for</h3>
-<p>Name your reader before you name your sections. A weekend hobbyist assembling furniture and an IT admin rolling out software need different vocabulary, different assumptions, and a different level of detail. Federal plain-language guidance makes this its first rule: identify your audience and write for their level of knowledge, not yours. If you're serving more than one audience, decide whether one document with clear signposting will do, or whether each group deserves its own version.</p>
-
-<h3>Map the tasks, not the features</h3>
-<p>List the real jobs a reader will try to do, in the order they'll hit them: first-time setup, the handful of everyday tasks, the occasional advanced task, and the "something broke" moments. This task list becomes your table of contents. It also stops you from over-documenting a rarely used setting while skipping the one step everyone gets stuck on.</p>
-<blockquote><p>A quick test: if you can't picture a specific person trying to finish a specific task, you're not ready to write that section yet.</p></blockquote>
-
-<h2>How to write a user manual, step by step</h2>
-<p>With the audience and task map in hand, the drafting follows a predictable sequence.</p>
-
-<h3>1. Outline the structure first</h3>
-<p>Turn your task map into headings before you write a single instruction. A dependable structure looks like this:</p>
+<h2>What is a user manual?</h2>
+<p>A user manual is a document that helps someone use a product to accomplish real tasks — setting it up, operating it, troubleshooting it, and maintaining it. It's written for the person using the product, not the team that built it, so it speaks in the reader's language and follows the order in which they actually do things.</p>
+<p>International guidance for instructions splits that content into three types of information, and keeping them distinct is the single most useful structural habit you can adopt:</p>
 <ul>
-  <li><strong>Introduction</strong> — what the product does and who it's for, in a few lines.</li>
-  <li><strong>Getting started</strong> — unboxing, installation, or setup and first login.</li>
-  <li><strong>Core tasks</strong> — one section per common job, each self-contained.</li>
-  <li><strong>Troubleshooting</strong> — symptoms, causes, and fixes.</li>
-  <li><strong>Reference</strong> — settings, specifications, glossary, and support contact.</li>
+  <li><strong>Instructional information</strong> — the steps. What to do, in order, to complete a task.</li>
+  <li><strong>Conceptual information</strong> — the "why" and the mental model. Just enough background to make the steps make sense.</li>
+  <li><strong>Reference information</strong> — the lookups. Specifications, settings, error codes, and limits the reader consults but doesn't read front to back.</li>
 </ul>
-<p>Headings do the heavy lifting, so make them describe outcomes ("Reset your password") rather than nouns ("Password settings"). Readers scan headings to navigate; clear ones are the difference between finding an answer and giving up.</p>
+<p>Most weak manuals blur these together, burying a three-step task under paragraphs of concept. Separating them is what makes a manual scannable.</p>
 
-<h3>2. Write scannable, step-by-step instructions</h3>
-<p>People don't read manuals front to back — they hunt for the one thing they need. Nielsen Norman Group's research found that 79% of users always scan a new page and only 16% read word by word. Write for the scanner:</p>
+<h2>Step 1 — Map the tasks your users need to complete</h2>
+<p>Before you write a word, list what your readers are trying to <em>do</em>, not what your product <em>has</em>. A feature list ("Reports module," "Settings panel") describes the software. A task list ("export a monthly report," "reset a forgotten password") describes the reader's goal — and readers arrive at documentation with a goal, not a feature in mind.</p>
+<p>Write each task as a verb-first phrase from the user's point of view. Then rank them by frequency and by how much trouble the reader is in when they need help. The tasks that are common <em>or</em> high-stakes earn the most detail and the most prominent placement.</p>
+<p>This task map becomes your table of contents. It also keeps scope honest: if a section doesn't help someone complete a real task, it probably belongs in reference material, not in the main flow.</p>
+
+<h2>Step 2 — Choose a structure readers can navigate</h2>
+<p>With your tasks mapped, arrange them the way the reader will meet them: <strong>get started → everyday tasks → occasional tasks → troubleshooting → reference.</strong> A short "quick start" up front lets a new user reach their first success fast; deeper sections wait until they're needed.</p>
+<p>Two structural habits pay off immediately:</p>
 <ul>
-  <li>Use <strong>numbered steps</strong> for anything sequential, one action per step.</li>
-  <li>Start each step with the verb: "Click Save," not "You should now click the Save button."</li>
-  <li>Put the <strong>outcome</strong> after the action so readers know it worked: "Click <em>Connect</em>. The status light turns green."</li>
-  <li>Break a procedure longer than about seven steps into smaller named tasks.</li>
-  <li>Call out warnings <em>before</em> the step they apply to, never after.</li>
+  <li><strong>One task per topic.</strong> Give each task its own self-contained section with a descriptive heading. Self-contained topics are easier to scan, easier to search, and far easier to update later without breaking three other pages.</li>
+  <li><strong>Progressive disclosure.</strong> Lead with the common path. Tuck edge cases, advanced options, and caveats below the main steps or into a reference section, so the 80% case stays uncluttered for the reader who just wants to finish.</li>
 </ul>
-<p>Consistency matters as much as clarity. Pick one term for each concept — "sign in," not "sign in" in one place and "log on" in another — and use it everywhere.</p>
+<p>Descriptive headings do double duty here: they guide the eye <em>and</em> they match the words readers type into search, which matters as soon as your manual is online.</p>
 
-<h3>3. Write in plain language</h3>
-<p>Plain language isn't dumbing down; it's respect for the reader's time. The same usability research shows that concise, scannable, objective writing measurably outperforms dense or promotional prose — combining those three qualities improved task performance by 124% in Nielsen Norman Group's testing. Practical moves:</p>
+<h2>Step 3 — Write instructions people can actually follow</h2>
+<p>This is where most manuals live or die. Usability research is consistent on what readers want from help content: concise, scannable, task-focused writing with concrete steps laid out as a list. Readers — even expert ones — don't read documentation for pleasure; they scan it to get unstuck.</p>
+<p>A few rules turn a wall of text into followable steps:</p>
 <ul>
-  <li>Prefer short sentences and common words. Cut a word if the sentence survives without it.</li>
-  <li>Use the active voice and address the reader as "you."</li>
-  <li>Expand an acronym the first time you use it.</li>
-  <li>Replace jargon with the word your reader would actually use.</li>
+  <li><strong>Number sequential actions; bullet non-sequential ones.</strong> If order matters, it's a numbered list. If it doesn't, bullets.</li>
+  <li><strong>One action per step.</strong> "Click <strong>Save</strong>, then choose a folder" hides two actions in one line. Split them so no one loses their place.</li>
+  <li><strong>Start each step with the verb.</strong> "Select <strong>Export</strong>." "Enter your email." The action comes first; the reader is scanning for what to <em>do</em>.</li>
+  <li><strong>Put the condition before the action.</strong> Write "To undo a change, press <kbd>Ctrl+Z</kbd>," not "Press Ctrl+Z to undo a change." Readers decide whether a step applies to them by its first few words.</li>
+  <li><strong>Use plain language.</strong> Short sentences, common words, active voice, and the same term for the same thing every time. Plain-language guidance and decades of usability studies agree: write it the way you'd say it out loud, and pick one word per concept and stick to it.</li>
+  <li><strong>Name what the reader sees.</strong> Match button and menu labels exactly, in the same capitalization the interface uses, so there's no guessing.</li>
 </ul>
+<p>Write for the reader's vocabulary, not your team's. The internal codename for a feature means nothing to the person holding your product.</p>
 
-<h3>4. Show, don't just tell</h3>
-<p>A screenshot or diagram often replaces a paragraph. Add a visual wherever a reader might wonder "which button?" or "what should this look like?" Annotate images so the relevant part is obvious, keep them current with the product, and always write descriptive alt text so the manual works for readers using assistive technology. Short clips or animated steps help for anything motion-based, like a gesture or an assembly move.</p>
-
-<h3>5. Add a quick start guide up front</h3>
-<p>Most readers want to be productive in minutes, not to read the whole manual. A one-page quick start guide — the five or six steps that get someone from zero to a first success — serves that impatience and reduces early support requests. Keep the full detail in the sections below it for the readers who need more.</p>
-
-<h2>Test the manual with real users</h2>
-<p>A manual is a usability problem, not just a writing one. Before you publish, watch a few people who match your audience try to complete tasks using only the document. Where they hesitate, re-read, or ask you a question is exactly where the words fail. This is the cheapest quality step available and the one teams skip most often. Fix what the test surfaces, then ship.</p>
-
-<h2>Keep it a living document</h2>
-<p>Products change; a manual written once and forgotten quietly becomes wrong, and a wrong manual erodes trust faster than no manual at all. Treat documentation as ongoing:</p>
+<h2>Step 4 — Add visuals that do real work</h2>
+<p>A screenshot or diagram should replace words, not decorate them. Add a visual when it's genuinely faster than prose — showing where a small control lives, illustrating a physical assembly step, or confirming what "done" looks like.</p>
+<p>Keep them working:</p>
 <ul>
-  <li><strong>Publish somewhere you can update easily.</strong> A printed PDF is frozen the moment it ships; an online manual can be corrected in minutes and is searchable, which is how most readers now look for answers.</li>
-  <li><strong>Version it.</strong> Keep a history so you can see what changed and roll back a mistake.</li>
-  <li><strong>Close the loop.</strong> Let readers tell you when a page didn't help, and use support tickets as a to-do list for the docs.</li>
-  <li><strong>Translate when your audience is global.</strong> Reaching readers in their own language widens who your product actually serves.</li>
+  <li>Annotate screenshots with callouts pointing at the exact control.</li>
+  <li>Crop tightly to the relevant area instead of showing the whole screen.</li>
+  <li>Write descriptive alt text for every image so the manual works for screen-reader users and stays useful if an image fails to load.</li>
+  <li>Keep visuals consistent in style so the manual reads as one coherent document.</li>
 </ul>
-<p>This is the part where tooling earns its keep. A platform like <a href="https://sonat.com">Sonat</a> lets non-technical teams write in a familiar editor, publish to the web with search built in, gather reader feedback on every topic, and keep translated versions in sync — so the manual stays a single source of truth instead of a stack of stale files.</p>
 
-<h2>A simple user manual template to reuse</h2>
-<p>You don't need to reinvent the structure each time. Copy this outline and fill it in:</p>
+<h2>Step 5 — Make the manual findable</h2>
+<p>A perfect answer no one can locate is a failed answer. For an online manual, findability comes from three things working together: a clear structure, descriptive headings, and search.</p>
+<p>Because those descriptive, task-based headings ("How to reset your password") match how people phrase queries, they help readers who browse <em>and</em> readers who search — including those who land from a search engine. Add a short, keyword-clear title and summary to each topic, keep URLs readable, and make sure the whole thing works on a phone, where a growing share of documentation is now read.</p>
+
+<h2>Step 6 — Test the manual with real users</h2>
+<p>You can't judge your own instructions — you already know the answer. The only reliable test is to watch someone who doesn't.</p>
+<p>Hand the draft to a few people who match your real audience and ask them to complete the top tasks using only the manual. Watch where they hesitate, backtrack, or ask a question the document should have answered. Every one of those moments is a specific fix. This step catches the assumptions you can't see in your own writing, and it's the difference between a manual that looks complete and one that actually works.</p>
+
+<h2>Step 7 — Publish, translate, and keep it current</h2>
+<p>A user manual is a living document, not a one-time deliverable. The moment your product changes, the manual is one release behind — and outdated instructions erode trust faster than missing ones.</p>
+<p>Plan for maintenance from the start:</p>
+<ul>
+  <li><strong>Single source of truth.</strong> Keep one authoritative version everyone edits, rather than PDFs scattered across inboxes and drives. Versioning lets you see what changed and roll back if needed.</li>
+  <li><strong>A review workflow.</strong> Route changes through a quick approval so accuracy is checked before readers see them — essential for regulated or safety-related instructions.</li>
+  <li><strong>Translation.</strong> If your users span languages, plan for localized versions instead of leaving non-native readers with an English-only document.</li>
+  <li><strong>A feedback loop.</strong> Let readers flag a topic that didn't help, and use analytics to see which pages get searched, read, and abandoned — then improve the weak ones.</li>
+</ul>
+<p>This is exactly the workflow <a href="https://sonat.com">Sonat</a> is built around: teams draft in a familiar editor, route changes through review, publish a fast, searchable, mobile-friendly manual to the web, translate it into many languages, and watch feedback and analytics to keep improving it — no technical setup required.</p>
+
+<div class="callout">
+<h2>A reusable user manual template</h2>
+<p>Start every manual from the same skeleton and adapt it to the product:</p>
 <ol>
-  <li><strong>Title and version</strong> — product name and what release this covers.</li>
-  <li><strong>Introduction</strong> — what the product does, who it's for, what's in the box or plan.</li>
-  <li><strong>Safety or prerequisites</strong> — anything the reader must know before starting.</li>
+  <li><strong>Title page / overview</strong> — product name, version, and who the manual is for.</li>
   <li><strong>Quick start</strong> — the shortest path to first success.</li>
-  <li><strong>Setup / installation</strong> — detailed first-time steps.</li>
-  <li><strong>Core tasks</strong> — one clear section per common job.</li>
-  <li><strong>Troubleshooting</strong> — symptom → cause → fix.</li>
-  <li><strong>Reference</strong> — settings, specifications, glossary.</li>
-  <li><strong>Getting help</strong> — how to reach support and where to give feedback.</li>
+  <li><strong>Getting set up</strong> — installation, account creation, first-run configuration.</li>
+  <li><strong>Core tasks</strong> — one section per common task, each a numbered procedure.</li>
+  <li><strong>Advanced / occasional tasks</strong> — less frequent workflows, kept out of the main flow.</li>
+  <li><strong>Troubleshooting</strong> — symptoms → causes → fixes, phrased the way users describe problems.</li>
+  <li><strong>Reference</strong> — settings, specifications, error codes, glossary.</li>
+  <li><strong>Getting help</strong> — how to reach support and give feedback.</li>
 </ol>
-<p>Adapt the depth to your product — a mobile app manual leans on screenshots and short tasks, while a piece of hardware needs more setup and safety detail — but the skeleton holds across almost any user guide or product manual.</p>
+<p>You won't need every section for every product — a simple app may fold three of these together — but the order holds: orient, get started, do the common thing, handle the exceptions, look things up.</p>
+</div>
 
-<h2>Start with one task, done well</h2>
-<p>You don't have to document everything before you publish anything. Pick the single task your users struggle with most, write that section using the steps above — plan for the reader, structure for scanning, write plainly, show a visual, and test it — then publish and move to the next. A user manual built one solid task at a time beats a perfect one that never ships, and every section you finish is a support ticket you don't have to answer.</p>
+<h2>Common mistakes to avoid</h2>
+<ul>
+  <li>Documenting features instead of tasks.</li>
+  <li>Writing in the team's vocabulary instead of the reader's.</li>
+  <li>Burying a three-step task under three paragraphs of background.</li>
+  <li>Never watching a real person try to use it.</li>
+  <li>Publishing once and letting it drift out of date.</li>
+</ul>
+
+<h2>Start with the reader, not the product</h2>
+<p>Writing a user manual isn't a feat of writing — it's a feat of empathy and structure. Map the tasks your readers actually perform, separate the steps from the concepts from the reference, write each instruction so it can be scanned and followed, then test it and keep it current. Do that and the manual stops being a formality and starts doing what it's for: getting people to success without a support ticket.</p>
+<p>If you're ready to write and publish yours, <a href="https://sonat.com">Sonat</a> gives non-technical teams one place to author, review, translate, and publish a manual your users can actually find and follow.</p>
 </main>
-
-<footer>
-  Written for product, support, and technical writing teams. Build and publish your manuals with <a href="https://sonat.com">Sonat</a> — edit in Google Docs, publish anywhere.
-</footer>
 </div>
 </body>
 </html>
