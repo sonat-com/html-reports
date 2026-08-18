@@ -3,166 +3,144 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Knowledge Management Best Practices: A Practical Guide to Capturing What Your Team Knows</title>
-<meta name="description" content="A practical, no-jargon guide to knowledge management best practices: capture tribal knowledge, build a single source of truth, and keep your docs current.">
+<title>Knowledge Management Best Practices for Modern Teams</title>
+<meta name="description" content="Knowledge management best practices that make your team's knowledge easy to find, trust, and keep current—for people and AI alike. A practical guide.">
 <style>
-  :root {
-    --ink: #1c2430;
-    --muted: #55617a;
-    --accent: #2f6df0;
-    --line: #e6e9f0;
-    --bg: #ffffff;
-    --soft: #f6f8fc;
+  :root{
+    --bg:#ffffff; --fg:#1a2230; --muted:#5b6675; --accent:#1f6feb;
+    --rule:#e7ebf0; --soft:#f5f7fa; --maxw:720px;
   }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1.7;
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7;
   }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
-  h1 {
-    font-size: 2.1rem;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin: 28px 0 20px;
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:56px 22px 88px}
+  h1{
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+    margin:0 0 1.1rem; font-weight:750;
   }
-  h2 {
-    font-size: 1.45rem;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    margin: 44px 0 14px;
+  .lede{font-size:1.12rem; color:var(--muted); margin:0 0 2.2rem}
+  h2{
+    font-size:1.5rem; line-height:1.25; letter-spacing:-.01em;
+    margin:2.6rem 0 .8rem; font-weight:700;
+    padding-top:1.4rem; border-top:1px solid var(--rule);
   }
-  p { margin: 0 0 18px; }
-  ul { margin: 0 0 20px; padding-left: 1.25em; }
-  li { margin: 0 0 10px; }
-  strong { color: var(--ink); }
-  em { color: var(--muted); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  figure { margin: 0 0 28px; }
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 14px;
-    background: var(--soft);
+  h3{font-size:1.16rem; margin:1.9rem 0 .5rem; font-weight:670}
+  p{margin:0 0 1.15rem}
+  ul,ol{margin:0 0 1.2rem; padding-left:1.3rem}
+  li{margin:.4rem 0}
+  strong{font-weight:670}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  .definition{
+    background:var(--soft); border-left:3px solid var(--accent);
+    border-radius:8px; padding:1rem 1.15rem; margin:0 0 1.3rem; font-size:1.02rem;
   }
-  .hero { margin: 0 0 32px; }
-  .lede { font-size: 1.15rem; color: var(--muted); }
-  hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0; }
-  @media (max-width: 600px) {
-    body { font-size: 17px; }
-    h1 { font-size: 1.7rem; }
-    h2 { font-size: 1.25rem; }
-    .wrap { padding: 20px 16px 60px; }
+  ol.steps{counter-reset:step; list-style:none; padding-left:0}
+  ol.steps li{
+    position:relative; padding-left:2.4rem; margin:.7rem 0;
+  }
+  ol.steps li::before{
+    counter-increment:step; content:counter(step);
+    position:absolute; left:0; top:.05rem;
+    width:1.7rem; height:1.7rem; border-radius:50%;
+    background:var(--accent); color:#fff; font-size:.9rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  @media (max-width:520px){
+    body{font-size:17px}
+    .wrap{padding:40px 18px 64px}
+    h1{font-size:1.8rem}
+    h2{font-size:1.32rem}
   }
 </style>
 </head>
 <body>
-<article class="wrap">
+<main class="wrap">
+  <article>
+    <h1>Knowledge Management Best Practices for Modern Teams</h1>
 
-  <figure class="hero">
-    <img src="images/01-knowledge-management-best-practices-hero.png" alt="Flat-vector illustration of two coworkers organizing labeled folders and manuals on a shelf while a third reads a document at a desk">
-  </figure>
+    <p class="lede">Your team knows a lot. The problem is where that knowledge lives: in one person's inbox, in a chat thread nobody can find, in a slide deck from two reorganizations ago. So the same questions get asked again, onboarding drags, and when someone leaves, part of how your company works quietly walks out the door with them.</p>
 
-  <h1>Knowledge Management Best Practices: A Practical Guide to Capturing What Your Team Knows</h1>
+    <p>Knowledge management is how you stop that leak. This guide covers the knowledge management best practices that make organizational knowledge easy to find, easy to trust, and easy to keep current—for the people who rely on it every day, and increasingly for the AI assistants that answer questions on top of it. None of it requires a technical background. It requires a system and a habit.</p>
 
-  <p class="lede">Every team carries knowledge that lives nowhere but in someone's head. How a tricky onboarding step really works. Why a policy reads the way it does. The workaround that saves an hour every week. When that person is out — or moves on — the knowledge leaves with them, and someone starts solving the same problem from scratch.</p>
+    <h2>What is knowledge management?</h2>
+    <p class="definition">Knowledge management is the practice of capturing, organizing, sharing, and maintaining what an organization knows so the right information reaches the right person at the right time. In practice that means turning scattered, in-people's-heads knowledge into a structured, searchable resource your whole team can use and improve.</p>
 
-  <p>Knowledge management is the work of making sure that doesn't happen, and the knowledge management best practices in this guide are how teams do it. At its core it is the set of practices a team uses to capture what it knows, organize it so people can find it, and keep it accurate over time. Done well, it turns scattered, in-the-head expertise into something the whole team can reach.</p>
+    <h2>Why knowledge management breaks down</h2>
+    <p>Most teams don't fail at knowledge management because they don't care. They fail because caring never turns into a repeatable system.</p>
+    <p>A 2025 study of a large international IT organization put a name to this: there's a persistent gap between how important people say knowledge management is and how little that importance shows up in daily practice. The researchers grouped the barriers into a few familiar buckets—personal habits, organizational culture, and the tools themselves—and traced the cost: weaker collaboration, and real expertise lost every time an employee departs.</p>
+    <p>You've probably seen every one of these:</p>
+    <ul>
+      <li><strong>No single home.</strong> Knowledge is spread across drives, docs, tickets, and DMs, so nobody knows which copy is current.</li>
+      <li><strong>Capture is nobody's job.</strong> Writing things down competes with "real work" and loses.</li>
+      <li><strong>Content goes stale.</strong> A doc written once and never revisited becomes a liability the day a process changes.</li>
+      <li><strong>Search fails.</strong> If people can't find an answer in a few seconds, they ask a human instead—and the knowledge base stops earning its keep.</li>
+    </ul>
+    <p>The fix isn't a heroic documentation sprint. It's a handful of best practices, applied consistently.</p>
 
-  <p>This guide walks through the knowledge management best practices that actually hold up in day-to-day work — no jargon, no theory for its own sake. If you write documentation, run a help center, or own internal docs for your team, these are the habits worth building.</p>
+    <h2>Knowledge management best practices</h2>
 
-  <h2>Start with the problem, not the tool</h2>
+    <h3>1. Build a single source of truth</h3>
+    <p>Pick one home for published knowledge and make it authoritative. A <strong>single source of truth</strong> means that for any given question—how to process a refund, what our security policy says, how the onboarding flow works—there is exactly one canonical answer, and everyone knows where it lives.</p>
+    <p>The goal isn't to delete every other tool. It's to remove ambiguity. When there's one authoritative version, people stop hedging ("I <em>think</em> this is right"), duplicates stop competing, and updates only have to happen in one place.</p>
 
-  <p>It is tempting to begin a knowledge management strategy by picking software. Resist that. The most useful first step is naming the problem you are solving.</p>
+    <h3>2. Structure your knowledge base so answers are findable</h3>
+    <p>A pile of good documents nobody can navigate is still a pile. Structure is what turns content into a knowledge base.</p>
+    <p>Research on documentation quality consistently finds that <em>how</em> information is organized—its structure, clarity, and consistency—shapes whether people can actually use it, not just whether it exists. An empirical study of practitioners choosing whether to adopt open-source software found documentation was a decisive factor: clear structure, worked examples, and defined terms were what separated useful docs from ignored ones.</p>
+    <p>Apply the same discipline internally:</p>
+    <ul>
+      <li>Group content by the reader's task, not your org chart.</li>
+      <li>Keep a shallow, predictable hierarchy—categories, then topics—so nothing is more than a couple of clicks deep.</li>
+      <li>Use consistent titles that match how people actually search ("Reset a user's password," not "Credential remediation").</li>
+      <li>Cross-link related topics so one answer leads naturally to the next.</li>
+    </ul>
+    <p>Good <strong>knowledge base structure</strong> is the difference between a search that ends in an answer and one that ends in a message to a coworker.</p>
 
-  <p>Are new hires asking the same questions for weeks? Are support agents rewriting the same answer over and over? Does one person hold all the context on a critical process? Each of these points to a different priority — onboarding content, a customer-facing help center, or capturing at-risk expertise before it walks out the door.</p>
+    <h3>3. Write for clarity, not for credit</h3>
+    <p>The best internal documentation reads like a helpful colleague, not a legal disclaimer. Short sentences. Plain words. One idea per paragraph. Steps in the order someone performs them.</p>
+    <p>Add a worked example after anything abstract, and define a term the first time you use it. Readability isn't decoration—it's what lets a new hire follow a runbook correctly on their first try instead of guessing.</p>
 
-  <p>Knowledge management emerged as a discipline in the early 1990s precisely because organizations realized that knowing <em>what</em> you know is itself a competitive advantage. The standards that have grown up around it since — including ISO 30401, the international standard for knowledge management systems — treat it not as a one-time project but as a cycle: plan, build, support, and improve. Knowing your problem tells you where in that cycle to start.</p>
+    <h3>4. Put review and approval workflows behind published knowledge</h3>
+    <p>Trust is the whole point. A knowledge base people don't trust gets abandoned for a quick question to a coworker, which is exactly the behavior you're trying to retire.</p>
+    <p>Borrow the idea from software: nothing goes live until someone accountable has reviewed it. A lightweight approval step—an owner who signs off before a change publishes—keeps quality high without turning every edit into a committee. Version history matters just as much: being able to see what changed, when, and by whom lets you restore a previous version the moment a "helpful" edit turns out to be wrong.</p>
 
-  <h2>Capture tribal knowledge before it leaves</h2>
+    <h3>5. Close the loop so knowledge stays current</h3>
+    <p>Knowledge management is not a project with an end date; it's a maintenance habit. The fastest way to keep content honest is to let the people using it tell you where it's wrong.</p>
+    <ul>
+      <li>Add a simple feedback control ("Was this helpful?") to every published topic.</li>
+      <li>Watch what people search for and <em>don't</em> find—those gaps are your next articles.</li>
+      <li>Give every important document an owner and a review cadence, so refreshing it is someone's explicit responsibility, not a hope.</li>
+    </ul>
+    <p>Feedback loops turn a static archive into something that improves itself over time.</p>
 
-  <p>The most fragile knowledge is the kind no one has written down. It is sometimes called <strong>tribal knowledge</strong>: the undocumented know-how that lives in long-tenured employees and gets passed along by word of mouth.</p>
+    <h3>6. Make your knowledge ready for AI</h3>
+    <p>The newest reason to get the fundamentals right is that people are no longer the only ones reading your knowledge base. AI assistants now answer questions by drawing on your documented content—and they're only as reliable as what they're built on.</p>
+    <p>Here's the good news: the practices that help humans are the same ones that help AI. Structured, clearly written, well-labeled, up-to-date content is exactly what an assistant needs to return a trustworthy answer instead of a confident-sounding wrong one. Keep a human in the loop—review AI-surfaced answers the same way you'd review a new article—and treat a single source of truth as the foundation both your team and your tools stand on. Messy knowledge doesn't get smarter when you point AI at it; it just fails faster.</p>
 
-  <p>Researchers draw a useful line here between two kinds of knowledge. <em>Explicit</em> knowledge is what someone can readily put into words — a step-by-step procedure, a definition, a checklist. <em>Tacit</em> knowledge is internalized and harder to articulate — the judgment an expert applies almost without thinking. The whole craft of knowledge management is, in large part, the work of turning tacit knowledge into explicit knowledge that others can use.</p>
+    <h3>7. Measure what people actually search for</h3>
+    <p>You can't improve what you don't watch. The most useful knowledge management metrics aren't vanity counts of how many articles you've published—they're signals about whether people find answers.</p>
+    <p>Track search queries that return nothing, topics with high views but low "helpful" ratings, and the questions your support or IT team still answers by hand. Each is a to-do list your readers wrote for you.</p>
 
-  <p>A few practices make that conversion easier:</p>
+    <h2>Turning best practices into a knowledge management strategy</h2>
+    <p>Best practices become a <strong>knowledge management strategy</strong> when you decide the order to apply them and who owns each one.</p>
+    <p>A simple, durable sequence:</p>
+    <ol class="steps">
+      <li><strong>Consolidate.</strong> Choose your single source of truth and migrate the knowledge that's already scattered around.</li>
+      <li><strong>Structure.</strong> Organize by reader task and set naming conventions before you scale.</li>
+      <li><strong>Govern.</strong> Assign owners, add a review step, and turn on version history.</li>
+      <li><strong>Maintain.</strong> Add feedback loops and a review cadence so content stays current.</li>
+      <li><strong>Extend.</strong> Once the base is clean and trusted, let search and AI assistants sit on top of it.</li>
+    </ol>
+    <p>Start with one team and one high-traffic topic area rather than trying to document everything at once. A small <strong>internal knowledge base</strong> that people actually trust beats a sprawling one they've learned to ignore.</p>
 
-  <ul>
-    <li><strong>Interview your experts.</strong> When someone clearly owns a process, sit with them and document it while they narrate. You will surface assumptions they have long since stopped noticing.</li>
-    <li><strong>Capture knowledge at the moment of work.</strong> The best time to write down how something was solved is right after solving it, while the details are fresh.</li>
-    <li><strong>Prioritize by risk.</strong> Start with the knowledge that would hurt most to lose — a sole expert, a compliance-critical process, a high-volume support question.</li>
-  </ul>
-
-  <p>The goal isn't to document everything. It's to make sure the knowledge your team can least afford to lose exists somewhere other than one person's memory.</p>
-
-  <h2>Build a single source of truth</h2>
-
-  <p>The opposite of good knowledge management is the <strong>knowledge silo</strong>: the same information scattered across chat threads, personal drives, email, and three slightly different versions of the same document — none of them clearly correct.</p>
-
-  <p>The fix is a <strong>single source of truth</strong>: one place where the current, authoritative version of a document lives, so that when something changes, it changes in exactly one spot. When your team trusts that the published version is the right one, they stop hunting through old files and start doing the work.</p>
-
-  <p>A single source of truth depends on a few things working together. Content needs a clear home and a logical structure. Older versions need to be recoverable, so an edit is never a gamble. And there has to be one published version that readers see, separate from the drafts authors are still working on. A platform built for documentation — like <a href="https://sonat.com">Sonat</a> — gives you this by design: a wiki-style structure, an unlimited version archive you can restore from, and a clean split between what's being drafted and what's published.</p>
-
-  <figure>
-    <img src="images/01-knowledge-management-best-practices-inline.png" alt="Flat-vector illustration of a person at a laptop merging several scattered paper documents into one neatly organized binder on a desk">
-  </figure>
-
-  <h2>Organize for the reader, not the author</h2>
-
-  <p>A knowledge base only helps if people can find what they need. Knowledge that exists but can't be found is, for practical purposes, knowledge that doesn't exist.</p>
-
-  <p>Good organization starts with how readers think, not how your team is structured internally. Group content around the questions people actually ask and the tasks they are trying to complete. Use plain, descriptive titles — the words a reader would type, not internal project names. Keep your hierarchy shallow enough that nothing important is more than a couple of clicks away.</p>
-
-  <p>Strong full-text search matters just as much as structure. Most people search before they browse, so make sure your content is indexed and that titles and headings carry the terms readers use. The two reinforce each other: clean structure helps people who browse, and good search helps everyone else.</p>
-
-  <h2>Make knowledge sharing part of the workflow</h2>
-
-  <p>Knowledge management fails when it depends on heroics — one diligent person maintaining everything in their spare time. The teams that sustain it bake sharing into how work already happens.</p>
-
-  <p>Two complementary approaches help here. <em>Codification</em> means writing knowledge down into a shared repository so anyone can reuse it later. <em>Personalization</em> means connecting people who have a question with the colleagues who can answer it. A healthy knowledge-sharing culture uses both — it captures what's reusable while still making room for the conversations that surface tacit expertise.</p>
-
-  <p>To make sharing routine rather than exceptional:</p>
-
-  <ul>
-    <li><strong>Give contributing a clear path.</strong> If adding or correcting a document is hard, it won't happen. Lower the friction.</li>
-    <li><strong>Use review and approval workflows.</strong> For anything that has to be accurate — policies, procedures, compliance content — route changes through a defined approver before they publish. This keeps quality high without bottlenecking everything on one person. Approval workflows are a core part of treating documentation as a managed system rather than a free-for-all.</li>
-    <li><strong>Recognize the contributors.</strong> Knowledge sharing is a behavior, and behaviors grow when they're noticed.</li>
-  </ul>
-
-  <h2>Keep it current — or it works against you</h2>
-
-  <p>Out-of-date knowledge is worse than none, because people act on it confidently. A help article describing a feature that changed six months ago doesn't just fail to help — it actively misleads.</p>
-
-  <p>Treat freshness as an ongoing practice, not a someday cleanup:</p>
-
-  <ul>
-    <li><strong>Schedule reviews.</strong> Give important documents an owner and a review cadence so nothing quietly rots.</li>
-    <li><strong>Close the feedback loop.</strong> Let readers flag when something is unclear or wrong. The people using your docs are your best early-warning system for what's gone stale, and feedback on every topic turns your audience into a continuous source of improvement.</li>
-    <li><strong>Retire what's dead.</strong> Archiving outdated content is part of keeping the live set trustworthy.</li>
-    <li><strong>Watch what readers struggle with.</strong> Searches that return nothing and pages people bounce from quickly point straight at your gaps.</li>
-  </ul>
-
-  <p>This is exactly the "review and improve" half of the knowledge management lifecycle — the part that separates a living knowledge base from a digital filing cabinet no one trusts.</p>
-
-  <h2>Don't forget your global readers</h2>
-
-  <p>If your audience spans regions and languages, knowledge management includes making content usable for all of them. A policy or product manual that only exists in one language quietly excludes everyone who reads another.</p>
-
-  <p>Keeping translated versions in sync with the source is the hard part — and the reason it's worth using a platform that treats each language as a managed version of the same document rather than a separate copy that drifts over time. <a href="https://sonat.com">Sonat</a>, for instance, supports machine translation across many languages while keeping every version tied back to one source, so an update in the original doesn't leave the translations behind.</p>
-
-  <h2>Bringing it together</h2>
-
-  <p>Strong knowledge management isn't a heroic effort or an expensive platform. It's a handful of durable habits: start from a real problem, capture knowledge before it walks out the door, keep one authoritative source of truth, organize for the people who read it, build sharing into the workflow, and review relentlessly so the content stays worth trusting.</p>
-
-  <p>You don't have to do all of it at once. Pick the practice that addresses your most painful knowledge gap today, put it in place, and build from there. The teams that win at knowledge management aren't the ones with the most documents — they're the ones whose documents people actually trust.</p>
-
-</article>
+    <h2>Where a documentation platform fits</h2>
+    <p>You can start with the tools you already have, but the practices above get much easier when your knowledge lives in a platform built for published documentation—one with structure, search, review workflows, version history, and feedback baked in. That's the gap <a href="https://sonat.com">Sonat</a> is designed to close: a single, organized home for your manuals and knowledge base that non-technical teams can maintain, so the answer people (and your AI assistant) get is the current, approved one.</p>
+    <p>Knowledge management isn't about writing more. It's about making what your team already knows findable, trustworthy, and current—then keeping it that way. Pick one best practice from this list and apply it this week. A knowledge base your team trusts is built one good habit at a time.</p>
+  </article>
+</main>
 </body>
 </html>
