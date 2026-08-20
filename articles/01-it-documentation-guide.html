@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT Documentation: A Practical Guide to Fewer Tickets</title>
+<meta name="description" content="IT documentation done right cuts repeat tickets and speeds incident fixes. A practical guide to runbooks, wikis, onboarding docs, and SOPs your team will use.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "IT Documentation: A Guide to Docs Your Team Will Actually Use",
+  "description": "A practical best-practices guide to IT documentation: runbooks, internal wikis, onboarding docs, and SOPs that cut support tickets and speed incident resolution.",
+  "publisher": { "@type": "Organization", "name": "Sonat", "url": "https://sonat.com" },
+  "author": { "@type": "Organization", "name": "Sonat" }
+}
+</script>
+<style>
+  :root {
+    --ink: #1c2530;
+    --muted: #5a6673;
+    --accent: #1f6feb;
+    --line: #e6e9ee;
+    --bg: #ffffff;
+    --soft: #f6f8fb;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 22px 88px; }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.1rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin: 2.6rem 0 0.8rem;
+    padding-top: 0.4rem;
+  }
+  h3 {
+    font-size: 1.12rem;
+    margin: 1.7rem 0 0.5rem;
+    color: var(--ink);
+  }
+  p { margin: 0 0 1.1rem; color: var(--ink); }
+  .lede { font-size: 1.12rem; color: var(--muted); }
+  ul { margin: 0 0 1.2rem; padding-left: 1.2rem; }
+  li { margin: 0 0 0.55rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--ink); }
+  .divider { height: 1px; background: var(--line); border: 0; margin: 2.4rem 0; }
+  .cta {
+    margin-top: 2.6rem;
+    padding: 1.4rem 1.5rem;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .cta p { margin: 0; color: var(--muted); font-size: 1rem; }
+  @media (max-width: 520px) {
+    body { font-size: 17px; }
+    .wrap { padding: 36px 18px 64px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <h1>IT Documentation: A Guide to Docs Your Team Will Actually Use</h1>
+
+  <p class="lede">Every IT team has the same graveyard of neglected IT documentation: a shared drive full of half-finished docs, a wiki nobody trusts, and a runbook that was accurate three deploys ago. So when a server goes down at 2 a.m. or a new hire needs VPN access, people don't search — they ping the one person who "just knows." That person becomes a bottleneck, and the same questions come back week after week.</p>
+
+  <p>Good IT documentation breaks that loop. Done well, it turns tribal knowledge into something the whole team can find, trust, and act on — cutting repeat tickets, shortening incidents, and making onboarding a self-serve process instead of a shoulder-tap. This guide covers what IT documentation is, why it pays off, the core document types worth maintaining, and the practices that keep them from rotting.</p>
+
+  <h2>What is IT documentation?</h2>
+  <p>IT documentation is the written record of how your systems, tools, and processes work — and how to fix them when they don't. It spans everything from network diagrams and system configurations to step-by-step runbooks, internal wikis, and onboarding guides. In short, it's the single source of truth your team reaches for instead of guessing or interrupting a colleague.</p>
+  <p>The best IT documentation is not a compliance artifact you write once and forget. It's a living reference that a stressed engineer, a brand-new hire, or a non-technical stakeholder can open and understand without a translator.</p>
+
+  <h2>Why IT documentation is worth the effort</h2>
+  <p>It's tempting to treat documentation as the thing you'll do "when there's time." The evidence says that's a false economy.</p>
+  <p><strong>It amplifies everything else your team does.</strong> Research from Google's DORA program found a clear link between documentation quality and organizational performance, and — crucially — that high-quality documentation <em>amplifies</em> the impact of technical practices like automated testing and reliable delivery. In other words, good docs don't just sit alongside strong engineering; they multiply its payoff.</p>
+  <p><strong>It shortens incidents.</strong> When an alert fires, the difference between a calm fix and a scramble is often a single up-to-date runbook. Google's Site Reliability Engineering practice pairs each alert with a playbook precisely because these guides reduce mean time to repair and the risk of human error. Documentation is the difference between an engineer who knows the next step and one who is reverse-engineering the system under pressure.</p>
+  <p><strong>It deflects the questions before they reach a human.</strong> People strongly prefer to help themselves first: one widely cited study found that 81% of customers try to resolve an issue on their own before contacting a live representative. The same instinct applies internally — employees would rather search a good wiki than open a ticket. If the answer isn't documented, that preference has nowhere to go, and it lands in your queue.</p>
+
+  <h2>The core types of IT documentation</h2>
+  <p>You don't need every document type on day one. Start with the handful that carry the most weight for your team.</p>
+
+  <h3>Runbooks and playbooks</h3>
+  <p>A runbook is a focused, step-by-step guide for a specific, recurring task: restarting a service, rotating a certificate, responding to a particular alert. Good runbooks are unambiguous — they say exactly what to check, what to run, and what "fixed" looks like — so anyone on the rotation can follow them, not just the author. Keep each one tied to the alert or task it serves, and update it the moment reality changes.</p>
+
+  <h3>Internal wiki and knowledge base</h3>
+  <p>Your internal wiki is the team's long-term memory: architecture overviews, how systems connect, decisions and their reasoning, and answers to the "how do I…" questions that otherwise arrive as tickets. Structure it so people can find things by scanning, not spelunking, and treat search as a first-class feature rather than an afterthought.</p>
+
+  <h3>Onboarding documentation and SOPs</h3>
+  <p>IT onboarding documentation gets a new hire productive without a week of over-the-shoulder shadowing: access requests, environment setup, who owns what, and the standard operating procedures for routine work. Well-written SOPs also make outcomes consistent — the task gets done the same reliable way regardless of who picks it up.</p>
+
+  <h3>System and network documentation</h3>
+  <p>This is the reference layer: inventories, configurations, network diagrams, dependencies, and backups. It's the context an engineer needs before touching production and the map an auditor asks for. It changes less often than a runbook, but when it's wrong, the cost is high — so accuracy matters more than polish here.</p>
+
+  <h2>IT documentation best practices</h2>
+  <p>The document types matter less than the habits around them. These are the practices that separate documentation people trust from documentation people ignore.</p>
+
+  <h3>Make one source of truth — and keep it current</h3>
+  <p>Nothing kills trust faster than three copies of the same procedure that disagree. Pick one home for each topic and make it authoritative. Then treat freshness as part of the work, not a cleanup project: the most reliable pattern is to update the doc as part of the task itself — when a runbook is used and something has changed, the person using it fixes it right then. Version history helps here, so you can see what changed and roll back a bad edit.</p>
+
+  <h3>Structure for findability</h3>
+  <p>A document no one can find might as well not exist. Use clear, descriptive headings that match how people actually search ("reset a user's MFA," not "authentication procedures"), keep a logical hierarchy, and lean on strong full-text search. Aim for the reader who lands cold and needs the answer in under a minute.</p>
+
+  <h3>Write for the skimming, stressed reader</h3>
+  <p>IT docs are read under pressure. Favor short paragraphs, numbered steps for anything sequential, and screenshots or diagrams where a picture saves a paragraph. Define the term or state the goal near the top so a reader knows they're in the right place immediately. Cut the throat-clearing.</p>
+
+  <h3>Control who can see and change what</h3>
+  <p>Some documentation is for everyone; some (credentials handling, security procedures) is not. Set roles and permissions so the right people can edit and the right audiences can read. For anything sensitive or compliance-bound, an approval step before changes go live keeps quality high and creates an audit trail.</p>
+
+  <h3>Measure, then improve</h3>
+  <p>You can't fix what you can't see. Watch which articles get viewed, which searches come up empty, and which questions keep hitting your ticket queue despite "existing" docs. Those gaps are your backlog. Closing the loop with the people who use the docs — a simple way to flag "this is out of date" — turns your documentation into something that improves with use instead of decaying.</p>
+
+  <h2>Common mistakes to avoid</h2>
+  <ul>
+    <li><strong>Writing once, never revisiting.</strong> Stale docs are worse than none — they send people confidently in the wrong direction.</li>
+    <li><strong>Documenting for yourself, not the next reader.</strong> If it only makes sense to the author, it's a personal note, not documentation.</li>
+    <li><strong>Scattering knowledge across tools.</strong> When the same answer lives in chat, email, and three drives, no version is trusted.</li>
+    <li><strong>Confusing volume with value.</strong> A hundred abandoned pages help no one; a dozen accurate, findable ones change how the team works.</li>
+    <li><strong>Treating docs as a solo chore.</strong> Documentation is a team habit — the fastest wins come when updating the doc is simply part of doing the task.</li>
+  </ul>
+
+  <h2>Where to start</h2>
+  <p>You don't need a documentation overhaul. Pick the ten questions your team answers most often and the three incidents most likely to recur, and write those first — a short runbook and a clear wiki page each. Put them somewhere central, searchable, and easy to update, then make "update the doc" part of the work rather than a separate project. Momentum compounds: every question you document once is a question you don't answer again.</p>
+
+  <div class="cta">
+    <p>That's the model behind <a href="https://sonat.com">Sonat</a> — a documentation platform built so non-technical and technical teammates alike can write, organize, translate, and publish docs from one source of truth, with version history, review workflows, and search built in. Whether your IT documentation lives in Sonat or somewhere else, the principle is the same: knowledge your team can find is knowledge your team can use. Start small, keep it current, and let your documentation carry the load your busiest people currently carry alone.</p>
+  </div>
+</article>
+</body>
+</html>
