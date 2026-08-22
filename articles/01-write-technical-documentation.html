@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Write Technical Documentation People Actually Use</title>
+  <meta name="description" content="Learn how to write technical documentation people actually use — a practical framework for structuring docs for findability and plain-language readability.">
+  <style>
+    :root{
+      --ink:#1a2230; --muted:#5b6675; --accent:#1f6feb; --line:#e6e9ef; --bg:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.7; font-size:18px;
+    }
+    .wrap{max-width:720px; margin:0 auto; padding:64px 24px 96px}
+    h1{
+      font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+      margin:0 0 28px; font-weight:750;
+    }
+    h2{
+      font-size:1.5rem; line-height:1.3; letter-spacing:-.01em;
+      margin:56px 0 14px; font-weight:700;
+    }
+    h3{font-size:1.18rem; margin:32px 0 10px; font-weight:650}
+    p{margin:0 0 20px}
+    strong{font-weight:670}
+    a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35)}
+    a:hover{border-bottom-color:var(--accent)}
+    .lead{font-size:1.16rem; color:var(--muted)}
+    hr{border:none; border-top:1px solid var(--line); margin:56px 0}
+    @media (max-width:520px){
+      body{font-size:17px}
+      .wrap{padding:40px 20px 72px}
+      h1{font-size:1.8rem}
+      h2{font-size:1.32rem}
+    }
+    @media (prefers-color-scheme:dark){
+      :root{--ink:#e8ecf3; --muted:#a2adbd; --accent:#5b9bff; --line:#28303d; --bg:#12161c}
+      a{border-bottom-color:rgba(91,155,255,.4)}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>How to Write Technical Documentation People Actually Use</h1>
+
+    <p class="lead">Most teams don't have a documentation problem. They have a <em>findability</em> and a <em>readability</em> problem. The pages exist — someone spent real hours writing them — but readers can't locate the right one, and when they do, they can't get through it. So they open a support ticket instead, and the docs quietly rot.</p>
+
+    <p>Learning how to write technical documentation that people actually use comes down to fixing those two failure points. This guide gives you a practical framework: structure content so readers find the right topic fast, then write each topic so it makes sense on the first read. No new tooling required — just a way of working you can apply to the docs you already have.</p>
+
+    <h2>Why good documentation still goes unread</h2>
+    <p>Two things have to go right before documentation earns its keep, and they fail independently.</p>
+    <p>The first is <strong>findability</strong>. A reader arrives with a question and scans your navigation, headings, and links to guess which one will answer it. User-experience researchers call this "information scent": people follow the trail that looks most likely to lead to what they want, deciding <em>before</em> they click. If your labels are vague or clever, the scent goes cold and readers give up — even when the answer is sitting one page away.</p>
+    <p>The second is <strong>readability</strong>. Documentation labeled "clear" is often anything but. A peer-reviewed analysis of plain-language medical summaries found they scored a median SMOG index of about 14.9 — roughly fifteen years of education needed to read them comfortably, despite the "plain language" label. If summaries written specifically to be accessible miss that badly, ordinary product docs written under deadline miss by more.</p>
+    <p>Get structure and language right and everything downstream — support deflection, onboarding, trust — follows. Get either wrong and the best-researched content in the world stays unread.</p>
+
+    <h2>Start with the reader's job, not your org chart</h2>
+    <p>The most common structural mistake is organizing documentation to mirror how your product or team is built. Readers don't think in your modules; they think in tasks. They arrive mid-problem with a verb in mind: <em>install</em>, <em>export</em>, <em>reset</em>, <em>cancel</em>.</p>
+    <p>Before you write a word, list the jobs your readers are trying to finish, in their words. Those jobs — not your feature list — become your top-level structure. Government plain-language guidance frames this as the first rule of clear writing: identify your audience and what they need to do, then organize the material around that need. A section called "Billing" is a filing cabinet; "Change or cancel your plan" is a signpost that tells a worried reader they're in the right place.</p>
+    <p>This audience-first ordering is what keeps a growing documentation set navigable. Add topics under the job they serve, and the structure scales; add them under the team that owns them, and it fractures.</p>
+
+    <h2>Structure for findability</h2>
+    <p>Once you know the jobs, shape the content so the scent stays strong from the first click to the answer.</p>
+
+    <h3>Group topics by the questions readers ask</h3>
+    <p>Cluster pages around real questions, not internal categories. If three separate teams each own a piece of "how do I get set up," the reader still experiences setup as one job — so it should read as one path, not three orphaned pages. Map the questions first, then slot existing content underneath. Gaps and duplicates become obvious the moment you do.</p>
+
+    <h3>Write headings that carry their own weight</h3>
+    <p>Headings are your highest-traffic text — most readers scan them and read nothing else until one matches their question. Make each heading a standalone answer to a real query. "Overview" and "Advanced" tell a scanning reader nothing; "Set up single sign-on" and "Fix a failed import" tell them exactly whether to stop. Descriptive headings are also what search engines and in-product search surface, so the same phrasing that helps a human scan helps the page get found in the first place.</p>
+
+    <h3>Keep one topic per page</h3>
+    <p>A page that tries to cover everything answers nothing cleanly. Give each task its own topic so it can be linked to, searched for, and updated on its own. This is the practical shape of a single source of truth: one canonical page per question, rather than the same guidance half-explained in five places that inevitably drift out of sync. Tools like <a href="https://sonat.com">Sonat</a> lean into this with a wiki-style structure of discrete topics and a menu builder, but the discipline matters whatever you author in — one job, one page.</p>
+
+    <h2>Write for understanding on the first read</h2>
+    <p>Structure gets the reader to the right page. Language decides whether they can use it. This is where most technical writing quietly fails — not through wrong information, but through prose that costs too much to decode.</p>
+
+    <h3>Lead with the answer</h3>
+    <p>Put the outcome first, then the detail. A reader who opened the page already has the question; don't make them wade through background to reach the payoff. Start the topic by stating what it lets them do or the result they'll get, then unpack the steps. If someone can read the first two sentences and act, you've done your job — the rest is there for those who need it.</p>
+
+    <h3>Cut the words that aren't working</h3>
+    <p>Plain language is not dumbed-down language; it's language with the friction removed. Prefer the shorter word when it means the same thing, keep sentences to one idea, and use active voice so it's always clear who does what — "click Save," not "the changes should be saved." Address the reader as <em>you</em>. Every clause a reader doesn't have to untangle is attention they can spend on your actual content.</p>
+
+    <h3>Check the reading level, don't just trust it</h3>
+    <p>"It reads fine to me" is the least reliable quality check in documentation, because you already know the answer. Run a readability measure and aim for a general-audience grade level — roughly grade 8–10 suits most product docs, low enough to be broadly accessible without stripping out necessary detail. Treat the score as a smoke alarm: a sudden spike usually points to a bloated sentence or a wall of jargon worth rewriting. Documents <em>intended</em> to be plain routinely aren't, so measure rather than assume.</p>
+
+    <h2>Give every document the same skeleton</h2>
+    <p>Consistency is a findability feature. When every how-to topic follows the same shape — a one-line summary of the outcome, prerequisites, numbered steps, then a short troubleshooting note — readers learn the pattern once and read faster everywhere after. They know where to look for the "before you start" caveat because it's always in the same place.</p>
+    <p>Templates are the cheapest way to enforce that shape without policing it page by page. A short set of starter templates for your common topic types — task, reference, troubleshooting — removes the blank-page decision and keeps a team of authors producing pages that feel like one voice. It's the same reason mature style guides exist: not to constrain writers, but to spare readers the tax of re-learning your conventions on every page.</p>
+
+    <h2>Keep documentation usable over time</h2>
+    <p>Documentation isn't a launch; it's a living asset, and unmaintained docs are worse than none because they teach readers not to trust you.</p>
+    <p>Build in three habits. <strong>Version</strong> your content so you can see what changed and roll back a bad edit. <strong>Review</strong> meaningful changes before they publish, the way you'd review code — a second reader catches the ambiguity the author can't see. And <strong>listen</strong> to end users: a simple "was this helpful?" on each topic tells you which pages are failing while there's still time to fix them. The pages people actually hit, and bounce from, are your real backlog.</p>
+    <p>That feedback loop is what separates documentation that compounds in value from documentation that decays. Each real question a reader couldn't answer becomes the next page — or the next rewrite of a page that looked fine but wasn't.</p>
+
+    <h2>The takeaway</h2>
+    <p>Writing technical documentation people use isn't about writing more. It's about two disciplines applied consistently: <strong>structure content around the reader's job so they can find the right page, and write each page plainly enough to use on the first read.</strong> Start with your highest-traffic topics — the ones behind your most repeated support questions — restructure them around the question being asked, and edit them down until a first-time reader can act. Do that, and your documentation stops being a place tickets come from and starts being the place they get prevented.</p>
+  </main>
+</body>
+</html>
