@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation Strategy: A Practical Playbook for Teams</title>
+<meta name="description" content="Build a documentation strategy in four levers—single source of truth, SEO, localization, and analytics—so your docs get found, read, and trusted.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Documentation Strategy: A Practical Playbook for Teams",
+  "description": "Build a documentation strategy in four levers—single source of truth, SEO, localization, and analytics—so your docs get found, read, and trusted.",
+  "author": { "@type": "Organization", "name": "Sonat" },
+  "publisher": { "@type": "Organization", "name": "Sonat" }
+}
+</script>
+<style>
+  :root {
+    --ink: #1a2230;
+    --muted: #5a6675;
+    --accent: #1f6feb;
+    --line: #e7ebf0;
+    --bg: #ffffff;
+    --soft: #f6f8fb;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 22px 80px; }
+  h1 {
+    font-size: 2.05rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+  }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 46px 0 14px;
+    padding-top: 8px;
+  }
+  p { margin: 0 0 18px; }
+  ul, ol { margin: 0 0 20px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  li::marker { color: var(--accent); }
+  strong { color: var(--ink); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .lede { font-size: 1.12rem; color: var(--muted); }
+  .divider { height: 1px; background: var(--line); border: 0; margin: 40px 0; }
+  .cta {
+    margin-top: 44px;
+    padding: 26px 26px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .cta p { margin: 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .wrap { padding: 36px 18px 64px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>Documentation Strategy: A Practical Playbook for Teams</h1>
+
+    <p class="lede">Your team writes a lot of documentation. Manuals, help articles, internal runbooks, policy docs. Yet people still file tickets for answers that already exist, the same topic lives in three slightly different versions, and nobody can say whether any of it is working. The problem usually isn't effort. It's that the docs grew without a plan.</p>
+
+    <p>A documentation strategy fixes that. By the end of this guide you'll have a simple framework built on four levers — a single source of truth, search visibility, localization, and analytics — plus a way to keep it running as your content grows.</p>
+
+    <h2>What is a documentation strategy?</h2>
+    <p>A documentation strategy is a shared plan for how your team creates, organizes, publishes, and improves documentation so it stays accurate, findable, and useful over time. It turns one-off writing into a repeatable system: who owns what, where it lives, how it's reviewed, and how you know it's helping readers.</p>
+    <p>That last part matters. A strategy isn't a folder structure or a style guide alone — it's the decision to treat your docs like a product with real users, not a filing cabinet.</p>
+
+    <h2>Why documentation drifts without a plan</h2>
+    <p>Left alone, documentation trends toward entropy. Every new feature adds a page. Every reorganization forgets one. Contributors copy an old article to make a new one, and now two "sources of truth" disagree.</p>
+    <p>The cost is quiet but real. Readers who can't find an answer don't email you a correction — they give up and open a ticket, or worse, guess. Research on findability puts it bluntly: if people can't find something, from their point of view it may as well not exist. A strategy exists to stop that drift before it compounds.</p>
+    <p>The four levers below are where a documentation strategy earns its keep. Work through them in order — each one builds on the last.</p>
+
+    <h2>Lever 1: Build a single source of truth</h2>
+    <p>A single source of truth means every fact has exactly one authoritative home, and everything else points to it rather than copying it. Change the source once, and every place that references it stays current.</p>
+    <p>This is the foundation, because the other three levers all assume your content is trustworthy. To get there:</p>
+    <ul>
+      <li><strong>Consolidate duplicates.</strong> Find the topics that exist in more than one place and merge them into a single canonical version. Retire the copies.</li>
+      <li><strong>Structure content in reusable pieces.</strong> Break long documents into focused topics that can be linked and reused, so a shared step or warning is written once and referenced everywhere.</li>
+      <li><strong>Keep a version history.</strong> When you can restore any earlier version of a topic, contributors edit boldly instead of hoarding private drafts "just in case."</li>
+      <li><strong>Make findability an explicit goal, not a hope.</strong> Poor findability usually traces back to two things: unclear structure (categories and labels that don't match how readers think) or navigation that hides content. Test both — watch real people try to locate an answer — rather than guessing which is broken.</li>
+    </ul>
+    <p>Sonat is built around this idea: a wiki-style structure of topics with a full version archive, so your manuals and knowledge base share one home instead of scattering across drives and inboxes.</p>
+
+    <h2>Lever 2: Make your docs findable in search</h2>
+    <p>Most people don't start in your help center. They start in a search engine and type their problem in their own words. If your documentation doesn't show up there, it doesn't matter how good it is. This is where SEO for documentation — and specifically knowledge base SEO — becomes part of your strategy, not an afterthought.</p>
+    <p>The fundamentals are approachable, even for non-technical teams:</p>
+    <ul>
+      <li><strong>Write titles and headings the way readers phrase questions.</strong> "How do I reset my password?" beats "Credential recovery." Match the words people actually search.</li>
+      <li><strong>Give every page a clear meta title and description.</strong> These are your ad in the search results — make them specific and benefit-led.</li>
+      <li><strong>Publish a sitemap and clean, readable URLs</strong> so search engines can crawl and understand your structure.</li>
+      <li><strong>Add structured data.</strong> Marking up your content in a standardized format helps search engines understand what a page is and can qualify it for richer results. The guidance is simple: use JSON-LD, only mark up content that's actually visible on the page, and validate it before you ship. Pages that earn those richer results can see meaningfully higher click-through — one widely cited case measured an 82% lift versus plain listings.</li>
+    </ul>
+    <p>You don't need a dedicated SEO team for this. You need the discipline to write for how readers search and a platform that handles the technical mechanics — meta tags, sitemaps, and structured data — for you. Sonat generates these automatically and connects to Google Search Console so you can see what's landing.</p>
+
+    <h2>Lever 3: Go global with localization</h2>
+    <p>If your readers span more than one language, English-only documentation quietly caps your reach. The evidence here is striking: in a survey of 8,709 consumers across 29 countries, 76% said they prefer to buy products with information in their own language, and 40% said they simply won't buy from a site in another language. Notably, 65% preferred content in their own language even when the translation quality was imperfect.</p>
+    <p>For documentation, the lesson is that presence in a reader's language beats absence in a language they've mastered. A localization plan doesn't mean translating everything on day one. Start with:</p>
+    <ul>
+      <li><strong>Your highest-traffic and highest-stakes topics</strong> — onboarding, billing, safety, and the articles that deflect the most tickets.</li>
+      <li><strong>The languages your actual audience uses</strong>, drawn from your analytics rather than assumptions.</li>
+      <li><strong>A workflow that keeps translations in sync</strong> with the source, so a fix in English doesn't silently rot the other nine versions.</li>
+    </ul>
+    <p>Because Sonat keeps each language as a linked version of the same topic and supports machine translation across a broad set of languages, you can extend a manual to new markets without maintaining ten separate copies by hand.</p>
+
+    <h2>Lever 4: Measure what matters with documentation analytics</h2>
+    <p>You can't improve what you don't look at. But documentation analytics only helps if it points to a specific action — a vague "satisfaction" score tells you nothing about which paragraph to rewrite.</p>
+    <p>Watch signals that map to a decision:</p>
+    <ul>
+      <li><strong>Search-with-no-result queries.</strong> Every failed in-site search is a reader telling you exactly what topic to write next.</li>
+      <li><strong>High-traffic, low-helpfulness pages.</strong> These are your best rewrite candidates — lots of readers, and something isn't landing.</li>
+      <li><strong>Ticket deflection.</strong> If a new article coincides with fewer tickets on that subject, it's earning its place.</li>
+      <li><strong>Exit points inside a task.</strong> Where readers abandon a how-to often marks a missing step or a confusing one.</li>
+    </ul>
+    <p>The through-line is that feedback has to be specific to be actionable. Broad surveys asking whether the docs are "helpful" rarely tell you what to change; a failed search query or a mid-task drop-off does. Instrument for specificity, then close the loop by actually revising the pages your data flags.</p>
+
+    <h2>Turn the strategy into content operations</h2>
+    <p>The four levers describe <em>what</em> good documentation does. Content operations is <em>how</em> your team keeps it that way — the recurring workflow that stops entropy from creeping back in.</p>
+    <p>A lightweight operating rhythm:</p>
+    <ol>
+      <li><strong>Assign clear ownership.</strong> Every topic has a person accountable for keeping it accurate.</li>
+      <li><strong>Review before publishing.</strong> A simple approval step catches errors and keeps voice consistent, which matters even more once multiple contributors are involved.</li>
+      <li><strong>Work from templates.</strong> Reusable structures for common article types cut the blank-page tax and keep pages consistent.</li>
+      <li><strong>Revisit on a schedule.</strong> Let your analytics nominate the pages that need attention, and clear that queue regularly.</li>
+    </ol>
+    <p>Sonat's approval workflows, templates, and roles are designed for exactly this cadence, so a growing team can move quickly without letting quality slip.</p>
+
+    <h2>Start small, then compound</h2>
+    <p>You don't need to boil the ocean. Pick your ten most important topics, give them one canonical home, make them findable, translate the few that need it, and set up a way to see whether they're working. That's a real documentation strategy — small enough to start this week, structured enough to scale.</p>
+
+    <div class="cta">
+      <p>If you want a single place to run all four levers — structure, search, translation, and analytics — <a href="https://sonat.com">Sonat</a> brings them together so your team can spend its energy on the writing, not the wrangling.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
