@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Firestore Read Punch List</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, h4, p, ul, figure, pre { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  .panel ul, .caveats ul { list-style: disc; }
+  img { max-width: 100%; display: block; }
+
+  :root {
+    --bg: #F1F4F4;
+    --surface: #FBFCFC;
+    --surface-2: #E9EEEE;
+    --ink: #101819;
+    --ink-2: #35474A;
+    --muted: #5D6E71;
+    --line: #D6DEDE;
+    --line-strong: #BAC6C6;
+    --accent: #0E7C86;
+    --accent-ink: #0B5F67;
+    --accent-soft: #E2F0F1;
+    --crit: #A82018;
+    --crit-soft: #F8E6E4;
+    --high: #9A4E00;
+    --high-soft: #FBEDDF;
+    --med: #3E6485;
+    --med-soft: #E5EDF4;
+    --low: #5D6E71;
+    --low-soft: #E7ECEC;
+    --ok: #1B6549;
+    --ok-soft: #E1EFE9;
+    --shadow: 0 1px 2px rgba(16,24,25,.05), 0 8px 24px -16px rgba(16,24,25,.22);
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D1315; --surface: #141C1E; --surface-2: #1B2528;
+      --ink: #E7EEEE; --ink-2: #C2CFD0; --muted: #8FA1A4;
+      --line: #242F32; --line-strong: #334145;
+      --accent: #4FC3CE; --accent-ink: #7FD8E0; --accent-soft: #12292C;
+      --crit: #F0867C; --crit-soft: #2B1917;
+      --high: #E0A257; --high-soft: #2A2015;
+      --med: #8FB6D6; --med-soft: #182229;
+      --low: #8FA1A4; --low-soft: #1B2528;
+      --ok: #6FCFA0; --ok-soft: #12241C;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0D1315; --surface: #141C1E; --surface-2: #1B2528;
+    --ink: #E7EEEE; --ink-2: #C2CFD0; --muted: #8FA1A4;
+    --line: #242F32; --line-strong: #334145;
+    --accent: #4FC3CE; --accent-ink: #7FD8E0; --accent-soft: #12292C;
+    --crit: #F0867C; --crit-soft: #2B1917;
+    --high: #E0A257; --high-soft: #2A2015;
+    --med: #8FB6D6; --med-soft: #182229;
+    --low: #8FA1A4; --low-soft: #1B2528;
+    --ok: #6FCFA0; --ok-soft: #12241C;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px 96px; display: flex; flex-direction: column; gap: 56px; }
+
+  .masthead { padding-top: 56px; display: flex; flex-direction: column; gap: 20px; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--accent-ink);
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .eyebrow .tick { color: var(--line-strong); }
+
+  h1 { font-size: clamp(34px,5.4vw,52px); line-height: 1.04; letter-spacing: -.028em; font-weight: 700; text-wrap: balance; margin: 0; }
+  .dek { font-size: 18px; line-height: 1.55; color: var(--ink-2); max-width: 66ch; text-wrap: pretty; }
+
+  .runmeta {
+    display: flex; flex-wrap: wrap; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 12.5px;
+  }
+  .runmeta div { padding: 12px 20px 12px 0; margin-right: 20px; border-right: 1px solid var(--line); color: var(--muted); }
+  .runmeta div:last-child { border-right: 0; margin-right: 0; }
+  .runmeta b { color: var(--ink); font-weight: 600; }
+
+  .callout {
+    background: var(--accent-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    padding: 22px 26px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .callout h2 { margin: 0; font-size: 16px; letter-spacing: -.012em; font-weight: 650; }
+  .callout p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 74ch; }
+
+  .sect { display: flex; flex-direction: column; gap: 24px; }
+  .sect > header { display: flex; flex-direction: column; gap: 8px; }
+  .sect h2 {
+    margin: 0; font-size: 13px; font-family: var(--mono); text-transform: uppercase;
+    letter-spacing: .12em; color: var(--muted); font-weight: 500;
+    padding-bottom: 10px; border-bottom: 1px solid var(--line);
+  }
+  .sect > p { margin: 0; color: var(--ink-2); max-width: 74ch; }
+
+  /* budget bar */
+  .budget { display: flex; flex-direction: column; gap: 14px; }
+  .bar { display: flex; height: 46px; border: 1px solid var(--line); overflow: hidden; }
+  .bar span { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11.5px; font-weight: 600; color: var(--surface); }
+  .bar .seg-export { background: var(--high); flex: 988000; }
+  .bar .seg-unknown { background: var(--crit); flex: 808667; }
+  .bar .seg-app { background: var(--accent); flex: 204019; }
+  .budget-key { display: flex; flex-wrap: wrap; gap: 22px; font-size: 14px; color: var(--ink-2); }
+  .budget-key i { display: inline-block; width: 10px; height: 10px; margin-right: 7px; }
+  .k-export { background: var(--high); } .k-unknown { background: var(--crit); } .k-app { background: var(--accent); }
+
+  .issues { display: flex; flex-direction: column; gap: 20px; }
+  .issue { background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); display: grid; grid-template-columns: 56px 1fr; }
+  .rank { font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; color: var(--muted); padding: 22px 0 0; text-align: center; border-right: 1px solid var(--line); background: var(--surface-2); }
+  .issue-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .issue-head { display: flex; flex-direction: column; gap: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .chip { font-family: var(--mono); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; padding: 4px 9px; border-radius: 2px; font-weight: 600; white-space: nowrap; }
+  .chip.crit { background: var(--crit-soft); color: var(--crit); }
+  .chip.high { background: var(--high-soft); color: var(--high); }
+  .chip.med { background: var(--med-soft); color: var(--med); }
+  .chip.low { background: var(--low-soft); color: var(--low); }
+  .chip.ops { background: var(--accent-soft); color: var(--accent-ink); }
+  .chip.meta { background: transparent; color: var(--muted); border: 1px solid var(--line-strong); font-weight: 500; }
+  .issue h3 { margin: 0; font-size: 20px; line-height: 1.28; letter-spacing: -.018em; font-weight: 650; text-wrap: balance; }
+  .loc { font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink); word-break: break-word; }
+  .issue p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 76ch; text-wrap: pretty; }
+
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .panel { background: var(--surface-2); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .panel h4 { margin: 0; font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .panel ul { margin: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 5px; }
+  .panel li { font-size: 14px; color: var(--ink-2); }
+  .panel code { background: transparent; color: var(--ink); padding: 0; }
+
+  code { font-family: var(--mono); font-size: .88em; background: var(--accent-soft); color: var(--accent-ink); padding: 1px 5px; border-radius: 2px; overflow-wrap: anywhere; }
+
+  pre { margin: 0; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.65; color: var(--ink); background: var(--bg); border: 1px solid var(--line); padding: 12px 14px; }
+  pre .del { color: var(--crit); } pre .add { color: var(--ok); } pre .dim { color: var(--muted); }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th { text-align: left; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 11px 16px; border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; color: var(--ink); white-space: nowrap; }
+  td.q { font-family: var(--mono); font-size: 12.5px; color: var(--ink); }
+  td.strong { color: var(--ink); font-weight: 600; }
+
+  .fine { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .fine div { background: var(--surface); padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .fine h4 { margin: 0; font-size: 14.5px; font-weight: 650; color: var(--ok); }
+  .fine p { margin: 0; font-size: 14px; color: var(--ink-2); }
+
+  .caveats ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; }
+  .caveats li { font-size: 15px; color: var(--ink-2); max-width: 78ch; }
+
+  footer { border-top: 1px solid var(--line); padding-top: 20px; font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.7; }
+  a { color: var(--accent-ink); }
+
+  @media (max-width: 720px) {
+    .panels { grid-template-columns: 1fr; }
+    .issue { grid-template-columns: 40px 1fr; }
+    .issue-body { padding: 18px 16px 20px; }
+    .wrap { padding: 0 16px 64px; gap: 44px; }
+    .bar span { font-size: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>sonat-prod</span><span class="tick">/</span>
+      <span>firestore data-access audit</span><span class="tick">/</span>
+      <span>41-hour capture</span>
+    </div>
+    <h1>Firestore Read Punch List</h1>
+    <p class="dek">
+      Everything the audit log surfaced that is worth changing, ordered by what to do first.
+      Two findings are live defects in production. The rest is read amplification with nothing
+      in front of it — and a read bill that mostly isn't application traffic at all.
+    </p>
+    <div class="runmeta">
+      <div>window <b>Aug 22 22:10 &rarr; Aug 24 15:18 UTC</b></div>
+      <div>requests <b>459,453</b></div>
+      <div>weekday reads <b>~491k/day</b></div>
+      <div>logging <b>ON</b></div>
+    </div>
+  </header>
+
+  <section class="callout">
+    <h2>Application reads are about 10% of the Firestore bill</h2>
+    <p>
+      Earlier estimates in this document scaled per-collection shares against the full billed read
+      volume. That was wrong by roughly 8&times;. Two independent sources — this audit capture and the
+      <code>firestore.googleapis.com/document/read_count</code> metric — agree that application traffic
+      is ~200–490k reads/day. Billing says ~2.0M. Caching every collection in the platform saves about
+      <strong>$7/month</strong>. Do this work for latency and blast radius, not for the invoice.
+    </p>
+  </section>
+
+  <section class="sect budget">
+    <header><h2>Where the reads actually go — Sun Aug 23, the one fully captured day</h2></header>
+    <div class="bar">
+      <span class="seg-export">EXPORT 49%</span>
+      <span class="seg-unknown">UNATTRIBUTED 40%</span>
+      <span class="seg-app">APP 10%</span>
+    </div>
+    <div class="budget-key">
+      <span><i class="k-export"></i>Daily backup export — 988,000 (verified from operation metadata)</span>
+      <span><i class="k-unknown"></i>Unattributed — 808,667</span>
+      <span><i class="k-app"></i>Application traffic — 204,019 (measured)</span>
+    </div>
+    <p style="margin:0;color:var(--ink-2);max-width:76ch">
+      Billed that day: <strong>2,000,686</strong> reads. The largest single identifiable consumer is a
+      backup, not the product. The second largest is something I could not identify — see item 07.
+    </p>
+  </section>
+
+  <section class="sect">
+    <header><h2>Fix list</h2></header>
+    <div class="issues">
+
+      <!-- 1 -->
+      <article class="issue">
+        <div class="rank">01</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip crit">Fix merged, not shipped</span>
+              <span class="chip meta">Content-Processor</span>
+              <span class="chip meta">deploy only</span>
+            </div>
+            <h3>Deploy the TopicVersions index fix — it is still failing 1,150&times; a day</h3>
+            <div class="loc">PR #37 merged 2026-08-22 21:58 &middot; active revision <code>content-processor-00020-jtz</code> built 2026-08-14</div>
+          </div>
+          <p>
+            The fix is on <code>master</code> and <code>build</code> passed. It has not been deployed. Every
+            <code>TopicVersions</code> query in production still orders by <code>UpdateDateTime</code> —
+            zero have switched to <code>CreateDateTime</code>.
+          </p>
+          <pre>Mon Aug 24 — TopicVersions queries by ordering field
+  UpdateDateTime   1,150   <span class="del">all failing, code 9 FAILED_PRECONDITION</span>
+  CreateDateTime       0   <span class="dim">fix not live</span>
+  last failure     15:09 UTC</pre>
+          <p>
+            Consequence unchanged: <code>Link.SourceTopicTitle</code> stays unset, and the Reference Links
+            dashboard's "Source topic" column shows the document title for ~92% of rows and <code>—</code>
+            for the rest. This is the single highest-value action on the list and it requires no code.
+          </p>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="issue">
+        <div class="rank">02</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip crit">Unbounded query</span>
+              <span class="chip meta">Webapp</span>
+              <span class="chip meta">~half day</span>
+            </div>
+            <h3>Notification settings fetch every subscription a user has, unpaginated</h3>
+            <div class="loc">Docer.DAL/Repositories/Notification/SubscriptionRepository.cs:23 &mdash; <code>GetByUserId()</code></div>
+          </div>
+          <p>
+            A bare <code>WhereEqualTo("UserId", …)</code> with no limit and no pagination, reached from
+            <code>GET /User/Subscriptions</code> (<code>UserController.cs:530</code>) via
+            <code>NotificationBusiness.GetSubscriptions</code>. One account already has just under
+            2,100 subscriptions, so each load of their notification settings reads all of them.
+          </p>
+          <pre>Subscriptions where UserId == 9021110e-…
+  Sun Aug 23   2,079 documents per call  &times; 12 calls  = 24,700 reads
+  Mon Aug 24   1,995 documents per call  &times; 14 calls  =  8,345 reads
+
+reads per call, all collections — Mon Aug 24
+  Subscriptions       <span class="del">3.6</span>   <span class="dim">(peak 1,995 in a single call)</span>
+  Links               10.7
+  Documents            1.1
+  everything else      1.0</pre>
+          <div class="panels">
+            <div class="panel">
+              <h4>Fix</h4>
+              <ul>
+                <li>Paginate, or fetch only the subscription relevant to the entity being rendered.</li>
+                <li><code>GetByUserIdAndEntity()</code> already exists two methods down and is the bounded form.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>Why it matters</h4>
+              <ul>
+                <li>Cost is trivial. The problem is it scales with one user's subscription count and has no ceiling.</li>
+                <li>Worst read amplification in the system by an order of magnitude.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="issue">
+        <div class="rank">03</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip high">Latency</span>
+              <span class="chip meta">Editor-Frontend / Webapp</span>
+              <span class="chip meta">~1d</span>
+            </div>
+            <h3>The Reference Links count tiles are the slowest thing in the database</h3>
+            <div class="loc">features/reference-links-dashboard/index.tsx:116 &mdash; three separate <code>count()</code> calls per load</div>
+          </div>
+          <p>
+            All 9,437 aggregation queries on Monday were <code>count()</code> against <code>Links</code>.
+            They are 3% of calls and the worst latency in the system by a wide margin — 5&times; the median
+            of an ordinary query and 13&times; at p95.
+          </p>
+          <pre>Mon Aug 24 — latency by method
+                        calls     p50      p95      p99    total
+  RunAggregationQuery   9,437   16.0ms  <span class="del">204.3ms</span>  246.5ms    430s
+  RunQuery            120,934    6.3ms   16.2ms   65.2ms  1,039s
+  BatchGetDocuments   151,473    2.6ms    8.7ms   13.6ms    509s</pre>
+          <p>
+            The code comment above these calls reads <em>"Firestore's count aggregation is cheap and React
+            Query dedupes on the same key."</em> The dedupe works; the premise about cost does not. Three
+            sequential 200ms calls put roughly half a second of latency in front of the dashboard before
+            a row is drawn.
+          </p>
+          <div class="panels">
+            <div class="panel">
+              <h4>Fix</h4>
+              <ul>
+                <li>Collapse Total / Broken / Ignored into one pass, or denormalise the counters onto the document.</li>
+                <li><code>Document.NumberOfBrokenLinks</code> already exists — the pattern is established.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>Note</h4>
+              <ul>
+                <li>The filters are narrow (<code>SourceTopicId</code>, <code>SourceDocumentId</code> + <code>IsValid</code>), so this is latency, not billed reads.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="issue">
+        <div class="rank">04</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip high">Read amplification</span>
+              <span class="chip meta">Webapp</span>
+              <span class="chip meta">1–3d</span>
+            </div>
+            <h3>77% of weekday reads are the same read repeated</h3>
+            <div class="loc">Simulated TTL cache replayed over 272,431 Monday reads</div>
+          </div>
+          <p>
+            Nearly half of it disappears with request-scoped memoisation alone — no shared cache, no
+            invalidation, no staleness risk, just not fetching the same thing twice inside one request.
+          </p>
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>Cache candidate</th><th style="text-align:right">Share</th><th style="text-align:right">1s</th><th style="text-align:right">60s</th><th style="text-align:right">5m</th><th style="text-align:right">$/mo @5m</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Documents + DocumentVersions</td><td class="num">26.2%</td><td class="num">66%</td><td class="num">85%</td><td class="num">89%</td><td class="num">$1.62</td></tr>
+                <tr><td>Topics + TopicVersions + Contents</td><td class="num">28.7%</td><td class="num">36%</td><td class="num">54%</td><td class="num">64%</td><td class="num">$1.29</td></tr>
+                <tr><td>Accounts</td><td class="num">10.7%</td><td class="num">63%</td><td class="num">86%</td><td class="num">91%</td><td class="num">$0.68</td></tr>
+                <tr><td>Users</td><td class="num">8.7%</td><td class="num">71%</td><td class="num">92%</td><td class="num">95%</td><td class="num">$0.58</td></tr>
+                <tr><td>Links</td><td class="num">8.5%</td><td class="num">50%</td><td class="num">92%</td><td class="num">96%</td><td class="num">$0.57</td></tr>
+                <tr><td>Items (URL resolution)</td><td class="num">6.7%</td><td class="num">12%</td><td class="num">33%</td><td class="num">40%</td><td class="num">$0.19</td></tr>
+                <tr><td>Redirects</td><td class="num">0.9%</td><td class="num">3%</td><td class="num">10%</td><td class="num">14%</td><td class="num">$0.01</td></tr>
+                <tr><td class="strong">All reads combined</td><td class="num">100%</td><td class="num">47%</td><td class="num">70%</td><td class="num">77%</td><td class="num">$5.38</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The heaviest individual repeats on Monday: <code>Contents by TopicVersionId</code> 15,585&times;,
+            <code>Items by PublishUrl</code> 14,790&times;, <code>Accounts by Slug</code> 14,336&times;,
+            <code>DocumentVersions by Id</code> 12,392&times;, <code>Users by FirebaseUserId</code> 10,172&times;,
+            and one single <code>Documents</code> record 9,077&times;.
+          </p>
+          <div class="panels">
+            <div class="panel">
+              <h4>Start here</h4>
+              <ul>
+                <li>Request-scoped memoisation across the board — 47% for a fraction of the effort of a real cache.</li>
+                <li>Then a TTL cache on <code>Accounts</code> and <code>Users</code>, which reach 91% and 95%.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>Not worth caching</h4>
+              <ul>
+                <li><code>Redirects</code> — 14% hit rate. Nearly every lookup is a unique miss. Only <em>negative</em> caching helps, and only against scanners.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="issue">
+        <div class="rank">05</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip med">Cost</span>
+              <span class="chip meta">Cloud-Functions</span>
+              <span class="chip meta">~half day</span>
+            </div>
+            <h3>The daily backup is the largest identifiable line on the Firestore bill</h3>
+            <div class="loc">Scheduler job <code>firebase-schedule-firestoreBackup-us-central1</code> &rarr; <code>ExportDocuments</code>, 07:00 UTC daily</div>
+          </div>
+          <p>
+            A full unfiltered export of every collection, every day. Firestore bills one read per document
+            exported, so this is ~30M reads/month — roughly <strong>$18</strong>, against ~$9/month for all
+            application traffic combined.
+          </p>
+          <pre>export operation metadata, verified
+  progressDocuments.completedWork   987,996
+  progressBytes.completedWork       3,664,316,586   <span class="dim">(3.66 GB)</span>
+  collectionIds                     <span class="dim">(none — full database)</span>
+  runtime                           ~2m 45s
+  backup bucket total               306 GiB</pre>
+          <div class="panels">
+            <div class="panel">
+              <h4>Options</h4>
+              <ul>
+                <li>Firestore <em>managed backup schedules</em> bill backup storage rather than read ops — likely cheaper and less code than the export-to-GCS function.</li>
+                <li>Or reduce cadence, or filter <code>collectionIds</code> to what a restore actually needs.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>Check first</h4>
+              <ul>
+                <li>306 GiB of retained backups with no visible lifecycle policy — worth confirming that GCS retention is intentional.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="issue">
+        <div class="rank">06</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip med">Read amplification</span>
+              <span class="chip meta">Content-Processor</span>
+              <span class="chip meta">~1d</span>
+            </div>
+            <h3>Link reconciliation reads ten documents per call and runs constantly</h3>
+            <div class="loc">2,300 calls &rarr; 26,354 reads on Monday — 8.4% of the day's application reads</div>
+          </div>
+          <p>
+            <code>Links where SourceTopicId == … AND …</code> pulls every existing link for a topic so the
+            processor can diff against freshly extracted ones. That is a reasonable design, but it is the
+            second-heaviest per-call read in the system and it re-runs on every content save.
+          </p>
+          <p>
+            It also caches extremely well — 92% at a 60-second TTL, 96% at five minutes — which suggests
+            the same topic is being reprocessed repeatedly in short windows. Worth understanding why
+            before optimising the query itself.
+          </p>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="issue">
+        <div class="rank">07</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip high">Unexplained</span>
+              <span class="chip meta">GCP</span>
+              <span class="chip meta">investigate</span>
+            </div>
+            <h3>Two fifths of the read bill has no identified source</h3>
+            <div class="loc">Sun Aug 23 — billed 2,000,686 &middot; explained 1,192,019 &middot; gap 808,667</div>
+          </div>
+          <p>
+            Application reads and the daily export together account for 60% of billed reads. The remaining
+            ~810k/day is unaccounted for. I would rather flag this than invent a cause for it.
+          </p>
+          <div class="panels">
+            <div class="panel">
+              <h4>Ruled out</h4>
+              <ul>
+                <li>Point-in-time recovery — disabled.</li>
+                <li>Managed backup schedules — none configured.</li>
+                <li>A second database — only <code>(default)</code> exists.</li>
+                <li>A second export job — one scheduler job, one daily operation.</li>
+                <li><code>count()</code> aggregations — filters are narrow, so ~1 read each.</li>
+                <li>Incomplete capture — the Firestore metric independently corroborates the app figure within 10%.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>Next step</h4>
+              <ul>
+                <li>Open a GCP support case with these three numbers; the SKU breakdown they can see is finer than the billing export.</li>
+                <li>Worth ~$25/month and, more importantly, it is the largest thing nobody understands.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="issue">
+        <div class="rank">08</div>
+        <div class="issue-body">
+          <div class="issue-head">
+            <div class="chips">
+              <span class="chip ops">Ops</span>
+              <span class="chip meta">GCP</span>
+              <span class="chip meta">~1h</span>
+            </div>
+            <h3>Turn the capture off once Tuesday is in the bag</h3>
+            <div class="loc">Enabled 2026-08-22 22:08 UTC &middot; audit config under <code>datastore.googleapis.com</code></div>
+          </div>
+          <p>
+            Nothing disables this on its own. Baseline project ingestion is ~0.8 GiB/day against a
+            50 GiB/month free tier; Firestore data-access adds roughly 8–13 GiB/day. A few days is
+            free to ~$10. Left running it is ~$100/month — more than Firestore reads themselves.
+          </p>
+          <div class="panels">
+            <div class="panel">
+              <h4>To disable</h4>
+              <ul>
+                <li>Drop <code>auditConfigs</code> from the project IAM policy and re-apply.</li>
+                <li>Delete sink <code>firestore-data-access-to-bq</code> or it keeps writing.</li>
+                <li>Dataset <code>firestore_audit</code> has a 14-day table expiry and cleans itself up.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>Gotcha</h4>
+              <ul>
+                <li>The service name is <code>datastore.googleapis.com</code>. <code>firestore.googleapis.com</code> is rejected outright, even though the emitted logs carry it.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="sect">
+    <header><h2>Checked and clear</h2></header>
+    <div class="fine">
+      <div>
+        <h4>Query latency is healthy</h4>
+        <p>Excluding aggregations: p50 6.3ms, p95 16.2ms on 120,934 queries. Point reads p50 2.6ms.</p>
+      </div>
+      <div>
+        <h4>Writes are clean</h4>
+        <p>3,370 commits and 1,668 transactions on Monday, one rollback across two days. No write amplification, no hot-document contention.</p>
+      </div>
+      <div>
+        <h4>No scanner recurrence</h4>
+        <p>Monday's URL lookups look organic — 3,488 lookups across 979 distinct paths in the peak hour. The Aug 20 burst has not repeated.</p>
+      </div>
+      <div>
+        <h4>Stage is idle</h4>
+        <p>43 entries in the earlier stage capture, from a single editor session. Nothing runaway outside production.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect caveats">
+    <header><h2>How much to trust this</h2></header>
+    <ul>
+      <li>
+        <strong>41 hours, one weekday, and Monday is partial</strong> — the capture runs to 15:18 UTC, so
+        Monday's totals are roughly two thirds of a full day. Percentages hold; absolute daily figures are floors.
+      </li>
+      <li>
+        <strong>Weekend and weekday differ by about 2&times;</strong> — 204k reads Sunday against 320k on a
+        partial Monday. Anything derived from the earlier Sunday-only numbers understates the weekday shape,
+        particularly for <code>Links</code> and <code>Contents</code>.
+      </li>
+      <li>
+        <strong>Items 01 and 02 are confirmed against source and deployed state.</strong> Item 05 is confirmed
+        from operation metadata. Items 03, 04 and 06 are inferred from access patterns — confirm against the
+        request handlers before sizing the work.
+      </li>
+      <li>
+        <strong>Earlier figures in this document have been corrected twice.</strong> The first pass rested on
+        82 minutes of late-night traffic; the second scaled shares against the full read bill before the export
+        was identified. Per-issue dollar amounts have moved by roughly 8&times; as a result. The engineering
+        findings have not changed — only the economics.
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    Source: cloudaudit.googleapis.com/data_access &rarr; sonat-prod.firestore_audit, 459,453 entries, Aug 22–24 2026.<br>
+    Billing from sonat-prod.billing. Export metadata from <code>gcloud firestore operations list</code>. Read totals cross-checked against firestore.googleapis.com/document/read_count.
+  </footer>
+
+</div>
+</body>
+</html>
