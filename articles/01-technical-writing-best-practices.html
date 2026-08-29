@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Writing Best Practices for Readable Docs</title>
+<meta name="description" content="Practical technical writing best practices: structure pages for scanning, write in plain language, and build documentation people actually read.">
+<style>
+  :root {
+    --ink: #1c2b33;
+    --muted: #52626b;
+    --accent: #0b7285;
+    --line: #e4e9ec;
+    --bg: #ffffff;
+    --soft: #f6f8f9;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 22px 88px; }
+  h1 {
+    font-size: 2.15rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 0 28px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    margin: 48px 0 14px;
+  }
+  p { margin: 0 0 20px; }
+  ul { margin: 0 0 22px; padding-left: 1.25em; }
+  li { margin: 0 0 10px; }
+  strong { color: var(--ink); }
+  .lead { font-size: 1.2rem; color: var(--muted); line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(11,114,133,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+  .cta {
+    margin-top: 44px;
+    padding: 26px 26px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .cta p { margin: 0; font-size: 1.08rem; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .wrap { padding: 40px 18px 64px; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<article class="wrap">
+  <h1>Technical Writing Best Practices for Documentation People Actually Read</h1>
+
+  <p class="lead">Most documentation isn't read. It's scanned, skimmed, and abandoned the moment it stops answering the reader's question. Eye-tracking research has been consistent on this for more than two decades: only about 16% of people read a page word for word, while roughly 79% scan. Your reader arrived with a task, not an appetite for prose.</p>
+
+  <p>That single fact reshapes the technical writing best practices worth following. The goal isn't to sound thorough. It's to help a stressed person find one answer, apply it, and get on with their day. Every practice below is organized around that reader — how to structure a page so it can be scanned, how to write sentences that don't slow anyone down, and how to keep the whole library maintainable as your product changes.</p>
+
+  <h2>Start with the reader's task, not the feature</h2>
+  <p>Feature-first documentation reads like a tour of the software. Task-first documentation reads like an answer. The difference is where you begin the page.</p>
+  <p>Before writing a topic, name the job the reader is trying to finish: <em>reset a password</em>, <em>connect a domain</em>, <em>export a report</em>. Write that job into the heading in the reader's own words, not the internal feature name. A reader searching "how do I add a teammate" will bounce off a page titled "User Provisioning."</p>
+  <p>A quick test: read only your headings, top to bottom. If they don't map to real questions a reader would ask in order, the page is organized around your product's architecture instead of the reader's workflow. Reorganize around the questions.</p>
+
+  <h2>Structure for scanning, because people scan</h2>
+  <p>If most readers scan, structure is not decoration — it's the primary way people find their answer. Unformatted walls of text force readers into an inefficient "F-shaped" scanning pattern, where the eye tracks across the top, drops down, and runs down the left margin, missing most of the content. Good structure interrupts that pattern and pulls attention to what matters.</p>
+  <p>Build every topic so the answer is visible without reading:</p>
+  <ul>
+    <li><strong>Descriptive headings and subheadings</strong> that state the outcome ("Publish your manual to a custom domain"), not a vague label ("Overview").</li>
+    <li><strong>Short paragraphs</strong> — one idea each. When a paragraph runs past four or five lines, it's usually two ideas wearing one coat.</li>
+    <li><strong>Bulleted and numbered lists</strong> for anything sequential or parallel. Steps are numbered; options are bulleted.</li>
+    <li><strong>Bold for the load-bearing word</strong> in a sentence, so a scanning eye lands on it.</li>
+    <li><strong>The answer first.</strong> Lead each section with the conclusion, then explain. Readers who need only the "what" can leave; readers who need the "why" keep going.</li>
+  </ul>
+  <p>This isn't a style preference. In classic usability testing, making content concise improved measured usability by 58%, a scannable layout by 47%, and doing both together by 124%. Structure and brevity compound.</p>
+
+  <h2>Write in plain language</h2>
+  <p>Plain language is the discipline of writing so your specific reader understands the text the first time. It became a legal standard for U.S. federal agencies under the Plain Writing Act of 2010, and the underlying principles apply to any manual, help center, or runbook.</p>
+  <p>The core moves are unglamorous and effective:</p>
+  <ul>
+    <li><strong>Use active voice.</strong> "The system sends a confirmation email" beats "A confirmation email is sent by the system." Active voice names the actor and shortens the sentence.</li>
+    <li><strong>Prefer common, everyday words.</strong> Choose <em>use</em> over <em>utilize</em>, <em>help</em> over <em>facilitate</em>, <em>about</em> over <em>approximately</em>. Jargon and inflated vocabulary don't read as expertise; they read as friction.</li>
+    <li><strong>Keep sentences short.</strong> Aim for one idea per sentence and an average around 15–20 words. Short sentences are easier to understand and easier to translate.</li>
+    <li><strong>Define a term once, then reuse it.</strong> Pick one name for each concept and never swap synonyms to sound varied. In documentation, consistency beats variety. If it's a "workspace," it's always a "workspace," never occasionally a "space" or "project."</li>
+  </ul>
+  <p>Plain language also travels better. If you localize documentation, short, unambiguous sentences with consistent terminology translate more cleanly and cheaply than clever, idiomatic prose — a real consideration when a manual ships in many languages.</p>
+
+  <h2>Cut until only the answer remains</h2>
+  <p>Minimalist documentation isn't about writing less for its own sake; it's about removing everything between the reader and their answer. Padding hides the signal.</p>
+  <p>Delete on sight:</p>
+  <ul>
+    <li><strong>Preamble</strong> — "In this article, we will discuss…" Just start with the answer.</li>
+    <li><strong>Filler verbs and hedges</strong> — "in order to" becomes "to"; "causes the triggering of" becomes "triggers."</li>
+    <li><strong>Redundant context</strong> the reader already has from the heading and their own screen.</li>
+    <li><strong>Obvious steps</strong> — you rarely need to tell someone to "open the application" before every procedure.</li>
+  </ul>
+  <p>A useful revision pass: try to cut 20% of a finished draft. If the meaning survives — and it usually does — the page just got faster to read. Then cut a little more.</p>
+
+  <h2>Make procedures foolproof</h2>
+  <p>Procedures are where documentation earns or loses trust. A reader following steps has the least patience for ambiguity, because a wrong turn costs them real time.</p>
+  <p>Write procedures so they can't be misread:</p>
+  <ul>
+    <li><strong>One action per numbered step.</strong> If a step contains an "and," it's probably two steps.</li>
+    <li><strong>State where the reader is</strong> before the action: "On the <strong>Settings</strong> page, select <strong>Domains</strong>." Location first, action second.</li>
+    <li><strong>Show the result of consequential steps</strong> so the reader can confirm they're on track ("You'll see a green <em>Verified</em> badge").</li>
+    <li><strong>Call out prerequisites up front</strong>, not halfway down, where they read as a nasty surprise.</li>
+    <li><strong>Match the interface exactly</strong> — button labels, menu names, and capitalization. If the docs say "Publish" and the button says "Go live," the reader stalls.</li>
+  </ul>
+
+  <h2>Design the whole library, not just the page</h2>
+  <p>A single clear page can still be useless if no one can find it. Information architecture — how your documentation is organized, grouped, and linked — is what turns a pile of good topics into a usable resource.</p>
+  <p>Keep the structure shallow and predictable. Group topics the way readers think about the product (by job to be done), not the way your engineering teams are organized. Aim to keep any topic reachable within a few clicks of the entry point, and give related topics clear cross-links so a reader mid-task can step sideways without searching again.</p>
+  <p>Treat your terminology as part of the architecture. A shared, documented style guide — even a one-page list of preferred terms, capitalization rules, and formatting patterns — keeps a growing team writing pages that feel like one voice instead of a dozen. Consistent structure lowers cognitive load: when every procedure looks the same, readers build a mental model of where things live and spend their attention on the task instead of decoding your formatting.</p>
+
+  <h2>Keep it accurate over time</h2>
+  <p>The best-written page is wrong the moment the product changes and no one updates it. Outdated documentation is worse than none, because it burns the reader's trust.</p>
+  <p>Build maintenance into how you work:</p>
+  <ul>
+    <li><strong>Keep a single source of truth.</strong> One canonical topic per concept, versioned, so an update lands in exactly one place instead of five stale copies.</li>
+    <li><strong>Review docs when the feature ships</strong>, not months later. Tie documentation updates to releases the way you'd tie tests to code.</li>
+    <li><strong>Watch how docs are used.</strong> Search terms that return nothing, pages with high exits, and repeated support tickets on a "documented" feature all point to a page that isn't working. Analytics turn guesswork into a fix list.</li>
+  </ul>
+  <p>A platform like Sonat is built around exactly this loop — versioned topics, a readability guide, built-in search, and end-user feedback on every page — so that keeping documentation clear and current is part of the workflow rather than a separate chore.</p>
+
+  <h2>The through-line</h2>
+  <p>Every practice here serves one reader: someone scanning for an answer under mild time pressure. Structure the page so that answer is visible, write it in plain language so it lands the first time, cut everything that isn't the answer, and maintain it so it stays true. Do that consistently and your documentation stops being something people endure and starts being something they trust.</p>
+
+  <div class="cta">
+    <p>Ready to put these practices to work? <a href="https://sonat.com">Start building clearer documentation with Sonat</a>.</p>
+  </div>
+</article>
+</body>
+</html>
