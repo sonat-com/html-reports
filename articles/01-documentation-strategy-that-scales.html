@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Documentation Strategy That Scales</title>
+<meta name="description" content="Build a documentation strategy that scales on four levers: a single source of truth, content operations, localization, and analytics.">
+<style>
+  :root{
+    --ink:#1a1f2b; --muted:#5b6472; --line:#e7e9ee; --bg:#ffffff;
+    --accent:#1f6feb; --soft:#f6f8fb;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:56px 24px 96px}
+  h1{
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+    margin:0 0 28px; font-weight:800;
+  }
+  h2{
+    font-size:1.4rem; line-height:1.3; letter-spacing:-.01em;
+    margin:48px 0 14px; font-weight:700;
+  }
+  p{margin:0 0 18px}
+  ul,ol{margin:0 0 18px; padding-left:1.3em}
+  li{margin:0 0 8px}
+  li::marker{color:var(--muted)}
+  strong{font-weight:700}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{
+    font:0.92em/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    background:var(--soft); border:1px solid var(--line);
+    padding:.08em .38em; border-radius:5px; word-break:break-word;
+  }
+  .lede{font-size:1.16rem; color:var(--muted); margin-bottom:26px}
+  hr{border:0; border-top:1px solid var(--line); margin:44px 0}
+  @media (max-width:600px){
+    .wrap{padding:36px 18px 72px}
+    h1{font-size:1.8rem}
+    body{font-size:16px}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>How to Build a Documentation Strategy That Scales</h1>
+
+  <p class="lede">Most documentation doesn't fail because the writing is bad. It fails because nobody decided how it should work. Pages get added when someone has time, translated when a customer complains, and measured never. A year later you have hundreds of topics, no clear owner, and a support team answering questions the docs already cover.</p>
+
+  <p>A documentation strategy fixes that by making a few deliberate decisions up front: where content lives, how it moves from draft to published, which languages you support, how readers find it, and how you know it's working. This guide walks through the four levers that decide whether documentation scales — and how to set each one so your library grows without falling apart.</p>
+
+  <h2>What a documentation strategy actually is</h2>
+  <p>A documentation strategy is the set of rules that govern how your team creates, maintains, translates, publishes, and measures content over time. It's not a style guide and it's not a list of articles to write. It's the operating model underneath both.</p>
+  <p>The difference shows up when things change. Without a strategy, a product rename means someone hunts through every page hoping to catch each mention. With one, you already know where the canonical description lives, who approves the edit, and which language versions need to follow. Strategy is what turns documentation from a pile of files into a system you can trust.</p>
+  <p>Four decisions carry most of the weight: your source of truth, your content operations, your localization approach, and your measurement. Get these right and the rest — templates, tone, formatting — falls into place.</p>
+
+  <h2>Start with a single source of truth</h2>
+  <p>The foundation of any documentation strategy is deciding where the authoritative version of each thing lives. Keep content <em>nearby and unique</em>: every source should have a clearly defined, non-overlapping scope so the same information never needs maintaining in two places at once.</p>
+  <p>This matters because duplication is where documentation rots. When the same setup steps appear in three articles, two of them are always out of date — and you can't tell which. A single source of truth means each fact is written once and referenced everywhere it's needed, so an update in one place propagates instead of leaving stale copies behind.</p>
+  <p>Practically, that means:</p>
+  <ul>
+    <li><strong>One home per topic.</strong> Decide whether a concept belongs in the getting-started guide or the reference section, and link to it from anywhere else rather than copying it.</li>
+    <li><strong>Clear ownership.</strong> Every area of the docs has a person or team responsible for keeping it current.</li>
+    <li><strong>Reuse over repetition.</strong> Where the same warning, step, or definition recurs, pull it from a shared source instead of pasting it.</li>
+  </ul>
+  <p>Sonat is built around this idea: your manuals live in one centralized, version-tracked home, with an unlimited version archive so you can restore any earlier state of a topic. When there's one authoritative version, "which page is right?" stops being a question anyone has to ask.</p>
+
+  <h2>Build content operations, not heroics</h2>
+  <p>Content operations — often shortened to content ops — is the workflow that moves a topic from idea to published and keeps it accurate afterward. When documentation depends on one dedicated person remembering everything, it stalls the moment they're busy. A repeatable process is what lets a team scale coverage without lowering quality.</p>
+  <p>A workable content operations model answers three questions:</p>
+  <ol>
+    <li><strong>Who can change what?</strong> Roles and permissions decide who drafts, who edits, and who can publish. This keeps a well-meaning edit from going live before anyone with context has seen it.</li>
+    <li><strong>How does a change get approved?</strong> A review or approval step — sequential or parallel, depending on the stakes — gives compliance-sensitive content a paper trail and gives everything else a second pair of eyes.</li>
+    <li><strong>How do we track versions?</strong> Version history lets you see what changed, when, and why, and roll back when a "small fix" turns out not to be.</li>
+  </ol>
+  <p>The point isn't bureaucracy. It's removing the single points of failure that make documentation fragile. Sonat borrows these ideas directly from software engineering — version control, review and approval workflows, and one-click publishing — and applies them to content written by non-technical teams, so the process feels like drafting a document, not operating a pipeline.</p>
+
+  <h2>Localize with intent, not as an afterthought</h2>
+  <p>If your product reaches more than one market, translation stops being optional. But a documentation localization strategy is more than running text through a translator. It's deciding which languages you support, keeping them in sync with the source, and making sure search engines understand that a page has language variants.</p>
+  <p>That last part is where most teams slip. Translating a page doesn't automatically tell a search engine it's the German version of an English article. Search engines are explicit about this: if you have multiple versions of a page for different languages or regions, you have to tell them, using <code>hreflang</code> annotations. You can do this three equivalent ways — with <code>&lt;link rel="alternate" hreflang&gt;</code> tags in the page head, with HTTP headers, or in an XML sitemap.</p>
+  <p>Two rules are worth building into your strategy:</p>
+  <ul>
+    <li><strong>Links must be bidirectional.</strong> Each language version has to reference itself <em>and</em> every other version. If the English page points to the German one but not the reverse, search engines may ignore the relationship entirely.</li>
+    <li><strong>Use an <code>x-default</code>.</strong> This tells search engines which page to show when none of your languages match the reader's preference.</li>
+  </ul>
+  <p>The strategic decision is to treat every language as a first-class version of the same topic rather than a separate, drifting copy. Sonat supports machine translation across a wide range of languages with per-language search indexing, so a translated manual stays connected to its source and remains findable in each market — the localization becomes part of the single source of truth instead of a fork of it.</p>
+
+  <h2>Make documentation discoverable</h2>
+  <p>Documentation that can't be found doesn't deflect a single support ticket. SEO for documentation is the difference between a reader landing on your help center from a search and giving up and emailing support instead.</p>
+  <p>Discoverability rests on a few concrete signals:</p>
+  <ul>
+    <li><strong>Descriptive titles and meta descriptions</strong> that match how people actually phrase their problem, not internal jargon.</li>
+    <li><strong>A clean heading structure</strong> — one clear H1, logical H2s and H3s — so both readers and search engines can follow the page.</li>
+    <li><strong>Sitemaps and structured data</strong> that help search engines index every topic and understand what each page is.</li>
+    <li><strong>Internal links</strong> between related topics, which spread discoverability and keep readers moving through answers.</li>
+  </ul>
+  <p>Well-structured docs also happen to be what emerging AI answer engines pull from, so the same fundamentals that help traditional search increasingly help every surface where readers ask questions. A platform that generates meta tags, sitemaps, and structured data for you — and connects to your search console and analytics — turns discoverability from a manual chore into a default. The strategic move is to bake these signals into your publishing process so no one has to remember them per page.</p>
+
+  <h2>Measure what readers actually do</h2>
+  <p>You can't improve what you don't measure, and "we wrote a lot of pages" is not a measure of success. Documentation metrics tell you whether readers are finding answers or bouncing.</p>
+  <p>Useful documentation analytics start with the basics. Established usability research centers on a small set of quantitative measures — success rate (whether users can complete a task at all), the time a task takes, the error rate, and subjective satisfaction. Translated to a help center, that means watching:</p>
+  <ul>
+    <li><strong>Search-with-no-result rate</strong> — what people look for and don't find. This is your content backlog, written by your readers.</li>
+    <li><strong>Top pages and dead ends</strong> — where readers land, and where they leave without resolving anything.</li>
+    <li><strong>Task success and self-service rate</strong> — how often a reader solves their problem without contacting support.</li>
+    <li><strong>Feedback signals</strong> — the "was this helpful?" responses that flag pages needing work.</li>
+  </ul>
+  <p>The reason to measure is to track progress between releases — to know whether last month's rewrite actually helped. Feed those numbers back into your content operations: the no-result searches become your next topics, and the low-satisfaction pages become your next edits. Sonat pairs feedback loops on every topic with analytics so this cycle has real data behind it instead of guesswork.</p>
+
+  <h2>Turn the strategy into a habit</h2>
+  <p>A documentation strategy isn't a document you write once and file away. It's four decisions you keep making: one source of truth so nothing rots, content operations so quality doesn't depend on heroics, localization so every market gets a real version, and measurement so readers — not opinions — tell you what to fix next.</p>
+  <p>Start with the one that hurts most today. If duplication is your problem, consolidate to a single source of truth first. If readers can't find anything, fix discoverability. Each lever reinforces the others, and together they turn documentation from a growing liability into an asset that scales with your product. If you're ready to put the whole system in one place, <a href="https://sonat.com">Sonat</a> is built to run all four.</p>
+</main>
+</body>
+</html>
