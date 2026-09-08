@@ -114,9 +114,9 @@
   .budget { display: flex; flex-direction: column; gap: 14px; }
   .bar { display: flex; height: 46px; border: 1px solid var(--line); overflow: hidden; }
   .bar span { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11.5px; font-weight: 600; color: var(--surface); }
-  .bar .seg-export { background: var(--high); flex: 988000; }
-  .bar .seg-unknown { background: var(--crit); flex: 808667; }
-  .bar .seg-app { background: var(--accent); flex: 204019; }
+  .bar .seg-export { background: var(--high); flex: 988933; }
+  .bar .seg-unknown { background: var(--crit); flex: 866964; }
+  .bar .seg-app { background: var(--accent); flex: 292610; }
   .budget-key { display: flex; flex-wrap: wrap; gap: 22px; font-size: 14px; color: var(--ink-2); }
   .budget-key i { display: inline-block; width: 10px; height: 10px; margin-right: 7px; }
   .k-export { background: var(--high); } .k-unknown { background: var(--crit); } .k-app { background: var(--accent); }
@@ -186,48 +186,50 @@
     <div class="eyebrow">
       <span>sonat-prod</span><span class="tick">/</span>
       <span>firestore data-access audit</span><span class="tick">/</span>
-      <span>41-hour capture</span>
+      <span>4-day capture, 3 weekdays</span>
     </div>
     <h1>Firestore Read Punch List</h1>
     <p class="dek">
       Everything the audit log surfaced that is worth changing, ordered by what to do first.
-      Two findings are live defects in production. The rest is read amplification with nothing
-      in front of it — and a read bill that mostly isn't application traffic at all.
+      Two findings are live defects in production — both still unfixed after four days of
+      watching. The rest is read amplification with nothing in front of it, and a read bill
+      that mostly isn't application traffic at all.
     </p>
     <div class="runmeta">
-      <div>window <b>Aug 22 22:10 &rarr; Aug 24 15:18 UTC</b></div>
-      <div>requests <b>459,453</b></div>
-      <div>weekday reads <b>~491k/day</b></div>
+      <div>window <b>Aug 22 22:10 &rarr; Aug 26 18:36 UTC</b></div>
+      <div>requests <b>1,074,360</b></div>
+      <div>weekday reads <b>~344k/day</b></div>
       <div>logging <b>ON</b></div>
     </div>
   </header>
 
   <section class="callout">
-    <h2>Application reads are about 10% of the Firestore bill</h2>
+    <h2>Application reads are about 14% of the Firestore bill</h2>
     <p>
-      Earlier estimates in this document scaled per-collection shares against the full billed read
-      volume. That was wrong by roughly 8&times;. Two independent sources — this audit capture and the
+      Earlier versions of this document scaled per-collection shares against the full billed read
+      volume. That was wrong by roughly 7&times;. Two independent sources — this audit capture and the
       <code>firestore.googleapis.com/document/read_count</code> metric — agree that application traffic
-      is ~200–490k reads/day. Billing says ~2.0M. Caching every collection in the platform saves about
-      <strong>$7/month</strong>. Do this work for latency and blast radius, not for the invoice.
+      is ~200–470k reads/day against ~2.1M billed. Caching every collection in the platform saves about
+      <strong>$4/month</strong>. Do this work for latency and blast radius, not for the invoice.
     </p>
   </section>
 
   <section class="sect budget">
-    <header><h2>Where the reads actually go — Sun Aug 23, the one fully captured day</h2></header>
+    <header><h2>Where the reads actually go — Tue Aug 25, a full weekday</h2></header>
     <div class="bar">
-      <span class="seg-export">EXPORT 49%</span>
+      <span class="seg-export">EXPORT 46%</span>
       <span class="seg-unknown">UNATTRIBUTED 40%</span>
-      <span class="seg-app">APP 10%</span>
+      <span class="seg-app">APP 14%</span>
     </div>
     <div class="budget-key">
-      <span><i class="k-export"></i>Daily backup export — 988,000 (verified from operation metadata)</span>
-      <span><i class="k-unknown"></i>Unattributed — 808,667</span>
-      <span><i class="k-app"></i>Application traffic — 204,019 (measured)</span>
+      <span><i class="k-export"></i>Daily backup export — 988,933 (verified from operation metadata)</span>
+      <span><i class="k-unknown"></i>Unattributed — 866,964</span>
+      <span><i class="k-app"></i>Application traffic — 292,610 (measured)</span>
     </div>
     <p style="margin:0;color:var(--ink-2);max-width:76ch">
-      Billed that day: <strong>2,000,686</strong> reads. The largest single identifiable consumer is a
+      Billed that day: <strong>2,148,507</strong> reads. The largest single identifiable consumer is a
       backup, not the product. The second largest is something I could not identify — see item 07.
+      The same three-way split held on every complete day of the capture.
     </p>
   </section>
 
@@ -245,18 +247,31 @@
               <span class="chip meta">Content-Processor</span>
               <span class="chip meta">deploy only</span>
             </div>
-            <h3>Deploy the TopicVersions index fix — it is still failing 1,150&times; a day</h3>
-            <div class="loc">PR #37 merged 2026-08-22 21:58 &middot; active revision <code>content-processor-00020-jtz</code> built 2026-08-14</div>
+            <h3>Deploy the TopicVersions index fix — four days on, it still fails every single time</h3>
+            <div class="loc">PR #37 merged 2026-08-22 21:58 &middot; active revision <code>content-processor-00020-jtz</code>, still built 2026-08-14</div>
           </div>
           <p>
-            The fix is on <code>master</code> and <code>build</code> passed. It has not been deployed. Every
-            <code>TopicVersions</code> query in production still orders by <code>UpdateDateTime</code> —
-            zero have switched to <code>CreateDateTime</code>.
+            The fix is on <code>master</code> and <code>build</code> passed. It has not been deployed.
+            Across the whole capture, <strong>every</strong> <code>TopicVersions</code> ordered query in
+            production used <code>UpdateDateTime</code> and <strong>every one of them failed</strong>.
+            Not a single query has used <code>CreateDateTime</code>.
           </p>
-          <pre>Mon Aug 24 — TopicVersions queries by ordering field
-  UpdateDateTime   1,150   <span class="del">all failing, code 9 FAILED_PRECONDITION</span>
-  CreateDateTime       0   <span class="dim">fix not live</span>
-  last failure     15:09 UTC</pre>
+          <pre>TopicVersions ordered queries, by day
+              by UpdateDateTime   failing   by CreateDateTime
+  Sun Aug 23              262       <span class="del">262</span>                   0
+  Mon Aug 24            1,461     <span class="del">1,461</span>                   0
+  Tue Aug 25              172       <span class="del">172</span>                   0
+  Wed Aug 26              215       <span class="del">215</span>                   0
+                        -----     -----
+                        2,110     <span class="del">2,110  — a 100% failure rate, every day</span></pre>
+          <p>
+            <strong>Do not read the daily counts as improvement.</strong> The drop from 1,461 on Monday
+            to ~200 on Tuesday looks like something got fixed. Nothing did — Monday was simply a heavy
+            content-editing day, and the link processor ran more often. The failure <em>rate</em> never
+            moved off 100%. I also confirmed no <code>UpdateDateTime</code> index was quietly added:
+            prod still has exactly four <code>TopicVersions</code> composite indexes, all on
+            <code>CreateDateTime</code>.
+          </p>
           <p>
             Consequence unchanged: <code>Link.SourceTopicTitle</code> stays unset, and the Reference Links
             dashboard's "Source topic" column shows the document title for ~92% of rows and <code>—</code>
@@ -275,24 +290,30 @@
               <span class="chip meta">Webapp</span>
               <span class="chip meta">~half day</span>
             </div>
-            <h3>Notification settings fetch every subscription a user has, unpaginated</h3>
+            <h3>Notification settings fetch every subscription a user has, and the worst case is growing</h3>
             <div class="loc">Docer.DAL/Repositories/Notification/SubscriptionRepository.cs:23 &mdash; <code>GetByUserId()</code></div>
           </div>
           <p>
             A bare <code>WhereEqualTo("UserId", …)</code> with no limit and no pagination, reached from
             <code>GET /User/Subscriptions</code> (<code>UserController.cs:530</code>) via
-            <code>NotificationBusiness.GetSubscriptions</code>. One account already has just under
-            2,100 subscriptions, so each load of their notification settings reads all of them.
+            <code>NotificationBusiness.GetSubscriptions</code>. Every load of that user's notification
+            settings reads all of their subscriptions.
           </p>
-          <pre>Subscriptions where UserId == 9021110e-…
-  Sun Aug 23   2,079 documents per call  &times; 12 calls  = 24,700 reads
-  Mon Aug 24   1,995 documents per call  &times; 14 calls  =  8,345 reads
+          <pre>largest single Subscriptions call, by day
+  Sun Aug 23   2,079 documents
+  Mon Aug 24   2,090 documents
+  Tue Aug 25   2,839 documents   <span class="del">+36% in three days</span>
+  Wed Aug 26   2,839 documents
 
-reads per call, all collections — Mon Aug 24
-  Subscriptions       <span class="del">3.6</span>   <span class="dim">(peak 1,995 in a single call)</span>
-  Links               10.7
-  Documents            1.1
+reads per call across the three weekdays
+  Subscriptions       <span class="del">17.1</span>   <span class="dim">(peak 2,839 in a single call)</span>
+  Links                9.9
+  Documents            1.2
   everything else      1.0</pre>
+          <p>
+            This is the finding that changed most over four days. The ceiling is not just absent, it is
+            visibly rising — the worst call grew 36% during the capture window alone.
+          </p>
           <div class="panels">
             <div class="panel">
               <h4>Fix</h4>
@@ -304,7 +325,7 @@ reads per call, all collections — Mon Aug 24
             <div class="panel">
               <h4>Why it matters</h4>
               <ul>
-                <li>Cost is trivial. The problem is it scales with one user's subscription count and has no ceiling.</li>
+                <li>Cost is trivial — ~$0.11/month. The problem is it scales with one user's subscription count and has no ceiling.</li>
                 <li>Worst read amplification in the system by an order of magnitude.</li>
               </ul>
             </div>
@@ -326,15 +347,16 @@ reads per call, all collections — Mon Aug 24
             <div class="loc">features/reference-links-dashboard/index.tsx:116 &mdash; three separate <code>count()</code> calls per load</div>
           </div>
           <p>
-            All 9,437 aggregation queries on Monday were <code>count()</code> against <code>Links</code>.
-            They are 3% of calls and the worst latency in the system by a wide margin — 5&times; the median
-            of an ordinary query and 13&times; at p95.
+            Every aggregation query in the capture was a <code>count()</code> against <code>Links</code>.
+            They are 1.7% of calls and the worst latency in the system by a wide margin — 3.6&times; the
+            median of an ordinary query and 12&times; at p95. The figures held steady across all three
+            weekdays, so this is structural rather than a bad afternoon.
           </p>
-          <pre>Mon Aug 24 — latency by method
+          <pre>Mon–Wed Aug 24–26 — latency by method
                         calls     p50      p95      p99    total
-  RunAggregationQuery   9,437   16.0ms  <span class="del">204.3ms</span>  246.5ms    430s
-  RunQuery            120,934    6.3ms   16.2ms   65.2ms  1,039s
-  BatchGetDocuments   151,473    2.6ms    8.7ms   13.6ms    509s</pre>
+  RunAggregationQuery  14,923   24.3ms  <span class="del">205.9ms</span>  267.4ms    812s
+  RunQuery            401,911    6.8ms   17.4ms   55.5ms  3,616s
+  BatchGetDocuments   470,993    2.7ms   10.1ms   15.2ms  1,715s</pre>
           <p>
             The code comment above these calls reads <em>"Firestore's count aggregation is cheap and React
             Query dedupes on the same key."</em> The dedupe works; the premise about cost does not. Three
@@ -369,11 +391,11 @@ reads per call, all collections — Mon Aug 24
               <span class="chip meta">Webapp</span>
               <span class="chip meta">1–3d</span>
             </div>
-            <h3>77% of weekday reads are the same read repeated</h3>
-            <div class="loc">Simulated TTL cache replayed over 272,431 Monday reads</div>
+            <h3>Two thirds of weekday reads are the same read repeated</h3>
+            <div class="loc">Simulated TTL cache replayed over 490,563 reads from Tue–Wed Aug 25–26</div>
           </div>
           <p>
-            Nearly half of it disappears with request-scoped memoisation alone — no shared cache, no
+            Forty percent of it disappears with request-scoped memoisation alone — no shared cache, no
             invalidation, no staleness risk, just not fetching the same thing twice inside one request.
           </p>
           <div class="tablewrap">
@@ -382,35 +404,35 @@ reads per call, all collections — Mon Aug 24
                 <tr><th>Cache candidate</th><th style="text-align:right">Share</th><th style="text-align:right">1s</th><th style="text-align:right">60s</th><th style="text-align:right">5m</th><th style="text-align:right">$/mo @5m</th></tr>
               </thead>
               <tbody>
-                <tr><td>Documents + DocumentVersions</td><td class="num">26.2%</td><td class="num">66%</td><td class="num">85%</td><td class="num">89%</td><td class="num">$1.62</td></tr>
-                <tr><td>Topics + TopicVersions + Contents</td><td class="num">28.7%</td><td class="num">36%</td><td class="num">54%</td><td class="num">64%</td><td class="num">$1.29</td></tr>
-                <tr><td>Accounts</td><td class="num">10.7%</td><td class="num">63%</td><td class="num">86%</td><td class="num">91%</td><td class="num">$0.68</td></tr>
-                <tr><td>Users</td><td class="num">8.7%</td><td class="num">71%</td><td class="num">92%</td><td class="num">95%</td><td class="num">$0.58</td></tr>
-                <tr><td>Links</td><td class="num">8.5%</td><td class="num">50%</td><td class="num">92%</td><td class="num">96%</td><td class="num">$0.57</td></tr>
-                <tr><td>Items (URL resolution)</td><td class="num">6.7%</td><td class="num">12%</td><td class="num">33%</td><td class="num">40%</td><td class="num">$0.19</td></tr>
-                <tr><td>Redirects</td><td class="num">0.9%</td><td class="num">3%</td><td class="num">10%</td><td class="num">14%</td><td class="num">$0.01</td></tr>
-                <tr><td class="strong">All reads combined</td><td class="num">100%</td><td class="num">47%</td><td class="num">70%</td><td class="num">77%</td><td class="num">$5.38</td></tr>
+                <tr><td>Documents + DocumentVersions</td><td class="num">27.5%</td><td class="num">59%</td><td class="num">76%</td><td class="num">82%</td><td class="num">$1.56</td></tr>
+                <tr><td>Topics + TopicVersions + Contents</td><td class="num">25.7%</td><td class="num">30%</td><td class="num">47%</td><td class="num">55%</td><td class="num">$0.98</td></tr>
+                <tr><td>Accounts</td><td class="num">14.7%</td><td class="num">62%</td><td class="num">84%</td><td class="num">89%</td><td class="num">$0.91</td></tr>
+                <tr><td>Users</td><td class="num">7.6%</td><td class="num">66%</td><td class="num">87%</td><td class="num">92%</td><td class="num">$0.49</td></tr>
+                <tr><td>Items (URL resolution)</td><td class="num">8.9%</td><td class="num">10%</td><td class="num">33%</td><td class="num">41%</td><td class="num">$0.25</td></tr>
+                <tr><td>Subscriptions</td><td class="num">6.6%</td><td class="num">0%</td><td class="num">7%</td><td class="num">24%</td><td class="num">$0.11</td></tr>
+                <tr><td>Redirects</td><td class="num">1.1%</td><td class="num">3%</td><td class="num">16%</td><td class="num">21%</td><td class="num">$0.02</td></tr>
+                <tr><td class="strong">All reads combined</td><td class="num">100%</td><td class="num">40%</td><td class="num">60%</td><td class="num">68%</td><td class="num">$4.71</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            The heaviest individual repeats on Monday: <code>Contents by TopicVersionId</code> 15,585&times;,
-            <code>Items by PublishUrl</code> 14,790&times;, <code>Accounts by Slug</code> 14,336&times;,
-            <code>DocumentVersions by Id</code> 12,392&times;, <code>Users by FirebaseUserId</code> 10,172&times;,
-            and one single <code>Documents</code> record 9,077&times;.
+            The heaviest individual repeats over those two days: <code>Items by PublishUrl</code> 46,806&times;,
+            <code>Accounts by Slug</code> 44,795&times;, <code>DocumentVersions by Id</code> 27,249&times;,
+            <code>Contents by TopicVersionId</code> 26,158&times;, one single <code>Documents</code> record
+            18,242&times;, and one single <code>Accounts</code> record 13,742&times;.
           </p>
           <div class="panels">
             <div class="panel">
               <h4>Start here</h4>
               <ul>
-                <li>Request-scoped memoisation across the board — 47% for a fraction of the effort of a real cache.</li>
-                <li>Then a TTL cache on <code>Accounts</code> and <code>Users</code>, which reach 91% and 95%.</li>
+                <li>Request-scoped memoisation across the board — 40% for a fraction of the effort of a real cache.</li>
+                <li>Then a TTL cache on <code>Accounts</code> and <code>Users</code>, which reach 89% and 92%.</li>
               </ul>
             </div>
             <div class="panel">
               <h4>Not worth caching</h4>
               <ul>
-                <li><code>Redirects</code> — 14% hit rate. Nearly every lookup is a unique miss. Only <em>negative</em> caching helps, and only against scanners.</li>
+                <li><code>Redirects</code> — 21% hit rate. Nearly every lookup is a unique miss. Only <em>negative</em> caching helps, and only against scanners.</li>
               </ul>
             </div>
           </div>
@@ -432,11 +454,11 @@ reads per call, all collections — Mon Aug 24
           </div>
           <p>
             A full unfiltered export of every collection, every day. Firestore bills one read per document
-            exported, so this is ~30M reads/month — roughly <strong>$18</strong>, against ~$9/month for all
-            application traffic combined.
+            exported, so this is ~30M reads/month — roughly <strong>$18</strong>, against ~$6/month for all
+            application traffic combined. It is three times the cost of everything the product does.
           </p>
           <pre>export operation metadata, verified
-  progressDocuments.completedWork   987,996
+  progressDocuments.completedWork   988,933
   progressBytes.completedWork       3,664,316,586   <span class="dim">(3.66 GB)</span>
   collectionIds                     <span class="dim">(none — full database)</span>
   runtime                           ~2m 45s
@@ -469,18 +491,18 @@ reads per call, all collections — Mon Aug 24
               <span class="chip meta">Content-Processor</span>
               <span class="chip meta">~1d</span>
             </div>
-            <h3>Link reconciliation reads ten documents per call and runs constantly</h3>
-            <div class="loc">2,300 calls &rarr; 26,354 reads on Monday — 8.4% of the day's application reads</div>
+            <h3>Link reconciliation reads ten documents per call and runs on every save</h3>
+            <div class="loc">4,297 calls &rarr; 42,644 reads across the three weekdays &mdash; 4.1% of application reads</div>
           </div>
           <p>
             <code>Links where SourceTopicId == … AND …</code> pulls every existing link for a topic so the
-            processor can diff against freshly extracted ones. That is a reasonable design, but it is the
-            second-heaviest per-call read in the system and it re-runs on every content save.
+            processor can diff against freshly extracted ones. That is a reasonable design, but at 9.9 reads
+            per call it is the second-heaviest per-call read in the system, and one call returned 110 documents.
           </p>
           <p>
-            It also caches extremely well — 92% at a 60-second TTL, 96% at five minutes — which suggests
-            the same topic is being reprocessed repeatedly in short windows. Worth understanding why
-            before optimising the query itself.
+            It also caches extremely well — 90% at a 60-second TTL, 94% at five minutes — which means the
+            same topic is being reprocessed repeatedly in short windows. Worth understanding why before
+            optimising the query itself.
           </p>
         </div>
       </article>
@@ -495,12 +517,13 @@ reads per call, all collections — Mon Aug 24
               <span class="chip meta">GCP</span>
               <span class="chip meta">investigate</span>
             </div>
-            <h3>Two fifths of the read bill has no identified source</h3>
-            <div class="loc">Sun Aug 23 — billed 2,000,686 &middot; explained 1,192,019 &middot; gap 808,667</div>
+            <h3>Two fifths of the read bill still has no identified source</h3>
+            <div class="loc">Tue Aug 25 — billed 2,148,507 &middot; explained 1,281,543 &middot; gap 866,964</div>
           </div>
           <p>
-            Application reads and the daily export together account for 60% of billed reads. The remaining
-            ~810k/day is unaccounted for. I would rather flag this than invent a cause for it.
+            Application reads and the daily export together account for ~60% of billed reads. The remaining
+            ~870k/day is unaccounted for, and the ratio held on every complete day of the capture — so it
+            is a standing feature of the bill, not a one-off. I would rather flag this than invent a cause.
           </p>
           <div class="panels">
             <div class="panel">
@@ -535,27 +558,41 @@ reads per call, all collections — Mon Aug 24
               <span class="chip meta">GCP</span>
               <span class="chip meta">~1h</span>
             </div>
-            <h3>Turn the capture off once Tuesday is in the bag</h3>
+            <h3>The capture is far cheaper than predicted — leaving it on is a real option</h3>
             <div class="loc">Enabled 2026-08-22 22:08 UTC &middot; audit config under <code>datastore.googleapis.com</code></div>
           </div>
           <p>
-            Nothing disables this on its own. Baseline project ingestion is ~0.8 GiB/day against a
-            50 GiB/month free tier; Firestore data-access adds roughly 8–13 GiB/day. A few days is
-            free to ~$10. Left running it is ~$100/month — more than Firestore reads themselves.
+            Earlier versions of this document estimated 8–13 GiB/day of log ingestion and warned of
+            ~$100/month. Measured over four days, that was wrong by roughly an order of magnitude.
+          </p>
+          <pre>project log ingestion, GiB/day
+  Aug 22   0.45   <span class="dim">baseline, capture starts 22:08</span>
+  Aug 23   0.56
+  Aug 24   1.38
+  Aug 25   1.06
+  Aug 26   0.99
+           ----
+  total    4.44 GiB over 4 days   <span class="add">vs a 50 GiB/month free tier</span></pre>
+          <p>
+            The error was in the volume estimate, not the price: I sized entry counts from <em>billed</em>
+            reads (~2.1M/day) when application requests — the thing that actually generates log entries —
+            are ~270–400k/day. Incremental cost of the capture is a few hundred MB a day, comfortably
+            inside the free tier. Running it continuously would cost roughly nothing.
           </p>
           <div class="panels">
             <div class="panel">
-              <h4>To disable</h4>
+              <h4>If you keep it</h4>
               <ul>
-                <li>Drop <code>auditConfigs</code> from the project IAM policy and re-apply.</li>
-                <li>Delete sink <code>firestore-data-access-to-bq</code> or it keeps writing.</li>
-                <li>Dataset <code>firestore_audit</code> has a 14-day table expiry and cleans itself up.</li>
+                <li>The BigQuery dataset has a 14-day table expiry, so it self-limits.</li>
+                <li>Re-check ingestion monthly in case traffic grows.</li>
               </ul>
             </div>
             <div class="panel">
-              <h4>Gotcha</h4>
+              <h4>If you turn it off</h4>
               <ul>
-                <li>The service name is <code>datastore.googleapis.com</code>. <code>firestore.googleapis.com</code> is rejected outright, even though the emitted logs carry it.</li>
+                <li>Drop <code>auditConfigs</code> from the project IAM policy and re-apply.</li>
+                <li>Delete sink <code>firestore-data-access-to-bq</code> or it keeps writing.</li>
+                <li>Service name is <code>datastore.googleapis.com</code>; <code>firestore.googleapis.com</code> is rejected outright.</li>
               </ul>
             </div>
           </div>
@@ -570,19 +607,19 @@ reads per call, all collections — Mon Aug 24
     <div class="fine">
       <div>
         <h4>Query latency is healthy</h4>
-        <p>Excluding aggregations: p50 6.3ms, p95 16.2ms on 120,934 queries. Point reads p50 2.6ms.</p>
+        <p>Excluding aggregations: p50 6.8ms, p95 17.4ms across 401,911 queries. Point reads p50 2.7ms.</p>
       </div>
       <div>
         <h4>Writes are clean</h4>
-        <p>3,370 commits and 1,668 transactions on Monday, one rollback across two days. No write amplification, no hot-document contention.</p>
+        <p>6,713 commits and 3,338 transactions over three weekdays, p95 75.8ms. No write amplification, no hot-document contention.</p>
       </div>
       <div>
         <h4>No scanner recurrence</h4>
-        <p>Monday's URL lookups look organic — 3,488 lookups across 979 distinct paths in the peak hour. The Aug 20 burst has not repeated.</p>
+        <p>Four days without a repeat of the Aug 20 burst. URL lookups track organic traffic.</p>
       </div>
       <div>
-        <h4>Stage is idle</h4>
-        <p>43 entries in the earlier stage capture, from a single editor session. Nothing runaway outside production.</p>
+        <h4>Auth errors are noise</h4>
+        <p>21 permission and authentication failures in 1,074,360 requests, all on <code>Users</code> and <code>DraftTopicTrees</code>. Nothing systematic.</p>
       </div>
     </div>
   </section>
@@ -591,31 +628,32 @@ reads per call, all collections — Mon Aug 24
     <header><h2>How much to trust this</h2></header>
     <ul>
       <li>
-        <strong>41 hours, one weekday, and Monday is partial</strong> — the capture runs to 15:18 UTC, so
-        Monday's totals are roughly two thirds of a full day. Percentages hold; absolute daily figures are floors.
+        <strong>Four days, three of them weekdays</strong> — Aug 22 22:10 to Aug 26 18:36 UTC, 1,074,360
+        requests. Wednesday runs to 18:36 so its totals are slightly short of a full day; everything else
+        is complete. This is the first version of this document with enough data to trust the shares.
       </li>
       <li>
-        <strong>Weekend and weekday differ by about 2&times;</strong> — 204k reads Sunday against 320k on a
-        partial Monday. Anything derived from the earlier Sunday-only numbers understates the weekday shape,
-        particularly for <code>Links</code> and <code>Contents</code>.
+        <strong>Monday was atypical.</strong> 468k reads against ~280k on Tuesday and Wednesday, driven by
+        heavy content editing. Percentages in item 04 come from Tue–Wed for that reason.
       </li>
       <li>
-        <strong>Items 01 and 02 are confirmed against source and deployed state.</strong> Item 05 is confirmed
-        from operation metadata. Items 03, 04 and 06 are inferred from access patterns — confirm against the
-        request handlers before sizing the work.
+        <strong>Items 01, 02 and 05 are confirmed against source, deployed state, or operation metadata.</strong>
+        Items 03, 04 and 06 are inferred from access patterns — confirm against the request handlers before
+        sizing the work.
       </li>
       <li>
-        <strong>Earlier figures in this document have been corrected twice.</strong> The first pass rested on
-        82 minutes of late-night traffic; the second scaled shares against the full read bill before the export
-        was identified. Per-issue dollar amounts have moved by roughly 8&times; as a result. The engineering
-        findings have not changed — only the economics.
+        <strong>Figures here have been corrected three times.</strong> The first pass rested on 82 minutes of
+        late-night traffic; the second scaled shares against the full read bill before the daily export was
+        identified; this one corrects a log-ingestion estimate that was ~10&times; too high. Per-issue dollar
+        amounts have moved by roughly 8&times; across those revisions. The engineering findings have not
+        changed once — only the economics attached to them.
       </li>
     </ul>
   </section>
 
   <footer>
-    Source: cloudaudit.googleapis.com/data_access &rarr; sonat-prod.firestore_audit, 459,453 entries, Aug 22–24 2026.<br>
-    Billing from sonat-prod.billing. Export metadata from <code>gcloud firestore operations list</code>. Read totals cross-checked against firestore.googleapis.com/document/read_count.
+    Source: cloudaudit.googleapis.com/data_access &rarr; sonat-prod.firestore_audit, 1,074,360 entries, Aug 22–26 2026.<br>
+    Billing from sonat-prod.billing. Export metadata from <code>gcloud firestore operations list</code>. Read totals cross-checked against firestore.googleapis.com/document/read_count. Ingestion from logging.googleapis.com/billing/bytes_ingested.
   </footer>
 
 </div>
