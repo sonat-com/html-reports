@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Help Center That Solves Problems</title>
+<meta name="description" content="Customers try self-service first, but most help centers under-resolve. A practical playbook to build a help center that actually solves problems.">
+<style>
+  :root{
+    --ink:#1c2430; --muted:#5a6672; --line:#e7ebf0; --bg:#ffffff;
+    --accent:#1f6feb; --accent-soft:#eef4ff; --maxw:720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:56px 22px 80px}
+  header.post{margin-bottom:34px}
+  .kicker{
+    display:inline-block; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:14px;
+  }
+  h1{
+    font-size:2.05rem; line-height:1.2; margin:0 0 10px; letter-spacing:-.01em; font-weight:750;
+  }
+  .lede{font-size:1.14rem; color:var(--muted); margin:0}
+  h2{font-size:1.42rem; line-height:1.25; margin:2.4em 0 .55em; letter-spacing:-.01em; font-weight:700}
+  h3{font-size:1.12rem; margin:1.7em 0 .4em; font-weight:650}
+  p{margin:0 0 1.15em}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  strong{font-weight:650}
+  .callout{
+    background:var(--accent-soft); border:1px solid #dce8ff; border-radius:12px;
+    padding:18px 20px; margin:1.6em 0; font-size:1.02rem;
+  }
+  .cta{
+    margin-top:2.6em; padding-top:1.6em; border-top:1px solid var(--line);
+    font-size:1.05rem;
+  }
+  .btn{
+    display:inline-block; margin-top:.5em; background:var(--accent); color:#fff;
+    padding:12px 22px; border-radius:10px; font-weight:600; text-decoration:none;
+  }
+  .btn:hover{text-decoration:none; opacity:.92}
+  @media (max-width:520px){
+    .wrap{padding:36px 18px 60px}
+    h1{font-size:1.7rem}
+    h2{font-size:1.25rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="post">
+    <span class="kicker">Help Centers</span>
+    <h1>How to Build a Help Center That Actually Solves Customer Problems</h1>
+    <p class="lede">Your customers already want to help themselves. A help center only earns its keep when they can actually finish there.</p>
+  </header>
+
+  <article>
+    <p>Your customers already want to help themselves. They open your help center before they open a ticket, search for their question, and hope to be back to work in two minutes. The gap most teams miss is what happens next: they find nothing useful, and email you anyway. A help center only earns its keep when people finish there.</p>
+
+    <p>This guide is about closing that gap. Not adding more articles, but building a help center that resolves the questions customers actually arrive with.</p>
+
+    <h2>The self-service gap: wanted, used, rarely finished</h2>
+    <p>Self-service is no longer the fallback channel. Gartner research expects self-service and live chat to overtake phone and email as the most important customer-service technologies within the next couple of years. People genuinely prefer solving things on their own for routine questions.</p>
+    <p>The problem is the finish line. In the same Gartner research, only about <strong>14% of customer-service issues are fully resolved in self-service</strong>, and nearly <strong>nine in ten</strong> journeys that start in self-service still end up spilling into another channel. So the channel is winning while the outcome is losing.</p>
+    <p>That is not a reason to invest less in your help center. It is the clearest possible signal that the content — not the format — is where the work is. Gartner's own framing is blunt: a knowledge management system is the backbone of robust self-service. Fix the backbone and the numbers move.</p>
+
+    <h2>What is a help center?</h2>
+    <div class="callout">A help center is a published, searchable collection of documentation that lets customers resolve questions on their own — how-to guides, troubleshooting steps, and answers to common questions — without contacting support. It is the customer-facing front door to your knowledge, distinct from an internal wiki and broader than a single FAQ page.</div>
+    <p>The distinction from a plain knowledge base matters. A knowledge base is the store of articles; a help center is the experience wrapped around it — navigation, search, structure, and the feedback loops that keep it honest.</p>
+
+    <h2>Why most help centers under-resolve</h2>
+    <p>If customers are showing up and still leaving unhelped, the cause is usually one of three things.</p>
+
+    <h3>It is organized around your product, not the customer's question</h3>
+    <p>Teams tend to file articles the way the company is organized — by feature, module, or department. Customers arrive with a problem in their own words, not your org chart. Nielsen Norman Group calls this the vocabulary mismatch: the words users type rarely match the words the business uses to label its content. When the map is drawn for the author, the reader gets lost.</p>
+
+    <h3>Search alone cannot rescue thin content</h3>
+    <p>It is tempting to assume a good search bar covers for gaps. It does not. Research is direct on this — search is rarely enough, because most people are not skilled at forming queries and the underlying content still has to exist and be phrased the way people ask. Search surfaces what is there; it cannot invent the answer you never wrote.</p>
+
+    <h3>It goes stale</h3>
+    <p>A help center is not a launch project you finish once. Products change, edge cases surface, and last year's screenshots stop matching this year's interface. Content that is never revisited quietly stops resolving issues, and no one notices until ticket volume creeps back up.</p>
+
+    <h2>A playbook for a help center that resolves issues</h2>
+    <p>None of the fixes are exotic. They are disciplines, applied consistently.</p>
+
+    <h3>1. Start from the questions people actually ask</h3>
+    <p>Mine your real inputs before writing a word: support tickets, search logs, chat transcripts, and the questions sales hears on calls. Write each article to answer one genuine question in the customer's phrasing — use real questions, not invented ones. Group the questions people ask together, and let those clusters, not your feature list, shape your navigation.</p>
+
+    <h3>2. Write for scanning and for search</h3>
+    <p>Readers scan; they do not read top to bottom. Give every article a clear, question-shaped heading, short chunks, and strong visual hierarchy so someone can rule a section in or out in seconds. Bold, well-contrasted headings, jump links, and tight chunking are what let people find the one answer they came for. Question-style headings do double duty: they match how people phrase searches, which helps you show up when the search starts on Google, not on your site.</p>
+    <p>Aim for the two-minute resolution. If an answer needs a decision, lead with the short version, then expand.</p>
+
+    <h3>3. Make it a single source of truth</h3>
+    <p>Nothing erodes trust faster than two articles that disagree. When the same procedure lives in three places, at least two of them are wrong within a quarter. Keep one authoritative version of each answer, and reuse it rather than copying it. A single source of truth is also what makes translation and multi-product variants survivable — you update the master, not fifteen scattered copies.</p>
+    <p>This is where a purpose-built platform earns its place over a pile of documents. Sonat keeps every topic version-tracked in one home, so the published answer is always the current one, and lets you publish that same source to your own domain with full-text search built in.</p>
+
+    <h3>4. Close the loop with feedback and analytics</h3>
+    <p>The best help centers improve themselves. Put a simple "was this helpful?" prompt on every article and watch which search terms return nothing. The questions customers raise are a live map of where your product and docs confuse people. Feed that map back into both the help center and the product. Sonat's per-topic feedback and analytics exist for exactly this loop — see which topics resolve, which stall, and where readers give up.</p>
+
+    <h3>5. Measure self-service resolution, not just deflection</h3>
+    <p>Deflection — a ticket that never got opened — is easy to celebrate and easy to fake. A customer who gave up and churned also "deflected" a ticket. The healthier metric is self-service resolution: of the people who came to solve something, how many actually did. Track it with your helpfulness ratings, zero-result searches, and the rate at which self-service sessions still end in a ticket. Given the 14% starting point, small, honest gains here compound fast.</p>
+
+    <h2>Where Sonat fits</h2>
+    <p>Sonat is an online documentation platform built for exactly this: teams that need a published, customer-facing help center without a developer in the loop. You draft in a familiar editor (or straight from Google Docs), keep one version-controlled source of truth, publish to your own domain with built-in search and readability scoring, and use per-topic feedback and analytics to keep improving what you shipped. Machine translation extends the same answers to every market you serve — from one master, not many copies.</p>
+    <p>The point is not the feature list. It is that the disciplines above — real questions, scannable content, a single source of truth, and a feedback loop — are the default way you work, not a process you have to enforce by hand.</p>
+
+    <h2>Start with the gap, not the article count</h2>
+    <p>A bigger help center is not a better one. The teams that move the self-service numbers are the ones that treat their help center as a living product: grounded in the questions customers really ask, built to be scanned and found, kept to a single source of truth, and improved from real usage. Start by pulling your last month of tickets and searches, find the ten questions that keep coming back, and answer those ten properly. That is where resolution begins.</p>
+
+    <div class="cta">
+      <p>Ready to build a help center your customers actually finish in? Turn your scattered answers into one source of truth.</p>
+      <a class="btn" href="https://sonat.com">Start with Sonat</a>
+    </div>
+  </article>
+</div>
+</body>
+</html>
