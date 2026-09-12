@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write Instructions People Can Actually Follow</title>
+<meta name="description" content="Learn how to write instructions people can follow on the first try: break a task into single steps, lead with the action, and make them scannable.">
+<style>
+  :root{
+    --ink:#1a2230; --muted:#5a6472; --line:#e6e9ee; --bg:#ffffff;
+    --accent:#1f6feb; --soft:#f6f8fb;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7; letter-spacing:.1px;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:64px 22px 96px;}
+  h1{
+    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
+    margin:0 0 1.1rem; font-weight:800;
+  }
+  h2{
+    font-size:1.5rem; line-height:1.3; letter-spacing:-.01em;
+    margin:2.6rem 0 .9rem; font-weight:700;
+  }
+  h3{font-size:1.16rem; margin:1.8rem 0 .5rem; font-weight:700;}
+  p{margin:0 0 1.15rem;}
+  .lead{font-size:1.18rem; color:var(--muted);}
+  ul{margin:0 0 1.3rem; padding-left:1.25rem;}
+  li{margin:.45rem 0;}
+  strong{font-weight:700;}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35);}
+  a:hover{border-bottom-color:var(--accent);}
+  .cta{
+    margin-top:2.2rem; padding:1.4rem 1.5rem; background:var(--soft);
+    border:1px solid var(--line); border-radius:14px;
+  }
+  .cta p{margin:0;}
+  @media (max-width:600px){
+    body{font-size:17px;}
+    .wrap{padding:40px 18px 72px;}
+    h1{font-size:1.8rem;}
+    h2{font-size:1.35rem;}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>How to Write Instructions People Can Actually Follow</h1>
+
+    <p class="lead">Everyone has been stuck on step 4 of instructions that assumed you already finished a step 4 that was never written. The reader gets lost, gives up, and files a support ticket &mdash; or worse, does the wrong thing. Clear instructions are not about writing more; they are about removing every place a reader can get stuck.</p>
+
+    <p>This guide walks through how to write instructions that people can follow on the first try: how to break a task into steps, how to phrase each step, how to make the whole thing scannable, and how to check that it actually works before you publish it.</p>
+
+    <h2>What makes a good set of instructions</h2>
+    <p>Good instructions turn a task into an ordered list of single actions a reader can perform without guessing. Each step says what to do, in the order it must happen, in language the reader already understands. That is the whole job &mdash; and most instructions fail because they quietly skip one of those three.</p>
+    <p>The bar is not &ldquo;technically correct.&rdquo; The bar is &ldquo;a real person, under a little pressure, can follow this without stopping to ask a question.&rdquo; Everything below serves that bar.</p>
+
+    <h2>Why most instructions fail</h2>
+    <p>The first reason is that readers do not read instructions the way you wrote them. Usability research has found that about 79% of users scan a page rather than read it word for word. They jump to the numbered list, look at step 3, and act. If a critical detail is buried in a paragraph above the list, it does not exist.</p>
+    <p>The second reason is ambiguity. &ldquo;Configure the settings and continue&rdquo; assumes the reader knows which settings, what to set them to, and what &ldquo;continue&rdquo; looks like. Every assumption you leave in is a place the reader can stall.</p>
+    <p>The good news is that the fixes are known and measurable. In the same body of research, concise text improved measured usability by 58%, a scannable layout by 47%, and both together by 124%. Instructions are the format where those gains matter most, because the reader is trying to <em>do</em> something, not just understand it.</p>
+
+    <h2>Start with the task, not the feature</h2>
+    <p>Before you write a single step, name the task from the reader&rsquo;s point of view: &ldquo;Reset your password,&rdquo; not &ldquo;Password management.&rdquo; Instructions are organized around what someone is trying to accomplish, and a task-shaped title tells the reader they are in the right place.</p>
+    <p>Then write down the two things every set of instructions needs up front: what the reader needs before they start (access, information, a prerequisite step) and what they will have when they finish. Stating the end state first follows the inverted-pyramid pattern that matches how people scan &mdash; they know where they are headed before they take the first step.</p>
+
+    <h2>How to write step-by-step instructions</h2>
+    <p>This is the core of the work. Five rules cover almost every case.</p>
+
+    <h3>1. One action per step</h3>
+    <p>The most common mistake is packing three actions into one step. &ldquo;Open Settings, select Billing, and enter your card&rdquo; is really three steps, and a reader who completes the first two and gets interrupted will lose their place. Split them. A numbered step should be a single, checkable action.</p>
+
+    <h3>2. Lead each step with the action</h3>
+    <p>Start each step with the verb, in the active voice: &ldquo;Select <strong>Save</strong>,&rdquo; not &ldquo;The Save button should now be selected.&rdquo; Plain-language guidance is consistent on this &mdash; the active voice and short sentences are easier to follow and leave less room for misreading. Front-loading the verb also lets a scanning reader see the action without reading the whole line.</p>
+
+    <h3>3. Put the condition before the action</h3>
+    <p>Readers act on the first thing they see, so order matters inside a step. Write &ldquo;If you use two-factor authentication, enter your code,&rdquo; not &ldquo;Enter your code if you use two-factor authentication.&rdquo; A reader who doesn&rsquo;t use two-factor should be able to skip the step before they start doing it.</p>
+
+    <h3>4. Say what success looks like</h3>
+    <p>After an action with a non-obvious result, tell the reader what they should see: &ldquo;A green checkmark appears next to the file name.&rdquo; This lets people confirm they are on track and catch a wrong turn immediately, instead of discovering it four steps later.</p>
+
+    <h3>5. Show, don&rsquo;t only tell</h3>
+    <p>A screenshot, a short clip, or a small example after a tricky step removes the last of the ambiguity. You don&rsquo;t need a picture for every step &mdash; add one where words alone would make the reader guess which button, which field, or which screen.</p>
+
+    <h2>Make the instructions scannable</h2>
+    <p>Because readers scan, the layout does as much work as the words. Use a numbered list for anything that must happen in order and a bulleted list only for options that don&rsquo;t. Keep each step to one idea, bold the interface labels a reader is hunting for, and use short, meaningful headings so someone can find the section they need without reading the ones they don&rsquo;t.</p>
+    <p>The test is simple: can a reader skim only the step numbers and bold labels and still get through the task? If yes, you have written for how people actually use instructions.</p>
+
+    <h2>Write work instructions that stay accurate</h2>
+    <p>Instructions have a second failure mode that has nothing to do with wording: they go out of date. A perfectly written set of work instructions is worse than useless if it describes a screen that changed three releases ago, because the reader trusts it and gets stuck.</p>
+    <p>Keep instructions in one canonical place, versioned, so there is a single source of truth and no stale copies floating around in chat threads and old PDFs. This is where a purpose-built platform helps: in Sonat, your instructions live with the rest of your documentation, a readability guide keeps each step clear, an approval step catches errors before publish, and a full version archive lets you see what changed and roll back a bad edit.</p>
+
+    <h2>Test your instructions on a real person</h2>
+    <p>You cannot proofread your way to usable instructions, because you already know the answer. The reliable test is to watch someone who doesn&rsquo;t follow the steps exactly as written &mdash; no hints. Plain-language practice treats this &ldquo;test for understanding&rdquo; as a core step, not a nicety. Every place they hesitate is a step to rewrite. One five-minute walkthrough will find more problems than an hour of re-reading.</p>
+
+    <h2>Common mistakes to avoid</h2>
+    <ul>
+      <li><strong>Assuming the starting point.</strong> If a step depends on the reader already being somewhere, say how to get there.</li>
+      <li><strong>Mixing actions and explanation.</strong> Keep the &ldquo;why&rdquo; out of the step itself; put background before the list, not inside it.</li>
+      <li><strong>Vague verbs.</strong> &ldquo;Manage,&rdquo; &ldquo;handle,&rdquo; and &ldquo;set up&rdquo; hide the real action. Name the exact click, entry, or selection.</li>
+      <li><strong>No way to confirm.</strong> If the reader can&rsquo;t tell whether a step worked, they will either stop or barrel ahead into an error.</li>
+      <li><strong>Never re-testing after a change.</strong> When the product changes, the instructions changed too &mdash; even if nobody edited them.</li>
+    </ul>
+
+    <h2>Write the first version, then cut</h2>
+    <p>The fastest way to clear instructions is to write the steps out fully, then remove every word the reader doesn&rsquo;t need to act. Break the task into single actions, lead with the verb, show the success state, make it scannable, and watch one real person try it. Do that, and you will spend far less time answering the same question over and over.</p>
+
+    <div class="cta">
+      <p>If you want your instructions to stay clear and current in one place &mdash; with templates for consistent steps, a readability guide, an approval step before publish, and a full version history so nothing silently goes stale &mdash; that is exactly what <a href="https://sonat.com">Sonat</a> is built for.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
