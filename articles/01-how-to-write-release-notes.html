@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write Release Notes: A Practical Guide</title>
+<meta name="description" content="Learn how to write release notes people actually read: know your reader, group changes by type, lead with the outcome, handle versions, and publish them. Free template.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Write Release Notes",
+  "description": "A practical guide to writing release notes: know your audience, group changes by type, write outcome-first entries, handle versions and known issues, and publish where users look.",
+  "step": [
+    {"@type": "HowToStep", "name": "Know who's reading, and why", "text": "Write for end users and support staff who care about outcomes, not implementation details."},
+    {"@type": "HowToStep", "name": "Group changes by type", "text": "Sort entries into categories like Added, Changed, Improved, Fixed, Removed, and Security so readers can scan."},
+    {"@type": "HowToStep", "name": "Write entries that lead with the outcome", "text": "Lead with the benefit, keep one change per entry, and use plain, active language."},
+    {"@type": "HowToStep", "name": "Handle versions, dates, and known issues", "text": "Label each release with a version and date, list newest first, and call out known issues and required actions."},
+    {"@type": "HowToStep", "name": "Publish where users actually look", "text": "Publish to a searchable What's new page or in-app panel, keep a full history, and make entries linkable."}
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1b2733;
+    --muted: #55606b;
+    --accent: #1f6feb;
+    --rule: #e6e9ee;
+    --card: #f6f8fa;
+    --quote: #eef4ff;
+    --code: #0f172a;
+    --codebg: #f4f6fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1419;
+      --fg: #e6edf3;
+      --muted: #9aa7b2;
+      --accent: #58a6ff;
+      --rule: #232b34;
+      --card: #161b22;
+      --quote: #12233d;
+      --code: #d6dee8;
+      --codebg: #12171e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 20px 80px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 24px; }
+  h2 { font-size: 1.42rem; line-height: 1.3; margin: 44px 0 12px; padding-top: 8px; }
+  p { margin: 0 0 18px; }
+  ul, ol { margin: 0 0 18px; padding-left: 1.4em; }
+  li { margin: 0 0 8px; }
+  strong { color: var(--fg); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .lead { font-size: 1.16rem; }
+  blockquote {
+    margin: 24px 0; padding: 16px 20px; background: var(--quote);
+    border-left: 4px solid var(--accent); border-radius: 8px;
+  }
+  blockquote p { margin: 0; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em; background: var(--codebg); padding: 2px 6px; border-radius: 5px;
+  }
+  pre {
+    background: var(--codebg); color: var(--code); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 18px 20px; overflow-x: auto; margin: 0 0 24px;
+    font-size: 0.9rem; line-height: 1.55;
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+  .cta { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; margin: 32px 0 0; }
+  .cta p { margin: 0; }
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .wrap { padding: 36px 18px 64px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.28rem; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>How to Write Release Notes: A Practical Guide</h1>
+
+    <p class="lead">You shipped the work. Now you have to tell people what changed &mdash; and &ldquo;various bug fixes and improvements&rdquo; isn&rsquo;t going to cut it. Good release notes turn a quiet update into a moment of trust: users see that the product is cared for, support sees fewer &ldquo;is this broken or new?&rdquo; tickets, and your team gets credit for the work it just did.</p>
+
+    <p>Yet release notes are often written last, by whoever has a spare five minutes, straight from the commit log. This guide walks you through writing release notes people actually read &mdash; what to include, how to structure them, and a reusable template you can adapt for every release.</p>
+
+    <h2>What are release notes?</h2>
+    <p><strong>Release notes</strong> are a short document that tells users what changed in a new version of a product &mdash; the new features, improvements, bug fixes, and any known issues or actions they need to take. They&rsquo;re a summary of <em>what&rsquo;s new and what it means for you</em>, not a full user guide and not a raw list of code changes.</p>
+    <p>You&rsquo;ll see the same idea under other names &mdash; changelog, patch notes, &ldquo;what&rsquo;s new,&rdquo; revision history &mdash; but the job is identical: help a real person understand a change quickly and decide whether they need to do anything about it.</p>
+
+    <h2>Why release notes are worth the effort</h2>
+    <p>Release notes are one of the few pieces of documentation users open <em>voluntarily</em>, right at the moment they&rsquo;re paying attention to your product. Done well, they:</p>
+    <ul>
+      <li><strong>Reduce support load.</strong> When a workflow moves or a button is renamed, a clear note is the difference between &ldquo;great, they improved it&rdquo; and a wave of confused tickets.</li>
+      <li><strong>Drive adoption.</strong> People can&rsquo;t use a feature they never heard about. Release notes are free marketing to your most engaged users.</li>
+      <li><strong>Build trust.</strong> A steady, honest cadence of updates &mdash; including the fixes &mdash; signals that the product is alive and maintained.</li>
+    </ul>
+
+    <h2>Step 1: Know who&rsquo;s reading, and why</h2>
+    <p>Before you write a word, decide who these notes are for. The audience for release notes is usually end users and the technical or support staff who need to understand what changed and how it affects them &mdash; and those readers care about <em>outcomes</em>, not implementation.</p>
+    <p>The first rule of plain language applies here: write for your audience. Take their knowledge and goals into account and write to that person, not to the engineer who built the feature. A customer doesn&rsquo;t care that you &ldquo;refactored the sync service.&rdquo; They care that &ldquo;syncing large files is now about twice as fast.&rdquo;</p>
+    <p>If you genuinely serve two audiences &mdash; say, everyday users and administrators &mdash; separate them clearly (a short &ldquo;For administrators&rdquo; subsection) rather than blending jargon into notes everyone else has to wade through.</p>
+
+    <h2>Step 2: Group changes by type</h2>
+    <p>A wall of mixed updates is hard to scan. Group your changes into a few predictable categories so readers can jump straight to what they care about. A widely used, human-friendly convention &mdash; popularized by the Keep a Changelog project &mdash; sorts entries into:</p>
+    <ul>
+      <li><strong>Added</strong> &mdash; new features.</li>
+      <li><strong>Changed</strong> &mdash; changes to existing behavior.</li>
+      <li><strong>Improved</strong> &mdash; performance, usability, or quality gains.</li>
+      <li><strong>Fixed</strong> &mdash; bug fixes.</li>
+      <li><strong>Deprecated / Removed</strong> &mdash; features on the way out or gone.</li>
+      <li><strong>Security</strong> &mdash; vulnerability fixes.</li>
+    </ul>
+    <p>You don&rsquo;t need every category in every release &mdash; use the ones that apply. The point Keep a Changelog makes best is the mindset behind them: <em>changelogs are for humans, not machines.</em> Curate meaningful entries; don&rsquo;t dump the commit history.</p>
+
+    <h2>Step 3: Write entries that lead with the outcome</h2>
+    <p>Each entry should answer one question fast: <em>what can I now do, or what stopped hurting?</em> Two habits make that happen:</p>
+    <ul>
+      <li><strong>Lead with the benefit, then the detail.</strong> &ldquo;Export reports to Excel &mdash; you can now download any report as an <code>.xlsx</code> file&rdquo; beats &ldquo;Added XLSX export support to the reporting module.&rdquo;</li>
+      <li><strong>One change per entry.</strong> If an item has an &ldquo;and&rdquo; joining two unrelated changes, split it. Scanning readers parse one idea at a time.</li>
+    </ul>
+    <p>Keep the language plain and active, and define any unavoidable term the first time it appears. This isn&rsquo;t just style &mdash; it&rsquo;s measurable. In a classic Nielsen Norman Group study, concise writing improved usability by 58%, a scannable layout added 47%, and objective, hype-free language added 27%; combining all three improved measured usability by 124%. Release notes are exactly the kind of skimmed content where that compounding matters most.</p>
+    <p>That also means cutting the marketing gloss. &ldquo;Revolutionary new dashboard&rdquo; tells the reader nothing; &ldquo;The dashboard now loads in under a second and remembers your last filter&rdquo; tells them everything.</p>
+
+    <h2>Step 4: Handle versions, dates, and known issues</h2>
+    <p>A few structural details separate polished release notes from a stray blog post:</p>
+    <ul>
+      <li><strong>Version and date.</strong> Label each release with a clear version number and its date, and list the newest release first so returning readers see what&rsquo;s new at the top. Consistent version numbering &mdash; many teams follow semantic versioning, where the parts of <code>MAJOR.MINOR.PATCH</code> signal how big the change is &mdash; helps users gauge impact at a glance.</li>
+      <li><strong>Known issues.</strong> If something is broken or behaves unexpectedly, say so. Naming a known issue (and a workaround, if there is one) prevents duplicate tickets and reads as honesty, not weakness.</li>
+      <li><strong>Required actions.</strong> If users must do something &mdash; update a setting, re-authenticate, migrate data &mdash; put it first and make it impossible to miss.</li>
+    </ul>
+
+    <h2>A reusable release notes template</h2>
+    <p>Adapt this outline for each release and you&rsquo;ll never stare at a blank page again:</p>
+    <pre><code>## v2.4.0 — YYYY-MM-DD
+
+Short one-line summary of the release's theme.
+
+### ⚠️ Action required
+- Anything the user must do before/after updating.
+
+### Added
+- New feature, described by what it lets the reader do.
+
+### Improved
+- Performance or usability gain, with the concrete result.
+
+### Fixed
+- Bug fix, described from the user's point of view.
+
+### Known issues
+- Anything still broken, plus a workaround if one exists.</code></pre>
+    <p>Keep the theme summary human &mdash; one sentence on why this release matters &mdash; and let the categories carry the detail.</p>
+
+    <h2>Step 5: Publish where users actually look</h2>
+    <p>The best release notes are useless if no one can find them. Publish them somewhere stable and searchable &mdash; a &ldquo;What&rsquo;s new&rdquo; page in your documentation, an in-app panel, or both &mdash; rather than burying them in an email no one keeps. Keep a full history so users can trace when a change landed, and make each entry linkable so support can point customers straight to the relevant note.</p>
+    <p>This is where treating release notes as living documentation pays off. A platform like <a href="https://sonat.com">Sonat</a> lets non-technical teams publish a searchable, always-current &ldquo;What&rsquo;s new&rdquo; section alongside the rest of your docs, keep every past version in one place, and gather reader feedback on each update &mdash; so your release notes become a single source of truth instead of a scattered trail of emails and chat messages.</p>
+
+    <h2>Writing software release notes</h2>
+    <p>Software release notes carry a couple of extra expectations worth naming:</p>
+    <ul>
+      <li><strong>Match the release cadence.</strong> Tie the notes to your deployment process so they ship <em>with</em> the release, not days later. Notes that lag the update lose their whole point.</li>
+      <li><strong>Separate user-facing from internal.</strong> Readers want the changes that affect them. Keep internal refactors and dependency bumps out of customer-facing notes, or tuck them into a clearly labeled technical section.</li>
+      <li><strong>Be specific about scope.</strong> Say which plans, platforms, or regions a change applies to when it isn&rsquo;t universal, so no one hunts for a feature they can&rsquo;t see.</li>
+    </ul>
+
+    <h2>Common release notes mistakes to avoid</h2>
+    <ul>
+      <li><strong>&ldquo;Various bug fixes and improvements.&rdquo;</strong> The emptiest sentence in software. Name at least the changes users will notice.</li>
+      <li><strong>Copying the commit log.</strong> Commits are for engineers; release notes are for people.</li>
+      <li><strong>Only announcing features, never fixes.</strong> Fixes build as much trust as features &mdash; and prevent tickets.</li>
+      <li><strong>Hype over substance.</strong> Say what changed and what it does. Skip &ldquo;game-changing.&rdquo;</li>
+      <li><strong>Writing them once and letting the page go stale.</strong> A living, dated history is what makes release notes worth returning to.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Release notes are a small document with an outsized payoff: fewer support tickets, faster feature adoption, and a product that feels cared for. Write for the reader, not the codebase; group changes so they&rsquo;re easy to scan; lead each entry with the outcome; and publish them somewhere people can find and search. Do that consistently and your release notes stop being an afterthought and start being one of the most-read pages you own.</p>
+    <div class="cta">
+      <p>Ready to give your updates a proper home? <a href="https://sonat.com">Publish your release notes with Sonat</a> and keep a searchable, always-current history your whole team can maintain.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
