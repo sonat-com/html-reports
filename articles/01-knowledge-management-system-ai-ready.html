@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Management System: Build a Single Source of Truth</title>
+<meta name="description" content="A knowledge management system now answers people and AI alike. Learn how to build one that stays a trustworthy single source of truth.">
+<style>
+  :root{
+    --ink:#1c2530; --muted:#5b6672; --line:#e7ebf0; --bg:#ffffff;
+    --accent:#1f6feb; --accent-soft:#eef4ff; --maxw:720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px; line-height:1.7;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:56px 20px 80px;}
+  h1{font-size:2.05rem; line-height:1.2; letter-spacing:-.02em; margin:.2em 0 .6em; font-weight:750;}
+  h2{font-size:1.4rem; line-height:1.3; letter-spacing:-.01em; margin:2.2em 0 .5em; font-weight:700;}
+  h3{font-size:1.12rem; margin:1.6em 0 .35em; font-weight:700; color:var(--ink);}
+  p{margin:0 0 1.15em;}
+  ul{margin:0 0 1.3em; padding-left:1.25em;}
+  li{margin:.45em 0;}
+  strong{font-weight:680;}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35);}
+  a:hover{border-bottom-color:var(--accent);}
+  .lede{font-size:1.16rem; color:var(--muted); line-height:1.6; margin-bottom:1.6em;}
+  .cta{
+    margin-top:2.6em; padding:22px 24px; background:var(--accent-soft);
+    border:1px solid #dbe7ff; border-radius:14px;
+  }
+  .cta p{margin:0;}
+  hr{border:0; border-top:1px solid var(--line); margin:2.6em 0;}
+  @media (max-width:520px){
+    body{font-size:17px;}
+    .wrap{padding:36px 18px 60px;}
+    h1{font-size:1.72rem;}
+    h2{font-size:1.25rem;}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>Your Knowledge Management System Is Now Your AI&rsquo;s Foundation</h1>
+
+    <p class="lede">For years, a knowledge management system had one job: help people find what they already knew was written down somewhere. Now it has a second reader. When someone asks your support assistant a question, or your team searches an internal help center, the answer is increasingly written by an AI that reads straight from your documentation. Your knowledge base isn&rsquo;t just where answers live anymore. It&rsquo;s the ground truth those answers are generated from.</p>
+
+    <p>That shift changes what &ldquo;good&rdquo; looks like. A knowledge management system can no longer be a tidy filing cabinet that a few experts know how to navigate. It has to be clear, current, and structured enough that both a new hire and a language model can pull the right answer without guessing. This guide covers what a knowledge management system actually is, why AI raised the stakes, and how to build one that stays a single source of truth people and tools can trust.</p>
+
+    <h2>What a knowledge management system really is</h2>
+    <p>A knowledge management system is the set of tools and practices an organization uses to capture, organize, and share what it knows. The goal is simple to state and hard to do: turn scattered know-how into documented knowledge that anyone who needs it can find and use.</p>
+    <p>Most of what a team knows starts as tacit knowledge &mdash; the instinct a support agent has for a tricky refund, the shortcut an engineer never wrote down. It lives in people&rsquo;s heads and walks out the door when they leave. The job of a knowledge management system is to convert that tacit knowledge into explicit knowledge: written, structured, and stored where it can be reused. A user manual, a policy document, an onboarding guide, a troubleshooting article &mdash; each one is tacit knowledge made explicit.</p>
+    <p>The word &ldquo;system&rdquo; matters. A folder of documents is storage. A system is storage plus structure, ownership, review, and a way to publish so the right people actually see the right version. Without that scaffolding, knowledge decays: articles contradict each other, three versions of the same policy circulate, and nobody&rsquo;s sure which one is real.</p>
+
+    <h2>Why AI raised the stakes</h2>
+    <p>Search used to be forgiving. If a reader typed a query and got ten results, they&rsquo;d skim, judge, and pick the one that looked right. A stale article buried on page two did little harm because a human filtered it out.</p>
+    <p>AI removes that filter. When an assistant answers a question in one confident paragraph, the reader rarely sees the source. They see a single answer and tend to trust it. If that answer was drawn from an outdated procedure or a half-finished draft, the mistake is now delivered with authority instead of buried in a list.</p>
+    <p>This is the uncomfortable truth behind most disappointing AI rollouts: the model is rarely the problem. The knowledge underneath it is. A retrieval system can only be as accurate as the documents it retrieves from. Point it at a fragmented, contradictory, out-of-date knowledge base and it will faithfully amplify the mess &mdash; quickly, fluently, and at scale. Getting your knowledge management system in order is no longer housekeeping you do eventually. It&rsquo;s the prerequisite for every AI feature you want to layer on top.</p>
+
+    <h2>The four foundations of a trustworthy knowledge base</h2>
+    <p>A knowledge management system that people and AI can rely on rests on four foundations. Weakness in any one shows up as a wrong answer.</p>
+
+    <h3>1. Structure</h3>
+    <p>Structure is how knowledge is organized so it can be found and reused. That means a consistent hierarchy of topics, predictable titles, and a shared vocabulary &mdash; the same feature called by the same name in every article. Good knowledge base structure isn&rsquo;t decoration; it&rsquo;s what lets both a reader and a retrieval system land on the one right topic instead of five near-duplicates. Break large subjects into focused topics with clear headings, and let a logical menu &mdash; not a search bar alone &mdash; carry the reader.</p>
+
+    <h3>2. Currency</h3>
+    <p>Currency is whether the content is still true. Every article needs an owner and a review cadence, so knowledge is revisited on a schedule rather than whenever someone happens to notice it&rsquo;s wrong. The most damaging content in any knowledge base isn&rsquo;t the missing article &mdash; it&rsquo;s the confidently outdated one that looks authoritative and quietly misleads.</p>
+
+    <h3>3. Access</h3>
+    <p>Access is who can see and edit what. A strong knowledge management system distinguishes between public help content and internal knowledge, controls who can publish changes, and keeps sensitive material behind the right permissions. Access control isn&rsquo;t only a security concern; it&rsquo;s how you keep drafts, deprecated policies, and internal notes from leaking into the answers your customers see.</p>
+
+    <h3>4. Findability</h3>
+    <p>Findability is whether people actually reach the answer. Fast full-text search, sensible categories, and cross-links between related topics all reduce the distance between a question and its answer. Findability is also what makes AI retrieval work: the same clean titles, tags, and structure that help a person scan a page help a model select the right passage to answer from.</p>
+
+    <h2>Building an AI-ready single source of truth</h2>
+    <p>The phrase &ldquo;single source of truth&rdquo; gets repeated until it sounds like a slogan, but it names a concrete decision: one place where the canonical version of each piece of knowledge lives, and one place everything else points back to. When the same policy exists in a slide deck, a shared drive, and three email threads, there is no source of truth &mdash; there are four sources of confusion, and AI will happily quote whichever it reaches first.</p>
+    <p>Making that source AI-ready doesn&rsquo;t require exotic tooling. It requires discipline you can start this quarter:</p>
+    <ul>
+      <li><strong>Consolidate.</strong> Pick the knowledge management system that will be canonical and route everything back to it. Retire the duplicates rather than letting them linger.</li>
+      <li><strong>Write for reuse.</strong> Self-contained topics with descriptive headings and plain language are easier for a person to skim and for a model to retrieve accurately. Long, meandering documents that bury three answers in one wall of text serve neither.</li>
+      <li><strong>Keep a version history.</strong> Treating knowledge like software &mdash; with tracked versions you can compare and roll back &mdash; means you can see what changed, restore a good version, and trust that &ldquo;published&rdquo; means reviewed. This is exactly where documentation borrows from engineering: version control, review, and controlled release applied to writing.</li>
+      <li><strong>Close the loop.</strong> Let readers flag what&rsquo;s unclear or wrong, and feed that signal back into your review cadence. A knowledge base improves fastest when the people using it can tell you where it&rsquo;s failing.</li>
+    </ul>
+
+    <h2>Keeping the system alive</h2>
+    <p>A knowledge management system is a living thing, not a project you finish. The organizations that keep theirs trustworthy tend to share a few habits: approval workflows so changes are reviewed before they go live, a real owner for every section, and analytics that show which articles get read, which get searched for and not found, and which quietly go stale.</p>
+    <p>Governance is also becoming an external expectation, not just an internal nicety. As rules like the EU AI Act&rsquo;s transparency obligations take effect in 2026, organizations are increasingly expected to document how information is produced and reviewed &mdash; including the content that feeds AI-driven answers. A knowledge management system with clear ownership, review trails, and version history isn&rsquo;t only easier to trust. It&rsquo;s easier to stand behind when someone asks how an answer was made.</p>
+
+    <h2>Where Sonat fits</h2>
+    <p>This is the problem Sonat is built for. Sonat is an online documentation platform that lets non-technical teams write, organize, translate, and publish professional knowledge &mdash; user manuals, help centers, internal wikis, and policies &mdash; from a familiar editor, with no technical setup. It brings the discipline this article argues for: a wiki-style structure for clean organization, an unlimited version archive so you can restore any earlier version, approval workflows so nothing goes live unreviewed, and one-click publishing to a fast, searchable viewer. Feedback loops on every topic close the gap between what you wrote and what readers actually needed, and translation across many languages keeps that single source of truth consistent for a global audience.</p>
+    <p>The result is a knowledge base that stays canonical &mdash; one clear, current, well-structured place the truth lives, ready for the people who read it and the tools that now read it too.</p>
+
+    <h2>The shift to make now</h2>
+    <p>The old goal of a knowledge management system was to stop knowledge from getting lost. The new goal is to make knowledge reliable enough that both people and AI can act on it without second-guessing. Those aren&rsquo;t different projects. Structure, currency, controlled access, and findability were always what separated a real knowledge base from a document graveyard &mdash; AI just made the cost of getting them wrong impossible to ignore.</p>
+
+    <div class="cta">
+      <p>Start by naming your single source of truth and getting it clean. Every search result, support answer, and AI reply your organization produces is only as good as the knowledge underneath it. <a href="https://sonat.com">Explore how Sonat helps teams build documentation they can trust</a>.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
