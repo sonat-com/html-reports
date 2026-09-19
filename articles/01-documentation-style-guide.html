@@ -4,120 +4,126 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Create a Documentation Style Guide</title>
-<meta name="description" content="Build a documentation style guide your team will actually use: what to include, how to ground it in how readers scan, and how to keep it living.">
+<meta name="description" content="Learn how to create a documentation style guide your team actually uses — what to include, how to roll it out, and how to keep docs consistent as you grow.">
 <style>
   :root{
-    --ink:#1a2230; --muted:#5a6472; --line:#e6e9ee; --bg:#ffffff;
-    --accent:#1f6feb; --soft:#f6f8fb;
+    --bg:#ffffff; --fg:#1c2530; --muted:#5b6b7b; --accent:#1a6dd6;
+    --rule:#e6ebf0; --card:#f6f9fc; --maxw:720px;
   }
-  *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
   body{
-    margin:0; background:var(--bg); color:var(--ink);
+    margin:0; background:var(--bg); color:var(--fg);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:18px; line-height:1.7; letter-spacing:.1px;
+    font-size:18px; line-height:1.7;
   }
-  .wrap{max-width:720px; margin:0 auto; padding:64px 22px 96px;}
-  h1{
-    font-size:2.15rem; line-height:1.2; letter-spacing:-.02em;
-    margin:0 0 1.1rem; font-weight:800;
-  }
-  h2{
-    font-size:1.5rem; line-height:1.3; letter-spacing:-.01em;
-    margin:2.6rem 0 .9rem; font-weight:750; font-weight:700;
-  }
-  h3{font-size:1.16rem; margin:1.8rem 0 .5rem; font-weight:700;}
-  p{margin:0 0 1.15rem;}
-  .lead{font-size:1.18rem; color:var(--muted);}
-  ul{margin:0 0 1.3rem; padding-left:1.25rem;}
-  li{margin:.45rem 0;}
-  strong{font-weight:700;}
-  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35);}
-  a:hover{border-bottom-color:var(--accent);}
-  hr{border:0; border-top:1px solid var(--line); margin:2.4rem 0;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:56px 20px 88px}
+  h1{font-size:2.1rem; line-height:1.2; letter-spacing:-.02em; margin:0 0 28px; font-weight:700}
+  h2{font-size:1.5rem; line-height:1.25; letter-spacing:-.01em; margin:48px 0 14px; font-weight:700}
+  h3{font-size:1.18rem; margin:30px 0 10px; font-weight:650}
+  p{margin:0 0 18px}
+  ul,ol{margin:0 0 18px; padding-left:1.35em}
+  li{margin:0 0 9px}
+  strong{font-weight:650}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(26,109,214,.35)}
+  a:hover{border-bottom-color:var(--accent)}
+  .lead{font-size:1.16rem; color:var(--muted)}
   .cta{
-    margin-top:2.2rem; padding:1.4rem 1.5rem; background:var(--soft);
-    border:1px solid var(--line); border-radius:14px;
+    display:block; margin-top:40px; padding:22px 24px; background:var(--card);
+    border:1px solid var(--rule); border-radius:14px; font-size:1.05rem;
   }
-  .cta p{margin:0;}
-  @media (max-width:600px){
-    body{font-size:17px;}
-    .wrap{padding:40px 18px 72px;}
-    h1{font-size:1.8rem;}
-    h2{font-size:1.35rem;}
+  hr{border:0; border-top:1px solid var(--rule); margin:40px 0}
+  @media (max-width:520px){
+    body{font-size:17px}
+    .wrap{padding:36px 16px 64px}
+    h1{font-size:1.7rem}
+    h2{font-size:1.3rem}
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#10151b; --fg:#e6edf3; --muted:#9fb0c0; --accent:#5aa2f0;
+      --rule:#233040; --card:#161e27;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#10151b; --fg:#e6edf3; --muted:#9fb0c0; --accent:#5aa2f0;
+    --rule:#233040; --card:#161e27;
   }
 </style>
 </head>
 <body>
 <main class="wrap">
-  <article>
-    <h1>How to Create a Documentation Style Guide Your Team Will Actually Use</h1>
+  <h1>How to Create a Documentation Style Guide (That Your Team Actually Uses)</h1>
 
-    <p class="lead">If three writers document the same feature three different ways, your readers pay for it. One page says &ldquo;sign in,&rdquo; the next says &ldquo;log in,&rdquo; a third says &ldquo;authenticate.&rdquo; None of it is wrong, exactly &mdash; but together it reads like three products stapled together. A documentation style guide is how you stop that drift before it starts.</p>
+  <p class="lead">Open five pages of your documentation side by side. Do they read like one voice, or five? If a "Sign in" button is a "Login screen" two pages later, if some steps are numbered and others are dashed, if one writer says "click" and another says "select," your readers feel the friction even when they can't name it. A documentation style guide is how you fix that — not with more rules for their own sake, but with a shared set of decisions your whole team can lean on.</p>
 
-    <p>The problem is that most style guides never get used. They get written in a burst of enthusiasm, saved somewhere nobody looks, and quietly ignored. This guide shows you how to build one that earns its place: what to include, how to ground it in how people actually read, and how to keep it a living reference instead of a shelf document.</p>
+  <p>By the end of this guide you'll know exactly what a documentation style guide is, what to put in one, and how to roll it out so it survives contact with a busy team.</p>
 
-    <h2>What a documentation style guide actually is</h2>
-    <p>A documentation style guide is a shared set of rules for how your team writes and structures its docs &mdash; covering voice and tone, terminology, formatting, structure, and accessibility. It exists to make many authors sound like one, so readers get a consistent, predictable experience no matter who wrote the page.</p>
-    <p>That consistency is not cosmetic. When wording, structure, and formatting stay predictable, readers spend their attention on your content instead of re-learning your conventions on every page. A style guide is the cheapest way to buy that predictability across a growing team.</p>
+  <h2>What a documentation style guide is</h2>
+  <p>A documentation style guide is a single reference that records how your team writes and formats its documentation: voice and tone, grammar and mechanics, preferred terminology, page structure, and accessibility rules. It turns dozens of small, repeated judgment calls into decisions made once and reused by everyone.</p>
+  <p>It is not a grammar textbook, and it isn't meant to be read cover to cover. Think of it as a lookup: a writer or reviewer opens it to settle a specific question — "Do we capitalize the product name mid-sentence?" — and gets a fast, consistent answer.</p>
+  <p>Most mature teams don't start from scratch. Established public style guides — like the ones Google and Microsoft publish for technical content — show the shape of the thing. Your job isn't to copy them wholesale; it's to borrow the structure and record the decisions that are specific to <em>your</em> product and audience.</p>
 
-    <h2>Why consistency is worth the effort</h2>
-    <p>Readers do not read documentation the way they read a novel. Usability research has found that about 79% of users scan pages rather than reading word for word &mdash; they hunt for the one answer they came for. Your docs are being skimmed, not studied.</p>
-    <p>That changes what &ldquo;good writing&rdquo; means. In the same body of research, making text concise improved measured usability by 58%, a scannable layout by 47%, and doing both together by 124%. A style guide is where you turn those findings into house rules &mdash; short sentences, meaningful headings, one idea per paragraph &mdash; so every author writes for scanning by default instead of rediscovering it page by page.</p>
-    <p>There is a compliance angle too. Plain, clear writing is not just a nicety in some contexts; under the U.S. Plain Writing Act of 2010, public-facing government content is legally required to be clear and written for its audience. Whatever your industry, &ldquo;write for the reader&rdquo; is the principle a good style guide encodes.</p>
+  <h2>Why a documentation style guide matters</h2>
+  <p>The case for a style guide is really a case about your readers. Research from the Nielsen Norman Group found that 79% of users scan any new page they land on, and only 16% read word by word. People don't consume documentation linearly — they hunt for the one answer they came for. Consistent headings, terminology, and formatting are what make that hunt fast. Every time your docs break their own pattern, you slow the scan and chip away at trust.</p>
+  <p>A style guide pays off internally too:</p>
+  <ul>
+    <li><strong>Less decision fatigue.</strong> Writers stop re-litigating the same formatting choices on every page and spend that energy on substance.</li>
+    <li><strong>Faster reviews.</strong> Reviewers check against a shared standard instead of imposing personal preference, which keeps edits objective and keeps contributors motivated.</li>
+    <li><strong>Consistency at scale.</strong> As soon as documentation has more than one author — a support teammate here, a product manager there — a guide is what stops it from drifting into a patchwork of competing styles.</li>
+  </ul>
+  <p>That last point is the real trigger. A solo writer carries the style in their head. The moment a second contributor joins, the style guide is the only thing that keeps documentation consistency from eroding.</p>
 
-    <h2>What to put in your documentation style guide</h2>
-    <p>A style guide fails when it tries to cover everything and ends up covering nothing. Aim for the decisions your team actually argues about or gets wrong. Five sections carry most of the weight.</p>
+  <h2>What to include in a documentation style guide</h2>
+  <p>A useful writing style guide is comprehensive enough to answer real questions but short enough that people actually open it. Start with these sections.</p>
 
-    <h3>Voice and tone</h3>
-    <p>Define how your docs should sound, in concrete terms. &ldquo;Friendly but not chatty. Direct. We address the reader as <em>you</em> and use the active voice.&rdquo; Plain-language guidance is consistent here: prefer the active voice and short sentences, because they are easier to follow and leave less room for ambiguity. Give a before/after example so the rule is unmistakable.</p>
+  <h3>Voice and tone</h3>
+  <p>Voice is your team's consistent personality; tone flexes with the situation. Write down where you sit on a few spectrums — formal vs. casual, playful vs. serious — and give paired examples. A short "we write like this, not like that" table teaches voice faster than a paragraph of adjectives ever will. Decide your defaults up front: US or UK spelling, first or second person, and whether you address the reader as "you" (usually yes).</p>
 
-    <h3>Terminology and word choice</h3>
-    <p>This is where consistency lives or dies. Keep a short, running list of preferred terms and their banned alternatives &mdash; &ldquo;sign in&rdquo; not &ldquo;log in,&rdquo; &ldquo;select&rdquo; not &ldquo;click on,&rdquo; your product&rsquo;s feature names spelled and capitalized exactly one way. A shared glossary settles the small debates once so nobody re-litigates them in every review.</p>
+  <h3>Grammar, mechanics, and formatting</h3>
+  <p>This is the section writers reach for most. Cover the mechanics that come up daily so nobody has to guess:</p>
+  <ul>
+    <li>Sentence case or title case for headings — pick one and hold it.</li>
+    <li>How you write numbers, dates, and times.</li>
+    <li>Oxford comma: in or out.</li>
+    <li>Formatting for UI elements, code, file names, and keyboard keys.</li>
+    <li>When to use numbered steps vs. bulleted lists (numbered for sequence, bullets for parallel items).</li>
+  </ul>
 
-    <h3>Structure and page patterns</h3>
-    <p>Decide how a typical page is shaped: a task-based title, a one-line summary up top, then steps or sections in the order a reader needs them. Leading with the conclusion &mdash; the inverted-pyramid pattern &mdash; matches how people scan, so they get the answer before the background. Standard patterns also make pages faster to write, because authors start from a shape instead of a blank screen.</p>
+  <h3>Terminology and a word list</h3>
+  <p>Maintain a running word list — the single most valuable page in most guides. Record the exact spelling and capitalization of your product and feature names, the approved term for each concept (and the ones to avoid), and any industry words you've standardized. A shared word list is what stops "knowledge base," "help center," and "docs" from being used interchangeably for the same thing.</p>
 
-    <h3>Formatting and readability</h3>
-    <p>Cover the mechanics that make a page scannable: heading levels, when to use a numbered list versus a bulleted one, how to present UI labels, code, and notes or warnings. The goal is that a reader can skim the headings alone and still find their answer. If your platform includes a readability check &mdash; Sonat has a built-in readability guide &mdash; name the target so authors have a concrete bar to hit rather than a vibe.</p>
+  <h3>Structure and page templates</h3>
+  <p>A style guide should also answer <em>how to structure documentation</em>, not just how to phrase it. Define your standard page shapes — a how-to, a concept explainer, a troubleshooting entry, an FAQ — and what each one contains. Templates turn structure into a default: when every how-to opens with a short intro, a prerequisites line, and numbered steps, readers learn the pattern once and reuse it everywhere.</p>
 
-    <h3>Accessibility</h3>
-    <p>Bake accessibility into the rules, not a final polish pass. Require descriptive alt text on images, meaningful link text (&ldquo;view the billing settings,&rdquo; never &ldquo;click here&rdquo;), and headings used in real order so assistive technology and scanning readers can navigate. Writing for understanding and writing for accessibility pull in the same direction.</p>
+  <h3>Accessibility and plain language</h3>
+  <p>Bake accessibility and plain language into the guide so they're the default, not an afterthought. The core plain-language principles are well established: write for your reader, prefer short sentences and common words, use the active voice, and lead with the point. Add practical accessibility rules too — descriptive link text instead of "click here," alt text on every image, and a readable heading hierarchy that never skips a level. These aren't extras; they're what make documentation usable for the widest audience.</p>
 
-    <h2>How to create a style guide in five steps</h2>
-    <p>You do not need a hundred-page manual. You need a short, usable reference and a habit of applying it.</p>
+  <h2>How to create a style guide your team will actually use</h2>
+  <p>Knowing what to include is the easy part. The reason most guides gather dust is <em>how</em> they're rolled out. Here's a sequence that sticks.</p>
+  <ol>
+    <li><strong>Start from what you already do.</strong> Pull ten representative pages and note the choices that recur. Your first draft is mostly documenting reality, not inventing rules.</li>
+    <li><strong>Fill gaps with an existing guide.</strong> For anything your pages don't settle, adopt a decision from an established public style guide rather than debating it from zero.</li>
+    <li><strong>Keep the first version small.</strong> A one-page guide people read beats a fifty-page manual they ignore. You can always grow it.</li>
+    <li><strong>Show, don't just tell.</strong> Every rule gets a correct example and an incorrect one. Examples are what people copy under deadline pressure.</li>
+    <li><strong>Put it where the writing happens.</strong> A guide in a folder nobody opens is a guide nobody follows. It needs to live one click from the editor, as a single source of truth every author and reviewer can reach.</li>
+    <li><strong>Make it easy to apply, not just to read.</strong> Templates, reusable snippets, and a readability check do more for consistency than a memo asking people to try harder.</li>
+  </ol>
+  <p>This is where your documentation platform matters. If your writers draft in one place, publish from another, and hunt for the style guide in a third, adherence drops. A tool like Sonat keeps the writing, the templates, and the published result in one workflow — with version history, review and approval steps, and a built-in readability guide — so the style guide is something the team runs <em>inside</em>, not a document they're asked to remember. You can <a href="https://sonat.com">see how Sonat approaches documentation</a> if you want a concrete example.</p>
 
-    <h3>1. Start from how people read, not from grammar rules</h3>
-    <p>Open with the reader, not the comma rules. Write down the handful of principles that follow from how docs are actually used &mdash; scannable, concise, active voice, answer first. These earn their place because they change what readers experience. The fine-grained mechanics can come later.</p>
+  <h2>Keeping the style guide alive</h2>
+  <p>A style guide is a living document, and the fastest way to kill one is to freeze it. Treat it like part of your product.</p>
+  <ul>
+    <li><strong>Assign an owner.</strong> Someone has to hold the pen and make the final call when there's disagreement.</li>
+    <li><strong>Grow it from real edits.</strong> When the same correction shows up three times in review, that's not a nitpick — it's a missing rule. Add it, with examples and the date.</li>
+    <li><strong>Version it.</strong> Keep the guide under the same version control as your docs so people can see what changed and when, and roll back a decision that didn't work.</li>
+    <li><strong>Review on a cadence.</strong> A short quarterly pass to prune dead rules and fold in new patterns keeps the guide trustworthy. A guide that never changes is out of date by month two.</li>
+  </ul>
 
-    <h3>2. Adapt an existing base instead of starting blank</h3>
-    <p>Well-established public style guides already solved most of the generic questions &mdash; capitalization, numbers, punctuation in lists. Adopt a solid base for the mechanics, then spend your energy on what is specific to you: your product&rsquo;s terminology, your page patterns, your voice. Reinventing the parts everyone agrees on is wasted effort.</p>
+  <h2>Bring it together</h2>
+  <p>A documentation style guide isn't bureaucracy — it's the set of decisions that lets a team write like one person, so readers who scan your pages find what they need without friction. Start small, ground it in what you already do, show real examples, and keep it living next to the writing. Do that, and consistency stops being a thing you nag people about and becomes the path of least resistance.</p>
 
-    <h3>3. Write rules as examples, not edicts</h3>
-    <p>&ldquo;Use plain language&rdquo; is not a rule anyone can follow &mdash; it is a wish. Pair every guideline with a short &ldquo;instead of / write&rdquo; example. Examples are self-explanatory, settle interpretation disputes, and double as a copy-paste starting point. A guide made mostly of examples is one people can actually apply under deadline.</p>
-
-    <h3>4. Keep it a living single source of truth</h3>
-    <p>A style guide is only trustworthy if it is current. Give it one canonical home &mdash; not a screenshot in a chat thread and a stale copy in someone&rsquo;s drive &mdash; and update it as your product and team change. Keeping it in the same versioned system as your docs helps: in Sonat, the guide lives alongside your manuals with a full version archive, so you can see what changed and restore an earlier version when a rule gets walked back.</p>
-
-    <h3>5. Build it into the workflow, not the onboarding email</h3>
-    <p>The fastest way to kill a style guide is to make following it optional. Reference it in your review or approval step so consistency is checked before a page publishes, not discovered after. When the guide is part of how work moves through the pipeline &mdash; the way an approval workflow gates a change &mdash; it stays alive because it is load-bearing.</p>
-
-    <h2>Common mistakes that undermine a style guide</h2>
-    <ul>
-      <li><strong>Too long to use.</strong> If nobody can find the rule in ten seconds, they will guess. Favor a tight, well-organized reference over an exhaustive one.</li>
-      <li><strong>All rules, no examples.</strong> Abstract guidance gets interpreted five ways. Show the preferred version.</li>
-      <li><strong>No owner.</strong> A guide with no one responsible for it drifts out of date and loses authority. Assign it.</li>
-      <li><strong>Written once, never revisited.</strong> Products change, terms change, patterns change. A guide that never updates slowly becomes a list of things everyone ignores.</li>
-      <li><strong>Enforced by nagging.</strong> Consistency should be checked in the workflow, not policed in hallway comments.</li>
-    </ul>
-
-    <h2>Start small and let it grow</h2>
-    <p>The best documentation style guide is not the most complete one &mdash; it is the one your team actually opens. Start with the rules you argue about most, ground them in how readers really scan and where clarity is required, write them as examples, and give the guide a single living home wired into your review process. That is enough to make many writers sound like one, and you can grow it from there.</p>
-
-    <div class="cta">
-      <p>If you want your style guide and your docs to live in one place &mdash; with templates to enforce your page patterns, a readability guide to hold the line on clarity, approval workflows to check consistency before publish, and a full version history so nothing is ever lost &mdash; that is exactly what <a href="https://sonat.com">Sonat</a> is built for.</p>
-    </div>
-  </article>
+  <a class="cta" href="https://sonat.com"><strong>Ready to give your team one place to write, structure, and publish consistent documentation?</strong> Start building your documentation with Sonat.</a>
 </main>
 </body>
 </html>
