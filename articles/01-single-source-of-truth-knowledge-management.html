@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Single Source of Truth for Knowledge Management</title>
+<meta name="description" content="A practical guide to building a single source of truth for knowledge management: consolidate scattered docs, structure them clearly, and make them AI-ready.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Single Source of Truth: How to Build One for Knowledge Management",
+  "description": "A practical guide to building a single source of truth for knowledge management: consolidate scattered docs, structure them clearly, and make them AI-ready.",
+  "articleSection": "Knowledge Management",
+  "keywords": "single source of truth, knowledge management strategy, knowledge management system, ai knowledge base, knowledge silos"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is a single source of truth?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A single source of truth (SSOT) is one authoritative, well-organized place where a piece of knowledge lives, so everyone who needs it reads the same current version instead of a scattered copy. In knowledge management, it means your manuals, help articles, and internal docs have one home, one owner, and one version of record."
+    }
+  }]
+}
+</script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1c2530;
+    --muted: #55606e;
+    --accent: #1668d6;
+    --rule: #e6e9ee;
+    --card: #f6f8fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f141a; --fg: #e7ecf2; --muted: #a3adba;
+      --accent: #67a6f6; --rule: #263039; --card: #161d25;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f141a; --fg: #e7ecf2; --muted: #a3adba;
+    --accent: #67a6f6; --rule: #263039; --card: #161d25;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 16px 80px; }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.2rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 2.6rem 0 0.8rem;
+  }
+  h3 {
+    font-size: 1.12rem;
+    margin: 1.8rem 0 0.5rem;
+  }
+  p { margin: 0 0 1.1rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { margin: 0 0 1.1rem; padding-left: 1.2rem; }
+  li { margin: 0 0 0.5rem; }
+  strong { font-weight: 650; }
+  .lede { font-size: 1.15rem; color: var(--muted); }
+  .definition {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin: 1.4rem 0 0.4rem;
+  }
+  .definition h2 { margin-top: 0; }
+  hr { border: none; border-top: 1px solid var(--rule); margin: 3rem 0; }
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .wrap { padding: 36px 16px 64px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <article>
+    <h1>Single Source of Truth: How to Build One for Knowledge Management</h1>
+
+    <p class="lede">Most teams don't have a knowledge problem. They have a <em>too many copies</em> problem. The answer to a customer's question lives in a support macro, a shared doc, a Slack thread, and someone's head &mdash; and each version says something slightly different. When that happens, no one is sure which answer is current, and the time you save writing things down gets spent hunting for them later.</p>
+
+    <p>A single source of truth fixes that. This guide explains what one is, why it matters more in 2026 than it did five years ago, and a practical, step-by-step way to build one that both your team and your AI tools can rely on.</p>
+
+    <div class="definition">
+      <h2>What is a single source of truth?</h2>
+      <p>A single source of truth (SSOT) is one authoritative, well-organized place where a piece of knowledge lives &mdash; so everyone who needs it reads the same current version instead of a scattered copy. In knowledge management, it means your manuals, help articles, and internal docs have one home, one owner, and one version of record.</p>
+    </div>
+
+    <p>The phrase comes from software engineering, where a single source of truth prevents two systems from disagreeing about the same fact. Applied to documentation, the idea is identical: write it once, keep it current in one place, and point everything else at it.</p>
+
+    <h2>Why a single source of truth matters more in 2026</h2>
+    <p>For years, the case for consolidating knowledge was mostly about efficiency: people find answers faster and stop reinventing work. That case still holds. But something changed recently that raises the stakes.</p>
+    <p>Analysts tracking knowledge management trends for 2026 describe a clear shift &mdash; away from typing a query into a search box and scanning a list of blue links, and toward asking a question and getting one synthesized answer back. In other words, both your people and your software increasingly expect a <em>single</em> answer, not ten candidates to choose from.</p>
+    <p>That only works if there is a single source of truth behind the answer. An AI assistant that draws from five conflicting documents will confidently return whichever one it happened to retrieve &mdash; and you have no way to know which. Consolidating your knowledge first is what makes the newer, AI-assisted experiences trustworthy. Put plainly: a good knowledge management strategy in 2026 starts with getting to one version of the truth, then layering tools on top.</p>
+
+    <h2>The hidden cost of knowledge silos</h2>
+    <p>Knowledge silos are the natural enemy of a single source of truth. A silo forms whenever information is trapped where only one team &mdash; or one person &mdash; can reach it: a private drive, an email chain, an undocumented process.</p>
+    <p>The cost shows up in small, repeated moments. A new hire asks a question that's already been answered three times. A customer gets one answer from support and a different one from the docs. A policy changes, but the old version keeps circulating because no one knows where the canonical copy lives.</p>
+    <p>Usability research on large intranets points to an uncomfortable truth here: the biggest obstacle to people finding information usually isn't weak search technology &mdash; it's unclear, overlapping naming and structure. When two folders could plausibly hold the same document, people stop trusting any of them. Silos and sprawl, not a missing feature, are what quietly erode a knowledge base.</p>
+
+    <h2>How to build a single source of truth for knowledge management</h2>
+    <p>You don't get to a single source of truth by buying a tool and hoping people migrate. You get there with a deliberate, repeatable process. Here is a practical sequence that works for most teams.</p>
+
+    <h3>1. Audit and consolidate what you already have</h3>
+    <p>Start by finding every place knowledge currently lives &mdash; docs, wikis, spreadsheets, chat pinned messages, PDFs on someone's desktop. List them. For each topic, decide which copy is correct, mark it as the source of record, and archive or delete the rest. Consolidation is unglamorous, but it's the step most teams skip and the one that matters most. You cannot have a single source of truth while five sources still exist.</p>
+
+    <h3>2. Structure it around tasks, not teams</h3>
+    <p>Once everything is in one place, organize it the way readers think, not the way your org chart looks. People don't search for "the RevOps folder" &mdash; they search for "how to issue a refund." Group content by the jobs readers are trying to do.</p>
+    <p>Keep the top level small and unambiguous. Usability research on intranets consistently favors a modest number of clearly named top-level categories over a sprawling menu, because clear, mutually exclusive labels are what let people (and AI) predict where something lives. If two categories could hold the same article, rename them until only one could.</p>
+
+    <h3>3. Assign ownership and a review cadence</h3>
+    <p>A single source of truth stops being true the moment it goes stale. Every topic needs a named owner and a review date. A simple rule &mdash; "each article is reviewed at least every 90 days, or whenever the underlying process changes" &mdash; keeps your single source of truth documentation accurate without a heavy governance process. Ownership also settles disputes: when two people disagree about the current answer, the owner decides, and everyone else defers to the record.</p>
+
+    <h3>4. Make it findable</h3>
+    <p>Consolidated, well-structured knowledge is only useful if people can reach it in seconds. Invest in real full-text search, descriptive titles that match how people phrase questions, and wayfinding cues &mdash; breadcrumbs, related links, and a clear indication of where the reader is. Put the most-asked questions where they surface first. The goal is that someone lands on the correct, current answer without needing to know your internal structure at all.</p>
+
+    <h3>5. Make it AI-ready</h3>
+    <p>An AI knowledge base is only as good as the knowledge underneath it. Once your single source of truth is consolidated, well-structured, and current, it becomes the ideal foundation for AI-assisted answers: there is one authoritative version for a model to retrieve, clear titles and sections give it context, and owners keep it accurate. The order matters &mdash; clean the knowledge first, then point AI at it. Do it the other way around and you simply automate the delivery of your inconsistencies.</p>
+
+    <h2>What a single source of truth looks like in practice</h2>
+    <p>A few concrete single source of truth examples make the idea less abstract:</p>
+    <ul>
+      <li><strong>Customer help center.</strong> Instead of support agents keeping private answer snippets, every answer lives as a published help article. Agents link to it, customers self-serve from it, and the AI assistant answers from it &mdash; all three reading the same source.</li>
+      <li><strong>Internal knowledge management system.</strong> Onboarding, IT how-tos, and policies live in one internal space with clear owners, so a new hire and a five-year veteran get the same current answer.</li>
+      <li><strong>Product documentation with variants.</strong> When you ship several editions of a product, each variant has one maintained manual rather than copy-pasted forks that drift apart over time.</li>
+    </ul>
+    <p>In each case the pattern is the same: one home, one owner, one current version &mdash; and everything else points to it.</p>
+
+    <h2>Knowledge management best practices to keep it true</h2>
+    <p>Building a single source of truth is a project. Keeping it is a habit. A few knowledge management best practices help it hold:</p>
+    <ul>
+      <li><strong>Write once, link everywhere.</strong> When the same fact is needed in two places, link to the canonical article instead of copying it. Copies drift; links don't.</li>
+      <li><strong>Make updates easy.</strong> If editing a document is painful, people route around it and the silos return. A low-friction authoring and review workflow is what keeps knowledge in the single source instead of in someone's inbox.</li>
+      <li><strong>Track what people actually search for.</strong> Gaps and dead ends in your search logs tell you what to write next and what to rename.</li>
+      <li><strong>Version the truth.</strong> Keep a history so you can see what changed and roll back a bad edit. Being able to trust the current version depends on being able to see how it got there.</li>
+    </ul>
+    <p>A platform built for this &mdash; one that combines a familiar editor, review and approval workflows, version history, publishing, search, and AI-assisted answers in one place &mdash; makes the single source of truth the path of least resistance rather than a discipline you have to enforce. That's the problem <a href="https://sonat.com">Sonat</a> was built to solve.</p>
+
+    <h2>The shift worth making</h2>
+    <p>The move from scattered copies to a single source of truth is less a tooling decision than a mindset one: knowledge is an asset your whole team depends on, so it deserves one authoritative home the way your code or your customer data does. Consolidate first, structure around how people ask, assign ownership, make it findable, and only then layer AI on top. Do that, and every answer &mdash; from a new hire, a customer, or an AI assistant &mdash; starts coming from the same trustworthy place.</p>
+    <p>If your knowledge is scattered across tools today, pick one high-traffic topic, make it a true single source of truth this week, and build out from there.</p>
+  </article>
+</main>
+</body>
+</html>
