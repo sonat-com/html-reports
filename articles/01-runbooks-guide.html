@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runbooks: A Practical Guide to Repeatable IT Operations</title>
+<meta name="description" content="A practical guide to IT runbooks: what they are, what to put in one, how to write a runbook your team will actually use, and how to keep it current.">
+<style>
+  :root{
+    --ink:#1a2233; --muted:#556072; --line:#e6e9ef; --bg:#ffffff;
+    --accent:#1f6feb; --soft:#f5f7fa;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.7; font-size:18px;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:56px 20px 88px;}
+  h1{font-size:2.1rem; line-height:1.2; letter-spacing:-.02em; margin:0 0 .6em; font-weight:700;}
+  h2{font-size:1.45rem; line-height:1.25; letter-spacing:-.01em; margin:2.2em 0 .5em; font-weight:700;}
+  h3{font-size:1.15rem; margin:1.6em 0 .4em; font-weight:600;}
+  p{margin:0 0 1.1em;}
+  ul{margin:0 0 1.2em; padding-left:1.25em;}
+  li{margin:0 0 .55em;}
+  strong{color:var(--ink);}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(31,111,235,.35);}
+  a:hover{border-bottom-color:var(--accent);}
+  .lead{font-size:1.15rem; color:var(--muted);}
+  .cta{
+    margin-top:2.4em; padding:22px 24px; background:var(--soft);
+    border:1px solid var(--line); border-radius:14px;
+  }
+  .cta p{margin:0;}
+  @media (max-width:560px){
+    body{font-size:17px;}
+    .wrap{padding:36px 18px 64px;}
+    h1{font-size:1.7rem;}
+    h2{font-size:1.28rem;}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Runbooks: A Practical Guide to Repeatable IT Operations",
+  "description":"What runbooks are, what to put in one, how to write a runbook your team will actually use, and how to keep it current.",
+  "about":"IT runbooks and operational documentation",
+  "author":{"@type":"Organization","name":"Sonat"},
+  "publisher":{"@type":"Organization","name":"Sonat"}
+}
+</script>
+</head>
+<body>
+<article class="wrap">
+  <h1>The Runbook: Turning Tribal Knowledge Into Calm, Repeatable Operations</h1>
+
+  <p class="lead">It's 2 a.m. A service is down, an alert is firing, and the one person who knows how to fix it is asleep or has left the company. Everyone else is guessing. This is the exact moment a runbook is built for — and the moment you find out whether you have one.</p>
+
+  <p>Runbooks are how good IT teams stop relying on memory and heroics. They capture what to do, in order, so the person on call can act instead of investigate. By the end of this guide you'll know what a runbook is, what belongs in one, how to write one your team will actually open, and how to keep it from going stale.</p>
+
+  <h2>What is a runbook?</h2>
+  <p>A runbook is a documented, step-by-step procedure for carrying out a specific IT operation — restarting a service, rotating a certificate, responding to a particular alert, or recovering from a failure. It tells a competent person exactly what to do, in what order, with the commands and checks spelled out.</p>
+  <p>That's the short version, and it's worth keeping close: a runbook is a <em>recipe for one task</em>, not a general reference. If a document explains how a system is designed, that's architecture documentation. If it lists policies, that's a policy. A runbook is what you follow while the pager is buzzing.</p>
+
+  <h3>Runbook vs. playbook</h3>
+  <p>The terms are often used interchangeably, and the difference is one of altitude. A runbook tends to be the precise, task-level procedure ("how to fail over the primary database"). A playbook is usually broader — how to respond to a <em>class</em> of alert, with judgment left to a trained responder. Some teams write tightly scripted steps to reduce variability; others keep entries general so they change slowly. Both are valid. What matters is that the responder knows which one they're holding and trusts it.</p>
+
+  <h2>Why runbooks matter</h2>
+  <p>Under pressure, people don't rise to the occasion — they fall back on what's written down. A good runbook does three things at once:</p>
+  <ul>
+    <li><strong>It cuts resolution time.</strong> When the steps are already decided, the responder executes instead of researches. Recorded procedures are a direct lever on mean time to repair.</li>
+    <li><strong>It reduces human error.</strong> Fewer improvised decisions at 2 a.m. means fewer mistakes that make an incident worse.</li>
+    <li><strong>It lowers stress.</strong> On-call is far less frightening when you're not the last line of defense armed only with intuition. Preparation — a set-up environment, a current procedure, a clear escalation path — is what turns on-call from an individual burden into a system.</li>
+  </ul>
+  <p>There's a quieter benefit too. Every time someone writes down how they solved a problem, that knowledge stops living in one person's head. The org gets a little less fragile.</p>
+
+  <h2>What goes in a good runbook</h2>
+  <p>A useful runbook is unambiguous, sequential, and complete, because the person reading it is doing something consequential under time pressure and can't stop to interpret. A dependable structure — think of it as your runbook template — includes:</p>
+  <ul>
+    <li><strong>Purpose and trigger</strong> — what this runbook is for, and the alert or condition that should send someone here.</li>
+    <li><strong>Scope and impact</strong> — what's affected, how urgent it is, who needs to know.</li>
+    <li><strong>Prerequisites</strong> — access, credentials location, tools, and the environment you need before you start.</li>
+    <li><strong>Step-by-step procedure</strong> — numbered, exact actions and commands, with decision points called out ("if X, go to step 7").</li>
+    <li><strong>Validation</strong> — how to confirm each step and the overall fix actually worked.</li>
+    <li><strong>Rollback</strong> — how to safely undo the change if it doesn't.</li>
+    <li><strong>Escalation</strong> — who to call and when to stop and hand off. The healthiest on-call cultures treat "never hesitate to escalate" as a rule, not a failure.</li>
+    <li><strong>Owner and last-reviewed date</strong> — so readers know whether to trust it.</li>
+  </ul>
+
+  <h2>How to write a runbook your team will actually use</h2>
+  <p>The best runbook is the one that gets opened during an incident and followed to the end. Here's how to get there.</p>
+  <p><strong>1. Start with the alerts you're tired of.</strong> Don't try to document everything. Pick the pages that fire most often, or the tasks only one person knows. That's where a runbook pays for itself fastest.</p>
+  <p><strong>2. Write it while you do the task, or right after.</strong> The details are freshest immediately after you've fixed something. Capture the real commands and the real gotchas, not an idealized version.</p>
+  <p><strong>3. Write for the tired reader.</strong> Short sentences. One action per step. Spell out the command instead of describing it. Assume the reader is competent but stressed and half-awake — because whoever reaches for an on call runbook usually is.</p>
+  <p><strong>4. Add the decision points and the "what if it doesn't work."</strong> The steps that feel obvious to you are exactly where a newcomer stalls. A quick decision tree or a rollback note prevents a bad night from getting worse.</p>
+  <p><strong>5. Make it findable.</strong> A runbook nobody can locate at 2 a.m. doesn't exist. Store runbooks where responders already look, link them from the alert itself, and give each one a clear, searchable title.</p>
+  <p><strong>6. Test it on someone else.</strong> Hand your runbook to a teammate who <em>didn't</em> write it and have them follow it literally. Every place they hesitate is a place to rewrite. Practicing the procedure before you need it is what makes it second nature during a real incident.</p>
+
+  <h2>A note on runbook automation</h2>
+  <p>Once a runbook is precise enough to follow without judgment, it's often a candidate for automation — a script or job that performs the routine steps for you. This is the natural endpoint of a mature runbook: the human-readable procedure becomes the specification for the automated one.</p>
+  <p>Automate carefully, though. Automate the steps that are safe, repetitive, and well understood first, and keep the written runbook alongside the automation so a human can still take over when something unusual happens. Automation removes toil; it doesn't remove the need to understand what's being done.</p>
+
+  <h2>Keeping runbooks from going stale</h2>
+  <p>This is where most runbook efforts quietly die. Details go out of date at roughly the same rate your systems change — for teams shipping daily, a runbook can be wrong the day after it's written. A stale runbook is worse than none, because it sends a stressed responder confidently in the wrong direction.</p>
+  <p>A few habits keep them alive:</p>
+  <ul>
+    <li><strong>Update the runbook as part of the incident.</strong> When a page fires and the procedure was wrong or incomplete, fix it before you close the ticket, while the memory is fresh.</li>
+    <li><strong>Give every runbook an owner and a review date.</strong> Unowned documentation rots. A named owner and a visible "last reviewed" date make staleness obvious.</li>
+    <li><strong>Keep a living record during incidents.</strong> During a serious incident, maintain a single, shared document that several people can edit at once, with the most important information at the top. It coordinates the response in the moment and becomes the raw material for the postmortem — and for the next revision of the runbook.</li>
+    <li><strong>Refactor relentlessly.</strong> If information is hard to find, write it down. If a runbook is confusing, rewrite it. Treat your operational documentation as a product that's never quite finished.</li>
+  </ul>
+
+  <h2>From tribal knowledge to a single source of truth</h2>
+  <p>The hardest part of runbooks isn't writing the first one — it's keeping dozens of them accurate, versioned, and easy to find as your team and systems grow. That's a documentation problem, and it's worth solving with a real documentation home rather than scattered files and pasted snippets.</p>
+  <p>This is exactly the gap <a href="https://sonat.com">Sonat</a> is built to close. Because runbooks live as structured, versioned topics, you get an unlimited version history to see what changed and restore an earlier revision, review and approval workflows so a second set of eyes signs off before a procedure goes live, and fast full-text search so an on-call engineer finds the right steps in seconds. Non-technical and technical teammates can author in a familiar editor, publish to a clean, mobile-friendly viewer, and keep every procedure in one searchable place — a genuine single source of truth instead of knowledge trapped in one person's head.</p>
+
+  <h2>The shift worth making</h2>
+  <p>A runbook is a small act of generosity to your future self and your teammates: it turns a frightening, improvised scramble into a calm, repeatable procedure. Start with your noisiest alert, write down exactly what you'd do, test it on a colleague, and keep it current. Do that a dozen times and on-call stops being the thing nobody wants — and your team's hard-won knowledge finally belongs to the team.</p>
+
+  <div class="cta">
+    <p>Ready to give your runbooks a real home? <a href="https://sonat.com">See how Sonat helps teams write, version, and publish documentation</a> that stays current and easy to find.</p>
+  </div>
+</article>
+</body>
+</html>
