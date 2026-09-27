@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Content Audit for Documentation: Find and Fix Stale Docs</title>
+<meta name="description" content="A step-by-step content audit for documentation teams: build an inventory, flag stale and duplicate topics, and keep your docs accurate.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#1f2933;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:18px;line-height:1.7}
+main{max-width:720px;margin:0 auto;padding:48px 20px 72px}
+h1{font-size:2.1rem;line-height:1.25;margin:0 0 24px;color:#0b2540;letter-spacing:-0.01em}
+h2{font-size:1.5rem;line-height:1.3;margin:48px 0 12px;color:#0b2540}
+h3{font-size:1.2rem;line-height:1.35;margin:32px 0 8px;color:#12365c}
+p{margin:0 0 18px}
+a{color:#1565c0;text-decoration:underline;text-underline-offset:2px}
+ul,ol{margin:0 0 20px;padding-left:24px}
+li{margin:0 0 8px}
+strong{color:#0b2540}
+figure{margin:32px 0}
+img{max-width:100%;height:auto;display:block;border-radius:12px}
+blockquote{margin:24px 0;padding:14px 20px;background:#f1f6fb;border-left:4px solid #1565c0;border-radius:6px;color:#334e68}
+blockquote p{margin:0}
+table{width:100%;border-collapse:collapse;margin:8px 0 28px;font-size:0.95rem;display:block;overflow-x:auto}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #e4e9ef;vertical-align:top}
+th{background:#f5f8fb;color:#0b2540;font-weight:600}
+@media (max-width:600px){body{font-size:17px}main{padding:32px 16px 56px}h1{font-size:1.7rem}h2{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>Content Audit for Documentation: Find and Fix Stale Docs</h1>
+<p>Most documentation sites are not short of content. They are short of <em>trustworthy</em> content. Topics written for a release two years ago still rank in search. Three pages explain the same setting in three slightly different ways. A support agent finds the right answer, but only after skipping two wrong ones.</p>
+<p>A content audit is how you fix that on purpose instead of by accident. This guide walks you through a practical content audit built for documentation teams: what to collect, how to judge each topic, what to do with the results, and how to keep your docs from drifting out of date again.</p>
+<h2>What is a content audit?</h2>
+<p>A <strong>content audit</strong> is a structured review of every piece of content you publish, judged against clear criteria, so you can decide what to keep, update, merge, or retire. It starts from a <strong>content inventory</strong>, which is a list of everything you have. The audit is where you judge the quality of each item on that list.</p>
+<p>Think of the two this way. The inventory is a living list you keep up to date. The audit is the review you run against it, again and again. Together they shift your team's focus from <em>how much</em> documentation you have to <em>how good</em> it is.</p>
+<h2>Why documentation needs a content audit now</h2>
+<p>Outdated docs used to cost you a frustrated reader and maybe a support ticket. Today they also feed the tools your customers ask for answers.</p>
+<p>In a June 2026 survey of 109 technical communicators by the UK consultancy Cherryleaf, 39% said AI systems already draw on their user documentation. Another 36% said such systems were planned or in development. An AI assistant can only be as accurate as the pages it reads. If a topic describes a menu that no longer exists, the assistant will describe it too, with full confidence.</p>
+<p>Search works the same way. Google's guidance for its AI features says there are no special optimizations needed to appear in them. The same fundamentals apply: helpful, reliable, people-first content that is easy to find. For documentation, "reliable" mostly means "current." A content audit is the most direct way to get there.</p>
+<h2>How to do a content audit, step by step</h2>
+<h3>Step 1: Set a goal and a scope</h3>
+<p>Decide what you want the audit to change before you open a spreadsheet. Common goals for documentation teams:</p>
+<ul><li>Cut support tickets on a specific product area</li><li>Remove duplicate and conflicting answers</li><li>Prepare docs for a redesign, migration, or a new AI answer feature</li><li>Bring older topics up to your current style guide</li></ul>
+<p>Then limit the scope. You don't need to audit everything at once. Public-sector content teams in the UK advise auditing all the content in one user journey, such as "set up an account" or "connect an integration," rather than one random section. Start with the journey that drives the most traffic or the most tickets.</p>
+<h3>Step 2: Build your content inventory</h3>
+<p>Your inventory is a spreadsheet with one row per topic. Pull as much of it automatically as you can, from your documentation platform's export, your sitemap, or a crawler. Capture at least:</p>
+<ul><li>Topic title and URL</li><li>Section or manual it belongs to</li><li>Owner (the person responsible for accuracy, not just the original author)</li><li>Last updated date</li><li>Product version or variant it applies to</li><li>Page views and top search queries</li><li>Reader feedback (ratings or comments), if you collect it</li><li>Readability score, if your tool reports one</li></ul>
+<p>Don't wait for a perfect inventory. A good-enough list you can act on this month beats a flawless one you finish next quarter.</p>
+<h3>Step 3: Score each topic against clear criteria</h3>
+<p>This is the audit itself. Go topic by topic and answer the same questions every time, so two reviewers reach the same verdict. A simple content audit checklist for documentation:</p>
+<ol><li><strong>Accurate:</strong> Do the steps still match the current product? Try them.</li><li><strong>Current:</strong> Do the screenshots, button labels, and limits match what users see today?</li><li><strong>Unique:</strong> Is this the only topic that answers this question?</li><li><strong>Needed:</strong> Does anyone read it, search for it, or get sent to it by support?</li><li><strong>Clear:</strong> Does it use plain language, clear headings, short sections, and numbered steps for procedures?</li><li><strong>Findable:</strong> Does it have a descriptive title, a useful meta description, and links from related topics?</li></ol>
+<p>A quick way to summarize the results is the <strong>ROT</strong> test. Mark each topic as <em>redundant</em> (it repeats another topic), <em>outdated</em> (it is wrong or stale), or <em>trivial</em> (it no longer matters to readers or the business). Anything that isn't ROT is a candidate to keep.</p>
+<p>Let data set your priorities, not your gut. The practitioners Digital.gov interviewed shared a useful warning: metrics often surprise you, for example when a page with incorrect information turns out to get a lot of traffic. Fix that page first.</p>
+<blockquote><p>Automated checks help, but they don't replace reading. Broken links and old dates are easy to flag automatically. Only a person who knows the product can tell you whether step 4 is still true.</p></blockquote>
+<h3>Step 4: Decide what happens to each topic</h3>
+<p>Give every row exactly one decision. The UK Ministry of Defence's content guidance uses six outcomes that work well for docs:</p>
+<table><thead><tr><th>Decision</th><th>When to use it</th></tr></thead><tbody><tr><td><strong>Keep</strong></td><td>Accurate, clear, and used</td></tr><tr><td><strong>Update</strong></td><td>Right topic, wrong or stale details</td></tr><tr><td><strong>Merge</strong></td><td>Two or more topics answer the same question</td></tr><tr><td><strong>Move</strong></td><td>Good content in the wrong section or manual</td></tr><tr><td><strong>Archive</strong></td><td>Still true for an older version, but not the current one</td></tr><tr><td><strong>Delete</strong></td><td>Wrong, unused, and not worth saving</td></tr></tbody></table>
+<p>Start with redundant content. It's the easiest win, and few readers will miss a duplicate. When you merge or delete a topic, redirect its URL to the surviving page so bookmarks, search results, and in-product links still land somewhere useful.</p>
+<p>Don't be afraid of how much you remove. In one widely cited cleanup, the European Commission removed about 80% of its online content, and users benefited from the smaller, clearer site. Fewer, better topics are easier to search, translate, and keep accurate.</p>
+<h3>Step 5: Assign the work and share the results</h3>
+<p>An audit that ends as a spreadsheet changes nothing. Turn each "update," "merge," and "move" into a task with an owner and a due date. Share the findings in layers: a short summary of what you found and why it matters, then the detail for the people doing the fixes.</p>
+<p>Keep a log of what you changed. After a few months, compare views, search success, feedback, and related ticket volume on the topics you touched. That record shows whether the audit worked, and it gives you the case for the next one.</p>
+<h2>Your documentation maintenance plan: stopping content decay</h2>
+<p><strong>Content decay</strong> is the slow slide from "accurate" to "almost right" to "wrong." Every product release, renamed setting, and new pricing tier pushes some topics down that slope. A one-off audit resets the clock. A maintenance plan keeps it from running out again.</p>
+<h3>Give every topic an owner and a review date</h3>
+<p>Ownership is the single biggest lever. An owner doesn't have to write every word, but they are accountable for the topic staying accurate. Add a review date to each topic, for example every 6 or 12 months, and review high-traffic and critical topics more often.</p>
+<h3>Run rolling audits instead of big-bang projects</h3>
+<p>Big audits get scheduled around redesigns and migrations, and then nothing happens for years. A rolling audit covers one section or user journey every month or quarter, on a fixed schedule. It is smaller and less disruptive, and your docs never get very far out of date.</p>
+<h3>Build a documentation review process into releases</h3>
+<p>The best time to update a topic is when the product changes. Add a "docs updated?" check to your release checklist. Route changes through a documentation review process, where a subject-matter expert confirms accuracy before a topic goes live. This matters most for policies, procedures, and anything with compliance weight.</p>
+<h3>Listen to the signals your readers send</h3>
+<p>Readers tell you when a topic is wrong, if you give them a way to. Topic-level feedback, failed searches, and "this didn't help" votes are all early warnings of content decay. Review them as part of every rolling audit.</p>
+<h2>A content audit template you can copy</h2>
+<p>Use these columns as your starting content audit template:</p>
+<table><thead><tr><th>Column</th><th>Example</th></tr></thead><tbody><tr><td>Title</td><td>Connect your calendar</td></tr><tr><td>URL</td><td>/docs/integrations/calendar</td></tr><tr><td>Section / variant</td><td>Integrations, v3</td></tr><tr><td>Owner</td><td>Support team lead</td></tr><tr><td>Last updated</td><td>2025-11-04</td></tr><tr><td>Views (90 days)</td><td>1,240</td></tr><tr><td>Feedback</td><td>62% helpful</td></tr><tr><td>Accurate? / Current?</td><td>No, old settings screen</td></tr><tr><td>ROT flag</td><td>Outdated</td></tr><tr><td>Decision</td><td>Update</td></tr><tr><td>Next review</td><td>2027-03-01</td></tr><tr><td>Notes</td><td>Merge with "Calendar sync errors"</td></tr></tbody></table>
+<p>Sort by views, filter by ROT flag, and you have a prioritized to-do list.</p>
+<h2>How Sonat helps you keep docs audit-ready</h2>
+<p>Sonat is built so that the maintenance side of this work doesn't depend on heroics. Every topic keeps an unlimited version archive, so you can see what changed and restore an older version if an update goes wrong. Approval workflows put a reviewer between a draft and your readers. Variants let you keep documentation for different product versions side by side, so older content can stay correct for older customers instead of confusing new ones.</p>
+<p>On the reader side, feedback on every topic, automated readability checks, and a Google Analytics integration give you the signals a rolling audit needs. Because authors can draft in Google Docs, the subject-matter experts who know when something has changed can update it without learning a new tool. You can <a href="https://sonat.com/">start free on Sonat</a> and run your first audit on a real manual.</p>
+<h2>Conclusion</h2>
+<p>A content audit isn't a spring clean you do once and forget. It is how a documentation team decides, on purpose, what deserves a reader's trust. Build a good-enough inventory, judge every topic by the same criteria, give each one a clear decision, then keep the cycle going with owners, review dates, and rolling audits. Your readers, your support team, and every AI assistant reading your docs will get better answers for it.</p>
+</article>
+</main>
+</body>
+</html>
