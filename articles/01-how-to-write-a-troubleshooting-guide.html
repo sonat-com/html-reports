@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write a Troubleshooting Guide (With Template)</title>
+<meta name="description" content="Learn how to write a troubleshooting guide users can follow: a symptom-first structure, a reusable template, a worked example, and when to use a flowchart.">
+<style>
+  :root { --text:#1f2933; --muted:#52606d; --accent:#1c64f2; --soft:#f3f6fb; --line:#e4e7eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#ffffff; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:18px; line-height:1.7; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 72px; }
+  h1 { font-size:2.1rem; line-height:1.25; margin:0 0 24px; letter-spacing:-0.01em; }
+  h2 { font-size:1.5rem; line-height:1.3; margin:48px 0 12px; }
+  h3 { font-size:1.15rem; margin:32px 0 8px; }
+  p, ul, ol { margin:0 0 18px; }
+  ul, ol { padding-left:1.4em; }
+  li { margin-bottom:6px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  .card { background:var(--soft); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:0 0 24px; font-size:0.95rem; }
+  .card p { margin:0 0 10px; }
+  .card ol { margin:0 0 12px; }
+  .card p:last-child { margin-bottom:0; }
+  .cta { margin-top:40px; padding:22px; border-radius:10px; background:var(--soft); border-left:4px solid var(--accent); }
+  @media (max-width:600px) { body { font-size:17px; } h1 { font-size:1.7rem; } h2 { font-size:1.3rem; } main { padding:32px 16px 56px; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>How to Write a Troubleshooting Guide Customers Can Actually Follow</h1>
+
+<p>When something breaks, nobody opens your product docs to learn. They open them to get unstuck, usually while they're stressed and in a hurry. A good troubleshooting guide meets them there. It names the problem the way they would, points to the likely cause, and walks them to a fix in as few steps as possible.</p>
+
+<p>This guide shows you how to write one. You'll get a simple structure, a reusable troubleshooting guide template, a worked example, advice on when a troubleshooting flowchart helps, and a routine for keeping the guide accurate as your product changes.</p>
+
+<h2>What is a troubleshooting guide?</h2>
+
+<p>A troubleshooting guide is product documentation that helps users diagnose and fix a specific problem on their own. Each entry starts from an observable symptom, narrows it to a likely cause, and gives step-by-step instructions to resolve it. It also says what to do if none of the fixes work.</p>
+
+<p>It isn't a user manual. A manual explains how to use the product when everything works. A troubleshooting guide covers the moments when it doesn't. The two should link to each other, but they answer different questions.</p>
+
+<h2>Why troubleshooting guides matter</h2>
+
+<p>The best product needs no explanation at all. Nielsen Norman Group's usability heuristics say as much: ideally a system doesn't need extra explanation, but documentation may still be needed to help people complete their tasks. When it is needed, it should be easy to search, focused on the user's task, and list concrete steps.</p>
+
+<p>Troubleshooting content is where that principle matters most. The same heuristics ask that error messages use plain language, state the problem precisely, and constructively suggest a solution. A troubleshooting guide picks up where the error message leaves off. It gives users the full path from "this isn't working" to "fixed," without waiting in a support queue.</p>
+
+<p>For your team, every problem a customer solves alone is one less ticket to answer. It's also one less repeat question your experts have to handle.</p>
+
+<h2>The anatomy of a good troubleshooting entry</h2>
+
+<p>The most useful structure we've seen comes from Knowledge-Centered Service (KCS), a methodology maintained by the Consortium for Service Innovation. KCS articles use a small, consistent set of fields, and they map neatly onto troubleshooting content.</p>
+
+<h3>1. The issue, in the user's words</h3>
+
+<p>Describe the problem the way a user would say it: what they're trying to do and what isn't working. KCS is explicit that the issue should be written in the requestor's own words and phrases.</p>
+
+<p>This matters for search. Users type "printer shows blinking orange light," not "firmware handshake failure." If your heading uses internal jargon, they won't find it.</p>
+
+<h3>2. The environment</h3>
+
+<p>List the product, version, plan, device, or setting where the problem happens. Use standard names so entries stay consistent. In KCS, the environment is whatever stays true before and after the fix. That makes it a quick filter: users can rule an entry in or out before reading further.</p>
+
+<h3>3. The cause (when it helps)</h3>
+
+<p>State why the problem happens in one or two sentences. KCS treats cause as optional, and that's sensible. It's most useful when several causes produce the same symptom, because it helps the reader pick the right path.</p>
+
+<h3>4. The resolution</h3>
+
+<p>Give the fix as numbered steps. Google's developer documentation style guide offers solid rules for procedures:</p>
+
+<ul>
+  <li>Use one step for each action.</li>
+  <li>Start each step with an imperative verb ("Open," "Select," "Restart").</li>
+  <li>Say <em>where</em> to do something before saying <em>what</em> to do: "In <strong>Settings</strong>, select <strong>Notifications</strong>."</li>
+  <li>State the action first and the result second, so the reader knows what should happen.</li>
+  <li>Mark optional steps with "Optional:" at the start.</li>
+</ul>
+
+<h3>5. The escalation path</h3>
+
+<p>Every entry needs an exit for when the fix doesn't work. Say who to contact, how, and what details to include (version, error text, steps already tried). KCS recommends a similar note for readers who lack the access or skills a fix requires: point them to your support team.</p>
+
+<h2>Troubleshooting guide format: organize by symptom</h2>
+
+<p>Structure the guide around what users <em>see</em>, not around how your product is built. A user with a frozen screen doesn't know which subsystem failed. They know the screen is frozen.</p>
+
+<p>A practical troubleshooting guide format looks like this:</p>
+
+<ul>
+  <li><strong>Group entries by area of the product</strong> (for example, "Account and sign-in," "Syncing," "Billing").</li>
+  <li><strong>Title each entry with a symptom</strong> ("Changes aren't saving," "Can't sign in after password reset").</li>
+  <li><strong>Order fixes from simplest to most involved.</strong> Put the 30-second check first and the reinstall last.</li>
+  <li><strong>Keep each cause next to its fix</strong>, so the reader never has to scroll back and forth.</li>
+</ul>
+
+<h2>A troubleshooting guide template you can reuse</h2>
+
+<p>Copy this troubleshooting guide template for each entry. Consistency is a feature: once users learn the shape, they scan faster.</p>
+
+<div class="card">
+  <p><strong>Title:</strong> [Symptom in the user's words]</p>
+  <p><strong>Applies to:</strong> [Product, version, plan, device]</p>
+  <p><strong>Symptoms:</strong> [What the user sees or hears, including any exact error text]</p>
+  <p><strong>Before you start:</strong> [Anything they need: access, a cable, admin rights]</p>
+  <p><strong>Fix 1 — [Most likely or simplest cause]</strong></p>
+  <ol>
+    <li>[Location first, then action.]</li>
+    <li>[One action per step, with the expected result.]</li>
+  </ol>
+  <p><strong>Fix 2 — [Next most likely cause]</strong></p>
+  <ol>
+    <li>[...]</li>
+  </ol>
+  <p><strong>Still not working?</strong> [Who to contact, how, and what to include]</p>
+  <p><strong>Related:</strong> [Links to the relevant manual section or similar entries]</p>
+</div>
+
+<h2>Troubleshooting guide example</h2>
+
+<p>Here's the template filled in for a fictional smart label printer:</p>
+
+<div class="card">
+  <p><strong>Title:</strong> Printer prints blank labels</p>
+  <p><strong>Applies to:</strong> LabelPro 200, firmware 3.x</p>
+  <p><strong>Symptoms:</strong> The printer feeds labels, but nothing is printed on them.</p>
+  <p><strong>Fix 1 — Labels are loaded upside down</strong></p>
+  <ol>
+    <li>Open the top cover and remove the label roll.</li>
+    <li>Reinsert the roll so the labels face up as they feed out. The printer beeps once when the roll is seated.</li>
+    <li>Print a test label from <strong>Settings &gt; Test print</strong>.</li>
+  </ol>
+  <p><strong>Fix 2 — The print head is dirty</strong></p>
+  <ol>
+    <li>Turn off the printer and let it cool for five minutes.</li>
+    <li>Wipe the print head gently with a cleaning swab.</li>
+    <li>Turn the printer on and print a test label.</li>
+  </ol>
+  <p><strong>Still not working?</strong> Contact support with your serial number (on the base of the printer) and a photo of a blank label.</p>
+</div>
+
+<p>Notice what the example leaves out: no history of the product, no marketing, no long explanation of thermal printing. Digital.gov's plain language guidance makes the same point about sentences: express one idea per sentence, because shorter sentences break information into units that are easier to process.</p>
+
+<h2>When to use a troubleshooting flowchart</h2>
+
+<p>A list of fixes works when causes are independent and quick to check. A troubleshooting flowchart works better when the right fix depends on answers along the way: "Is the power light on? Yes → go to step 4. No → check the cable."</p>
+
+<p>Use a flowchart when:</p>
+
+<ul>
+  <li>The diagnosis has several branching yes/no questions.</li>
+  <li>Checking the wrong cause first wastes real time, or risks making things worse.</li>
+  <li>Support agents need a repeatable decision path, not just end users.</li>
+</ul>
+
+<p>Keep the flowchart short and pair it with written steps. A diagram shows the path, and text carries the detail, including exact button names. Text is also searchable and translatable, which a flowchart image usually isn't.</p>
+
+<h2>How to write a troubleshooting guide, step by step</h2>
+
+<ol>
+  <li><strong>Collect real problems.</strong> Pull the most common questions from support tickets, chat logs, and search queries with no results. Write down the exact phrases customers use.</li>
+  <li><strong>Group problems by symptom.</strong> Merge duplicates and pick the clearest user phrasing for each title.</li>
+  <li><strong>Reproduce each problem.</strong> Walk through the fix on the current version yourself, and note every screen and button name.</li>
+  <li><strong>Draft with the template.</strong> One entry per symptom. Simple fixes first, escalation last.</li>
+  <li><strong>Test with someone new.</strong> Ask a colleague who didn't write it to follow the steps without help. Wherever they hesitate, the guide needs work.</li>
+  <li><strong>Publish where users look.</strong> Link each entry from the matching page of your user manual and from in-product help, so users find it at the moment they need it.</li>
+</ol>
+
+<h2>Keep your troubleshooting guide current</h2>
+
+<p>A troubleshooting guide goes stale faster than almost any other doc, because every release can change a button, a menu, or a cause. A few habits help:</p>
+
+<ul>
+  <li><strong>Review entries with each release.</strong> Add "check troubleshooting guide" to your release checklist.</li>
+  <li><strong>Watch for feedback.</strong> If readers rate an entry as unhelpful or keep opening tickets after reading it, rewrite it.</li>
+  <li><strong>Retire fixed issues.</strong> When a bug is gone for good, archive the entry instead of letting it confuse new users.</li>
+  <li><strong>Keep one source of truth.</strong> Copies in PDFs, slides, and chat threads drift apart. One published, version-tracked guide doesn't.</li>
+</ul>
+
+<p>This is where your documentation platform matters. <a href="https://sonat.com">Sonat</a> lets non-technical teams write in Google Docs or a visual editor, publish to the web in one click, collect feedback on every topic, and keep a full version history. Variants help you maintain separate guides for different product versions, and machine translation helps you reach users in their own language.</p>
+
+<h2>Conclusion</h2>
+
+<p>A troubleshooting guide works when it starts from the user's symptom, not your system's internals. Name the issue the way customers do. Show where it applies. Keep each cause next to its fix, write one action per step, and always offer a way out. Then review it with every release, so it's still right the next time something breaks.</p>
+
+<p class="cta">Ready to publish a troubleshooting guide your customers can find and follow? <a href="https://sonat.com">Start free with Sonat</a>: no credit card required.</p>
+</article>
+</main>
+</body>
+</html>
