@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Create an FAQ Page That Actually Answers Questions</title>
+<meta name="description" content="Learn how to create an FAQ page people actually use, from choosing real questions and writing answers that stand alone to page design and upkeep.">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#1f2933;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.7}
+main{max-width:720px;margin:0 auto;padding:48px 20px 72px}h1{font-size:2.1rem;line-height:1.25;margin:0 0 28px;color:#0b2545}
+h2{font-size:1.45rem;line-height:1.3;margin:44px 0 12px;color:#0b2545}h3{font-size:1.15rem;margin:30px 0 8px;color:#13315c}
+p{margin:0 0 18px}ul,ol{margin:0 0 20px;padding-left:24px}li{margin:6px 0}li ul{margin:6px 0 0}
+a{color:#1466c1;text-decoration:underline;text-underline-offset:2px}strong{color:#0b2545}
+code{font-family:SFMono-Regular,Consolas,monospace;font-size:.88em;background:#f1f4f8;padding:2px 6px;border-radius:4px}
+img{max-width:100%;height:auto;border-radius:12px;margin:8px 0 24px}
+@media (max-width:600px){body{font-size:17px}main{padding:32px 16px 56px}h1{font-size:1.7rem}h2{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>How to Create an FAQ Page That Answers Real Questions</h1>
+<p>In May 2026, Google stopped showing FAQ rich results, the expandable questions that used to sit under a search listing. If your team built its FAQ page mostly to win that extra space in search, you may be asking whether the page still matters.</p>
+<p>It does. What changed is who the page is for. A good FAQ page was never really for a search feature. It was for the customer who has a question and wants an answer without opening a ticket. This guide covers how to create an FAQ page that does that job: where the questions come from, how to write the answers, how to lay out the page, and how to keep it accurate.</p>
+<h2>What is an FAQ page?</h2>
+<p>An FAQ page is a single page that lists the questions customers ask most often, each with a short, direct answer. It sits between your marketing site and your full help center. It handles the common, quick questions and points people to deeper articles when they need more.</p>
+<p>That last part matters. An FAQ page is not a help center. If an answer needs ten steps and three screenshots, it belongs in a help article, and the FAQ should link to it.</p>
+<h2>Do FAQ pages still matter now that FAQ rich results are gone?</h2>
+<p>Yes, but the reasons are different now. Here is what changed:</p>
+<ul>
+<li><strong>May 7, 2026:</strong> FAQ rich results stopped appearing in Google Search. This finished a pullback that started in 2023, when Google limited the feature to government and health websites.</li>
+<li><strong>June 2026:</strong> Google dropped the FAQ search appearance, the FAQ rich result report, and support in the Rich Results Test.</li>
+<li><strong>August 2026:</strong> Support for the FAQ rich result ended in the Search Console API.</li>
+</ul>
+<p>Google's guidance says existing FAQ structured data can stay in place. It won't cause problems, but it won't produce anything visible in search either. So don't rush to strip the markup, and don't add it expecting a boost.</p>
+<p>The bigger reason to invest in your FAQ page is self-service. A Gartner survey of 5,728 customers, reported in August 2024, found that only 14% of customer service issues were fully resolved in self-service. Even for issues customers called "very simple," only 36% were. The most common reason for failure: 43% of customers couldn't find content relevant to their issue.</p>
+<p>That's the problem a good FAQ page solves. People want to help themselves, and they give up when the answer isn't where they look.</p>
+<h2>Step 1: Start with questions people actually ask</h2>
+<p>The fastest way to ruin an FAQ page is to make up the questions. Nielsen Norman Group has long warned against invented questions. Their advice is simple: if you're listening to your users, you already know what their questions are.</p>
+<p>Good places to find real questions:</p>
+<ul>
+<li><strong>Support tickets and chat logs.</strong> Sort by volume. The top 20 topics are your first draft.</li>
+<li><strong>Sales and onboarding calls.</strong> Look for the questions people ask before they buy or right after they sign up.</li>
+<li><strong>Your site search.</strong> Search terms that return no results are gaps you should fill.</li>
+<li><strong>Feedback on existing docs.</strong> Articles marked "not helpful" often point to a question nobody has answered clearly yet.</li>
+</ul>
+<p>Leave out questions that exist only to repeat a sales message. "Why is our product the best choice?" is not a frequently asked question, and readers can tell.</p>
+<h2>Step 2: Write each question the way customers say it</h2>
+<p>Nielsen Norman Group recommends that questions echo the real concerns people contact you about, in the vocabulary your visitors use.</p>
+<p>Compare:</p>
+<ul>
+<li>"Return Policy" → <strong>"How do I return an item?"</strong></li>
+<li>"Account Termination" → <strong>"How do I cancel my subscription?"</strong></li>
+<li>"SSO Configuration" → <strong>"Can my team sign in with our company account?"</strong></li>
+</ul>
+<p>The rewritten versions are easier to scan because they match what's in the reader's head. They also match what people type into a search box or ask an AI assistant.</p>
+<h2>Step 3: Write answers that stand on their own</h2>
+<p>Each answer should make sense even if it's the only thing someone reads. People jump straight to their question from search, from a link in a support email, or from your site search. They won't read the answers above it first.</p>
+<p>A simple pattern works well:</p>
+<ol>
+<li><strong>Answer first.</strong> Put the direct answer in the opening sentence. "Yes, you can cancel at any time from Settings &gt; Billing."</li>
+<li><strong>Add the key detail.</strong> One or two sentences on conditions, limits, or what happens next.</li>
+<li><strong>Link deeper when needed.</strong> If the full answer takes more than a short paragraph, link to the help article that covers it in full.</li>
+</ol>
+<p>Keep answers short and concrete. Avoid "it depends" unless you then explain what it depends on. Don't write "please contact support" when you could just answer the question.</p>
+<h2>Step 4: Design an FAQ page people can scan</h2>
+<p>A short FAQ with eight questions can live on one plain list. Past about 15 questions, structure starts to matter more than wording. Nielsen Norman Group notes that good, large FAQs are "chunked by topic and designed to be visually scanned."</p>
+<p>Good FAQ page design usually includes:</p>
+<ul>
+<li><strong>Topic groups.</strong> Billing, Account, Getting started, Troubleshooting. Put the groups in the order of how often people need them.</li>
+<li><strong>A jump list at the top.</strong> Show every group, or every question, so readers can skip to what they need.</li>
+<li><strong>Search.</strong> Once the page gets long, search is faster than scrolling.</li>
+<li><strong>Clear headings.</strong> Use real HTML headings for groups so both screen readers and search engines understand the structure.</li>
+</ul>
+<h3>Make FAQ accordions accessible</h3>
+<p>Accordions (questions that expand to show the answer) keep long pages tidy, but they're easy to build badly. The W3C's accordion pattern sets out the basics:</p>
+<ul>
+<li>Each question is a <strong>button</strong> placed inside a <strong>heading</strong>.</li>
+<li>The button uses <strong><code>aria-expanded</code></strong> to say whether its answer is open, and <strong><code>aria-controls</code></strong> to point to the answer panel.</li>
+<li><strong>Enter</strong> and <strong>Space</strong> open and close the answer, and <strong>Tab</strong> moves between questions.</li>
+</ul>
+<p>For short FAQ sections, consider showing every answer open. It's simpler, easy to search with Ctrl+F, and nobody has to click to read.</p>
+<h2>Step 5: Decide where the FAQ section ends and the help center begins</h2>
+<p>FAQ pages tend to grow until they become a dumping ground. A few rules keep the line clear:</p>
+<ul>
+<li><strong>FAQ page:</strong> quick, common questions with short answers, often asked before or just after purchase.</li>
+<li><strong>FAQ section on a product or pricing page:</strong> three to six questions that remove doubt at that exact point. For example, "Do I need a credit card to start?" on a pricing page.</li>
+<li><strong>Help center article:</strong> anything with multiple steps, screenshots, settings, or troubleshooting branches.</li>
+</ul>
+<p>When an FAQ answer keeps getting longer, move it into a help article and leave a one-line answer plus a link. The FAQ stays scannable, and the full answer lives in one place.</p>
+<h2>Step 6: Keep your FAQ page accurate</h2>
+<p>An outdated answer is worse than no answer, because customers act on it. Build maintenance into the process:</p>
+<ul>
+<li><strong>Assign an owner.</strong> Every FAQ page needs one named person responsible for it.</li>
+<li><strong>Review on a schedule.</strong> Check the page whenever pricing, plans, or key features change, and at least once a quarter.</li>
+<li><strong>Watch the signals.</strong> Rising ticket volume on a topic that's already in the FAQ usually means the answer is unclear, hard to find, or wrong.</li>
+<li><strong>Retire stale questions.</strong> If nobody asks it anymore, remove it. Shorter pages are easier to scan.</li>
+</ul>
+<p>This is where your tooling matters. With <a href="https://sonat.com">Sonat</a>, your team can write FAQ and help content in Google Docs or the built-in editor, publish it to your own domain, and collect reader feedback on every topic. That way you see which answers aren't landing. Version history also lets you check what an answer said last month when a customer quotes it back to you.</p>
+<h2>A simple FAQ page template</h2>
+<p>Use this structure as a starting point:</p>
+<ol>
+<li><strong>Page title and one-line intro:</strong> "Answers to the questions we hear most. Can't find yours? Search our help center or contact us."</li>
+<li><strong>Search box</strong> (once you have more than about 15 questions).</li>
+<li><strong>Jump list</strong> of topic groups.</li>
+<li><strong>Topic groups</strong>, each with 3–8 questions:<ul><li>Question in the customer's words</li><li>Direct answer in the first sentence</li><li>One or two sentences of detail</li><li>Link to the full help article where needed</li></ul></li>
+<li><strong>Fallback at the bottom:</strong> a clear way to reach a person when the FAQ doesn't cover it.</li>
+</ol>
+<h2>Build the FAQ page for the reader</h2>
+<p>Losing FAQ rich results takes away a search perk, not the reason the page exists. The FAQ pages that work start from real questions, answer them in plain words, group them so they're easy to scan, and stay current. Build yours that way and it will keep doing its main job: answering customers before they need to ask your support team.</p>
+<p>Ready to publish an FAQ page and help center your customers can actually use? <a href="https://sonat.com">Start free with Sonat</a>.</p>
+</article>
+</main>
+</body>
+</html>
