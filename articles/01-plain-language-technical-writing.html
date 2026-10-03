@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plain Language in Technical Writing: A Practical Guide</title>
+<meta name="description" content="Plain language makes docs easy to find, understand, and use. Learn the principles, techniques, and readability checks that work for technical writing.">
+<style>
+  :root { --text:#1f2933; --muted:#52606d; --accent:#1d6fd8; --bg:#ffffff; --soft:#f4f7fb; --line:#e4e7eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 72px; }
+  h1 { font-size:2.1rem; line-height:1.25; margin:0 0 24px; letter-spacing:-0.01em; }
+  h2 { font-size:1.5rem; line-height:1.3; margin:48px 0 12px; }
+  h3 { font-size:1.15rem; line-height:1.35; margin:32px 0 8px; }
+  p, ul, ol { margin:0 0 18px; }
+  li { margin-bottom:6px; }
+  a { color:var(--accent); }
+  blockquote { margin:0 0 20px; padding:16px 20px; background:var(--soft); border-left:4px solid var(--accent); border-radius:6px; color:var(--muted); }
+  blockquote p, blockquote ol { margin-bottom:8px; }
+  blockquote p:last-child { margin-bottom:0; }
+  .lead { font-size:1.1rem; color:var(--muted); }
+  @media (max-width:600px) { body { font-size:17px; } h1 { font-size:1.7rem; } h2 { font-size:1.3rem; } main { padding:32px 16px 56px; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>Plain Language in Technical Writing: How to Write Docs People Understand</h1>
+
+<p class="lead">Most documentation problems aren't caused by missing information. The answer is usually on the page somewhere. The trouble is that it's buried in a 40-word sentence, hidden behind jargon, or split across three paragraphs that say the same thing.</p>
+
+<p>Plain language fixes that. This guide covers what plain language means in technical writing, why it works for experts too, the techniques that matter most, and how to check readability and understanding without gaming a score.</p>
+
+<h2>What is plain language?</h2>
+
+<p><strong>Plain language is writing that readers can find, understand, and use the first time they read it.</strong> It isn't "dumbed-down" writing. It's writing where the wording, structure, and design all work for the reader instead of against them.</p>
+
+<p>In the US, the Plain Writing Act of 2010 defines plain writing as "writing that is clear, concise, well-organized, and follows other best practices appropriate to the subject or field and intended audience." That last part matters for technical writers. Plain language doesn't ban technical terms. It asks you to match your words to the people reading them.</p>
+
+<h3>The four plain language principles (ISO 24495-1)</h3>
+
+<p>In 2023, plain language got its first international standard: ISO 24495-1, <em>Plain language — Part 1: Governing principles and guidelines</em>. It rests on four principles. Each one makes a useful test for a documentation page:</p>
+
+<ol>
+  <li><strong>Relevant:</strong> readers get what they need. Does this page answer the question that brought the reader here?</li>
+  <li><strong>Findable:</strong> readers can easily find what they need. Can they spot the answer in seconds through headings, lists, and search?</li>
+  <li><strong>Understandable:</strong> readers can easily understand what they find. Are the words, sentences, and examples clear to <em>this</em> audience?</li>
+  <li><strong>Usable:</strong> readers can easily use the information. Can they act on it by completing the task, making the decision, or fixing the problem?</li>
+</ol>
+
+<p>Only one of the four is about the words themselves. A page full of short sentences can still fail if it answers the wrong question or hides the key step.</p>
+
+<h2>Why plain language works for expert readers too</h2>
+
+<p>A common objection from technical teams is "our users are engineers, they don't need things simplified." The research says otherwise.</p>
+
+<p>Nielsen Norman Group ran usability studies with domain experts in science, technology, and medicine. Participants included IT managers, professors, and healthcare professionals with advanced degrees. Even these highly educated readers wanted short content they could scan. One professor, faced with a dense page, said: "This is crazy dense… I'd rather have less."</p>
+
+<p>Their recommendations for expert audiences are specific:</p>
+
+<ul>
+  <li>Use the words your audience uses. For specialists, the right jargon is a useful shortcut, as long as you've confirmed they know it.</li>
+  <li>Keep sentences to roughly 15–20 words.</li>
+  <li>Aim for a 10th–12th grade reading level, even for experts. Text above that takes too much mental effort.</li>
+  <li>Format for scanning with informative headings, bulleted lists, and white space.</li>
+</ul>
+
+<p>Some public-sector teams go further. The UK Home Office design manual recommends "writing for a maximum reading age of 9, even if you are writing for a specialist audience." It notes that clear language particularly helps people with learning disabilities or cognitive issues, people with dyslexia, autistic people, and people reading in a second language.</p>
+
+<p>That last group is easy to forget. An English help center is often read by people whose first language is something else, and every idiom is a small wall between them and the answer.</p>
+
+<h2>Plain language guidelines for technical documentation</h2>
+
+<p>The techniques below come from the US federal plain language guidance on Digital.gov and the research above. They're listed roughly in order of impact for typical product and IT documentation.</p>
+
+<h3>1. Write for one clearly defined reader</h3>
+
+<p>Before editing a sentence, decide who the page is for. An admin configuring single sign-on and a first-time user resetting a password need different pages, not one page that tries to serve both.</p>
+
+<h3>2. Use active voice</h3>
+
+<p>Active voice makes it clear who does what. Digital.gov puts it simply: active voice "eliminates ambiguity about responsibilities."</p>
+
+<ul>
+  <li><strong>Before:</strong> The configuration file must be updated before the service is restarted.</li>
+  <li><strong>After:</strong> Update the configuration file, then restart the service.</li>
+</ul>
+
+<p>In procedures, the imperative ("Update…", "Select…", "Restart…") is usually the clearest form of active voice. It tells the reader exactly what to do.</p>
+
+<h3>3. Prefer present tense and "you"</h3>
+
+<p>Present tense makes writing "simpler, more direct, and more forceful," according to the same guidance. Addressing the reader as "you" removes a layer of abstraction.</p>
+
+<ul>
+  <li><strong>Before:</strong> The user will be presented with a confirmation dialog.</li>
+  <li><strong>After:</strong> You see a confirmation dialog.</li>
+</ul>
+
+<h3>4. Unhide your verbs</h3>
+
+<p>A hidden verb is a verb that has been turned into a noun. It usually needs an extra verb to make sense. Watch for endings like <em>-tion</em>, <em>-ment</em>, <em>-sion</em>, and <em>-ance</em>.</p>
+
+<ul>
+  <li><strong>Before:</strong> Perform an installation of the agent and conduct a verification of the connection.</li>
+  <li><strong>After:</strong> Install the agent and verify the connection.</li>
+</ul>
+
+<p>This is often the fastest edit in technical docs. It shortens sentences and makes steps more direct at the same time.</p>
+
+<h3>5. One idea per sentence, one task per step</h3>
+
+<p>Long sentences with several clauses make readers hold too much in their heads. Split them. In procedures, give each step one action. If a step contains "and then," it's probably two steps.</p>
+
+<h3>6. Define terms once, then use them consistently</h3>
+
+<p>Plain language doesn't mean avoiding every technical term. It means using the term your reader expects, defining it the first time if needed, and never switching synonyms halfway through. If the button says "Workspace," don't call it a "project" in step 4.</p>
+
+<h3>7. Structure for scanning</h3>
+
+<p>Most readers scan documentation looking for the one line they need. Help them:</p>
+
+<ul>
+  <li>Put the answer or outcome first, then the detail.</li>
+  <li>Write headings that say what the section does ("Reset a user's password"), not just name a topic ("Passwords").</li>
+  <li>Use numbered lists for sequences and bullets for options.</li>
+  <li>Use tables when readers need to compare values or settings.</li>
+</ul>
+
+<h2>Plain language examples: before and after</h2>
+
+<p>Here's a typical paragraph from an internal IT guide, rewritten using the techniques above.</p>
+
+<p><strong>Before (57 words):</strong></p>
+
+<blockquote>
+  <p>In the event that a user experiences difficulties with regard to the authentication process, it is recommended that a review of the account status be conducted by the administrator, following which, should the account be determined to be locked, the performance of an unlock operation via the admin console may be undertaken in order to restore access.</p>
+</blockquote>
+
+<p><strong>After (32 words):</strong></p>
+
+<blockquote>
+  <p>If a user can't sign in:</p>
+  <ol>
+    <li>Open the admin console and check the user's account status.</li>
+    <li>If the account is locked, select <strong>Unlock account</strong>.</li>
+  </ol>
+  <p>The user can sign in again right away.</p>
+</blockquote>
+
+<p>The rewrite uses active voice, unhides verbs ("a review … be conducted" becomes "check"; "the performance of an unlock operation" becomes "unlock"), and turns a buried procedure into numbered steps. It's also easier to translate if you publish in more than one language.</p>
+
+<h2>How to use readability scores (without gaming them)</h2>
+
+<p>Readability formulas are useful smoke alarms. The two most common are both built from just two inputs: average sentence length and average syllables per word.</p>
+
+<ul>
+  <li><strong>Flesch Reading Ease</strong> produces a score from roughly 0 to 100, where higher means easier. Scores of 60–70 correspond to "plain English," about an 8th–9th grade level.</li>
+  <li><strong>Flesch–Kincaid Grade Level</strong> maps the same inputs to a US school grade. It was developed for the US Navy in 1975.</li>
+</ul>
+
+<p>These scores flag long sentences and long words. They can't tell you whether a page is correct, well organized, or answers the right question. As Wikipedia's summary of the research notes, readability formulas "neglect between-reader differences and effects of content, layout and retrieval aids."</p>
+
+<p>Use them like this:</p>
+
+<ul>
+  <li><strong>Set a target range per audience.</strong> For example, a general help center might aim lower than an API reference. Treat the target as a guide, not a pass/fail gate.</li>
+  <li><strong>Investigate outliers.</strong> A page scoring far below the rest of your docs is worth a second look. Usually one or two monster sentences are dragging it down.</li>
+  <li><strong>Don't chase the number.</strong> Chopping sentences into fragments or swapping precise terms for vague ones can improve the score and still make the page worse.</li>
+</ul>
+
+<p>Accessibility standards point the same way. WCAG success criterion 3.1.5 (Level AAA) asks that when text requires reading ability beyond lower secondary education, you provide supplemental content. That could be a plain-language summary, illustrations, or audio. For complex technical topics, a short plain summary at the top of the page is a practical way to meet that intent.</p>
+
+<p>Sonat includes a built-in readability guide that scores your topics, so you can spot dense passages before they're published instead of finding out from support tickets.</p>
+
+<h2>Test for understanding, not just for style</h2>
+
+<p>The final plain language principle is "usable," and the only reliable way to check it is with real readers. Digital.gov's plain language guide series includes a whole section on testing for understanding. You don't need a usability lab to start:</p>
+
+<ul>
+  <li><strong>Task test:</strong> Give someone from the target audience a task ("Add a new team member with read-only access") and watch them use only your doc. Note where they hesitate.</li>
+  <li><strong>Paraphrase test:</strong> Ask a reader to explain a page back to you in their own words. If their summary is wrong, the page is unclear, not the reader.</li>
+  <li><strong>Feedback on every page:</strong> Collect "Was this helpful?" responses and comments where readers actually are. Pages that keep getting low ratings are your editing queue.</li>
+</ul>
+
+<p>Sonat builds this feedback loop into published docs, so authors see which topics confuse readers and can fix them in the same place they write.</p>
+
+<h2>Make plain language a habit, not a one-off edit</h2>
+
+<p>Plain language works best as part of how your team writes, not as a yearly cleanup. Add the four ISO principles and your sentence-length and reading-level targets to your <a href="https://sonat.com/blog/documentation-style-guide/">documentation style guide</a>. Check readability in every review, alongside accuracy. Keep a shared list of hidden verbs and jargon your team overuses, with plain alternatives.</p>
+
+<h2>Conclusion</h2>
+
+<p>Plain language isn't about writing less precisely. It's about removing everything between your reader and the answer they came for. Start with one page that generates a lot of support questions. Rewrite it with active voice, short sentences, and clear steps, check its readability, and watch what happens to the feedback.</p>
+
+<p>If you want readability checks and reader feedback built into the place you write, you can <a href="https://sonat.com/">start with Sonat for free</a>.</p>
+</article>
+</main>
+</body>
+</html>
