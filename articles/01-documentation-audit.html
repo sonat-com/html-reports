@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Run a Documentation Audit: A Step-by-Step Guide</title>
+<meta name="description" content="Learn how to run a documentation audit: build a content inventory, score every page, decide what to keep, update, or retire, and keep docs current.">
+<style>
+  body { margin: 0; background: #ffffff; color: #1f2933; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 2.2rem; line-height: 1.25; margin: 0 0 24px; color: #102a43; }
+  h2 { font-size: 1.6rem; line-height: 1.3; margin: 48px 0 16px; color: #102a43; }
+  h3 { font-size: 1.25rem; line-height: 1.35; margin: 32px 0 12px; color: #243b53; }
+  p, ul, ol { margin: 0 0 20px; }
+  li { margin-bottom: 8px; }
+  a { color: #1f6feb; text-decoration: underline; text-underline-offset: 2px; }
+  strong { color: #102a43; }
+  figure { margin: 32px 0; }
+  img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+  .table-wrap { overflow-x: auto; margin: 0 0 24px; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.85rem; line-height: 1.5; }
+  th, td { border: 1px solid #d9e2ec; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f0f4f8; color: #102a43; }
+  @media (max-width: 600px) { body { font-size: 17px; } main { padding: 32px 16px 64px; } h1 { font-size: 1.75rem; } h2 { font-size: 1.35rem; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>How to Run a Documentation Audit: A Step-by-Step Guide</h1>
+<p>Your help center started small. A few years and a few hundred articles later, nobody is quite sure which pages are still accurate. Support agents send customers links they don't fully trust. Search results show three versions of the same answer.</p>
+<p>A documentation audit fixes that. By the end of this guide, you'll know how to list every page you have, judge each one against clear criteria, decide what to keep, update, or retire, and set up a routine so the mess doesn't come back.</p>
+<h2>What is a documentation audit?</h2>
+<p>A <strong>documentation audit</strong> is a structured review of every piece of documentation you publish. It checks each page for accuracy, usefulness, and quality, and ends with a clear decision for each one: keep it, update it, or remove it.</p>
+<p>It has two parts that are easy to mix up:</p>
+<ul><li><strong>A content inventory</strong> is the list. It records <em>what you have</em>: every page, where it lives, who owns it, and when it last changed.</li><li><strong>The audit</strong> is the judgment. It evaluates <em>how good</em> each item on that list is, and what should happen to it.</li></ul>
+<p>You can't do the second without the first. Usability researchers at Nielsen Norman Group draw the same line: the inventory captures your content, and the audit assesses its quality.</p>
+<h2>Why outdated documentation costs more than it used to</h2>
+<p>Stale docs have always frustrated readers. Now they also mislead AI tools.</p>
+<p>AI assistants and AI search summaries pull answers from whatever pages they can find. They don't know that a page from five years ago was never updated. They repeat it with the same confidence as your newest article.</p>
+<p>The UK's Department for Business and Trade described this in April 2026. An AI search overview had quoted old charity registration fees of £40 by post and £13 online, taken from an unmaintained page. The real fees were £124 and £100. The department audited its own pages, looking for ones that hadn't been updated in five years, had almost no views, and had no owner. It immediately found 150 pages that met all of its criteria, and redirected them to current guidance or archived versions so AI tools would stop finding them.</p>
+<p>The lesson applies to any team that publishes help content. If an old page is still live, someone (or something) will treat it as the truth. That includes AI answer tools that sit on top of your own knowledge base.</p>
+<h2>How to run a documentation audit in 6 steps</h2>
+<h3>Step 1: Set the goal and the scope</h3>
+<p>Decide what you want out of the audit before you open a spreadsheet. Are you trying to cut support tickets, prepare for a product redesign, or simply find what's broken?</p>
+<p>Then draw a boundary. Content strategists interviewed by Digital.gov start every audit by defining its scope, whether that's one section of a site or several channels at once. If your library is large, don't try to audit everything at once. Start with the pages that get the most visits or support your users' most important tasks.</p>
+<p>When the UK government audited 7,396 transport-related content items, it took six months. One of the main lessons was to split the work into manageable chunks, such as one spreadsheet per team or topic, rather than one giant sheet.</p>
+<h3>Step 2: Build your content inventory</h3>
+<p>Create one row per page. A spreadsheet is enough. These columns cover most documentation teams:</p>
+<ul><li>Page title</li><li>URL or location</li><li>Owner (a named person, not "the team")</li><li>Topic or product area</li><li>Content type (how-to, reference, troubleshooting, policy)</li><li>Last updated date</li><li>Page views over a set period</li><li>Search queries or tickets that point to the page, if you track them</li></ul>
+<p>Here's a simple <strong>content audit template</strong> you can copy into a spreadsheet, shown with two made-up example rows. The last three columns get filled in during the audit itself:</p>
+<div class="table-wrap"><table><thead><tr><th>Title</th><th>URL</th><th>Owner</th><th>Type</th><th>Last updated</th><th>Views (90 days)</th><th>Score</th><th>Status</th><th>Next action</th></tr></thead><tbody><tr><td>Reset your password</td><td>/help/reset-password</td><td>Priya (Support)</td><td>How-to</td><td>2024-03-12</td><td>4,210</td><td>2/5</td><td>Update</td><td>Replace old login screenshots</td></tr><tr><td>Export reports to CSV</td><td>/help/export-csv</td><td>Unassigned</td><td>How-to</td><td>2021-07-02</td><td>18</td><td>1/5</td><td>Retire</td><td>Merge into "Exporting data" and redirect</td></tr></tbody></table></div>
+<p>Don't skip the numbers. One practitioner interviewed by Digital.gov called leaving analytics out of a first audit "a complete oversight." Traffic data shows you which pages matter most and which nobody reads.</p>
+<h3>Step 3: Choose your audit criteria</h3>
+<p>Write your criteria down before scoring anything, so every reviewer judges pages the same way. Use them as your <strong>content audit checklist</strong>:</p>
+<ul><li><strong>Accuracy:</strong> Does the page match how the product works today?</li><li><strong>Ownership:</strong> Is there a named person responsible for it?</li><li><strong>Usefulness:</strong> Does it help a reader finish a real task?</li><li><strong>Clarity:</strong> Plain language, clear headings, short paragraphs, and steps in order.</li><li><strong>Findability:</strong> A clear title and a description that match how people search.</li><li><strong>Duplication:</strong> Does another page already answer the same question?</li></ul>
+<p>Many teams also tag each page with <strong>ROT</strong>: redundant, outdated, or trivial. It's a quick way to spot the pages most likely to go.</p>
+<h3>Step 4: Score every page</h3>
+<p>Go through the inventory row by row and score each page against your criteria. Add a short note on what's wrong, not just a score.</p>
+<p>Automated checks help with the mechanical parts, like broken links, reading level, and missing metadata. They can't tell you if a step is now wrong because a button moved. A person who knows the product still needs to read each page.</p>
+<p>To keep reviewers consistent, keep a shared log of decisions and edge cases. The UK transport audit did exactly that across several agencies. It also recommended asking "should this page be removed?" first, because the answer shapes every other question.</p>
+<h3>Step 5: Decide to keep, update, or retire</h3>
+<p>Give every page one status:</p>
+<ul><li><strong>Keep:</strong> Accurate and useful. Confirm the owner and set the next review date.</li><li><strong>Update:</strong> Worth keeping but wrong or unclear. Write down exactly what needs to change and assign it.</li><li><strong>Retire:</strong> Outdated, duplicated, or unused. Remove it or merge it into a better page.</li></ul>
+<p>Be careful with retiring. GOV.UK's publishing guidance says guidance-type content should usually be updated rather than withdrawn. When you do remove a page, redirect its URL to the best current page. Readers keep their bookmarks working, search engines follow the redirect, and the old version stops showing up.</p>
+<p>A simple test from that same guidance helps when you're unsure: will leaving the page as it is get in the way of someone who isn't an expert?</p>
+<h3>Step 6: Share the findings and act on them</h3>
+<p>An audit spreadsheet is useful to you. It's rarely useful to your manager. Share the findings in layers: a few headline numbers, a short report, and the full spreadsheet for anyone who wants detail.</p>
+<p>Then turn the "update" and "retire" lists into real tasks with owners and due dates. Plan for the time this takes. The transport audit team advised dedicating someone to the work instead of fitting it around other jobs.</p>
+<h2>Make documentation maintenance a routine, not a project</h2>
+<p>A one-off audit gets your docs clean. A routine keeps them that way. For large libraries, Digital.gov's contributors suggest a rolling audit, where you review a slice of content each month instead of everything at once.</p>
+<p>A simple <strong>documentation review process</strong> looks like this:</p>
+<ol><li><strong>Give every page an owner.</strong> Nielsen Norman Group stresses that inventories and audits need continuous attention from people who own them, not a side task for whoever has time.</li><li><strong>Set review dates.</strong> High-traffic and fast-changing pages get reviewed more often than stable reference pages.</li><li><strong>Tie reviews to releases.</strong> When a feature changes, the related pages go on the review list that week.</li><li><strong>Watch reader signals.</strong> Low ratings, repeated support tickets, and failed searches point to pages that need work between audits.</li><li><strong>Keep your inventory live.</strong> The spreadsheet from your first audit becomes the list you work from every month.</li></ol>
+<h2>How Sonat helps keep documentation current</h2>
+<p>Your tools should make this routine easier, not harder. <a href="https://sonat.com">Sonat</a> keeps your manuals and knowledge base in one place, so your inventory starts from a single source of truth instead of scattered files.</p>
+<p>Every topic keeps an unlimited version history, so you can see what changed and restore an older version if an update goes wrong. Approval workflows let a subject-matter expert sign off on changes before they go live. A built-in readability guide flags hard-to-read pages, and reader feedback on every topic shows you which articles are letting people down. Search Console and Google Analytics integrations show you which pages people actually find.</p>
+<h2>Conclusion</h2>
+<p>A documentation audit isn't about making your library smaller. It's about making every page you keep accurate, owned, and worth reading.</p>
+<p>Start with your most-visited pages. Build the inventory, score each page against clear criteria, and decide whether to keep, update, or retire it. Then make review a habit, so your readers, your support team, and the AI tools that quote you all get the right answer.</p>
+</article>
+</main>
+</body>
+</html>
