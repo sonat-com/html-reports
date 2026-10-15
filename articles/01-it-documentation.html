@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT Documentation: What to Document &amp; How to Keep It Current</title>
+<meta name="description" content="Learn what IT documentation should include, how to structure it so people find answers, and simple habits to keep it current, with a template and example.">
+<style>
+  :root { --text:#1f2933; --muted:#52606d; --accent:#1d6fd8; --border:#e4e7eb; --soft:#f5f7fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#ffffff; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size:18px; line-height:1.7; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 72px; }
+  h1 { font-size:2.1rem; line-height:1.25; margin:0 0 24px; letter-spacing:-0.01em; }
+  h2 { font-size:1.5rem; line-height:1.3; margin:48px 0 12px; }
+  h3 { font-size:1.2rem; line-height:1.35; margin:32px 0 8px; }
+  p, ul, ol { margin:0 0 18px; }
+  ul, ol { padding-left:1.4em; }
+  li { margin-bottom:8px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  strong { font-weight:650; }
+  table { width:100%; border-collapse:collapse; margin:8px 0 24px; font-size:0.95rem; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--soft); font-weight:600; }
+  .table-wrap { overflow-x:auto; }
+  .example { background:var(--soft); border-left:4px solid var(--border); border-radius:6px; padding:16px 20px; margin:0 0 20px; }
+  .example.good { border-left-color:var(--accent); }
+  .example p:last-child, .example ol:last-child { margin-bottom:0; }
+  .label { display:block; font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px; }
+  .meta { color:var(--muted); font-style:italic; }
+  @media (max-width:600px) { body { font-size:17px; } main { padding:32px 16px 56px; } h1 { font-size:1.7rem; } h2 { font-size:1.3rem; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>IT Documentation: A Practical Guide to What to Write Down and How to Keep It Current</h1>
+
+<p>Every IT team has a person everyone asks. They know which switch feeds the second floor, why the backup job runs at 2 a.m., and how to reset the badge printer. That works until they go on vacation, change roles, or get paged at 3 a.m. with no notes to hand off.</p>
+
+<p>This guide covers what IT documentation should include, how to structure it so people find answers fast, and a simple routine to keep it accurate. No special tools or technical writing background required.</p>
+
+<h2>What is IT documentation?</h2>
+
+<p><strong>IT documentation is the written record of how an organization's technology is set up, run, and fixed.</strong> It covers assets, networks, system configurations, repeatable procedures, incident plans, and guides for employees. Good IT documentation lets anyone on the team do the work without relying on one person's memory.</p>
+
+<p>It is not one giant document. It is a set of short, focused pages, each with one job.</p>
+
+<h2>Why IT documentation matters, even for small teams</h2>
+
+<p>It's easy to treat documentation as something to do "when things calm down." Three practical reasons to start sooner:</p>
+
+<ul>
+  <li><strong>Faster recovery when something breaks.</strong> Google's Site Reliability Engineering book reports that recording best practices ahead of time in a playbook produces roughly a 3x improvement in mean time to repair, compared with "winging it." Written steps help most when pressure is highest.</li>
+  <li><strong>Safer handoffs.</strong> When knowledge lives in one person's head, every absence or resignation is a risk. Written procedures let a colleague pick up the work on day one.</li>
+  <li><strong>A stronger security baseline.</strong> The U.S. Cybersecurity and Infrastructure Security Agency (CISA) lists maintaining an up-to-date asset inventory, documenting current network topology, and maintaining incident response plans among its Cross-Sector Cybersecurity Performance Goals. You can't protect what you haven't written down.</li>
+</ul>
+
+<h2>What IT documentation should include</h2>
+
+<p>You don't need everything at once. Most teams get the most value from these six document types, roughly in this order.</p>
+
+<h3>1. Asset and system inventory</h3>
+
+<p>A list of what you own and run: hardware, software, cloud services, licenses, and who owns each one. CISA's goals describe a regularly updated inventory covering data, hardware, software, systems, facilities, and personnel. Start with a simple table: item, owner, location, purpose, and renewal or end-of-life date.</p>
+
+<h3>2. Network documentation</h3>
+
+<p>Network documentation shows how everything connects. At minimum, capture:</p>
+
+<ul>
+  <li>A current network diagram (sites, firewalls, switches, VLANs, Wi-Fi)</li>
+  <li>IP address ranges and what each one is for</li>
+  <li>Internet circuits with provider contact details</li>
+  <li>Where remote access comes in and who can use it</li>
+</ul>
+
+<p>CISA's goal here is simple: maintain accurate documentation of your <em>current</em> network topology. An old diagram can be worse than none, because people trust it.</p>
+
+<h3>3. System documentation and configuration baselines</h3>
+
+<p>System documentation records how each important system is configured and why. NIST Special Publication 800-128 describes security-focused configuration management: managing and monitoring how systems are configured so they stay secure while still doing their job. In practice, that means one page per key system with its baseline settings, dependencies, backup method, and a short change history.</p>
+
+<h3>4. IT process documentation for recurring tasks</h3>
+
+<p>These are the step-by-step guides for the work you repeat: creating a user account, offboarding an employee, rotating a certificate, restoring a file from backup. If a task happens more than once a quarter, or would be painful to rediscover, write it down.</p>
+
+<h3>5. Incident response and recovery plans</h3>
+
+<p>What to do when something goes wrong: who to call, how to decide severity, how to communicate, and how to restore service. NIST SP 800-34 covers contingency planning for information systems and ties it to incident response and disaster recovery. Your version can start as two pages: contacts and escalation on the first, recovery steps for your most critical systems on the second.</p>
+
+<h3>6. Onboarding and end-user guides</h3>
+
+<p>This is the documentation your colleagues outside IT actually see. It covers getting set up on day one, connecting to Wi-Fi and VPN, resetting a password, and requesting software. Clear self-service guides answer common questions before they become tickets.</p>
+
+<h2>How to structure IT documentation so people find answers</h2>
+
+<p>The biggest structural mistake is mixing different jobs on one page. A setup tutorial, a troubleshooting procedure, and a reference table all end up in one long wiki page that no one reads.</p>
+
+<p>The Diátaxis framework, a popular approach among technical writers, splits documentation into four types based on what the reader needs:</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Reader need</th><th>Document type</th><th>IT example</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Learning something new</td><td>Tutorial</td><td>"Your first week: setting up your laptop"</td></tr>
+    <tr><td>Getting a task done</td><td>How-to guide</td><td>"How to offboard an employee"</td></tr>
+    <tr><td>Looking up a fact</td><td>Reference</td><td>Network diagram, IP plan, asset list</td></tr>
+    <tr><td>Understanding why</td><td>Explanation</td><td>"Why we segment guest Wi-Fi"</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Keep each page to one of these jobs and link between them. A how-to guide can link to the reference table it relies on instead of copying it.</p>
+
+<h3>A simple IT documentation template</h3>
+
+<p>Consistent pages are faster to read and easier to write. For procedures, this template covers most needs:</p>
+
+<ol>
+  <li><strong>Title</strong> — a clear verb and object ("Restore a file from backup")</li>
+  <li><strong>Purpose</strong> — one sentence on when to use this page</li>
+  <li><strong>Before you start</strong> — access, tools, and approvals needed</li>
+  <li><strong>Steps</strong> — numbered, one action per step, with expected results</li>
+  <li><strong>If something goes wrong</strong> — common errors and who to escalate to</li>
+  <li><strong>Owner and last review date</strong> — who keeps this page accurate</li>
+</ol>
+
+<p>For system pages, swap the steps for configuration details, dependencies, and change history.</p>
+
+<h2>IT documentation best practices for keeping docs current</h2>
+
+<p>Writing the first version is the easy part. Keeping it accurate is where most IT documentation fails. The Write the Docs community puts it bluntly: incorrect documentation is worse than missing documentation. These habits keep pages trustworthy:</p>
+
+<ul>
+  <li><strong>Give every page an owner.</strong> A named person, not "IT." When ownership is shared by everyone, it belongs to no one.</li>
+  <li><strong>Update docs as part of the work.</strong> Make it part of finishing a task: close a ticket that revealed a gap, and update the page. Change a firewall rule, and update the network documentation. Don't save it for a cleanup week.</li>
+  <li><strong>Set review dates by risk.</strong> Review incident and recovery plans on a fixed schedule and after every real incident. Review stable reference pages less often.</li>
+  <li><strong>Keep version history.</strong> When a change causes trouble, you need to see what the page said last month and who changed it.</li>
+  <li><strong>Archive, don't hoard.</strong> Retire pages for systems you no longer run. Old pages pollute search results and erode trust in everything else.</li>
+  <li><strong>Ask readers for feedback.</strong> A simple "Was this helpful?" or comment option shows you which pages confuse people.</li>
+</ul>
+
+<h2>IT documentation examples: before and after</h2>
+
+<p>A quick example of the same procedure, written two ways.</p>
+
+<div class="example">
+  <span class="label">Before</span>
+  <p>VPN issues — check the client, usually it's the cert. Ask Sam if it's the old laptops.</p>
+</div>
+
+<div class="example good">
+  <span class="label">After</span>
+  <p><strong>Fix "VPN certificate expired" errors</strong><br>
+  <em>Use this when a user can't connect to VPN and sees a certificate error.</em></p>
+  <ol>
+    <li>Ask the user for the exact error message and their laptop's asset tag.</li>
+    <li>In the device management console, open the device and select <strong>Renew certificate</strong>.</li>
+    <li>Ask the user to restart the VPN client. They should connect within one minute.</li>
+    <li>If the laptop is on the legacy model list, follow "Re-enroll legacy laptops" instead.</li>
+  </ol>
+  <p class="meta">Owner: Network lead · Review: every 6 months</p>
+</div>
+
+<p>The second version can be followed by someone who has never seen the problem. It names its owner, so it won't quietly go stale.</p>
+
+<h2>Where to start this week</h2>
+
+<p>If your IT documentation is scattered or missing, don't try to fix it all at once:</p>
+
+<ol>
+  <li><strong>Pick the five questions you answer most often</strong> and write a short how-to guide for each.</li>
+  <li><strong>Draw your current network on one page</strong>, even roughly, and add an owner and review date.</li>
+  <li><strong>Write the two-page incident plan</strong>: contacts and escalation, then recovery steps for your most critical system.</li>
+</ol>
+
+<p>Then grow from there, one page at a time, as part of normal work.</p>
+
+<h2>Conclusion</h2>
+
+<p>Good IT documentation isn't about volume. It's a small set of focused, owned, and current pages that let anyone on the team understand your systems and act with confidence. Start with what hurts most, keep each page to one job, and build updates into the work itself.</p>
+
+<p>If you'd rather write in a familiar editor than learn a new tool, <a href="https://sonat.com">Sonat</a> lets you draft in Google Docs and publish searchable IT documentation with version history, approval workflows, and private access for internal guides. The Free plan needs no credit card, so you can publish your first pages today.</p>
+</article>
+</main>
+</body>
+</html>
