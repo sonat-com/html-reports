@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Readability Score: What It Means for Your Documentation</title>
+<meta name="description" content="What a readability score measures, which Flesch Reading Ease target fits your docs, where scores mislead, and five edits that make docs easier to read.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#1f2933;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.7}
+main{max-width:720px;margin:0 auto;padding:48px 20px 72px}
+h1{font-size:2.1rem;line-height:1.25;margin:0 0 24px;color:#102a43}
+h2{font-size:1.45rem;line-height:1.3;margin:48px 0 12px;color:#102a43}
+h3{font-size:1.15rem;margin:32px 0 8px}
+p,ul,ol{margin:0 0 18px}
+li{margin:0 0 8px}
+a{color:#1a6fd6;text-decoration:underline;text-underline-offset:2px}
+figure{margin:32px 0}
+img{display:block;width:100%;height:auto;border-radius:12px}
+table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #e4e7eb}
+th{background:#f5f7fa;font-weight:600}
+strong{color:#102a43}
+@media (max-width:600px){body{font-size:17px}h1{font-size:1.7rem}main{padding:32px 16px 56px}}
+</style>
+</head>
+<body>
+<main>
+<h1>Readability Score: What It Means for Your Documentation</h1>
+<p>Your help article is accurate, complete, and reviewed. Readers still open a support ticket asking how to do the thing it explains. Often the problem isn't what the article says. It's how hard it is to read.</p>
+<p>A readability score gives you a quick, objective signal about that. This guide explains what the score measures, which target fits your audience, where the number can mislead you, and the specific edits that move it in the right direction.</p>
+<figure><img src="images/01-readability-score-hero.png" alt="A support agent at a desk looking confused at a printed help article while a colleague standing beside them points at the page" loading="lazy"></figure>
+<h2>What is a readability score?</h2>
+<p>A readability score is a number that estimates how hard a piece of text is to read, based on how long its sentences are and how long its words are. Shorter sentences and shorter words produce an easier score. Most scores are reported either on a 0–100 scale or as a school grade level.</p>
+<p>Usability researchers at Nielsen Norman Group separate three different things that are easy to mix up:</p>
+<ul><li><strong>Legibility:</strong> can people see and recognize the characters? That's typography.</li><li><strong>Readability:</strong> how complex are the words and sentences? That's what a readability score estimates.</li><li><strong>Comprehension:</strong> do readers understand the meaning and draw the right conclusions? That's the real goal.</li></ul>
+<p>A readability score only covers the middle layer. Keep that in mind; we'll come back to it.</p>
+<h2>How Flesch Reading Ease works</h2>
+<p>The most common readability score is the Flesch Reading Ease test, created by Rudolf Flesch. It uses two inputs: average sentence length and average syllables per word.</p>
+<p><strong>Flesch Reading Ease = 206.835 − 1.015 × (words ÷ sentences) − 84.6 × (syllables ÷ words)</strong></p>
+<p>Higher is easier. Scores usually fall between 0 and 100:</p>
+<table><thead><tr><th>Score</th><th>Reading level</th><th>What it means</th></tr></thead><tbody><tr><td>90–100</td><td>About 5th grade</td><td>Very easy to read</td></tr><tr><td>80–90</td><td>About 6th grade</td><td>Easy to read</td></tr><tr><td>70–80</td><td>About 7th grade</td><td>Fairly easy to read</td></tr><tr><td>60–70</td><td>About 8th–9th grade</td><td>Plain English</td></tr><tr><td>50–60</td><td>About 10th–12th grade</td><td>Fairly difficult to read</td></tr><tr><td>30–50</td><td>College</td><td>Difficult to read</td></tr><tr><td>10–30</td><td>College graduate</td><td>Very difficult to read</td></tr><tr><td>0–10</td><td>Professional</td><td>Extremely difficult to read</td></tr></tbody></table>
+<p>Because the syllable term carries a large weight, long words pull the score down fast. One "functionality" where "feature" would do costs you more than you'd expect.</p>
+<h2>Flesch–Kincaid grade level and its roots in technical manuals</h2>
+<p>The second score you'll see is the Flesch–Kincaid grade level. It uses the same two inputs but reports a U.S. school grade instead of a 0–100 number:</p>
+<p><strong>Grade level = 0.39 × (words ÷ sentences) + 11.8 × (syllables ÷ words) − 15.59</strong></p>
+<p>A result of 8.0 means a typical eighth grader should be able to read the text.</p>
+<p>This formula has a direct link to documentation. In 1975, J. Peter Kincaid and his colleagues recalculated readability formulas for the U.S. Navy. They tested 531 enlisted personnel at technical training schools and measured how well they understood passages from the Navy's own training manuals. In other words, one of the most widely used readability scores was calibrated on people reading technical instructions.</p>
+<h2>What readability score should documentation aim for?</h2>
+<p>There's no single right number, because the right target depends on who reads your docs. Two reference points help:</p>
+<ul><li><strong>General audiences:</strong> Nielsen Norman Group recommends writing so that an eighth grader can understand the text with minimal effort. On the Flesch scale, that's roughly 60–70.</li><li><strong>Educated or specialist audiences:</strong> for B2B and specialist readers, the same researchers suggest a 12th-grade level is often a good target.</li></ul>
+<p>For most documentation, a sensible approach looks like this:</p>
+<ul><li><strong>Customer-facing help centers and user manuals:</strong> aim for plain English, around grade 8 or a Flesch score of 60 or above.</li><li><strong>Internal docs for specialists</strong>, such as admin guides or runbooks: grade 10–12 is acceptable, as long as the extra difficulty comes from necessary terms, not long sentences.</li></ul>
+<p>Don't assume experts want harder text, though. UK government content guidance notes that research shows people with higher literacy levels also prefer plain English, because it lets them take in information faster.</p>
+<h2>Where readability scores mislead</h2>
+<p>A readability score is a useful smoke alarm, not a verdict. Nielsen Norman Group calls the formulas "only an approximation" of how hard text really is to understand. Watch for these traps:</p>
+<ul><li><strong>Necessary terms lower the score.</strong> A word like "authentication" adds syllables, but if your readers know it, it helps them. Specialist audiences understand their own vocabulary.</li><li><strong>Short doesn't mean clear.</strong> "Toggle it. Then sync. Done." scores as very easy and still confuses people. Formulas can't tell whether a sentence makes sense.</li><li><strong>Layout is invisible to the formula.</strong> Readability formulas were originally developed for school books, and they ignore layout. A wall of text and a well-headed page with a numbered list can score the same, even though the second is far easier to use.</li><li><strong>Chasing the number backfires.</strong> Splitting every sentence and swapping every long word can make docs choppy and vague.</li></ul>
+<p>Use the score to find passages worth a second look. Then judge those passages as a reader would.</p>
+<figure><img src="images/01-readability-score-inline-1.png" alt="A technical writer at a table crossing out a printed draft with a red pen while a teammate standing beside her takes notes on a clipboard" loading="lazy"></figure>
+<h2>How to check your documentation's readability score</h2>
+<p>You don't need to score every page at once. A quick, repeatable check works better:</p>
+<ol><li><strong>Pick your most-visited pages.</strong> Start where readability problems affect the most readers, such as getting-started guides and your top help articles.</li><li><strong>Score each topic separately.</strong> An average across a whole manual hides the one dense page that generates tickets.</li><li><strong>Sort by worst score.</strong> Fix the hardest pages first. They usually have a few very long sentences doing most of the damage.</li><li><strong>Edit, then re-score.</strong> Make the changes below and check that the score moved for the right reasons, not just because you cut useful detail.</li><li><strong>Set a team standard.</strong> Agree on a minimum score per audience so every author aims at the same target.</li></ol>
+<h2>How to improve readability in technical writing</h2>
+<p>These five edits do the most work, and each one raises your score for the right reasons.</p>
+<h3>1. Split long sentences</h3>
+<p>Sentence length is half the formula. GOV.UK's content guidance suggests splitting sentences over 25 words. In instructions, aim for one action per sentence.</p>
+<p><strong>Before (29 words):</strong> "Before you begin the configuration process, you should make sure that all of the necessary permissions have been assigned to the user accounts that will be accessing the dashboard."</p>
+<p><strong>After (3 sentences, 19 words in total):</strong> "Before you start, check permissions. Each user who needs the dashboard must have access. Assign any missing permissions first."</p>
+<h3>2. Choose shorter, everyday words</h3>
+<p>Swap formal words for common ones when the meaning is the same: "use" for "utilize," "help" for "facilitate," "start" for "initiate," "buy" for "purchase." Keep the technical terms your readers actually need, and explain each one the first time you use it.</p>
+<h3>3. Use the active voice</h3>
+<p>"Select <strong>Save</strong>" is shorter and clearer than "The <strong>Save</strong> button should be selected." Active voice tells readers who does what, which matters most in step-by-step instructions.</p>
+<h3>4. Keep paragraphs short</h3>
+<p>GOV.UK guidance suggests no more than five sentences per paragraph. In docs, two or three is often better. Short paragraphs give readers more places to rest and more entry points when they scan.</p>
+<h3>5. Add structure the formula can't see</h3>
+<p>Descriptive subheadings, numbered steps, and bulleted lists won't change a Flesch score much. They do make pages much easier to use. Check that headings appear regularly, so no section turns into a wall of text.</p>
+<h2>Make readability part of your publishing workflow</h2>
+<p>Readability checks work best when they happen while you write, not after a reader complains. Sonat includes a built-in readability analyzer that scores each topic as you write. It checks Flesch Reading Ease, passive voice, transition words, paragraph length, and how evenly subheadings are spread. You can also set readability rules in your approval workflow, so a topic that falls below your standard can't be published until someone fixes it. Readability metrics are included on every plan, including the <a href="https://sonat.com/pricing">Free plan</a>.</p>
+<h2>Write for the reader, check with the score</h2>
+<p>A readability score won't write clear documentation for you. But it will point to the long sentence, the stacked jargon, and the paragraph that never ends. Pick a target that fits your audience, fix what the score flags, and read the result as your customer would.</p>
+<p>For more on clear writing, see our guides to <a href="https://sonat.com/@sonat/sonat-articles/01-plain-language-technical-writing?lang=en">plain-language technical writing</a> and <a href="https://sonat.com/@sonat/sonat-articles/01-how-to-write-step-by-step-instructions?lang=en">writing step-by-step instructions</a>, or explore <a href="https://sonat.com/features/">Sonat's documentation features</a>.</p>
+</main>
+</body>
+</html>
