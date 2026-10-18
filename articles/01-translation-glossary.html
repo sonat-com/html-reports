@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translation Glossary: Keep Docs Consistent in Every Language</title>
+<meta name="description" content="Learn what a translation glossary is, what to put in it, and how to build one that keeps your documentation consistent in every language.">
+<style>
+  :root { --text:#1f2933; --muted:#52606d; --accent:#1f6feb; --line:#e4e7eb; --soft:#f5f7fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#ffffff; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:18px; line-height:1.7; }
+  main { max-width:760px; margin:0 auto; padding:48px 20px 72px; }
+  h1 { font-size:2.2rem; line-height:1.2; margin:0 0 24px; letter-spacing:-0.01em; }
+  h2 { font-size:1.55rem; line-height:1.3; margin:48px 0 12px; }
+  h3 { font-size:1.2rem; line-height:1.35; margin:32px 0 8px; }
+  p, ul { margin:0 0 18px; }
+  ul { padding-left:1.3em; }
+  li { margin-bottom:6px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  img { display:block; width:100%; height:auto; border-radius:12px; margin:28px 0; }
+  code { font-family:SFMono-Regular,Consolas,Menlo,monospace; font-size:0.9em; background:var(--soft); padding:2px 6px; border-radius:4px; }
+  .table-wrap { overflow-x:auto; margin:0 0 24px; }
+  table { width:100%; border-collapse:collapse; font-size:0.95rem; }
+  th, td { text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); }
+  th { background:var(--soft); font-weight:600; }
+  blockquote { margin:0 0 24px; padding:14px 18px; background:var(--soft); border-left:4px solid var(--accent); border-radius:6px; }
+  blockquote p { margin:0; }
+  .cta { margin-top:32px; padding:20px 22px; background:var(--soft); border-radius:12px; }
+  @media (max-width:600px) {
+    body { font-size:17px; }
+    main { padding:32px 16px 56px; }
+    h1 { font-size:1.75rem; }
+    h2 { font-size:1.35rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>Translation Glossary: How to Keep Your Docs Consistent in Every Language</h1>
+
+<p>Your English manual calls it a &ldquo;workspace.&rdquo; The German version says &ldquo;Arbeitsbereich&rdquo; on one page and &ldquo;Projektraum&rdquo; on the next. The Spanish help center leaves it in English. Nobody made a mistake on purpose. There was simply no shared list of terms.</p>
+
+<p>A translation glossary is that list. This guide explains what goes in one, how it differs from translation memory and a style guide, and how to build and maintain a glossary your writers, reviewers, and machine translation can all follow.</p>
+
+<img src="images/01-translation-glossary-hero.png" alt="Two colleagues at a desk, one at a laptop and one reading a manual, discussing a color-coded term list on the wall">
+
+<h2>What is a translation glossary?</h2>
+
+<p>A translation glossary is a shared list of the terms your documentation must translate the same way every time. Each entry gives the source term, a short definition, and the approved translation in every target language. It also lists the words that should never be translated, like product names.</p>
+
+<p>Glossaries go by other names, too. Translators often call a structured one a <strong>termbase</strong>. Localization teams may say <strong>localization glossary</strong> or <strong>multilingual glossary</strong>. The idea is the same: one agreed answer per term.</p>
+
+<h2>Why your documentation needs one</h2>
+
+<p>Documentation repeats itself on purpose. The same button, setting, and feature name show up in dozens of topics. Readers learn your words, then search for them. When terms drift, problems follow:</p>
+
+<ul>
+  <li><strong>Readers get confused.</strong> Two names for one thing look like two different things.</li>
+  <li><strong>Search breaks.</strong> A customer who searches for the term in your UI won&rsquo;t find the topic that uses a synonym.</li>
+  <li><strong>Translated docs stop matching the product.</strong> If your interface says one word and your manual says another, users can&rsquo;t follow the steps.</li>
+  <li><strong>Review takes longer.</strong> Without a reference, every reviewer debates the same terms again.</li>
+</ul>
+
+<p>Machine translation makes this more urgent, not less. A translation engine doesn&rsquo;t know your product. Left alone, it may translate a feature name as an everyday word, or pick a different translation of the same word in different sentences. A glossary gives it the answer in advance.</p>
+
+<h2>Translation memory vs. glossary vs. style guide</h2>
+
+<p>These three tools work together, but they do different jobs.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Tool</th><th>What it stores</th><th>What it controls</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Translation glossary</strong></td><td>Single terms and short phrases, with approved translations</td><td>Which word to use</td></tr>
+    <tr><td><strong>Translation memory</strong></td><td>Full sentences you&rsquo;ve already translated</td><td>Reusing past translations</td></tr>
+    <tr><td><strong>Style guide</strong></td><td>Rules for tone, grammar, and formatting</td><td>How to write</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>A common question is whether translation memory makes a glossary unnecessary. Research suggests it doesn&rsquo;t. A 2025 study of machine translation for technical documentation compared a system trained only on translation memory with one that also used a glossary. With good bilingual data, translation memory alone came close on term accuracy. But the glossary still improved consistency, and terminology errors appeared in every setup. The author&rsquo;s conclusion: terminology databases remain essential for quality checks.</p>
+
+<p>Translation memory reuses what you&rsquo;ve translated. A glossary says what&rsquo;s correct. If you already have a <a href="https://sonat.com/blog/documentation-style-guide/">documentation style guide</a>, the glossary is its natural companion.</p>
+
+<h2>What to put in a translation glossary</h2>
+
+<p>Keep entries short. Glossaries work best for single words and short phrases, not full sentences. A sentence belongs in translation memory.</p>
+
+<p>Good candidates for your glossary:</p>
+
+<ul>
+  <li>Product, plan, and feature names</li>
+  <li>Labels on buttons, menus, and settings</li>
+  <li>Words with more than one meaning in your field</li>
+  <li>Industry and legal terms your readers must recognize</li>
+  <li>Terms you&rsquo;ve retired, so nobody brings them back</li>
+</ul>
+
+<p>Words with more than one meaning deserve extra care. The classic example is &ldquo;bat,&rdquo; which can mean sports equipment or an animal. Your product will have its own versions. &ldquo;Publish,&rdquo; &ldquo;variant,&rdquo; and &ldquo;draft&rdquo; can all mean something specific in your docs and something vaguer in everyday language.</p>
+
+<h3>A translation glossary template</h3>
+
+<p>A spreadsheet is enough to start. Use one row per concept and one column per field:</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Field</th><th>Example</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Term (source)</td><td>workspace</td></tr>
+    <tr><td>Part of speech</td><td>noun</td></tr>
+    <tr><td>Definition</td><td>The shared area where a team&rsquo;s manuals are stored and edited</td></tr>
+    <tr><td>Context / example</td><td>&ldquo;Invite a colleague to your workspace.&rdquo;</td></tr>
+    <tr><td>Status</td><td>Preferred</td></tr>
+    <tr><td>Avoid</td><td>project space, work area</td></tr>
+    <tr><td>Translate?</td><td>Yes</td></tr>
+    <tr><td>German</td><td>Arbeitsbereich</td></tr>
+    <tr><td>Spanish</td><td>espacio de trabajo</td></tr>
+    <tr><td>Notes</td><td>Lowercase unless it starts a sentence</td></tr>
+    <tr><td>Owner / review cycle</td><td>Docs lead, quarterly</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The <strong>Avoid</strong> column matters as much as the approved term. It records the synonyms writers keep reaching for, so reviewers can catch them quickly.</p>
+
+<blockquote><p><strong>Tip:</strong> Write one entry per <em>concept</em>, not per word. If &ldquo;account&rdquo; means both a customer organization and a single user login in your product, make two entries with two definitions.</p></blockquote>
+
+<h3>Your do-not-translate list</h3>
+
+<p>Some words should stay exactly as they are in every language. Mark these clearly with &ldquo;No&rdquo; in the <strong>Translate?</strong> column:</p>
+
+<ul>
+  <li>Your company and product names</li>
+  <li>Labels printed on hardware that ships in one language</li>
+  <li>Code, commands, file names, and API fields</li>
+  <li>Names of standards and regulations, when readers know them in their original form</li>
+</ul>
+
+<p>The web has a convention for this: the HTML <code>translate="no"</code> attribute tells translation tools to leave an element alone. The W3C, which maintains web standards, gives a documentation example: a German manual pointing to a printer whose panel button reads &ldquo;CONTINUE&rdquo; in English. Translate that word, and readers look for a button that doesn&rsquo;t exist.</p>
+
+<img src="images/01-translation-glossary-inline-1.png" alt="A writer at a desk sorting index cards into two labeled trays while a colleague checks a product box against a list">
+
+<h2>How to build a translation glossary in five steps</h2>
+
+<p>You don&rsquo;t need a terminology department, just a small, accurate list and the habit of using it.</p>
+
+<h3>1. Pull candidate terms from what you already have</h3>
+
+<p>Start with your product UI, your most-viewed help topics, and your support tickets. List every product name, setting, and label. Add terms that support agents explain often. That&rsquo;s usually where confusion lives.</p>
+
+<h3>2. Pick one preferred term per concept</h3>
+
+<p>For each concept, decide the word you&rsquo;ll use and record the ones you won&rsquo;t. Settle this in the source language first. If English uses three names for one feature, translators will faithfully reproduce all three.</p>
+
+<h3>3. Add a definition and an example</h3>
+
+<p>A definition tells translators <em>what</em> the term means. An example sentence shows <em>how</em> it&rsquo;s used. Together they prevent the most common error: a correct translation of the wrong meaning.</p>
+
+<h3>4. Approve translations with a native-speaking reviewer</h3>
+
+<p>Ask a native speaker who knows your product &mdash; a local support agent, partner, or customer &mdash; to approve each translation. Translate for the market, not word for word. Some terms read best translated; others are better left in English because that&rsquo;s what local users already say.</p>
+
+<h3>5. Put it where people actually work</h3>
+
+<p>A glossary that lives in a forgotten folder won&rsquo;t be used. Link it from your style guide and review checklist. Load it into your translation tools. If you document in Sonat, you can keep the glossary as its own topic in your manual, so writers and reviewers find it in the same place as the docs it governs.</p>
+
+<h2>Using a glossary with machine translation</h2>
+
+<p>Many machine translation services accept glossaries. You upload your term list, and the engine uses your approved translation whenever it finds a matching term. A few practical points:</p>
+
+<ul>
+  <li><strong>Simple files work.</strong> Translation services commonly accept glossaries as CSV or TSV files, with the source term in one column and its translation in the next.</li>
+  <li><strong>Watch capitalization.</strong> Some engines match glossary terms case-sensitively by default. &ldquo;Workspace&rdquo; at the start of a sentence may not match &ldquo;workspace.&rdquo;</li>
+  <li><strong>Still review the output.</strong> A glossary reduces term errors; it doesn&rsquo;t remove them. Check new translations against the glossary before you publish.</li>
+</ul>
+
+<p>If you&rsquo;ll move terms between tools, look for support for TBX (TermBase eXchange). It&rsquo;s an international standard (ISO 30042) for exchanging terminology data between translation and authoring tools.</p>
+
+<p>Sonat includes built-in machine translation, so you can produce each language version of your manual from a single source. Pair it with a glossary and a quick review, and every language stays consistent with the English original. For the bigger picture, see our guide to <a href="https://sonat.com/blog/documentation-localization-strategy/">building a documentation localization strategy</a>.</p>
+
+<h2>Keep your multilingual glossary up to date</h2>
+
+<p>Products change and features get renamed. An outdated glossary is worse than none, because it gives confident wrong answers. Build updates into the work you already do:</p>
+
+<ul>
+  <li><strong>Tie it to releases.</strong> When a feature is added or renamed, update the glossary in the same release checklist as the docs.</li>
+  <li><strong>Update everything at once.</strong> When a term changes, update the glossary, your translation memory, and the published topics. Otherwise the old term keeps coming back.</li>
+  <li><strong>Give it an owner.</strong> One person approves changes. Anyone can suggest them.</li>
+  <li><strong>Review it on a schedule.</strong> A quarterly check catches terms that drifted. Treat it like any other part of <a href="https://sonat.com/blog/documentation-governance/">documentation governance</a>.</li>
+</ul>
+
+<p>This is where terminology management stops being a one-time project and becomes a routine.</p>
+
+<h2>Start with twenty terms</h2>
+
+<p>You don&rsquo;t need a perfect, thousand-entry termbase to see results. Start with the twenty terms your readers see most: your product name, your main features, and the buttons in your most-used how-to guides. Agree on them, translate them once, and share the list.</p>
+
+<p>Every new topic and every new language then starts from the same words. Readers recognize what they&rsquo;re looking at, search works, and your docs say the same thing in every language.</p>
+
+<p class="cta">Ready to publish multilingual documentation from a single source? <a href="https://sonat.com/">Try Sonat for free</a>.</p>
+</article>
+</main>
+</body>
+</html>
