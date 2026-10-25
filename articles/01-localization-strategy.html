@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Localization Strategy for Documentation: A 7-Step Plan</title>
+<meta name="description" content="Build a localization strategy for your docs: what to translate first, how to pair machine translation with human review, and how to keep languages in sync.">
+<style>
+  :root { --text: #1f2933; --muted: #52606d; --accent: #2563eb; --line: #e4e7eb; --soft: #f5f7fa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 18px; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 28px; letter-spacing: -0.01em; }
+  h2 { font-size: 1.45rem; line-height: 1.3; margin: 48px 0 12px; }
+  p { margin: 0 0 18px; }
+  ul, ol { margin: 0 0 20px; padding-left: 24px; }
+  li { margin-bottom: 8px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(37, 99, 235, 0.3); }
+  a:hover { border-bottom-color: var(--accent); }
+  figure { margin: 28px 0 32px; }
+  img { display: block; width: 100%; height: auto; border-radius: 12px; }
+  .table-wrap { overflow-x: auto; margin: 0 0 22px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: var(--soft); font-weight: 600; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    main { padding: 32px 16px 64px; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.25rem; margin-top: 40px; }
+  }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>How to Build a Localization Strategy for Your Documentation</h1>
+
+<figure><img src="images/01-localization-strategy-hero.png" alt="A documentation team gathered around a world map, pinning translated manuals to different countries"></figure>
+
+<p>Your product ships to customers in a dozen countries, but your user manual and help center speak one language. Support tickets from those markets take longer to solve, and readers fall back on browser translation that mangles your screenshots and steps.</p>
+
+<p>A documentation localization strategy fixes this on purpose instead of one panicked translation project at a time. By the end of this guide, you'll know which content to localize first, how to write source docs that translate cleanly, how to combine machine translation with human review, and how to keep every language accurate after launch.</p>
+
+<h2>What is a localization strategy for documentation?</h2>
+
+<p>A localization strategy is a plan for adapting your documentation to each target market's language and culture: which content you localize, in which languages, in what order, with what level of review, and how you keep each version current. It turns translation from a one-off cost into a repeatable process.</p>
+
+<h2>Localization vs translation: what's the difference?</h2>
+
+<p>Translation changes the words. Localization adapts the whole experience. The W3C, the web's main standards body, defines localization as adapting content to "the language, cultural and other requirements of a specific target market," and notes it is often far more than translation.</p>
+
+<p>For documentation, that difference shows up in small details that break trust when you miss them:</p>
+
+<ul>
+  <li><strong>Dates, times, and numbers.</strong> Is 03/04 the third of April or the fourth of March? Is the decimal separator a period or a comma?</li>
+  <li><strong>Units and currency.</strong> A setup guide that lists torque in foot-pounds or prices in dollars may need metric units or local currency.</li>
+  <li><strong>Symbols, icons, and colors.</strong> An icon that reads as "OK" in one culture can confuse readers in another.</li>
+  <li><strong>Legal requirements.</strong> Safety notices, warranty terms, and privacy wording can differ by country.</li>
+  <li><strong>Address and contact formats.</strong> Postal codes, phone numbers, and name order all vary.</li>
+</ul>
+
+<p>A translated manual that keeps US-only date formats and a US support phone number is translated, not localized. Your strategy should decide which of these adaptations each language needs.</p>
+
+<h2>Why documentation localization pays off</h2>
+
+<p>The case is not only about reach. It's about whether people trust you enough to buy and stay.</p>
+
+<p>In a 2020 survey of 8,709 consumers in 29 countries, CSA Research found that 76% of online shoppers prefer to buy products with information in their native language, and 40% will never buy from websites in other languages. The same research found that 75% of respondents are more likely to buy from the same brand again when customer care is in their language.</p>
+
+<p>Documentation sits right at that customer care moment. Your knowledge base is often the first place a customer goes when something goes wrong. If the answer is in their language, they solve the problem and move on. If it isn't, they open a ticket, or they leave.</p>
+
+<h2>Step 1: Set goals and pick your target languages</h2>
+
+<p>Start with business goals, not a language list. Common goals for documentation localization include:</p>
+
+<ul>
+  <li>Fewer support tickets from a specific region</li>
+  <li>Faster onboarding for customers in a new market</li>
+  <li>Meeting a contract or regulatory requirement to provide manuals in a local language</li>
+</ul>
+
+<p>Then choose languages based on evidence you already have: where your customers and trial users are, which regions open the most tickets, and which markets sales is pushing into next. Two or three well-maintained languages beat ten neglected ones.</p>
+
+<h2>Step 2: Decide what to localize first</h2>
+
+<p>You don't need to translate everything on day one. Rank your content by impact and localize in tiers:</p>
+
+<ol>
+  <li><strong>Tier 1 — Critical:</strong> Getting-started guides, installation and setup instructions, safety and legal content, and your 20–30 most-viewed help articles.</li>
+  <li><strong>Tier 2 — High value:</strong> Troubleshooting guides, FAQs, and articles linked from in-app help.</li>
+  <li><strong>Tier 3 — Long tail:</strong> Release notes, advanced how-tos, and older articles with little traffic.</li>
+</ol>
+
+<p>Your page-view and search analytics show what readers actually open. Searches that return no results in a language are a strong sign of a gap.</p>
+
+<h2>Step 3: Write source content that translates well</h2>
+
+<p>The cheapest place to improve translation quality is the English original. The W3C calls this groundwork internationalization: designing content so it is easy to localize later.</p>
+
+<p>For technical writers, that means a few habits:</p>
+
+<ul>
+  <li><strong>Short, direct sentences.</strong> One instruction per step. Long, nested sentences multiply translation errors.</li>
+  <li><strong>Consistent terminology.</strong> If the button is "Save," never call it "Store" or "Submit" elsewhere. Keep a glossary and a do-not-translate list (product names, feature names, code).</li>
+  <li><strong>No idioms or wordplay.</strong> "Hit it out of the park" has no reliable equivalent in most languages.</li>
+  <li><strong>Text out of images.</strong> Put labels and instructions in the text, not baked into screenshots, so they can be translated without redrawing graphics.</li>
+  <li><strong>Room to grow.</strong> Translated text can run longer than the English original, so avoid layouts that only work at one text length.</li>
+</ul>
+
+<figure><img src="images/01-localization-strategy-inline-1.png" alt="A technical writer marking up a printed manual at a desk while a colleague compares two translated pages side by side"></figure>
+
+<h2>Step 4: Combine machine translation with human review</h2>
+
+<p>Machine translation is now fast and good enough to be the first draft for most documentation. It is not good enough to be the last word on everything. CSA Research's predictions for 2026 put it plainly: "Fully automated global content management remains unrealistic without human oversight."</p>
+
+<p>The practical answer is machine translation post-editing: let a translation engine produce the first draft, then have a fluent reviewer correct it. Match the level of review to the risk of the content:</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Content type</th><th>Suggested approach</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Safety warnings, legal and compliance text</td><td>Machine draft + full review by a qualified linguist or subject expert</td></tr>
+    <tr><td>Getting-started and setup guides</td><td>Machine draft + full review by a fluent reviewer</td></tr>
+    <tr><td>Troubleshooting and FAQ articles</td><td>Machine draft + spot-check of key steps and terms</td></tr>
+    <tr><td>Release notes and low-traffic articles</td><td>Machine draft + review when readers report issues</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Give reviewers your glossary and style notes before they start, so nobody fixes the same term twice in two different ways.</p>
+
+<h2>Step 5: Make every language findable</h2>
+
+<p>Localized docs only help if readers can find them, in search engines and on your site. Google's guidance for multilingual sites is clear on a few points:</p>
+
+<ul>
+  <li><strong>Use a separate URL for each language version.</strong> Google recommends this over switching languages with cookies or browser settings.</li>
+  <li><strong>Don't auto-redirect readers by language.</strong> Let them choose, and add visible links to the other language versions.</li>
+  <li><strong>Translate the whole page.</strong> Google uses the visible content of a page to determine its language, and it warns that translating only the boilerplate while leaving the main content in one language creates a poor experience.</li>
+</ul>
+
+<p>On your site, give each language its own search index so a reader searching in German gets German results. A clear language switcher on every page lets readers move between versions without starting over.</p>
+
+<h2>Step 6: Keep every language in sync</h2>
+
+<p>The hardest part of localization isn't the first launch. It's month six, when the English version has changed dozens of times and the Spanish version hasn't.</p>
+
+<p>Build sync into your workflow:</p>
+
+<ul>
+  <li><strong>One source of truth.</strong> Keep every language as a version of the same topic, not as separate copies scattered across folders.</li>
+  <li><strong>Trigger updates on change.</strong> When the source article changes, flag its translations as outdated and queue them for re-translation and review.</li>
+  <li><strong>Approve before publishing.</strong> Use the same review and approval workflow for translated content that you use for the original.</li>
+  <li><strong>Version history for every language.</strong> If a translation goes wrong, you should be able to restore the previous version in seconds.</li>
+</ul>
+
+<h2>Step 7: Measure what's working</h2>
+
+<p>A localization strategy is never finished. Track a short list of signals per language:</p>
+
+<ul>
+  <li>Page views and search terms per language</li>
+  <li>Searches with no results</li>
+  <li>Reader feedback and ratings on translated articles</li>
+  <li>Support ticket volume from each region before and after localization</li>
+</ul>
+
+<p>Use the numbers to decide where to deepen review, which tier to translate next, and which languages to add.</p>
+
+<h2>Localization best practices checklist</h2>
+
+<ul>
+  <li>Start from goals and customer data, not a wish list of languages</li>
+  <li>Localize in tiers, starting with setup, safety, and top articles</li>
+  <li>Write short, consistent, idiom-free source content with a glossary</li>
+  <li>Use machine translation for speed and human review for risk</li>
+  <li>Give each language its own URL, search index, and language switcher</li>
+  <li>Keep every language tied to one source and flag outdated translations</li>
+  <li>Measure per language and adjust</li>
+</ul>
+
+<h2>Start small, then scale</h2>
+
+<p>A good localization strategy doesn't start with translating everything. It starts with your most important content in your most important languages, a clean source, and a review process you can repeat.</p>
+
+<p><a href="https://sonat.com">Sonat</a> is built for exactly that workflow. Write in Google Docs or the Sonat editor, machine-translate your manuals and help center into the languages your customers speak, review each version through approval workflows, and publish every language under one topic with its own search. Try Sonat free, then turn on machine translation on the Business plan when you're ready to localize your first guide.</p>
+</article>
+</main>
+</body>
+</html>
