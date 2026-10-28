@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Guide Template: Write Fixes Users Can Follow</title>
+<meta name="description" content="Use this troubleshooting guide template to write help center fixes customers can follow alone, plus a worked example and tips to keep guides current.">
+<style>
+  :root { --text: #1f2937; --muted: #4b5563; --accent: #2563eb; --line: #e5e7eb; --soft: #f5f7fb; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 18px; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 72px; }
+  h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 28px; letter-spacing: -0.01em; }
+  h2 { font-size: 1.5rem; line-height: 1.3; margin: 48px 0 14px; }
+  h3 { font-size: 1.2rem; line-height: 1.35; margin: 32px 0 10px; }
+  p, ul, ol { margin: 0 0 18px; }
+  ul, ol { padding-left: 1.4em; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  img { display: block; width: 100%; height: auto; border-radius: 12px; margin: 28px 0; }
+  pre { background: var(--soft); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; overflow-x: auto; font-size: 0.88rem; line-height: 1.6; margin: 0 0 22px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  blockquote { margin: 0 0 22px; padding: 18px 22px; background: var(--soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; }
+  blockquote p:last-child, blockquote ol:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    main { padding: 32px 16px 56px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+<article>
+
+<h1>Troubleshooting Guide Template: How to Write Fixes Customers Can Follow</h1>
+
+<img src="images/01-troubleshooting-guide-template-hero.png" alt="A support writer arranging fix cards on a board while a customer at home sees a checkmark on their laptop">
+
+<p>A customer hits a problem, opens your help center, and starts reading. In the next two minutes they either fix it themselves or open a ticket. What decides it is usually the troubleshooting guide in front of them, not the help center software. A clear troubleshooting guide template makes every one of those guides easier to follow.</p>
+
+<p>The numbers show how often that moment goes wrong. A Gartner survey of 5,728 customers found that only 14% of service issues were fully resolved in self-service. Even issues customers called "very simple" were resolved only 36% of the time. The most common reason for failure was that customers couldn't find content relevant to their issue (43% of cases).</p>
+
+<p>This article gives you a troubleshooting guide template you can copy, a filled-in example, and the habits that keep guides accurate after you publish them.</p>
+
+<h2>What is a troubleshooting guide?</h2>
+
+<p>A troubleshooting guide is a help article that starts from a symptom the customer can see, lists the likely causes, and walks through fixes in a set order, from quickest to most involved. Each fix ends with a way to check that it worked. If nothing works, the guide says how to get help.</p>
+
+<p>Troubleshooting guides differ from how-to articles. A how-to article teaches a task the customer chose to do. A troubleshooting guide meets someone who is stuck, often frustrated, and usually short on time. That changes how you write it.</p>
+
+<h2>Why most troubleshooting documentation fails</h2>
+
+<p>Most weak troubleshooting documentation fails in one of three predictable ways:</p>
+
+<ul>
+  <li><strong>It's titled for the team, not the customer.</strong> "SMTP relay configuration" means nothing to someone whose emails aren't arriving. If the title doesn't match the customer's words, search won't surface it and they won't click it.</li>
+  <li><strong>It explains instead of instructs.</strong> Long paragraphs about how the system works bury the one action the reader needs. People scan help content. They don't read it top to bottom.</li>
+  <li><strong>It ends at a dead end.</strong> When the last fix fails, the customer has nowhere to go. They give up or open a ticket with no context, and your agent starts from zero.</li>
+</ul>
+
+<p>A good template blocks all three by building the right structure in from the start.</p>
+
+<h2>The troubleshooting guide template</h2>
+
+<p>Copy this structure into every troubleshooting article. Each part has one job.</p>
+
+<pre><code>Title:        Fix: &lt;symptom in the customer's words&gt;
+Applies to:   &lt;product, plan, version, or platform&gt;
+
+Symptoms
+- What the customer sees (error text, behavior, screen)
+
+Before you start
+- Anything they need: access, a device, a login
+
+Fix 1: &lt;quickest or most likely fix&gt;
+1. &lt;Location&gt;, &lt;action&gt;.
+2. &lt;Action&gt;.
+Check: &lt;how they know it worked&gt;
+
+Fix 2: &lt;next fix&gt;
+1. ...
+Check: ...
+
+Fix 3: &lt;most involved fix&gt;
+1. ...
+Check: ...
+
+Still not working?
+- How to contact support
+- What to include: &lt;details that speed things up&gt;
+
+Why this happens (optional)
+- One or two sentences on the cause, so they can avoid it next time</code></pre>
+
+<p>Here is what each section does:</p>
+
+<p><strong>Title.</strong> Name the symptom the way a customer would describe it: "Fix: Password reset email doesn't arrive," not "Email delivery issues." Keep titles in a consistent pattern across your help center so readers can scan a list of results quickly.</p>
+
+<p><strong>Applies to.</strong> One line that tells readers whether they're in the right place. It saves people on a different plan or platform from following steps that won't work for them.</p>
+
+<p><strong>Symptoms.</strong> List what the customer actually sees: the exact error message, the button that does nothing, the blank screen. Matching their experience confirms they've found the right guide, and exact error text helps search find it.</p>
+
+<p><strong>Fixes, in order.</strong> Put the fastest and most likely fix first and the slow or risky ones last. Most readers stop as soon as something works, so the order sets how long most of them spend on the problem.</p>
+
+<p><strong>Check.</strong> End every fix with a quick test: "Send a new reset email. It should arrive within a few minutes." Without a check, readers don't know whether to continue or stop.</p>
+
+<p><strong>Still not working?</strong> The escalation path. Tell customers exactly what to send support, such as screenshots, account email, device, and the fixes they already tried. A failed self-service attempt then becomes a ticket your agent can solve faster.</p>
+
+<h2>How to write a troubleshooting guide, step by step</h2>
+
+<h3>1. Start from real problems, not guesses</h3>
+
+<p>Pull your top recurring issues from support tickets, chat logs, and search terms people type into your help center. Write the guides for the problems customers actually have, in the order of how often they come up. Simple, one-line answers belong on your <a href="https://sonat.com/@sonat/sonat-articles/01-faq-page?lang=en">FAQ page</a>. Multi-step fixes belong in troubleshooting guides.</p>
+
+<h3>2. Collect the fixes from the people who solve them</h3>
+
+<p>Your support agents already know which fix works most often. Ask them for the sequence they use on calls and turn that sequence into the order of your fixes.</p>
+
+<h3>3. Write one action per step</h3>
+
+<p>Widely used technical style guides agree on the basics of procedures:</p>
+
+<ul>
+  <li>Use a numbered list for multi-step fixes.</li>
+  <li>Give each action its own step, and start it with a verb: "Select," "Open," "Restart."</li>
+  <li>Say <em>where</em> before <em>what</em>: "In <strong>Settings</strong>, select <strong>Notifications</strong>."</li>
+  <li>Put the action first and the result second.</li>
+  <li>Mark optional steps with "Optional:" at the start, so readers can skip them with confidence.</li>
+  <li>Keep each fix short enough that the reader doesn't lose their place.</li>
+</ul>
+
+<p>If one fix needs more than a handful of steps, it's probably two fixes, or it belongs in its own article that you link to.</p>
+
+<h3>4. Make it easy to scan</h3>
+
+<p>People looking for a fix are in a hurry. Usability research on help content recommends chunking content, building a clear visual hierarchy, highlighting keywords, and using numbered lists rather than paragraphs for steps. Use screenshots or short videos for tricky interactions, but always keep the text steps too. Not everyone can or wants to watch a video.</p>
+
+<h3>5. Test it with someone who didn't write it</h3>
+
+<p>Hand the draft to a colleague outside the team and watch them follow it on a real account. Every place they hesitate is a step that needs rewording. This one test catches more problems than any review checklist.</p>
+
+<img src="images/01-troubleshooting-guide-template-inline-1.png" alt="A colleague testing a printed troubleshooting guide on a laptop while the writer takes notes on a clipboard">
+
+<h2>Troubleshooting guide example</h2>
+
+<p>Here is the template filled in for a common issue:</p>
+
+<blockquote>
+  <p><strong>Fix: Password reset email doesn't arrive</strong></p>
+  <p><strong>Applies to:</strong> All plans, web and mobile</p>
+  <p><strong>Symptoms:</strong> You selected <strong>Forgot password</strong>, but no email arrived after several minutes.</p>
+  <p><strong>Fix 1: Check your spam or junk folder</strong></p>
+  <ol>
+    <li>In your email app, open the <strong>Spam</strong> or <strong>Junk</strong> folder.</li>
+    <li>Search for the sender name.</li>
+  </ol>
+  <p><strong>Check:</strong> If the email is there, open it and select <strong>Reset password</strong>. Mark the sender as safe so future emails reach your inbox.</p>
+  <p><strong>Fix 2: Confirm the email address on your account</strong></p>
+  <ol>
+    <li>On the sign-in page, select <strong>Forgot password</strong>.</li>
+    <li>Enter the email address you used to sign up, and check the spelling.</li>
+    <li>Select <strong>Send reset link</strong>.</li>
+  </ol>
+  <p><strong>Check:</strong> A new email should arrive within a few minutes.</p>
+  <p><strong>Fix 3: Ask your IT team to allow our emails</strong></p>
+  <ol>
+    <li>Send your IT team the sender address.</li>
+    <li>Ask them to add it to the allowed senders list.</li>
+  </ol>
+  <p><strong>Check:</strong> Request a new reset link after they confirm.</p>
+  <p><strong>Still not working?</strong> Contact support and include your account email, the time you requested the reset, and which fixes you tried.</p>
+</blockquote>
+
+<p>The guide is short, every fix ends with a check, and the reader always knows what to do next.</p>
+
+<h2>Troubleshooting flowchart or step list?</h2>
+
+<p>A troubleshooting flowchart works well when the right fix depends on a few yes/no questions, such as "Does the light blink?" or "Are you on Wi-Fi?". It shows the branches at a glance.</p>
+
+<p>Flowcharts get harder to use as they grow. Readers lose their place, small text is hard to read on phones, and an image of a flowchart can't be searched. A good compromise is to use a simple flowchart as an overview, then link each branch to a written fix in your template format. Customers get the map <em>and</em> the steps.</p>
+
+<h2>Keep troubleshooting guides current</h2>
+
+<p>A troubleshooting guide that describes last year's screens is worse than none at all, because it sends customers down the wrong path. Build maintenance into the process:</p>
+
+<ul>
+  <li><strong>Review after every release.</strong> If a screen, label, or setting changes, update the guides that mention it.</li>
+  <li><strong>Watch reader feedback.</strong> Article-level feedback shows you which guides are failing. In Sonat, every topic has a built-in feedback loop, so you can find the fixes readers struggle with and rewrite those first.</li>
+  <li><strong>Track repeat tickets.</strong> If tickets keep arriving for an issue that already has a guide, the guide isn't working. Check whether customers can find it and whether they can follow it. Our guide to <a href="https://sonat.com/@sonat/sonat-articles/01-ticket-deflection?lang=en">measuring ticket deflection</a> shows how to tell whether your help content is doing its job.</li>
+  <li><strong>Keep one source of truth.</strong> When a fix changes, update it in one place. Sonat keeps a full version history for every topic, so you can see what changed and restore an older version if needed.</li>
+  <li><strong>Translate the fixes, not just the homepage.</strong> Customers in other markets get stuck too. Sonat's machine translation covers 184 languages, so troubleshooting guides can reach them without a separate writing project.</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>The difference between a help center that deflects tickets and one that just exists often comes down to the troubleshooting guides. Name the symptom the way customers say it, order fixes from quickest to most involved, end every fix with a check, and always give a way out. Then keep the guides current as your product changes.</p>
+
+<p>If you want a home for your troubleshooting documentation that your whole support team can write in, without technical setup, <a href="https://sonat.com">try Sonat for free</a>.</p>
+
+</article>
+</main>
+</body>
+</html>
