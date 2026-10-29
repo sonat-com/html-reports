@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disaster Recovery Plan Template: What to Include</title>
+<meta name="description" content="A disaster recovery plan template, section by section, plus how to keep your IT DR plan current, owned, and reachable when systems go down.">
+<style>
+  :root { --ink:#1f2933; --muted:#52606d; --accent:#1769c2; --line:#e4e7eb; --bg:#ffffff; --soft:#f5f7fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+  main { max-width:720px; margin:0 auto; padding:56px 20px 80px; }
+  h1 { font-size:2.2rem; line-height:1.2; letter-spacing:-0.02em; margin:0 0 28px; }
+  h2 { font-size:1.5rem; line-height:1.3; margin:48px 0 12px; padding-top:8px; border-top:1px solid var(--line); }
+  h3 { font-size:1.15rem; line-height:1.4; margin:32px 0 8px; }
+  p, ul, ol { margin:0 0 18px; }
+  ul, ol { padding-left:1.4em; }
+  li { margin:0 0 8px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+  strong { font-weight:650; }
+  em { color:var(--muted); }
+  figure { margin:28px 0; }
+  img { display:block; width:100%; height:auto; border-radius:12px; background:var(--soft); }
+  @media (max-width:600px) { body { font-size:17px; } main { padding:32px 16px 56px; } h1 { font-size:1.75rem; } h2 { font-size:1.3rem; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>Disaster Recovery Plan Template: What to Include and How to Keep It Usable</h1>
+<figure><img src="images/01-disaster-recovery-plan-template-hero.png" alt="An IT team reviewing a disaster recovery plan binder at a table while one colleague points to a system diagram on the wall and another takes a call" loading="lazy"></figure>
+<p>Having a disaster recovery plan is the easy part. The trouble starts on the day you need it: the plan sits on the file server that just went down, the on-call number belongs to someone who left last spring, and the restore steps describe a system you replaced two years ago.</p>
+<p>A good disaster recovery plan template fixes the first problem: it tells you what to write down. This guide answers what a disaster recovery plan should include, section by section, with a short example for each. It also covers the part templates usually skip: how to keep the plan current, owned, and reachable, so it works when everything else doesn't.</p>
+<h2>What is an IT disaster recovery plan?</h2>
+<p>An IT disaster recovery plan is a written set of procedures for restoring your systems, applications, and data after a disruption, in a set order and within agreed time limits. It names who does what, how they get notified, and how you know a system is truly back.</p>
+<p>In US federal guidance (NIST SP 800-34), the equivalent document is the information system contingency plan. It is organized around three phases:</p>
+<ol><li><strong>Activation and notification.</strong> Decide that the plan is in effect and alert the recovery team.</li><li><strong>Recovery.</strong> Restore the system, either at an alternate site or with backup capabilities.</li><li><strong>Reconstitution.</strong> Test the restored system, confirm it works, and return to normal operations.</li></ol>
+<p>That structure works as a skeleton whether you run a 20-person company or a large IT department.</p>
+<h2>Disaster recovery plan vs. business continuity plan</h2>
+<p>These two plans are related but not the same.</p>
+<ul><li>A <strong>business continuity plan</strong> covers how the whole organization keeps operating during a disruption: people, facilities, suppliers, customers, and communications.</li><li>A <strong>disaster recovery plan</strong> covers the technology part: getting hardware, software, connectivity, and data back.</li></ul>
+<p>Ready.gov, the US government's preparedness site, recommends developing the IT disaster recovery plan in conjunction with the business continuity plan. The business side decides which processes matter most and how long they can be down. The IT plan then sets recovery times that meet those needs. Written in isolation, the IT plan ends up guessing at priorities.</p>
+<h2>Three terms to settle before you fill in the template</h2>
+<p>Your template will ask for these numbers. Agree on them with the business owners first, through a business impact analysis (BIA).</p>
+<ul><li><strong>Maximum tolerable downtime (MTD):</strong> the total time the business is willing to accept a process being unavailable.</li><li><strong>Recovery time objective (RTO):</strong> the longest a system can stay unavailable before it causes unacceptable impact. NIST ties it to the MTD: you pick technology and procedures that can meet the RTO so the MTD isn't exceeded.</li><li><strong>Recovery point objective (RPO):</strong> the point in time to which data must be recovered after an outage. In plain terms: how much recent data you can afford to lose. Your RPO drives how often you back up.</li></ul>
+<p>Write these per system, not once for the whole company. Your payroll system and your internal wiki will not have the same targets.</p>
+<h2>Disaster recovery plan template: section by section</h2>
+<p>Use the outline below as your template. Where it helps, each section includes a disaster recovery plan example to show the level of detail.</p>
+<h3>1. Purpose, scope, and assumptions</h3>
+<p>State which systems, locations, and services the plan covers, and which it doesn't. List your assumptions, such as "backups are stored at a second location" or "staff can work remotely."</p>
+<p><em>Example: "This plan covers the customer portal, billing database, and email. Office phones are covered by the facilities plan."</em></p>
+<h3>2. Roles, responsibilities, and contacts</h3>
+<p>Name a plan owner (often called the plan coordinator) and the recovery team. For each role, list a primary and a backup person. Include a call tree: who calls whom, in what order.</p>
+<p>Add external contacts too, such as your hosting provider, internet provider, key software vendors, and insurer, with account numbers and support contract details.</p>
+<h3>3. System inventory and priorities</h3>
+<p>Ready.gov's guidance starts here: inventory your hardware, software applications, and data, and identify which applications are critical. For each system, record:</p>
+<ul><li>what it does and who depends on it</li><li>its RTO and RPO</li><li>what it depends on (network, identity provider, database, another service)</li><li>where its backups live</li></ul>
+<p>Then rank the systems in recovery order. Dependencies decide much of this ranking: there's no point restoring an app before the database it reads from.</p>
+<h3>4. Activation criteria and notification</h3>
+<p>Define when the plan is triggered and who has the authority to trigger it. Vague criteria cost time while people debate whether it's "bad enough."</p>
+<p><em>Example: "Activate if the billing database is unavailable for more than 30 minutes, or immediately on confirmed ransomware. The IT lead or the COO can activate."</em></p>
+<p>Then describe how the team is notified. Include a backup channel that doesn't depend on your own email or chat, because those may be down too.</p>
+<h3>5. Recovery procedures</h3>
+<p>This is the core of the plan. Write step-by-step restore procedures for each critical system, in recovery order. Good procedures:</p>
+<ul><li>start from a known state ("You have access to the backup console and the admin vault")</li><li>use numbered steps with one action each</li><li>say how to check that each step worked</li><li>say what to do and whom to call if a step fails</li></ul>
+<p>If you already keep IT runbooks, link to them from here instead of copying them. Copies drift apart. For tips on writing the steps themselves, see our guide on <a href="https://sonat.com/blog/how-to-write-an-it-runbook/">how to write an IT runbook</a>.</p>
+<figure><img src="images/01-disaster-recovery-plan-template-inline-1.png" alt="A systems administrator checking off recovery steps on a clipboard beside a server rack while a colleague on the phone watches a restore progress bar" loading="lazy"></figure>
+<h3>6. Backup and data restoration</h3>
+<p>Record what is backed up, how often, where it's stored, and how to restore it. Base the backup frequency on each system's RPO.</p>
+<p>If ransomware is on your risk list, follow the advice of CISA, the US Cybersecurity and Infrastructure Security Agency: keep offline, encrypted backups of critical data. Many ransomware variants look for accessible backups and delete or encrypt them. CISA also recommends regularly testing the availability and integrity of your backups in a disaster recovery scenario.</p>
+<h3>7. Reconstitution and return to normal</h3>
+<p>Describe how you confirm a restored system is ready for users: functional tests, data checks, security checks, and who signs off. Then list the cleanup steps: switching traffic back, retiring temporary systems, and telling users that service is restored.</p>
+<h3>8. Appendices</h3>
+<p>NIST suggests keeping supporting material with the plan, including vendor contracts and SLAs, software licenses, system user manuals, and operating procedures. Add network diagrams and a contact list, and keep both current. NIST points out that contact lists need more frequent review than the rest of the plan.</p>
+<h2>Disaster recovery plan steps: how to build yours</h2>
+<p>If you're starting from scratch, NIST SP 800-34 describes a seven-step process. It scales down well for a disaster recovery plan for small business teams:</p>
+<ol><li><strong>Write a short policy statement</strong> that gives the plan authority and an owner.</li><li><strong>Run a business impact analysis</strong> to find your critical systems and their RTOs and RPOs.</li><li><strong>Identify preventive controls</strong> that reduce the chance or impact of an outage.</li><li><strong>Choose recovery strategies</strong> for each critical system.</li><li><strong>Write the plan</strong> using the template above.</li><li><strong>Test, train, and exercise</strong> the plan.</li><li><strong>Maintain the plan</strong> as a living document.</li></ol>
+<p>Step 5 gets most of the attention. Steps 6 and 7 are what keep the plan working.</p>
+<h2>How to test a disaster recovery plan</h2>
+<p>An untested plan is a hypothesis. NIST describes two common exercise types:</p>
+<ul><li><strong>Tabletop exercises:</strong> the team meets, a facilitator presents a scenario, and people talk through their roles and responses. They're quick to run and good at exposing gaps in who does what.</li><li><strong>Functional exercises:</strong> people perform their duties in a simulated environment. These range from testing one piece, like the notification call tree, to a full-scale restore.</li></ul>
+<p>Start with a tabletop exercise. If you need a starting point, the UK's National Cyber Security Centre offers Exercise in a Box, a free resource used by small and medium-sized businesses, local government, and emergency services. It covers setting up, planning, and running an exercise, and identifying actions afterward.</p>
+<p>Whatever the format, end every exercise by updating the plan with what you learned.</p>
+<h2>How to keep your disaster recovery plan usable</h2>
+<p>A template gets you a first version. These habits keep it working.</p>
+<h3>Make it reachable when your systems are down</h3>
+<p>NIST recommends giving copies of the plan to recovery staff and storing a copy at the alternate site and with the backup media. CISA's ransomware guide makes the same point for incident response plans: keep a hard copy and an offline version available. Check where your plan lives today. If the only copy is on the network you're trying to recover, you don't really have a plan.</p>
+<h3>Give it one owner and one source of truth</h3>
+<p>Copies that drift apart are just as risky as no copy at all. Keep one master version with version history, and make every printed or offline copy from it, so everyone knows which version is current. NIST also suggests that the plan coordinator keep a record of who holds copies.</p>
+<h3>Review it on a schedule and on every change</h3>
+<p>NIST's rule of thumb: review the plan at a set frequency, and whenever any part of it changes significantly. New systems, retired vendors, and staff changes all count. Tie plan updates to your change management process so they don't wait for the annual review. Our post on <a href="https://sonat.com/blog/documentation-governance/">documentation governance</a> covers how to set up owners and review cycles.</p>
+<h3>Train people so they don't depend on the document</h3>
+<p>NIST recommends training recovery staff at least annually, and training new team members soon after they join. The goal is that people can do their part even if the plan is out of reach for the first few hours of an outage.</p>
+<h2>Keep your plan in one place</h2>
+<p>A disaster recovery plan is documentation, and it fails the same way other documentation does: it gets outdated, duplicated, and forgotten. Treat it like a living document, with one owner, one current version, regular reviews, and copies you can reach on a bad day.</p>
+<p><a href="https://sonat.com/">Sonat</a> gives IT teams one place to write, version, and publish documents like this. Draft the plan in Google Docs, keep every version in one history, route changes through an approval workflow, and publish it as a private manual your recovery team can open on any device. You can start for free, with no credit card required.</p>
+</article>
+</main>
+</body>
+</html>
