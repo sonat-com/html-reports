@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Editing: A Practical Process and Checklist</title>
+<meta name="description" content="Learn a practical technical editing process for documentation teams: four review passes, who does each one, where AI helps, and a copyable checklist.">
+<style>
+  :root { --text:#1f2933; --muted:#52606d; --accent:#1e6bd6; --line:#e4e7eb; --bg:#ffffff; --soft:#f5f7fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:18px; line-height:1.7; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 80px; }
+  h1 { font-size:2.2rem; line-height:1.2; margin:0 0 28px; letter-spacing:-0.02em; }
+  h2 { font-size:1.5rem; line-height:1.3; margin:48px 0 12px; padding-top:8px; border-top:1px solid var(--line); }
+  h3 { font-size:1.2rem; margin:32px 0 8px; }
+  p, ul, ol { margin:0 0 18px; }
+  ul, ol { padding-left:1.4em; }
+  li { margin-bottom:6px; }
+  ul.checklist { list-style:none; padding:16px 20px; background:var(--soft); border-radius:10px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  figure { margin:28px 0; }
+  img { display:block; width:100%; height:auto; border-radius:12px; }
+  strong { font-weight:650; }
+  @media (max-width:600px) { body { font-size:17px; } h1 { font-size:1.75rem; } h2 { font-size:1.3rem; } main { padding:28px 16px 56px; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>Technical Editing: How to Review Documentation in Four Passes</h1>
+<figure><img src="images/01-technical-editing-hero.png" alt="A documentation team editing a printed manual together at a table, one person marking pages with a pen while a colleague checks a laptop"></figure>
+<p>You finished the draft. The steps are all there and the screenshots are current. Then a customer follows the guide, gets stuck at step four, and opens a support ticket. Editing is the step that catches that problem before readers do. Most teams squeeze it into one quick read-through right before they hit publish.</p>
+<p>This guide shows how to turn technical editing into a repeatable process. You will learn the passes to run, in what order, who should do each one, where AI fits, and what to check. A copyable checklist is at the end.</p>
+<h2>What is technical editing?</h2>
+<p><strong>Technical editing is reviewing documentation so it is accurate, complete, clear, and consistent for the people who will use it.</strong> It goes beyond fixing typos. A technical editor asks whether a reader can understand the content and act on it. Grammar is only one part of that.</p>
+<p>The textbook <em>Open Technical Communication</em> calls technical editing "a highly rhetorical, detail-oriented process." It is also <em>recursive</em>: the same material gets reviewed several times, at different depths.</p>
+<p>That idea of depth is old. In the late 1970s, editors at NASA's Jet Propulsion Laboratory defined "levels of edit." This framework sorts editing work into categories, from coordination and policy checks to language and substantive edits. A light level covers only a couple of those categories, and the deepest level covers all of them. Later models simplified it. Carolyn Rude's model, for example, reduces it to two types: <em>comprehensive editing</em> (content, organization, and design) and <em>copy editing</em> (grammar, formatting, and sentence structure).</p>
+<p>You don't need to adopt any formal scheme. The useful lesson is simpler: <strong>different problems need different passes, and big problems come first.</strong></p>
+<h2>Why one read-through isn't enough</h2>
+<p>When you try to check everything at once, you check nothing well. You can't judge whether a section belongs in the guide while you're also hunting for a missing comma. Whatever you're looking for in that moment is what you find.</p>
+<p>Order matters too. Google's technical writing course says this about using AI for review: "We recommend fixing organizational issues before editing grammar and style issues." The same rule applies to human editors. Polishing a paragraph you later delete is wasted work.</p>
+<p>Editing also changes what readers experience. In Nielsen Norman Group's classic study of how people read on the web, 79% of test users always scanned new pages instead of reading word by word. A version rewritten to be concise, scannable, and objective scored 124% better on usability than the original. Documentation readers are usually in the middle of a task, so every extra second spent hunting for the next step counts.</p>
+<h2>The technical editing process: four passes</h2>
+<p>Here is a technical editing process that works for documentation teams of any size. It combines common review workflows used in open-source documentation, such as MediaWiki's, with the levels-of-edit idea.</p>
+<figure><img src="images/01-technical-editing-1.png" alt="Two colleagues reviewing a document on a large screen while a third person sticks colored notes onto a board with four columns"></figure>
+<h3>Pass 1: Self-edit (the writer)</h3>
+<p>The writer is always the first reviewer. Before anyone else sees the draft, the writer should:</p>
+<ul><li><strong>Take a break first.</strong> Google's course suggests coming back "after an hour (or two or three)" so you read with fresh eyes.</li><li><strong>Change the context.</strong> Print the draft or paste it into a new document with a different font. Familiar text hides its own mistakes.</li><li><strong>Read it out loud.</strong> Awkward phrasing and sentences that run too long are easier to hear than to see.</li><li><strong>Read as your audience.</strong> Is the purpose clear in the first few lines? Is every unfamiliar term defined or linked?</li><li><strong>Check against your style guide.</strong> If you don't have one, start with a few rules: active voice, second person ("you"), and numbered lists for steps. Our guide to <a href="https://sonat.com/blog/documentation-style-guide/">creating a documentation style guide</a> walks through the rest.</li></ul>
+<h3>Pass 2: Technical review (a subject matter expert)</h3>
+<p>A subject matter expert (SME) checks that the content is <strong>correct and complete</strong>. This SME is usually an engineer, product manager, or senior support agent. The reviewer is not there to fix wording. Their questions are:</p>
+<ul><li>Are the facts, settings, names, and numbers right for the current version?</li><li>Does every procedure actually work when you follow it step by step?</li><li>Is anything missing: prerequisites, permissions, warnings, edge cases?</li><li>Would a new user be able to follow this without help?</li></ul>
+<p>Ask SMEs to test procedures, not just read them. A step that "looks right" but fails in the product is exactly the kind of gap that turns into a support ticket.</p>
+<h3>Pass 3: Editorial review (an editor or peer)</h3>
+<p>Now a second writer, editor, or trained peer reviews <strong>structure and language</strong>. They don't need to be an expert in the product. Google's course points out that a peer editor who knows your style guide can give "specific, constructive comments" without deep subject knowledge.</p>
+<p>Work from big to small:</p>
+<ol><li><strong>Structure.</strong> Does the order match the reader's task? Do headings describe what's under them? Is each section focused on one job?</li><li><strong>Scannability.</strong> Short paragraphs, one idea each. Lists for parallel items. Key terms easy to spot. In the NN/g study, concise and scannable text produced the largest usability gains.</li><li><strong>Style and clarity.</strong> Active voice, plain words, consistent terms. If you call it a "workspace" in one place, don't call it a "project" in the next. Our <a href="https://sonat.com/blog/plain-language-technical-writing/">plain language guide</a> covers the most common fixes.</li><li><strong>Copyedit.</strong> Grammar, punctuation, spelling, capitalization, and number formats.</li></ol>
+<h3>Pass 4: Final check and approval (the owner)</h3>
+<p>Right before publishing, the document owner runs a short proofread:</p>
+<ul><li>All review comments are resolved or answered.</li><li>Links work and point to the right places.</li><li>Images are current, labeled, and have alt text.</li><li>The page stays within its scope and follows the style guide.</li><li>Someone with authority signs off.</li></ul>
+<p>Not every change needs all four passes. A typo fix in an FAQ might need only a self-check. A new setup guide for a major release needs the full sequence. Decide the depth up front, so reviewers know what they're signing up for.</p>
+<h2>How to give edits writers will actually accept</h2>
+<p>Editing is collaborative. Writers and SMEs are more likely to act on feedback that respects their work. The <em>Open Technical Communication</em> textbook offers practical rules:</p>
+<ul><li><strong>Suggest, don't silently rewrite.</strong> Make large changes only with permission. Leave a comment that explains the change instead.</li><li><strong>Give a reason.</strong> "Always be prepared to justify your edits with a style guide reference."</li><li><strong>Use clear, polite wording.</strong> "Consider splitting this step in two" works better than vague hints or passive phrasing like "it might be thought that…"</li><li><strong>Stay in your lane.</strong> If you spot a problem outside your pass, such as a possible technical error during a copyedit, flag it for the right person instead of guessing.</li></ul>
+<p>Also keep a running <strong>style sheet</strong>: a short, alphabetized list of decisions made during editing. Examples are "log in (verb) / login (noun)" or "use 'select,' not 'click.'" The next reviewer won't have to make the same call again.</p>
+<h2>Where AI fits in technical editing</h2>
+<p>AI tools can speed up editing, especially the mechanical parts. Google's course on using LLMs in technical writing says "LLMs excel at critical analysis." It suggests narrow prompts such as "Identify any passive voice in the following passage" or "Find grammatical, punctuation, and spelling issues."</p>
+<p>Use AI as <strong>an extra reviewer, not the last one</strong>:</p>
+<ul><li><strong>Good uses:</strong> spotting passive voice, long sentences, inconsistent terms, and grammar slips. It can also give a first opinion on structure.</li><li><strong>Weak spots:</strong> the same course warns that "Responses sometimes contain errors. Always check responses carefully." LLMs can give different answers to the same prompt, and they tend to treat whatever you paste in as true. They can't check that a procedure works on your product.</li></ul>
+<p>The technical review in Pass 2 still needs a human who knows the product. So does the final sign-off.</p>
+<h2>Technical editing checklist</h2>
+<p>Copy this documentation review checklist into your team's template.</p>
+<p><strong>Self-edit (writer)</strong></p>
+<ul class="checklist"><li>&#9744; Purpose is clear in the first few lines</li><li>&#9744; Every unfamiliar term is defined or linked</li><li>&#9744; Draft re-read after a break, in a new format or out loud</li><li>&#9744; Follows the style guide (voice, person, lists for steps)</li></ul>
+<p><strong>Technical review (SME)</strong></p>
+<ul class="checklist"><li>&#9744; Facts, names, settings, and numbers match the current version</li><li>&#9744; Every procedure tested step by step</li><li>&#9744; Prerequisites, permissions, and warnings included</li><li>&#9744; No missing steps or edge cases a new user would hit</li></ul>
+<p><strong>Editorial review (editor or peer)</strong></p>
+<ul class="checklist"><li>&#9744; Headings describe the content and follow the reader's task</li><li>&#9744; One idea per paragraph; lists for parallel items</li><li>&#9744; Active voice, plain words, consistent terminology</li><li>&#9744; Grammar, spelling, punctuation, and formatting are clean</li></ul>
+<p><strong>Final check (owner)</strong></p>
+<ul class="checklist"><li>&#9744; All comments resolved</li><li>&#9744; Links work; images are current and have alt text</li><li>&#9744; Scope and style guide respected</li><li>&#9744; Approved by the document owner</li></ul>
+<h2>Make review part of how you publish</h2>
+<p>Technical editing works best when it's built into your workflow, not tacked on at the end. In Sonat, writers draft in Google Docs or the built-in editor. Reviewers leave comments, and approval workflows route each topic to the right people, one after another or in parallel. The built-in readability guide scores each page, so writers can tighten hard-to-read text before an editor sees it. And the version archive lets you restore any earlier version if an edit goes wrong.</p>
+<p>Start small. Pick your next important guide, run the four passes, and see what each one catches. Then make the checklist part of every page you publish. For more on writing documentation that holds up to review, see our <a href="https://sonat.com/blog/technical-writing-best-practices/">technical writing best practices</a>.</p>
+</article>
+</main>
+</body>
+</html>
