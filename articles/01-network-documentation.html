@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network Documentation: A Practical Guide for IT Teams</title>
+<meta name="description" content="Learn what network documentation should include, from physical and logical diagrams to IP plans, and a simple routine to keep it accurate.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Network Documentation: A Practical Guide for IT Teams", "description": "Learn what network documentation should include, from physical and logical diagrams to IP plans, and a simple routine to keep it accurate.", "publisher": {"@type": "Organization", "name": "Sonat", "url": "https://sonat.com/"}}</script>
+<style>
+  :root { --ink:#1f2937; --muted:#4b5563; --accent:#1d6fd8; --line:#e5e7eb; --bg:#ffffff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:18px; line-height:1.7; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 80px; }
+  h1 { font-size:2.2rem; line-height:1.2; margin:0 0 24px; letter-spacing:-0.01em; }
+  h2 { font-size:1.5rem; line-height:1.3; margin:48px 0 12px; padding-top:12px; border-top:1px solid var(--line); }
+  h3 { font-size:1.2rem; line-height:1.4; margin:32px 0 8px; }
+  p, ul, ol { margin:0 0 18px; }
+  ul, ol { padding-left:1.3em; }
+  li { margin-bottom:8px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  figure { margin:28px 0; }
+  img { display:block; width:100%; height:auto; border-radius:12px; }
+  strong { color:#111827; }
+  @media (max-width:600px) { body { font-size:17px; } main { padding:32px 16px 64px; } h1 { font-size:1.75rem; } h2 { font-size:1.3rem; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>Network Documentation: What to Record and How to Keep It Current</h1>
+<figure><img src="images/01-network-documentation-hero.png" alt="Two IT colleagues in a server room, one tracing a labeled cable on a network switch while the other checks a printed diagram on a clipboard" loading="lazy"></figure>
+<p>A switch fails in the branch office. Someone asks which ports carry the phone system, which VLAN the printers are on, and who the internet provider's support contact is. If the answers live in one engineer's head, or in a diagram from three years ago, a short outage becomes a long one.</p>
+<p>Good network documentation fixes that. This guide covers what to record, how physical and logical diagrams differ, how to build your documentation from scratch with a network survey, and a simple routine that keeps it accurate.</p>
+<h2>What is network documentation?</h2>
+<p><strong>Network documentation is the written and visual record of how your network is built: which devices exist, how they connect, how they're configured, and who to call when something breaks.</strong> It usually combines diagrams, an inventory of devices, an IP address plan, configuration records, and contact details for providers and owners.</p>
+<p>Its job is practical. When something goes wrong, the person on call should be able to open one place and understand the network without guessing.</p>
+<h2>Why network documentation matters</h2>
+<p>Most teams only notice missing network documentation during an outage. But it pays off at three points.</p>
+<p><strong>Troubleshooting.</strong> A U.S. EPA cybersecurity guide for water utilities, built on CISA's Cross-Sector Cybersecurity Performance Goals, says a well-defined network topology helps administrators locate faults, troubleshoot issues, and allocate network resources. The same guide recommends including the network diagram in your incident response plan, because responders need it most when things are already broken.</p>
+<p><strong>Security.</strong> That guide also notes that network diagrams are an important reference for spotting potential security vulnerabilities. You can't protect a connection you don't know exists. Undocumented internet links, forgotten wireless bridges, and old vendor connections are exactly the paths you want on paper.</p>
+<p><strong>Speed under pressure.</strong> Google's Site Reliability Engineering book reports that writing best practices down ahead of time in a "playbook" produces roughly a 3x improvement in mean time to repair, compared with "winging it." Network documentation is the foundation those playbooks rely on.</p>
+<h2>What to include in your network documentation</h2>
+<p>You don't need every detail on day one. Start with these six building blocks and add depth over time.</p>
+<h3>Network diagrams (physical and logical)</h3>
+<p>Diagrams are the heart of network documentation, and you need two kinds. The EPA guide describes network diagrams as representing both physical and logical layouts, and each answers a different question.</p>
+<ul>
+<li><strong>Physical network diagram:</strong> where things actually are. It shows sites, racks, devices, cabling, patch panels, and which port connects to which. Use it when someone has to walk up to a device.</li>
+<li><strong>Logical network diagram:</strong> how traffic flows. It shows subnets, VLANs, routing, firewalls, and connections to cloud services and the internet. Use it when you're tracing a connectivity problem or reviewing security.</li>
+</ul>
+<p>Keep a one-page overview of each for quick orientation, and link to detailed diagrams for individual sites or segments.</p>
+<h3>Device inventory</h3>
+<p>List every switch, router, firewall, access point, and server on the network. For each device, record its name, model, location, management address, owner, and support or warranty details. The UK National Cyber Security Centre recommends collecting asset information regularly so it stays up to date, and recording when each asset was last seen so you can tell how current a record is.</p>
+<h3>IP address plan</h3>
+<p>Document your IP address management: which ranges are assigned to which sites and VLANs, which addresses are static, where DHCP scopes live, and which DNS names point where. A clear IP plan prevents conflicts and makes new deployments much faster.</p>
+<h3>Configuration records and baselines</h3>
+<p>For each key device, keep a record of its approved configuration and the reason behind important settings. NIST defines a baseline configuration as a documented set of specifications for a system that has been formally reviewed and agreed on at a given point in time, and which can be changed only through change control procedures. In plain terms: write down the approved setup, and update the record whenever an approved change goes in. That gives you something to compare against when a device starts behaving oddly.</p>
+<h3>Connections, circuits, and providers</h3>
+<p>Record every connection that leaves your network: internet circuits, links between sites, VPNs, and cloud connections. Include the provider, circuit ID, bandwidth, and support contact. The EPA guide advises paying special attention to systems that connect directly to the public internet, and to any pathways between operational technology and business IT systems.</p>
+<h3>Access, owners, and contacts</h3>
+<p>Note who owns each part of the network, who can approve changes, and how to escalate. Record where administrative credentials are stored, but never paste passwords into your documentation. Point to your password manager instead.</p>
+<figure><img src="images/01-network-documentation-inline-1.png" alt="An IT team gathered around a large table, sorting device cards and drawing connection lines on a sheet of paper while one person types notes into a laptop" loading="lazy"></figure>
+<h2>How to create network documentation from scratch</h2>
+<p>If you're starting with little or nothing, work through these steps in order.</p>
+<ol>
+<li><strong>Survey the network.</strong> The EPA guide recommends a network survey to confirm known connection pathways and uncover unknown ones. Include ordinary Ethernet links, but also less obvious paths such as serial, wireless, dial-up, and line-of-sight connections.</li>
+<li><strong>Record what you find.</strong> For each asset, document what it is, what it connects to, and how it connects, for example hard-wired or wireless.</li>
+<li><strong>Cross-check your sources.</strong> The NCSC advises using multiple data sources to find inconsistencies. Compare your survey against monitoring tools, switch tables, and DHCP logs. A device that shows up in network logs but not in your inventory is worth investigating.</li>
+<li><strong>Draw the diagrams.</strong> Start with the logical overview, then the physical layout for each site. Keep each diagram focused so it stays readable.</li>
+<li><strong>Write the supporting pages.</strong> Add the device inventory, IP plan, configuration baselines, and provider list, each linked from the overview.</li>
+<li><strong>Bring in third parties.</strong> If vendors, integrators, or managed service providers run part of your network, the EPA guide suggests adding language to your agreements that requires them to help keep the documentation current.</li>
+</ol>
+<h2>A simple network documentation template</h2>
+<p>Consistent pages are easier to read and easier to maintain. Use this structure for each site or network segment:</p>
+<ul>
+<li><strong>Overview:</strong> what this site or segment does, and a link to its diagrams.</li>
+<li><strong>Owner and last review date:</strong> who keeps this page accurate, and when it was last checked.</li>
+<li><strong>Diagrams:</strong> the physical and logical views for this site.</li>
+<li><strong>Devices:</strong> name, model, location, management address, and support details.</li>
+<li><strong>IP ranges and VLANs:</strong> subnets, gateways, DHCP scopes, and VLAN purposes.</li>
+<li><strong>External connections:</strong> circuits, VPNs, cloud links, and provider contacts.</li>
+<li><strong>Known issues and fixes:</strong> common problems and links to the matching troubleshooting steps or <a href="https://sonat.com/blog/runbooks-guide/">runbooks</a>.</li>
+<li><strong>Change history:</strong> what changed, when, and why.</li>
+</ul>
+<h2>Network documentation best practices that keep it current</h2>
+<p>Outdated network documentation is risky because people trust it. These habits keep it honest.</p>
+<h3>Update it as part of every change</h3>
+<p>Make documentation part of the change itself. A change request isn't finished until the diagram, IP plan, or baseline reflects it. New hardware isn't live until it's in the inventory.</p>
+<h3>Review on a schedule</h3>
+<p>Give every page a review date, and review critical pages, like internet-facing connections and core switching, more often. When a review date passes, the owner either confirms the page or fixes it.</p>
+<h3>Check reality against the records</h3>
+<p>Your documentation describes what should be there. Your monitoring and logs show what is there. Compare the two regularly, as the NCSC recommends, and treat any mismatch as a task, not trivia.</p>
+<h3>Keep versions and approvals</h3>
+<p>Being able to see what changed and roll back is as useful for diagrams and baselines as it is for code. For sensitive pages, add an approval step so changes are reviewed before they're published.</p>
+<h3>Store it where people will look</h3>
+<p>Network documentation spread across personal folders, chat threads, and old diagram files isn't really documentation. Keep it in one searchable home, linked from your wider <a href="https://sonat.com/@sonat/sonat-articles/01-it-documentation?lang=en">IT documentation</a>, and make sure the on-call team can reach it, including when part of the network is down.</p>
+<h2>How Sonat helps IT teams document their network</h2>
+<p>Sonat makes it simple to keep network documentation in one clear, searchable place without technical setup. Your team can write in Google Docs and publish with one click, embed diagrams and screenshots next to the text that explains them, and organize pages by site or segment. Every change is kept in an unlimited version archive, approval workflows review sensitive pages before they go live, and private manuals keep internal network details visible only to the right people.</p>
+<p>See how Sonat supports <a href="https://sonat.com/use-cases/it-documentation/">IT documentation</a>, or start on the free plan. No credit card is required.</p>
+<h2>Conclusion</h2>
+<p>Network documentation isn't a one-time diagram. It's a small, connected set of records: physical and logical diagrams, a device inventory, an IP plan, configuration baselines, external connections, and contacts, all kept current as part of everyday changes. Start with a survey of your most critical site, document what you find this week, and give the result an owner. Your next outage will be shorter for it.</p>
+</article>
+</main>
+</body>
+</html>
