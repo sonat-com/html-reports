@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company Wiki: How to Build One Your Team Actually Uses</title>
+<meta name="description" content="Learn how to build a company wiki people actually use: organize it by task, choose clear page types, make search work, and give every page an owner.">
+<style>
+  :root { --text:#1f2933; --muted:#52606d; --accent:#1d6fd6; --line:#e4e7eb; --bg:#ffffff; --soft:#f5f8fc; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width:740px; margin:0 auto; padding:48px 20px 72px; }
+  h1 { font-size:2.2rem; line-height:1.2; margin:0 0 24px; letter-spacing:-0.01em; }
+  h2 { font-size:1.55rem; line-height:1.3; margin:48px 0 12px; padding-top:8px; border-top:1px solid var(--line); }
+  h3 { font-size:1.2rem; line-height:1.4; margin:32px 0 8px; }
+  p { margin:0 0 18px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  ul, ol { margin:0 0 20px; padding-left:24px; }
+  li { margin:6px 0; }
+  ul.checklist { list-style:none; padding:16px 20px; background:var(--soft); border-radius:10px; }
+  ul.checklist li::before { content:"\2610"; margin-right:10px; color:var(--accent); }
+  figure { margin:28px 0; }
+  img { display:block; width:100%; height:auto; border-radius:12px; }
+  strong { font-weight:650; }
+  @media (max-width:600px) { body { font-size:17px; } main { padding:28px 16px 56px; } h1 { font-size:1.75rem; } h2 { font-size:1.35rem; } }
+</style>
+</head>
+<body>
+<main>
+<h1>Company Wiki: How to Build One Your Team Actually Uses</h1>
+<figure><img src="images/01-company-wiki-hero.png" alt="A small team gathered around a table, one person pinning labeled cards onto a board while colleagues sort sticky notes into groups"></figure>
+<p>Most teams don't lack knowledge. They lack a place to find it. The answer to "How do I get VPN access?" exists — in a chat thread from last spring, a shared drive folder, and the head of the one person who set it up.</p>
+<p>A company wiki fixes that, if people actually use it. This guide covers what a company wiki is, what belongs in it, and how to build an internal wiki step by step so it becomes the first place people look, not the last.</p>
+<h2>What is a company wiki?</h2>
+<p>A company wiki is a shared, searchable set of pages where a team writes down how things work: processes, policies, how-to guides, and reference information. Anyone with access can read it, and the right people can edit it, so knowledge lives in one place instead of in inboxes and individual memories.</p>
+<p>The name comes from the first wiki, WikiWikiWeb, which Ward Cunningham put online in 1995. "Wiki" is a Hawaiian word meaning "quick" — and quick is still the point. If finding an answer in your wiki is slower than asking a coworker, people will ask the coworker.</p>
+<h2>What belongs in an internal company wiki?</h2>
+<p>Start with the questions people ask most often. Typical sections include:</p>
+<ul>
+<li><strong>Getting started</strong> — onboarding steps, accounts and tools, who to ask for what</li>
+<li><strong>How-to guides</strong> — requesting access, setting up a laptop, submitting expenses</li>
+<li><strong>Policies</strong> — security, remote work, time off, acceptable use</li>
+<li><strong>Processes</strong> — how work moves between teams, approval steps, handoffs</li>
+<li><strong>Team pages</strong> — what each team owns and how to work with them</li>
+<li><strong>Reference</strong> — system lists, glossaries, contact lists, key dates</li>
+</ul>
+<p>IT and operations teams often get the most from a wiki first, because they answer the same setup and access questions every week. Once those answers live in the wiki, every repeat question becomes a link instead of a conversation.</p>
+<h2>How to create an internal wiki, step by step</h2>
+<h3>1. List the tasks people need help with</h3>
+<p>Before you create a single page, collect real questions. Look at support tickets, chat channels, and onboarding feedback. Write down each task in the words people actually use — "reset my password," not "credential lifecycle management."</p>
+<p>This list becomes your content plan. Nielsen Norman Group's intranet usability research recommends building navigation around the tasks employees perform and the terms they use to describe those tasks. Your wiki should speak your team's language, not the language of whoever designed it.</p>
+<h3>2. Organize by task and topic, not by org chart</h3>
+<p>The most common wiki mistake is mirroring the org chart: one section per department. That forces readers to know who owns something before they can find it. Does the laptop policy live under IT, HR, or Finance?</p>
+<p>Nielsen Norman Group found that intranets organized around tasks tended to hold up better through organizational change than those organized by department. Group content by what people are trying to do, like "Start here," "Tools and access," or "Time off and leave."</p>
+<p>Keep the top level small. NN/g notes that too many top-level categories make it hard for people to choose, and that labels should be descriptive, specific, and mutually exclusive. If two sections could hold the same page, rename one.</p>
+<h3>3. Use a simple structure people can predict</h3>
+<p>Here's a company wiki example structure you can adapt:</p>
+<ol>
+<li><strong>Start here</strong> — new-hire guide, how to use the wiki, who to ask</li>
+<li><strong>Tools and access</strong> — accounts, devices, software, security basics</li>
+<li><strong>How we work</strong> — processes, meetings, communication norms</li>
+<li><strong>Policies</strong> — all current policies in one place</li>
+<li><strong>Teams</strong> — one page per team: what they own, how to reach them</li>
+<li><strong>Reference</strong> — glossary, system list, contacts</li>
+</ol>
+<p>Six sections is a good starting point. Add depth inside sections rather than adding more top-level sections.</p>
+<h3>4. Pick a page type for every page</h3>
+<p>Mixed-purpose pages are hard to scan. The Diátaxis documentation framework separates content by what the reader needs, including how-to guides, reference, and explanation. A how-to guide gives directions toward a specific result, and nothing else.</p>
+<figure><img src="images/01-company-wiki-inline-1.png" alt="A person working through steps on a laptop while a colleague beside them checks a printed numbered checklist"></figure>
+<p>For a company wiki, that translates into three basic page types:</p>
+<ul>
+<li><strong>How-to pages</strong> — numbered steps for one task ("Request access to the finance drive")</li>
+<li><strong>Reference pages</strong> — facts to look up ("List of approved software")</li>
+<li><strong>Explanation pages</strong> — the why behind a decision ("Why we use single sign-on")</li>
+</ul>
+<p>Link between them instead of mixing them. Our guide on <a href="https://sonat.com/blog/how-to-write-step-by-step-instructions/">how to write step-by-step instructions</a> covers how-to pages in detail.</p>
+<h3>5. Create a company wiki template</h3>
+<p>A shared template keeps pages consistent and makes writing faster. A simple company wiki template for how-to pages:</p>
+<ul>
+<li><strong>Purpose</strong> — one sentence on what this page helps you do</li>
+<li><strong>Who it's for</strong> — the audience or role</li>
+<li><strong>Before you start</strong> — access, tools, or approvals needed</li>
+<li><strong>Steps</strong> — numbered, one action each</li>
+<li><strong>Owner and last reviewed</strong> — who maintains this page and when it was last checked</li>
+</ul>
+<p>A <a href="https://sonat.com/@sonat/sonat-articles/01-documentation-style-guide?lang=en">documentation style guide</a> helps too, so headings, terms, and tone stay the same no matter who writes the page.</p>
+<h3>6. Make search and navigation work</h3>
+<p>People find wiki content two ways: by browsing and by searching. Support both.</p>
+<ul>
+<li>Keep the same navigation on every page, and show readers where they are, for example with breadcrumbs. NN/g notes that clear, persistent navigation helps users find information and see which areas they've already explored.</li>
+<li>Offer one search box that's always visible. NN/g's guidelines recommend a single, exposed search field that covers content from one central place.</li>
+<li>Write page titles the way people search: "How to set up email on your phone" beats "Mobile mail configuration."</li>
+</ul>
+<h3>7. Seed it before you launch it</h3>
+<p>An empty wiki teaches people not to come back. Before announcing it, write the pages behind your most common questions from step 1. Then launch with a short message: here's the wiki, here's what's in it, and here's how to suggest a page.</p>
+<h2>Company wiki best practices that keep it alive</h2>
+<p>Launching a wiki is the easy part. Keeping it trustworthy is the real work.</p>
+<h3>Give every page an owner</h3>
+<p>A page everyone owns is a page nobody updates. Show the owner on each page. NN/g's research found that some form of content oversight, whether centralized or shared between a central team and contributors, is needed to keep content high quality and findable. For more on setting this up, see our guide to <a href="https://sonat.com/blog/documentation-governance/">documentation governance</a>.</p>
+<h3>Answer with links</h3>
+<p>When someone asks a question in chat, reply with a link to the wiki page. If the page doesn't exist, write it, then send the link. This habit does more for adoption than any launch announcement.</p>
+<h3>Review on a schedule</h3>
+<p>Set review dates based on how fast things change. Access and tool pages may need checking every few months; policies might be reviewed yearly. Archive pages that are no longer true instead of leaving them to mislead readers.</p>
+<h3>Make feedback easy</h3>
+<p>Readers spot problems first. Give them a simple way to flag a broken step or an outdated page, and treat that feedback like a ticket. It's one of the simplest ways to build a <a href="https://sonat.com/blog/knowledge-sharing/">knowledge-sharing</a> culture.</p>
+<h2>Common company wiki mistakes</h2>
+<ul>
+<li><strong>Building structure before content.</strong> Start with real questions, not an empty tree of folders.</li>
+<li><strong>Copying instead of linking.</strong> Two versions of the same page will drift apart. Keep one and link to it.</li>
+<li><strong>Letting everything in.</strong> Meeting notes and drafts bury the pages people need. Keep the wiki for answers that stay true.</li>
+<li><strong>No owner, no dates.</strong> Without them, readers can't tell what's current, and they stop trusting all of it.</li>
+</ul>
+<h2>Where Sonat fits</h2>
+<p><a href="https://sonat.com/">Sonat</a> lets you build a company wiki without technical setup. Write in Google Docs or the built-in editor, organize pages into topics and menus, and keep internal content private with access control. Approval workflows help policy pages get the right sign-off, and every version is archived so you can see what changed. Full-text search gets people to answers fast, and readers can leave feedback on any page.</p>
+<h2>Conclusion</h2>
+<p>A company wiki works when it answers real questions faster than asking a person does. Start with the tasks people need help with, organize by task instead of by department, give each page a clear type and an owner, and answer questions with links. Do that consistently, and your wiki becomes the place where your team's knowledge lives, not the place it goes to be forgotten.</p>
+</main>
+</body>
+</html>
