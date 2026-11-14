@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release Notes Template: How to Write Notes People Read</title>
+<meta name="description" content="A copy-ready release notes template, plus the format, wording rules, and examples that make users actually read what changed in each release.">
+<style>
+  body { margin: 0; background: #ffffff; color: #1f2933; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 24px; color: #102a43; }
+  h2 { font-size: 1.5rem; line-height: 1.3; margin: 48px 0 12px; color: #102a43; }
+  h3 { font-size: 1.2rem; margin: 32px 0 8px; color: #243b53; }
+  p, ul, ol { margin: 0 0 18px; }
+  li { margin-bottom: 6px; }
+  a { color: #1f6feb; }
+  figure { margin: 32px 0; }
+  img { width: 100%; height: auto; border-radius: 12px; display: block; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; background: #f0f4f8; padding: 2px 5px; border-radius: 4px; }
+  pre { background: #f0f4f8; border-radius: 10px; padding: 18px 20px; overflow-x: auto; font-size: 15px; line-height: 1.55; margin: 0 0 24px; }
+  pre code { background: none; padding: 0; }
+  blockquote { margin: 0 0 24px; padding: 16px 22px; border-left: 4px solid #9fb3c8; background: #f8fafc; border-radius: 0 10px 10px 0; }
+  blockquote p:last-child, blockquote ul:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) { body { font-size: 17px; } main { padding: 32px 16px 64px; } h1 { font-size: 1.7rem; } h2 { font-size: 1.3rem; } }
+</style>
+</head>
+<body>
+<main>
+<h1>Release Notes Template: How to Write Release Notes People Actually Read</h1>
+<figure><img src="images/01-release-notes-template-hero.png" alt="A product team gathered around a whiteboard, sorting sticky notes into columns while one person types a short update on a laptop"></figure>
+<p>You shipped the release. Now someone has to explain it, and the easy route is to paste a list of ticket titles and hit publish. Users skim it, miss the one change that affects them, and open a support ticket.</p>
+<p>A good release notes template fixes that before you start writing. This guide gives you a template you can copy and the format behind it. It also covers wording rules for each entry, a worked example, and how release notes differ from a changelog.</p>
+<h2>What are release notes?</h2>
+<p><strong>Release notes are a short, reader-focused summary of what changed in one version of a product, why it matters, and what users need to do about it.</strong> They are written for the people who use the product, not for the people who built it. Their job is to help a reader decide in seconds whether a release affects them.</p>
+<p>That last point shapes everything else. Nielsen Norman Group's well-known research on web reading found that 79% of test users always scanned new pages and only 16% read word by word. The same article reports that text that was concise, scannable, and objective scored 124% higher on usability than a promotional version. Release notes get the same treatment, so a release notes format has to work for someone who reads only headings and the first few words of each line.</p>
+<h2>Release notes vs. changelog: what's the difference?</h2>
+<p>People often use the two terms interchangeably, but they do different jobs:</p>
+<ul><li><strong>A changelog</strong> is the complete, running record of every notable change, version by version. It is the reference.</li><li><strong>Release notes</strong> are a curated announcement for one release. They pick the changes that matter to readers and explain them in plain language.</li></ul>
+<p>Keep a Changelog, a widely used open convention for writing changelogs, published its first major revision (2.0.0) in June 2026. It draws the line clearly: the changelog is the source, and release notes are drawn from it and shaped for the announcement. Its advice is to keep the changelog as the record and write release notes from it, rather than maintaining two separate lists that drift apart.</p>
+<p>In practice, that means you need one place where every change gets logged. When you write release notes, you edit that material down rather than reconstructing it from memory.</p>
+<h2>The release notes template (copy and adapt)</h2>
+<p>Here is a release notes template that works for most product release notes, from SaaS tools to desktop apps and firmware. Copy it into your documentation and delete any section that is empty for a given release. A section with nothing in it is just noise.</p>
+<pre><code># [Product name] [version number] — [YYYY-MM-DD]
+
+[One or two sentences: the most important change in this release
+and who it helps.]
+
+## Action required
+- **Breaking:** [What stops working] — [what users must do] by [date].
+
+## New
+- [Feature name]: [What you can now do] — [why it helps].
+
+## Improved
+- [Area]: [What works better now] — [the visible difference].
+
+## Fixed
+- [Area]: [What no longer happens] when [situation].
+
+## Security
+- [What was fixed] — [whether users need to update or act].
+
+## Deprecated and removed
+- [Feature] will be removed in [version/date]. Use [alternative] instead.
+
+Learn more: [link to the updated user guide or help article]</code></pre>
+<h3>Why the template is built this way</h3>
+<p>Each part of the release notes format answers a question readers already have:</p>
+<ul><li><strong>Version and date in the heading.</strong> Readers need to know which release they are looking at. Use an unambiguous date such as <code>2026-12-01</code> (ISO 8601). Keep a Changelog recommends this because formats like 11/12 mean different days in different countries.</li><li><strong>A one-line summary first.</strong> Lead with the conclusion. If a reader stops after one sentence, they should still know the headline change.</li><li><strong>Action required at the top.</strong> This is the only section some readers truly need. Keep a Changelog 2.0.0 recommends a short "Breaking" marker so breaking changes stand out, and it says the entry should state what breaks. If you leave it out of the template, you will eventually bury one under "Improved."</li><li><strong>Grouped change types.</strong> Grouping similar changes is one of Keep a Changelog's core principles. Its standard types are Added, Changed, Deprecated, Removed, Fixed, and Security. The template uses friendlier labels for an end-user audience, but the mapping is one-to-one, so you can draft from the changelog without re-sorting anything.</li><li><strong>A link to the full documentation.</strong> Release notes are not a user manual. When a change needs explaining, link to the updated guide instead of squeezing a tutorial into a bullet.</li></ul>
+<figure><img src="images/01-release-notes-template-inline-1.png" alt="A technical writer at a desk comparing a long printed list with a short card, crossing items off the list while a colleague holds a coffee and points at the card"></figure>
+<h2>How to write release notes: rules for every entry</h2>
+<p>The template gives you structure. The wording decides whether anyone acts on it.</p>
+<h3>Describe the change from the user's side</h3>
+<p>Write what the reader can now do, or what no longer goes wrong. Don't describe what the team built.</p>
+<ul><li>Instead of: "Refactored export service to use async queue."</li><li>Write: "Exports: Large reports now download without timing out."</li></ul>
+<p>A useful pattern is <strong>[Area]: [what's different] when [situation]</strong>. The area works as a scannable keyword at the start of the line, which is the part most readers actually see.</p>
+<h3>Never paste raw commit logs</h3>
+<p>Keep a Changelog lists commit-log dumps as a bad practice because they are full of noise, such as merge commits and internal refactors. One change a user notices can span ten commits, and ten commits can add up to nothing a user would notice. Edit by impact, not by ticket.</p>
+<h3>Make breaking changes impossible to miss</h3>
+<p>Keep a Changelog has a blunt line on this: it should be painfully clear when something will break. For every breaking change or deprecation, say three things:</p>
+<ol><li>What stops working.</li><li>What the reader should do instead.</li><li>When it happens.</li></ol>
+<h3>Be complete about what matters</h3>
+<p>Leaving out a change that affects users is worse than writing a long list. Keep a Changelog warns that a changelog that mentions only some of the changes can be as dangerous as not having one. You can drop internal-only work from release notes, but never leave out a change that alters behavior users rely on.</p>
+<h3>Keep the tone plain and objective</h3>
+<p>Skip "we're thrilled to announce" and "exciting new." Nielsen Norman Group found that promotional language adds to readers' cognitive load. A plain statement of what changed reads as more credible, and it translates more cleanly if you publish in several languages.</p>
+<h3>Signal how big the release is</h3>
+<p>If you use Semantic Versioning, the version number already tells readers a lot. In MAJOR.MINOR.PATCH, a major bump means incompatible changes, a minor bump adds backward-compatible features, and a patch bump is backward-compatible bug fixes. Mention your versioning scheme once in your documentation so readers know how to interpret it.</p>
+<h2>A release notes example</h2>
+<p>Here is the template filled in for a fictional project-management app. The product and changes are invented for illustration.</p>
+<blockquote><p><strong>Taskline 4.2.0 — 2026-12-01</strong></p>
+<p>You can now share read-only boards with people outside your workspace, without giving them an account.</p>
+<p><strong>Action required</strong></p>
+<ul><li><strong>Breaking:</strong> The legacy CSV import format is no longer accepted. Re-save older files using the current import template before December 15.</li></ul>
+<p><strong>New</strong></p>
+<ul><li>Sharing: Create a read-only link to any board and control when it expires.</li></ul>
+<p><strong>Improved</strong></p>
+<ul><li>Search: Results now include comments, not just task titles.</li></ul>
+<p><strong>Fixed</strong></p>
+<ul><li>Reminders: Due-date reminders no longer arrive twice when a task has two assignees.</li></ul>
+<p><strong>Security</strong></p>
+<ul><li>Fixed an issue that could expose board names in shared-link previews. No action needed. The fix applies automatically.</li></ul></blockquote>
+<p>Every entry starts with an area, says what's different from the user's point of view, and fits on one line. Nothing in it requires a reader to know how the product is built.</p>
+<h2>Release notes best practices for security fixes</h2>
+<p>Security entries deserve extra care. Keep a Changelog 2.0.0 added guidance on Security entries, including referencing CVE identifiers where they exist. Readers need to know two things: what was fixed, and whether they must do anything, such as update or rotate a key.</p>
+<p>Regulation is pushing the same way. Under the EU's Cyber Resilience Act, manufacturers of products with digital elements have had to report actively exploited vulnerabilities since September 11, 2026. Most of the act's other obligations apply from December 11, 2027. Release notes don't replace those obligations, but a consistent, dated Security section makes it much easier to show users what was fixed and when.</p>
+<h2>Using AI to draft release notes</h2>
+<p>AI can turn a list of merged changes into a first draft in seconds, and that is a real time saver. Keep a Changelog 2.0.0 sums up the right split: machines can draft, but humans curate. A model can't know which change matters most to your readers. Give it the template above as a brief, then edit the draft against the rules in this guide before you publish.</p>
+<h2>Where to publish release notes</h2>
+<p>Release notes work best in the same place as the rest of your documentation, where readers can move from "what changed" straight to "how it works now."</p>
+<p>If you write documentation in <a href="https://sonat.com">Sonat</a>, you can keep release notes alongside your user manual and help articles. Variants let you maintain a separate version of the manual for each product release, and the version archive keeps every earlier version of a topic if you need to look back. Approval workflows let a product owner sign off before notes go live, and machine translation helps you publish the same release notes for readers in other languages.</p>
+<h2>Conclusion</h2>
+<p>Good release notes aren't a list of everything the team did. They tell readers what changed for them and what they need to do. Start from a template with a dated heading, a one-line summary, an "Action required" section, and grouped changes. Write each line from the user's side, flag breaking changes loudly, and keep the full history in your changelog. Your users will read more of it, and fewer of them will need to ask support what changed.</p>
+</main>
+</body>
+</html>
