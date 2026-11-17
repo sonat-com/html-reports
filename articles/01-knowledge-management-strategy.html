@@ -3,63 +3,140 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Knowledge Management Strategy: A 6-Step Plan for Teams</title>
-<meta name="description" content="Build a knowledge management strategy in six steps: set a goal, find critical knowledge, assign owners, and measure use. Includes a one-page example.">
+<title>How to Build a Knowledge Management Strategy</title>
+<meta name="description" content="A practical framework to build a knowledge management strategy that ends knowledge silos—capture, organize, and find your team's knowledge with one source of truth.">
+<style>
+  :root{
+    --ink:#1c2530; --muted:#5a6675; --line:#e7ebf0; --bg:#ffffff;
+    --accent:#2f6df6; --accent-soft:#eef3ff; --maxw:720px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.7; font-size:18px;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:32px 20px 72px;}
+  h1{
+    font-size:2.15rem; line-height:1.2; letter-spacing:-0.02em;
+    margin:8px 0 20px; font-weight:750;
+  }
+  h2{
+    font-size:1.5rem; line-height:1.25; letter-spacing:-0.01em;
+    margin:44px 0 14px; font-weight:700;
+  }
+  h3{font-size:1.18rem; margin:28px 0 10px; font-weight:650;}
+  p{margin:0 0 18px;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ul,ol{margin:0 0 18px; padding-left:1.3em;}
+  li{margin:0 0 10px;}
+  strong{font-weight:680;}
+  figure{margin:26px 0;}
+  img{width:100%; height:auto; display:block; border-radius:14px; border:1px solid var(--line);}
+  .lede{font-size:1.16rem; color:var(--muted);}
+  .kicker{
+    display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--accent); background:var(--accent-soft);
+    padding:6px 12px; border-radius:999px; margin-bottom:6px;
+  }
+  .cta{
+    margin-top:40px; padding:26px 24px; background:var(--accent-soft);
+    border:1px solid #dbe6ff; border-radius:16px;
+  }
+  .cta h2{margin-top:0;}
+  hr{border:0; border-top:1px solid var(--line); margin:40px 0;}
+  @media (max-width:560px){
+    body{font-size:17px;}
+    .wrap{padding:22px 16px 56px;}
+    h1{font-size:1.8rem;}
+    h2{font-size:1.32rem;}
+  }
+</style>
 </head>
-<body style="margin:0;background:#ffffff;color:#1f2933;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.7;">
-<main style="max-width:720px;margin:0 auto;padding:48px 20px 72px;">
-<article>
-<h1 style="font-size:2.1em;line-height:1.2;margin:0 0 24px;color:#102a43;">How to Build a Knowledge Management Strategy That Teams Actually Use</h1>
-<img style="display:block;width:100%;height:auto;border-radius:12px;margin:8px 0 28px;" src="images/01-knowledge-management-strategy-hero.png" alt="A small team gathered around a table, sorting cards into labeled boxes while one person pins a plan to the wall">
-<p style="margin:0 0 18px;">Most teams don't lack knowledge. They lack a plan for it. The answer to a customer's question lives in one person's head, an old chat thread, and three slightly different documents. When that person goes on leave, everyone starts guessing.</p>
-<p style="margin:0 0 18px;">A knowledge management strategy fixes that on purpose instead of by luck. This guide walks through a simple six-step plan you can write in an afternoon, with lessons from NASA's well-documented knowledge program and a one-page example you can copy.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">What is a knowledge management strategy?</h2>
-<p style="margin:0 0 18px;">A knowledge management strategy is a short plan that decides which knowledge matters most to your organization, how it gets captured and shared, who owns it, and how you'll know it's working. It links everyday documentation habits to a real business goal.</p>
-<p style="margin:0 0 18px;">It is not a software purchase. Tools support a strategy; they don't replace one.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Why a KM strategy matters more now</h2>
-<p style="margin:0 0 18px;">For years, messy knowledge was an annoyance. People worked around it by asking a colleague. That workaround is disappearing.</p>
-<p style="margin:0 0 18px;">AI assistants and chatbots now answer questions straight from company knowledge bases. In March 2026, CX Dive reported that many companies deploying AI are discovering their knowledge management is poor, and that outdated or inconsistent content can produce wrong answers at scale. A human agent can spot two conflicting policies and pick the right one. As the article put it, "AI cannot play that referee role."</p>
-<p style="margin:0 0 18px;">As one customer experience leader told CX Dive: "We solved a retrieval problem. We did not solve the clean data problem." A clear KM strategy is how you solve the second problem.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Step 1: Start with a business problem, not a tool</h2>
-<p style="margin:0 0 18px;">A strategy that starts with "we need a wiki" usually ends as an empty wiki. Start instead with a problem people already feel, such as:</p>
-<ul style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;">New hires take months to become productive.</li><li style="margin:0 0 6px;">Support answers the same questions every day.</li><li style="margin:0 0 6px;">A key expert is retiring and nobody knows what they know.</li><li style="margin:0 0 6px;">Policies exist in several versions and auditors keep finding gaps.</li></ul>
-<p style="margin:0 0 18px;">Pick one or two. Write each as an outcome you can observe, for example "new support agents resolve tickets without help within four weeks." That outcome becomes the test for every later decision.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Step 2: Identify your critical knowledge</h2>
-<p style="margin:0 0 18px;">You can't manage everything, so don't try. NASA's knowledge management approach is built around what it calls <strong>critical knowledge</strong>: "knowledge that is essential for the agency to carry out its mission and make well-informed decisions." NASA notes that this knowledge usually comes from experience and "isn't easily replaceable."</p>
-<p style="margin:0 0 18px;">Your version of critical knowledge is smaller, but the question is the same. Ask each team:</p>
-<ol style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;">What do we need to know to do our core work well?</li><li style="margin:0 0 6px;">Which of it lives in only one or two people's heads?</li><li style="margin:0 0 6px;">What would break if that person left tomorrow?</li></ol>
-<p style="margin:0 0 18px;">The answers give you a short, ranked list. That list is the scope of your strategy.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Step 3: Choose your mix: documents or people</h2>
-<p style="margin:0 0 18px;">This is the most important choice in any knowledge management strategy framework, and it was framed clearly in a well-known 1999 <em>Harvard Business Review</em> article by Morten Hansen, Nitin Nohria, and Thomas Tierney. They described two approaches:</p>
-<ul style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;"><strong>Codification:</strong> capture knowledge in documents so anyone can reuse it. The authors call this a "people-to-documents" approach.</li><li style="margin:0 0 6px;"><strong>Personalization:</strong> connect people to the experts who hold the knowledge. These firms "focus on dialogue between individuals, not knowledge objects in a database."</li></ul>
-<img style="display:block;width:100%;height:auto;border-radius:12px;margin:8px 0 28px;" src="images/01-knowledge-management-strategy-inline-1.png" alt="Two coworkers at a desk, one writing steps into a binder while the other explains a process on a whiteboard">
-<p style="margin:0 0 18px;">The authors found that every firm they studied used both, but the effective ones focused on one and used the other "in a supporting role." Not everyone agrees. Writing in KMWorld, Professor Michael Koenig found that more successful pharmaceutical companies kept a roughly even balance, and argued that the right mix "may lie anywhere within that 80-20 to 20-80 range," and can differ between departments.</p>
-<p style="margin:0 0 18px;">The practical takeaway: decide deliberately, team by team.</p>
-<ul style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;"><strong>Lean toward documents</strong> when the same questions repeat, answers are stable, and many people need them: product manuals, help centers, policies, and onboarding.</li><li style="margin:0 0 6px;"><strong>Lean toward people</strong> when problems are new each time and judgment matters: complex sales deals, incident response, or research.</li></ul>
-<p style="margin:0 0 18px;">Most teams that write for customers or new hires will lean toward documents, with expert directories and mentoring as backup.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Step 4: Give knowledge a home and an owner</h2>
-<p style="margin:0 0 18px;">Knowledge without an owner goes stale. Knowledge in five places goes contradictory. Your knowledge management plan should name both.</p>
-<ul style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;"><strong>One home.</strong> Choose a single source of truth for documented knowledge. When the same answer lives in several places, people (and AI) can't tell which one is current.</li><li style="margin:0 0 6px;"><strong>One owner per area.</strong> Assign each topic or collection to a named person, not a team. The owner reviews it on a set schedule and approves changes.</li><li style="margin:0 0 6px;"><strong>A light review step.</strong> Decide who checks new or changed content before it's published, especially for policies and customer-facing answers.</li></ul>
-<p style="margin:0 0 18px;">If you need help setting up roles and review cycles, our guide to <a style="color:#1d6fd6;" href="https://sonat.com/@sonat/sonat-articles/01-documentation-governance?lang=en">documentation governance</a> covers a simple framework.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Step 5: Make capturing knowledge part of the work</h2>
-<p style="margin:0 0 18px;">This is where most strategies fail, and NASA's history shows why. In 2002, the U.S. Government Accountability Office reviewed NASA's lessons-learned efforts. Despite an agency-wide lessons-learned system that managers were expected to use, GAO found that program and project managers did not routinely identify, collect, or share lessons.</p>
-<p style="margin:0 0 18px;">The barriers GAO cited will sound familiar: a <strong>lack of time</strong> to capture lessons, and a perceived <strong>intolerance for mistakes</strong>. GAO also said NASA's efforts were missing things leading organizations had, including strong management commitment, a well-defined business plan, incentives for sharing, and technology that makes knowledge easy to access.</p>
-<p style="margin:0 0 18px;">NASA responded with changes such as a knowledge management strategic plan and a dedicated lessons-learned lead. Today NASA offers a knowledge management plan template and knowledge continuity guides for supervisors, departing employees, and incoming employees.</p>
-<p style="margin:0 0 18px;">You can apply the same lessons at any size:</p>
-<ul style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;"><strong>Build capture into existing moments.</strong> Add "update the docs" to the definition of done for releases, support escalations, and project close-outs.</li><li style="margin:0 0 6px;"><strong>Plan for departures and arrivals.</strong> Use a short handover checklist whenever someone changes roles, so critical knowledge moves before they do.</li><li style="margin:0 0 6px;"><strong>Make it safe to share what went wrong.</strong> Lessons from mistakes are often the most valuable, and people only share them when it won't count against them. Our guide to <a style="color:#1d6fd6;" href="https://sonat.com/@sonat/sonat-articles/01-knowledge-sharing?lang=en">knowledge sharing at work</a> covers how to make this a habit.</li><li style="margin:0 0 6px;"><strong>Make it easy.</strong> Let people write in tools they already know. The fewer steps between "I know this" and "it's published," the more gets captured.</li></ul>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Step 6: Measure use and keep improving</h2>
-<p style="margin:0 0 18px;">GAO also recommended objective performance metrics and ongoing input from users. That's good advice for any knowledge management implementation plan. Track a few signals tied to your Step 1 goal:</p>
-<ul style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;"><strong>Search success:</strong> Are people finding answers, or searching and giving up?</li><li style="margin:0 0 6px;"><strong>Feedback:</strong> Do readers mark articles as helpful? What do their comments say is missing?</li><li style="margin:0 0 6px;"><strong>Freshness:</strong> How many articles are past their review date?</li><li style="margin:0 0 6px;"><strong>Outcome:</strong> Is the business problem improving, such as faster onboarding or fewer repeat tickets?</li></ul>
-<p style="margin:0 0 18px;">Review these every quarter. Retire what nobody reads, fix what readers flag, and fill the gaps they reveal. A periodic <a style="color:#1d6fd6;" href="https://sonat.com/@sonat/sonat-articles/01-documentation-audit?lang=en">documentation audit</a> makes this easier.</p>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">A knowledge management strategy example (one page)</h2>
-<p style="margin:0 0 18px;">Here's what a complete plan can look like for a hypothetical 40-person software company. Yours can be just as short.</p>
-<table style="width:100%;border-collapse:collapse;margin:0 0 24px;font-size:0.9em;"><thead><tr><th style="text-align:left;padding:10px 12px;border-bottom:2px solid #d9e2ec;background:#f5f7fa;color:#102a43;">Element</th><th style="text-align:left;padding:10px 12px;border-bottom:2px solid #d9e2ec;background:#f5f7fa;color:#102a43;">Example</th></tr></thead><tbody><tr><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;"><strong>Goal</strong></td><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;">New support agents resolve common tickets without help within four weeks.</td></tr><tr><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;"><strong>Critical knowledge</strong></td><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;">Product setup, top 30 customer questions, refund and escalation policies.</td></tr><tr><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;"><strong>Mix</strong></td><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;">Mostly documents (help center + internal guides); expert hours twice a week for edge cases.</td></tr><tr><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;"><strong>Home</strong></td><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;">One documentation platform for internal and customer-facing articles.</td></tr><tr><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;"><strong>Owners</strong></td><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;">Support lead owns policies; product manager owns setup guides; each reviews quarterly.</td></tr><tr><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;"><strong>Capture habits</strong></td><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;">Every escalated ticket ends with "is there an article for this?"; handover checklist for role changes.</td></tr><tr><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;"><strong>Metrics</strong></td><td style="vertical-align:top;padding:10px 12px;border-bottom:1px solid #e4e7eb;">Time to independent ticket resolution, repeat-ticket volume, article feedback, overdue reviews.</td></tr></tbody></table>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Common mistakes to avoid</h2>
-<ul style="margin:0 0 18px;padding-left:24px;"><li style="margin:0 0 6px;"><strong>Buying a tool first.</strong> Without a goal and owners, any tool becomes a dumping ground.</li><li style="margin:0 0 6px;"><strong>Trying to capture everything.</strong> Start with critical knowledge and grow from there.</li><li style="margin:0 0 6px;"><strong>Writing it once.</strong> Knowledge has a shelf life. Without review dates, accuracy quietly decays.</li><li style="margin:0 0 6px;"><strong>Ignoring the culture.</strong> If sharing takes extra time or invites blame, people won't do it, no matter what the plan says.</li></ul>
-<h2 style="font-size:1.5em;line-height:1.3;margin:44px 0 12px;color:#102a43;">Conclusion</h2>
-<p style="margin:0 0 18px;">A good knowledge management strategy is short and specific. It names a business problem, the critical knowledge behind it, the right mix of documents and people, a single home with clear owners, capture habits built into daily work, and a few metrics you actually check. Start with one team and one goal, prove it works, then expand.</p>
-<p style="margin:0 0 18px;">If your strategy leans toward documents, Sonat gives you a single, searchable home for internal and customer-facing knowledge. Authors write in Google Docs or a simple editor, reviewers approve changes, and readers can leave feedback on every topic. <a style="color:#1d6fd6;" href="https://sonat.com/">Try Sonat free</a> and turn your plan into a knowledge base people use.</p>
+<body>
+<article class="wrap">
+  <span class="kicker">Knowledge Management</span>
+  <h1>How to Build a Knowledge Management Strategy That Ends Knowledge Silos</h1>
+
+  <p class="lede">Your team already knows how to do the work. The problem is that the knowledge lives in the wrong places: a chat thread from March, a spreadsheet only one person understands, the head of someone who just gave notice. When that knowledge is hard to find, work slows to a crawl and the same questions get answered over and over.</p>
+
+  <p>A knowledge management strategy fixes the root cause instead of the symptoms. This guide walks through what a strategy actually is, why the cost of skipping one is higher than most teams realize, and a practical framework you can start building this week.</p>
+
+  <figure>
+    <img src="images/01-knowledge-management-strategy-hero.png" alt="A team gathering scattered notes, folders, and sticky notes into one organized shelf of labeled binders">
+  </figure>
+
+  <h2>What is a knowledge management strategy?</h2>
+  <p>A knowledge management strategy is a documented plan for how your organization captures, organizes, stores, and shares its collective knowledge, so the right information reaches the right person at the right time. It defines what you document, where it lives, who owns it, and how it stays accurate.</p>
+  <p>That last part matters most. A strategy is not a tool you buy or a folder you create once. It is an ongoing system with clear owners and habits, built so knowledge keeps flowing even as people join, move roles, and leave.</p>
+
+  <h2>The real cost of having no strategy</h2>
+  <p>Knowledge silos feel harmless until you add up the hours. They rarely announce themselves. They show up as a delayed launch, a repeated mistake, or a new hire who takes months to become productive.</p>
+  <p>The research is blunt about the price. McKinsey's landmark study of workplace productivity found that knowledge workers spend nearly <strong>20% of the workweek</strong>&mdash;roughly one full day&mdash;just looking for internal information or tracking down a colleague who can help. That is time your team is paying for and getting nothing back.</p>
+  <p>The picture gets sharper when knowledge is trapped in individual heads. An industry study on workplace knowledge found that large U.S. businesses lose an estimated <strong>$47 million a year</strong> in productivity from inefficient knowledge sharing, that employees waste <strong>5.3 hours a week</strong> waiting on information or recreating work that already existed, and that <strong>42% of institutional knowledge is unique to one person</strong> and shared with no one else. When that person is out sick or moves on, nearly half of their role walks out the door with them.</p>
+  <p>A knowledge management strategy is what turns those numbers around. The same McKinsey research found that a searchable, shared record of company knowledge can cut the time employees spend hunting for information by <strong>up to 35%</strong>&mdash;and that better knowledge flow can lift knowledge-worker productivity by 20 to 25%.</p>
+
+  <h2>A simple knowledge management strategy framework</h2>
+  <p>You do not need a complicated model to get started. A working framework answers five questions in order:</p>
+  <ol>
+    <li><strong>Capture</strong> &mdash; What knowledge do we need to write down, and how do we get it out of people's heads?</li>
+    <li><strong>Organize</strong> &mdash; How is it structured so people can actually find it?</li>
+    <li><strong>Store</strong> &mdash; Where does the single source of truth live?</li>
+    <li><strong>Share</strong> &mdash; How do people access it, and how do we keep them from working around it?</li>
+    <li><strong>Maintain</strong> &mdash; Who owns accuracy, and how do we catch content before it goes stale?</li>
+  </ol>
+  <p>Everything below is a practical way to answer those five questions. Work through them in sequence&mdash;skipping the early ones is why so many knowledge bases turn into digital junk drawers.</p>
+
+  <h2>How to build your knowledge management strategy, step by step</h2>
+
+  <h3>1. Find your knowledge silos</h3>
+  <p>Start by mapping where knowledge already hides. Ask each team where they go for answers today, and notice how often the honest reply is "I just ask Priya." Those names are your silos. So are the shadow documents, the pinned chat messages, and the tribal shortcuts nobody has written down.</p>
+  <p>List the questions your team answers most often and the tasks only one person can do. That list is your documentation backlog, ranked by risk.</p>
+
+  <h3>2. Choose a single source of truth</h3>
+  <p>Scattered knowledge is the core problem, so the core fix is consolidation. Pick one home&mdash;a single, searchable internal knowledge base&mdash;where the current, trusted version of every answer lives. When people know there is exactly one place to look, they stop guessing and stop maintaining private copies.</p>
+  <p>The goal is not to ban every other tool. It is to make sure that when two sources disagree, everyone knows which one wins.</p>
+
+  <figure>
+    <img src="images/01-knowledge-management-strategy-inline-1.png" alt="One person writing a clear how-to guide at a desk while a colleague finds the answer on a laptop">
+  </figure>
+
+  <h3>3. Design a structure people can navigate</h3>
+  <p>A pile of documents is not a knowledge base. Before you write much, agree on a simple structure: top-level categories that match how your team thinks, consistent titles, and tags that make search reliable. Aim for a shallow hierarchy&mdash;if a reader needs five clicks to reach an answer, they will give up and ask a person instead.</p>
+  <p>Templates help here. A shared template for a how-to, a policy, or a troubleshooting guide keeps every contributor's output consistent, and it lowers the intimidation of a blank page.</p>
+
+  <h3>4. Assign ownership and a review workflow</h3>
+  <p>Knowledge decays. Products change, policies update, and last year's best practice becomes this year's bug. Every important document needs a named owner responsible for keeping it current, and every change should pass through a lightweight review before it goes live.</p>
+  <p>This is where borrowing habits from software engineering pays off. Version history, a clear approval step, and the ability to roll back a bad edit turn your knowledge base from a risky free-for-all into a trusted system of record.</p>
+
+  <h3>5. Capture institutional knowledge before it walks out</h3>
+  <p>Offboarding is the moment silos become losses. Build knowledge capture into everyday work rather than scrambling during someone's last week. When a tricky problem gets solved, the fix gets documented. When a new hire asks a question that is not in the knowledge base, answering it once means writing it down for the next person.</p>
+  <p>Treat every repeated question as a signal: it is cheaper to document the answer once than to interrupt an expert for it fifty times.</p>
+
+  <h3>6. Make knowledge effortless to find</h3>
+  <p>The best-written guide is worthless if no one can surface it. Invest in strong full-text search, clean titles, and metadata so the right result appears on the first try. If your knowledge serves customers as well as staff, apply the same care to on-page SEO&mdash;clear headings, descriptive titles, and structured content&mdash;so people find your answers before they open a support ticket.</p>
+  <p>Accessibility beats comprehensiveness. A smaller knowledge base that everyone can navigate outperforms an exhaustive one nobody can search.</p>
+
+  <h3>7. Measure, prune, and keep it alive</h3>
+  <p>A knowledge management strategy is a loop, not a launch. Watch which articles get read, which searches return nothing, and which pages have not been touched in a year. Use those signals to prune dead content, fill gaps, and reward the people who contribute. Feedback loops on each article&mdash;a simple "was this helpful?"&mdash;tell you where reality has drifted from the docs.</p>
+
+  <h2>Knowledge management best practices for 2026</h2>
+  <p>Once the foundation is in place, a few modern best practices keep it healthy:</p>
+  <ul>
+    <li><strong>Meet people where they work.</strong> Knowledge that requires a context switch rarely gets read. Surface answers inside the tools your team already uses, and publish customer-facing docs on your own domain.</li>
+    <li><strong>Write for humans first.</strong> Short sentences, plain words, and one idea per section beat exhaustive walls of text. Readability is a feature, not a nicety.</li>
+    <li><strong>Use AI to assist, not to replace judgment.</strong> AI is genuinely useful for drafting first versions, suggesting answers from existing content, and flagging pages that look outdated or contradictory. It works best on top of a well-organized, human-owned knowledge base&mdash;not as a substitute for one. Garbage in still means garbage out.</li>
+    <li><strong>Keep one source of truth, in many languages.</strong> If your audience is global, translate from a single master version rather than maintaining parallel copies that drift apart.</li>
+    <li><strong>Make maintenance somebody's job.</strong> Every healthy knowledge base has a named steward who reviews analytics, retires stale content, and keeps quality high.</li>
+  </ul>
+
+  <div class="cta">
+    <h2>Turn your knowledge into a single source of truth</h2>
+    <p>The teams that win at knowledge management are not the ones with the most documents. They are the ones who made knowledge easy to capture, easy to trust, and easy to find&mdash;then kept the system alive.</p>
+    <p>That is exactly what <a href="https://sonat.com">Sonat</a> is built for. It gives non-technical teams one place to write, organize, review, translate, and publish documentation, with the version control and approval workflows that keep a single source of truth accurate over time. Start with your riskiest silo, write down what only one person knows, and give your team one place to look. Everything after that gets easier.</p>
+  </div>
 </article>
-</main>
 </body>
 </html>
