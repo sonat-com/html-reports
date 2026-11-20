@@ -3,90 +3,88 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Work Instructions: How to Write Them (Format + Example)</title>
-<meta name="description" content="Learn what work instructions are, how they differ from SOPs, and how to write them with a simple format, a worked example, and visuals that help.">
+<title>Work Instructions: What They Are and How to Write Them</title>
+<meta name="description" content="Learn what work instructions are, how they differ from SOPs, and how to write clear, visual, step-by-step instructions your team will follow.">
 <style>
-  body { margin: 0; background: #ffffff; color: #1f2933; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.7; }
-  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
-  h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 24px; color: #102a43; }
-  h2 { font-size: 1.55rem; line-height: 1.3; margin: 48px 0 12px; color: #102a43; }
-  h3 { font-size: 1.2rem; margin: 32px 0 8px; color: #243b53; }
-  p, ul, ol { margin: 0 0 18px; }
-  ul, ol { padding-left: 1.4em; }
-  li { margin-bottom: 6px; }
-  li ul { margin: 6px 0 0; color: #486581; }
-  a { color: #1d6fd8; text-decoration: underline; text-underline-offset: 2px; }
-  figure { margin: 32px 0; }
-  img { display: block; width: 100%; height: auto; border-radius: 12px; }
-  .table-wrap { overflow-x: auto; margin: 24px 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid #d9e2ec; }
-  th { background: #f0f4f8; color: #102a43; }
-  strong { color: #102a43; }
-  @media (max-width: 600px) { body { font-size: 17px; } main { padding: 32px 16px 64px; } h1 { font-size: 1.75rem; } h2 { font-size: 1.35rem; } }
+  :root { --text:#1f2933; --muted:#52606d; --accent:#1d6fe0; --line:#e4e7eb; --soft:#f5f7fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#fff; color:var(--text); font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 80px; }
+  h1 { font-size:2.1rem; line-height:1.25; margin:0 0 28px; letter-spacing:-0.01em; }
+  h2 { font-size:1.5rem; line-height:1.3; margin:48px 0 12px; }
+  h3 { font-size:1.15rem; margin:32px 0 8px; }
+  p, li { color:var(--text); }
+  p { margin:0 0 18px; }
+  ul, ol { padding-left:1.4em; margin:0 0 20px; }
+  li { margin-bottom:8px; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  figure { margin:28px 0; }
+  img { display:block; max-width:100%; height:auto; border-radius:12px; }
+  strong { font-weight:650; }
+  .table-wrap { overflow-x:auto; margin:24px 0; border:1px solid var(--line); border-radius:10px; }
+  table { width:100%; border-collapse:collapse; font-size:0.95rem; line-height:1.5; }
+  th, td { text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+  thead th { background:var(--soft); font-weight:650; }
+  tbody tr:last-child td { border-bottom:none; }
+  @media (max-width:600px) { body { font-size:17px; } main { padding:32px 16px 64px; } h1 { font-size:1.7rem; } h2 { font-size:1.3rem; } }
 </style>
 </head>
 <body>
 <main>
 <article>
-<h1>Work Instructions: How to Write Them So People Actually Follow Them</h1>
-<p>A new team member is standing at a workstation, a service desk, or a packing line. They have read the policy and skimmed the procedure, and they still don't know which button to press first. Work instructions exist for that moment.</p>
-<p>This guide explains what work instructions are, how they differ from SOPs and procedures, and how to write them in a format people can follow on their first try. It also covers how to keep them accurate after the process changes.</p>
-<figure><img src="images/01-work-instructions-hero.png" alt="A team lead showing a new colleague step-by-step work instructions on a tablet at a workbench with tools and a checklist" loading="lazy"></figure>
-<h2>What is a work instruction?</h2>
-<p><strong>A work instruction is a step-by-step document that tells one person how to complete one specific task.</strong> It covers the exact actions, in order, plus the details that make each step succeed or stay safe. A policy says <em>why</em>, a procedure says <em>what</em> and <em>who</em>, and a work instruction says <em>how</em>.</p>
-<p>A procedure might say "Quality inspects incoming parts before they are stored." The work instruction for that procedure explains how to do the inspection: which gauge to use, where to measure, what counts as a pass, and what to do with a reject.</p>
-<h2>Work instructions vs SOPs and procedures</h2>
-<p>Teams often mix these terms up, and the result is documents that are either too vague to follow or too detailed to maintain. In quality management, a common way to organize documentation is a hierarchy:</p>
-<ol><li><strong>Policy.</strong> Your commitments and rules (the <em>why</em>).</li><li><strong>Manual.</strong> How your overall system fits together.</li><li><strong>Procedures and SOPs.</strong> Which activities happen, in what order, and who owns them (the <em>what</em> and <em>who</em>).</li><li><strong>Work instructions.</strong> How one person performs one task (the <em>how</em>).</li><li><strong>Records and forms.</strong> Proof that the work was done.</li></ol>
-<p>Quality frameworks such as ISO 9001 treat this structure as a convention, not a requirement. You can decide how big each document is. A work instruction can sit inside a procedure or be referenced from it. In practice, though, separating them pays off. Procedures change when responsibilities change, while work instructions change when the task itself changes, such as a new tool, a new screen, or a new supplier part.</p>
-<div class="table-wrap"><table><thead><tr><th></th><th>Procedure / SOP</th><th>Work instruction</th></tr></thead><tbody><tr><td><strong>Answers</strong></td><td>What happens, and who does it?</td><td>How exactly do I do this step?</td></tr><tr><td><strong>Scope</strong></td><td>A process across roles or teams</td><td>A single task for a single role</td></tr><tr><td><strong>Detail</strong></td><td>Moderate</td><td>High: every action, setting, and check</td></tr><tr><td><strong>Reader</strong></td><td>Managers, auditors, process owners</td><td>The person doing the work</td></tr><tr><td><strong>Changes when</strong></td><td>Roles or process flow change</td><td>Tools, screens, or methods change</td></tr></tbody></table></div>
-<p>Detail should match the reader. Well-trained, experienced staff need less detail than new starters. If your team turns over often, or if a task is safety-critical or done rarely, write more detail rather than less.</p>
-<h2>How to write work instructions: a 6-step method</h2>
-<p>The most reliable method for writing work instructions dates back to the 1940s. The U.S. Training Within Industry (TWI) program's Job Instruction method breaks a job into <strong>important steps</strong>, <strong>key points</strong>, and <strong>reasons</strong>. Lean manufacturing still uses it today. You don't need a factory to use it. It works just as well for configuring a laptop or processing a refund.</p>
-<h3>1. Pick one task and one reader</h3>
-<p>Name the task as an outcome ("Replace the filter cartridge on Line 2," "Issue a partial refund"). Then name who will use it. One work instruction should serve one role doing one task. If you keep writing "if you are in finance, do X; if you are in support, do Y," you have two work instructions.</p>
-<h3>2. Watch the task before you write it</h3>
-<p>Write alongside the person who does the job best, not from memory. Experts skip steps without noticing. Ask them to do the task slowly and narrate it. Capture where they look, what they check, and what they do when something goes wrong.</p>
-<h3>3. List the important steps</h3>
-<p>An important step is a main stage that moves the job forward, not every small movement. Start each step with a verb: <em>Remove</em>, <em>Check</em>, <em>Enter</em>, <em>Tighten</em>. Keep a step to one action where you can.</p>
-<p>Aim for a short list. People hold only a few chunks of information in short-term memory at once, so a long task is easier to follow when you group it into short sections with their own headings.</p>
-<h3>4. Add the key points</h3>
-<p>Key points are what separate doing a step from doing it right. They capture the special knack needed to do the job safely, with good quality, and efficiently. Look for:</p>
-<ul><li><strong>Safety.</strong> In TWI, safety is always a key point.</li><li><strong>Sensory cues.</strong> How the part or tool should feel, the sound it makes, or its temperature.</li><li><strong>Special motions or information.</strong> The critical setting, the exact order, or the detail that experts know and newcomers miss.</li></ul>
-<p>For example, the step "Tighten the cap" has the key point "Hand-tight plus a quarter turn. Over-tightening cracks the seal."</p>
-<h3>5. Explain the reason for each key point</h3>
-<p>People skip rules they don't understand, especially under time pressure. One short "why" per key point turns an instruction into understanding: "<em>because the seal cracks if over-tightened, and a cracked seal leaks under pressure.</em>" The reason also helps people handle situations the instruction didn't anticipate.</p>
-<h3>6. Test it with someone new</h3>
-<p>Hand the draft to someone who has never done the task. Watch them follow it without help. Every time they hesitate, ask a question, or go wrong, you've found a gap in the document. Fix it and test again.</p>
-<h2>A simple work instructions format</h2>
-<p>A consistent format means readers always know where to look. This structure works for most tasks:</p>
-<ul><li><strong>Title:</strong> the task as an outcome</li><li><strong>Purpose:</strong> one sentence on why the task matters</li><li><strong>Scope and role:</strong> who performs it, and when</li><li><strong>Before you start:</strong> tools, materials, access, and safety equipment</li><li><strong>Steps:</strong> numbered, one action each, with key points and reasons</li><li><strong>Checks:</strong> how to confirm the result is correct</li><li><strong>If something goes wrong:</strong> common problems and who to contact</li><li><strong>Owner and version:</strong> who maintains the instruction and which version this is</li></ul>
-<p>Write the steps in plain language. Use active voice and address the reader directly: "Check the pressure gauge" instead of "The pressure gauge should be checked." Active voice makes clear who does what. Use the present tense and the simplest verb available ("check," not "perform a check of").</p>
-<h2>Work instructions example</h2>
-<p>Here is a short, illustrative work instruction written in this format. It shows the structure; for real equipment, always follow the manufacturer's instructions.</p>
-<p><strong>Title:</strong> Replace the filter cartridge on a water dispenser</p>
-<p><strong>Purpose:</strong> A clogged filter slows flow and affects water quality.</p>
-<p><strong>Role:</strong> Facilities technician, every 6 months or when the filter light turns red.</p>
-<p><strong>Before you start:</strong> New filter cartridge, towel, gloves.</p>
-<ol><li><strong>Switch off the water supply valve</strong> under the unit.<ul><li><em>Key point:</em> Turn it fully clockwise. <em>Reason:</em> A partly open valve sprays water when the filter is removed.</li></ul></li><li><strong>Twist the old cartridge a quarter turn left and pull it down.</strong><ul><li><em>Key point:</em> Hold the towel underneath. <em>Reason:</em> About a cup of water drains out.</li></ul></li><li><strong>Remove the cap from the new cartridge and push it up into the housing.</strong><ul><li><em>Key point:</em> Line up the arrow on the cartridge with the arrow on the housing. <em>Reason:</em> A misaligned cartridge won't seal.</li></ul></li><li><strong>Twist the new cartridge a quarter turn right until it clicks.</strong></li><li><strong>Open the supply valve and run water for 2 minutes.</strong><ul><li><em>Key point:</em> Discard this water. <em>Reason:</em> It flushes carbon dust from the new filter.</li></ul></li></ol>
-<p><strong>Check:</strong> The flow is steady and the filter light is green.</p>
-<p><strong>If something goes wrong:</strong> If water leaks at the housing, close the valve, remove the cartridge, and repeat step 3.</p>
-<p><strong>Owner:</strong> Facilities lead · Version 3</p>
-<p>This example has five steps, each with one action and a reason for every key point. That is enough for a newcomer to do the job safely the first time.</p>
-<h2>Visual work instructions: when to show, not tell</h2>
-<p>Some steps are faster to show than to describe: where a part goes, which way a connector faces, or which field to click. Visual work instructions add photos, annotated screenshots, diagrams, or short videos next to the text.</p>
-<figure><img src="images/01-work-instructions-inline-1.png" alt="Two technicians at a workbench comparing a photo in an open manual with the parts laid out in front of them" loading="lazy"></figure>
-<p>A few rules keep visuals useful:</p>
-<ul><li><strong>One image per step, placed beside that step.</strong> An image gallery at the end forces the reader to match pictures to steps.</li><li><strong>Highlight what matters.</strong> Circle the valve, arrow the button, crop away clutter.</li><li><strong>Keep the text.</strong> Visuals support the steps; they don't replace them. Text is searchable, translatable, and accessible to screen readers.</li><li><strong>Re-shoot when the equipment or screen changes.</strong> An outdated photo is more confusing than none.</li></ul>
-<h2>Keep work instructions current</h2>
-<p>A work instruction is only useful if it matches how the work is done today. Lean practice treats standardized work as a baseline for improvement. You review and update the standard as conditions change, so every improvement becomes the new normal.</p>
-<p>That means work instructions need the same controls as the rest of your policies and procedures:</p>
-<ul><li><strong>One source of truth.</strong> Publish instructions in one place that everyone can reach on a phone, tablet, or shop-floor screen, not in printouts and shared drives.</li><li><strong>Version history.</strong> Readers should see the current version, and you should be able to see what changed and when.</li><li><strong>Review and approval.</strong> A subject-matter expert checks every change before it goes live.</li><li><strong>Feedback from the floor.</strong> The people doing the work spot outdated steps first. Give them an easy way to flag problems on the instruction itself.</li><li><strong>Translations.</strong> If your team works in several languages, every reader needs the same current version in their language.</li></ul>
-<p>An online documentation platform like <a href="https://sonat.com">Sonat</a> supports this workflow. Your team writes in Google Docs or a simple editor, sends changes through an approval workflow, keeps a full version archive, and publishes mobile-friendly instructions that readers can comment on and read in their own language.</p>
+<h1>Work Instructions: What They Are and How to Write Them</h1>
+<figure><img src="images/01-work-instructions-hero.png" alt="A worker in safety glasses assembles a part while following numbered steps on a tablet, as a colleague with a clipboard points to the screen"></figure>
+<p>Your policies say what the organization intends. Your SOPs describe how a process runs. But picture someone at a machine, a lab bench, or a service desk with a task in front of them. They don't reach for either document. They reach for a work instruction, or they ask the person next to them.</p>
+<p>This guide explains what work instructions are, how they differ from SOPs, which format works, and how to write steps people actually follow. It also covers how to keep instructions current once they are live.</p>
+<h2>What are work instructions?</h2>
+<p><strong>Work instructions are short, task-level documents that tell one person how to complete one specific job, step by step, at the place where the work happens.</strong> They sit below policies and procedures in a quality system and turn a procedure into actions someone can follow without guessing.</p>
+<p>The World Health Organization's laboratory quality guidance describes them plainly: work instructions, or job aids, are shortened versions of SOPs that can be posted at the workstation for easy reference. They are meant to <em>supplement</em> the SOP, not replace it.</p>
+<h2>Where work instructions fit in the documentation hierarchy</h2>
+<p>Most quality systems organize documents in layers. The labels vary between organizations, but the shape is consistent:</p>
+<ol><li><strong>Policies</strong> — what the organization intends to do, in broad terms.</li><li><strong>Processes</strong> — how work flows from inputs to outputs.</li><li><strong>Procedures (SOPs)</strong> — the detailed activities that make up a process.</li><li><strong>Work instructions</strong> — the condensed, step-by-step "how" for a single task.</li><li><strong>Forms and records</strong> — forms capture results; once completed, they become records.</li></ol>
+<p>WHO's guidance pictures this as a tree. Policies are the roots, processes are the trunk, and procedures are the leaves. Work instructions grow out of those procedures. Each layer gets more specific and is used by more people more often.</p>
+<p>If you already have written policies and procedures, work instructions are usually where most of the day-to-day reading happens. That also makes them the place where small errors get repeated most often.</p>
+<h2>Work instructions vs SOPs: what's the difference?</h2>
+<p>The two are easy to confuse because both contain steps. The difference is scope and audience.</p>
+<div class="table-wrap"><table><thead><tr><th></th><th>SOP (procedure)</th><th>Work instruction</th></tr></thead><tbody><tr><td><strong>Scope</strong></td><td>A whole activity or process</td><td>One task within that activity</td></tr><tr><td><strong>Answers</strong></td><td>Who does what, when, and in what order</td><td>Exactly how to do this task</td></tr><tr><td><strong>Reader</strong></td><td>Everyone involved, including managers and auditors</td><td>The person doing the task</td></tr><tr><td><strong>Where it's used</strong></td><td>At a desk, in training, during audits</td><td>At the point of work</td></tr><tr><td><strong>Length</strong></td><td>Often several pages</td><td>Often one screen or page</td></tr></tbody></table></div>
+<p>A simple test: if the document coordinates several roles, it's a procedure. If it guides one person's hands through one job, it's a work instruction.</p>
+<p>Keep them linked. Each work instruction should name its parent SOP, and each SOP should list the work instructions that support it. When one changes, you'll know what else to check.</p>
+<h2>A work instruction format that works</h2>
+<p>A consistent work instruction format matters more than any single design choice. WHO's guidance recommends a standard outline so the structure is familiar to staff and easy for new people to use. A practical template includes:</p>
+<ul><li><strong>Title</strong> — the task, phrased as an action ("Replace the filter cartridge on Line 2").</li><li><strong>ID and version</strong> — so people can tell whether they are reading the current one.</li><li><strong>Parent procedure</strong> — the SOP this instruction supports.</li><li><strong>Scope</strong> — which equipment, product, or location it applies to.</li><li><strong>Who performs it</strong> — the role, plus any required training.</li><li><strong>Before you start</strong> — tools, materials, protective equipment, and safety warnings.</li><li><strong>Steps</strong> — numbered, one action each, with visuals where they help.</li><li><strong>Check</strong> — how the person knows the task was done correctly.</li><li><strong>What to do if something goes wrong</strong> — who to contact or which instruction to follow next.</li><li><strong>Owner and approval</strong> — who maintains it and who signed it off.</li></ul>
+<p>Put warnings <em>before</em> the step they apply to, not after. A warning someone reads after they've acted doesn't help them.</p>
+<p>If you'd rather not start from a blank page, Sonat's free <a href="https://sonat.com/templates">documentation templates</a> give you a ready-made structure to adapt.</p>
+<h2>How to write work instructions people actually follow</h2>
+<p>Work instructions usually go wrong in a few predictable ways: they are too long, too vague, or written for the author instead of the reader. These habits help.</p>
+<h3>Write one action per step</h3>
+<p>Start each step with a verb: "Turn," "Check," "Record," "Remove." Keep it to one action. If a step contains "and then," split it in two.</p>
+<h3>Keep sentences short and active</h3>
+<p>Plain-language guidance from Nielsen Norman Group suggests sentences of no more than 15 to 20 words. That advice holds even for expert readers, who also prefer text that is quick to scan. Digital.gov's plain-language guide adds two more habits: use active voice and cut unnecessary words. "Close valve B" beats "Valve B should be closed by the operator."</p>
+<h3>Be explicit, not approximate</h3>
+<p>"Tighten firmly" means something different to every person. Give the value, the tool setting, or the visual cue that shows the step is done. WHO's guidance asks for documents that are explicit and accurate and that reflect how the work is really done.</p>
+<h3>Explain the "why" at critical steps</h3>
+<p>Not every step needs a reason, but the ones that protect safety or quality do. A short reason after a critical step ("so the seal seats evenly") tells people why the step matters. When they understand it, they are less likely to "improve" it or skip it under time pressure.</p>
+<h3>Test the draft with someone new</h3>
+<p>Hand the draft to someone who hasn't done the task and watch them use it. Every place they hesitate, ask a question, or improvise is a gap in the instruction.</p>
+<h2>Visual work instructions: show, don't just tell</h2>
+<figure><img src="images/01-work-instructions-inline-1.png" alt="A trainer fits a part on a machine while a new team member compares the step to photos on a printed instruction sheet"></figure>
+<p>For hands-on tasks, a photo or diagram often does more than a paragraph. Visual work instructions pair each step with an image of what the person should see: the correct part, the right orientation, the finished result.</p>
+<p>Some practical rules:</p>
+<ul><li><strong>Use one image per step</strong> when the step involves orientation, placement, or a visual check.</li><li><strong>Shoot from the worker's point of view</strong>, not from across the room.</li><li><strong>Mark what matters</strong> with arrows or circles, and keep the rest of the image uncluttered.</li><li><strong>Show the wrong result too</strong> when a common mistake looks almost right.</li><li><strong>Use short video clips</strong> for motions that are hard to capture in a still image.</li></ul>
+<p>Visuals also help mixed-language teams. An image needs less translation than a sentence, though the text around it still should be translated.</p>
+<h2>Work instructions for manufacturing and the shop floor</h2>
+<p>Manufacturing is where standard work instructions are most familiar, and where the gap between "documented" and "followed" shows most quickly.</p>
+<p>Two lessons from lean practice are worth borrowing anywhere:</p>
+<ol><li><strong>Training is part of the document.</strong> The Training Within Industry Job Instruction method uses four steps: prepare the worker, present the job, try out the job, and follow up. The Lean Enterprise Institute teaches it with a Job Breakdown Sheet that turns a task into clear, step-by-step instructions. Its writing also calls repeated demonstration with explanation critical to helping workers adapt to standardized work. A work instruction is the script for that training, not a substitute for it.</li><li><strong>The instruction must be where the work is.</strong> WHO's guidance makes the same point for laboratories: post the job aid in clear view of the workspace. That can be a printed sheet, or a tablet or phone at the station that always shows the current version.</li></ol>
+<p>Regulation is opening the door to digital instructions as well. The EU Machinery Regulation, which applies from 20 January 2027, allows manufacturers to provide instructions for use in digital format. If your team writes machinery documentation for the EU market, that makes a strong case for keeping instructions online and under version control. Check the regulation's detailed conditions for digital delivery with your compliance team.</p>
+<h2>Keeping work instructions current</h2>
+<p>A work instruction that no longer matches the job is worse than none, because people trust it. WHO's guidance sums up the rule in one line: "Do what you wrote and write what you are doing."</p>
+<p>Build these habits into your process:</p>
+<ul><li><strong>Version every change</strong> and keep the history, so you can see what changed and when.</li><li><strong>Route changes through approval</strong> before they go live, especially for safety- or quality-critical tasks.</li><li><strong>Retire old copies</strong> wherever they live, including printed sheets taped to equipment.</li><li><strong>Collect feedback at the point of use.</strong> The people doing the job are the first to notice when a step is wrong.</li><li><strong>Review on a schedule</strong> and whenever equipment, materials, or the parent procedure changes.</li></ul>
+<p>This is also where tooling matters. In <a href="https://sonat.com/">Sonat</a>, teams write instructions in Google Docs or the built-in editor. They can then route changes through approval workflows and publish to a mobile-friendly viewer the team can open at the workstation. Sonat keeps every version, collects reader feedback on each topic, and can translate instructions for multilingual teams. Variants let you keep one instruction per machine model or product edition without copying everything by hand.</p>
 <h2>Conclusion</h2>
-<p>Good work instructions are not longer documents. They are more specific ones. Keep each to one task and one reader. Break it into important steps, add the key points that make each step work, and explain why. Then test it with someone new, add visuals where words fall short, and keep it updated as the work changes.</p>
-<p>Start with the task that causes the most questions or errors on your team. Write it once, properly, and you'll see the difference in the next new hire's first week.</p>
+<p>Good work instructions are short, specific, and close to the work. They take one task from an SOP and turn it into steps one person can follow without guessing. They're tested with real users, supported by visuals, and kept in step with how the job is actually done.</p>
+<p>Start small. Pick the task that causes the most questions or rework, write one clear instruction for it with the format above, and watch someone use it. If you want a place to write, approve, and publish instructions without technical setup, you can <a href="https://editor.sonat.com/auth/signup">try Sonat for free</a>.</p>
 </article>
 </main>
 </body>
