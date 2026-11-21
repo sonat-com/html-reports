@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation Accessibility: Write Docs Everyone Can Use</title>
+<meta name="description" content="Documentation accessibility means anyone can find, read, and act on your docs. Learn 7 writing habits, how to write alt text, and a pre-publish checklist.">
+<style>
+  body { margin: 0; background: #ffffff; color: #1f2933; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 24px; color: #0b2545; letter-spacing: -0.01em; }
+  h2 { font-size: 1.55rem; line-height: 1.3; margin: 48px 0 12px; color: #0b2545; }
+  h3 { font-size: 1.2rem; margin: 32px 0 8px; color: #13315c; }
+  p { margin: 0 0 18px; }
+  a { color: #1d6fd8; text-decoration: underline; text-underline-offset: 2px; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 20px; }
+  li { margin-bottom: 8px; }
+  strong { color: #0b2545; }
+  figure { margin: 32px 0; }
+  img { width: 100%; height: auto; border-radius: 12px; display: block; }
+  .table-wrap { overflow-x: auto; margin: 8px 0 24px; }
+  table { border-collapse: collapse; width: 100%; font-size: 16px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e4e7eb; vertical-align: top; }
+  th { background: #f0f5fb; color: #0b2545; }
+  @media (max-width: 600px) { body { font-size: 17px; } h1 { font-size: 1.75rem; } h2 { font-size: 1.35rem; } main { padding-top: 32px; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>Documentation Accessibility: 7 Writing Habits for Docs Everyone Can Use</h1>
+<p>Picture a customer using a screen reader to work through your setup guide. They jump from heading to heading, but every section is plain bold text, so there's nothing to jump to. They reach a step that says "click the green button on the right." A diagram in the middle of the page has no description at all.</p>
+<p>None of that is a code problem. It's a writing problem, which means writers can fix it. This guide explains what documentation accessibility is, why it matters now, and seven writing habits that make your docs work for every reader.</p>
+<figure><img src="images/01-documentation-accessibility-hero.png" alt="A person wearing headphones types on a laptop while a colleague beside them holds an open manual and points to a page" loading="lazy"></figure>
+<h2>What is documentation accessibility?</h2>
+<p><strong>Documentation accessibility means that everyone can find, read, understand, and act on your documentation, including people who use screen readers, magnifiers, captions, or keyboard navigation.</strong> It covers how the page is built, but also how the content is written.</p>
+<p>Developers handle much of the technical side, such as color contrast and keyboard support. Writers control everything else: titles, headings, link text, image descriptions, instructions, and the words themselves.</p>
+<h2>Why accessible documentation matters</h2>
+<h3>More of your readers need it than you think</h3>
+<p>The World Health Organization estimates that 1.3 billion people experience significant disability. That's 16% of the world's population, or 1 in 6 people. Some of them are already reading your help center, whether you've planned for them or not.</p>
+<p>Accessible writing helps everyone else too. Clear headings help a busy reader scan. Descriptive links help someone in a hurry. Plain language helps anyone reading in their second language.</p>
+<h3>Accessibility rules now reach documentation</h3>
+<p>The European Accessibility Act has applied since 28 June 2025. It covers products and services such as computers, smartphones, e-books, banking, and e-commerce. For covered products, the Act sets requirements for the information that comes with them. Labeling, instructions, and warnings must be available through more than one sensory channel and presented in a way users can understand and perceive. Instructions that aren't on the product itself must be publicly available.</p>
+<p>If you sell covered products or services in the EU, your documentation is part of compliance, not an afterthought. Check the details for your own situation with your legal team.</p>
+<h3>The standard most teams use</h3>
+<p>Most accessibility work is measured against the Web Content Accessibility Guidelines (WCAG), published by the W3C. The latest version is WCAG 2.2. Its guidelines are organized under four principles: <strong>perceivable, operable, understandable, and robust</strong>. Its success criteria come in three levels: A, AA, and AAA.</p>
+<p>You don't need to memorize WCAG to write accessible docs. The W3C's own writing tips cover most of the writer's part, and a few WCAG success criteria fill in the rest. Here's how to apply them to documentation.</p>
+<h2>7 habits for writing accessible documentation</h2>
+<h3>1. Give every page a unique, descriptive title</h3>
+<p>The title is how readers tell one page from another, and it's often the same as the page's main heading. Make each title short and specific, and put the unique, most relevant words first. In a multi-step process, include the current step.</p>
+<ul><li><strong>Instead of:</strong> "Settings"</li><li><strong>Write:</strong> "Change your notification settings"</li></ul>
+<p>If three pages are all called "Overview," nobody can tell them apart.</p>
+<h3>2. Use real headings, in order</h3>
+<p>Sighted readers spot headings by their size and style. Assistive technology can't see that, so headings must be tagged as real heading elements, not bold text made to look like one. Once they are, screen reader users can navigate by them. The W3C calls headings one of the most important tools for screen reader users.</p>
+<p>Use one H1 for the page title. Use H2s for main sections and H3s inside them, without skipping levels. Read your headings alone: together, they should work as an outline of the page.</p>
+<h3>3. Write link text that makes sense on its own</h3>
+<p>Readers who scan, including screen reader users, often meet link text without the sentence around it. "Click here" and "read more" tell them nothing about where the link goes.</p>
+<ul><li><strong>Instead of:</strong> "To reset your password, click here."</li><li><strong>Write:</strong> "Follow the steps in How to reset your password," with that title as the link text.</li></ul>
+<p>Describe where the link goes. If it opens a file, say what kind and how big, for example "Installation guide (PDF, 2 MB)."</p>
+<h3>4. Write alt text that does the image's job</h3>
+<p>Alt text is the description a screen reader reads in place of an image. Knowing how to write alt text comes down to one question: what job is this image doing? The W3C's alt text decision tree gives a simple way to decide:</p>
+<div class="table-wrap"><table><thead><tr><th>If the image is...</th><th>Then the alt text should...</th></tr></thead><tbody><tr><td><strong>Decorative</strong> (adds nothing to the meaning)</td><td>Be empty, so screen readers skip it</td></tr><tr><td><strong>Informative</strong> (a photo or simple graphic that adds meaning)</td><td>Briefly describe that meaning</td></tr><tr><td><strong>Functional</strong> (inside a link or button)</td><td>Describe the action or destination, not the picture</td></tr><tr><td><strong>An image of text</strong></td><td>Include the same text</td></tr><tr><td><strong>Complex</strong> (a chart, diagram, or annotated screenshot)</td><td>Stay short, with the full information given in the page text</td></tr></tbody></table></div>
+<p>For documentation, screenshots are the most common case. Don't write "screenshot of the settings page." Write what the reader needs from it, such as "The Settings page, with the Notifications tab selected."</p>
+<figure><img src="images/01-documentation-accessibility-inline-1.png" alt="A writer points to a bar chart on a monitor and explains it to a colleague who listens through headphones and takes notes" loading="lazy"></figure>
+<h3>5. Don't rely on color, shape, or position alone</h3>
+<p>Instructions like "click the green button" or "use the menu on the right" fail for anyone who can't see color or layout. WCAG makes this a Level A requirement: instructions must not rely only on sensory characteristics such as shape, color, size, or position. Use the visible label instead.</p>
+<ul><li><strong>Instead of:</strong> "Click the green button on the right."</li><li><strong>Write:</strong> "Select <strong>Save changes</strong>."</li></ul>
+<p>The same goes for alerts. A red box isn't a warning on its own. Start the text with "Warning:" so the meaning comes through in every format.</p>
+<h3>6. Caption and transcribe your videos</h3>
+<p>Video tutorials are common in documentation, and they shut out readers who can't hear the audio or can't see the screen. The W3C recommends captions for video and transcripts for audio, including important sounds and visual details.</p>
+<p>A transcript has a second benefit. It turns your video into searchable text that people and search engines can find.</p>
+<h3>7. Keep it clear and concise</h3>
+<p>This habit makes all the others easier. Use plain language and short sentences. Spell out acronyms the first time you use them. Break long procedures into numbered steps and use lists where they help.</p>
+<p>Clear writing helps readers with cognitive disabilities, readers using translation tools, and readers who are simply tired or busy. That covers most of your audience at some point.</p>
+<h2>A quick documentation accessibility checklist</h2>
+<p>Run through this list before you publish a new topic:</p>
+<ul><li>The page title is unique and describes the page.</li><li>Headings use real heading levels, in order, with no skipped levels.</li><li>Every link describes where it goes, with no "click here."</li><li>Every informative image has alt text, and decorative images have empty alt text.</li><li>Charts and diagrams are explained in the page text.</li><li>No instruction depends on color, shape, or position alone.</li><li>Videos have captions, and audio has a transcript.</li><li>Sentences are short, acronyms are spelled out, and steps are numbered.</li></ul>
+<p>You won't catch everything on the first pass, and that's fine. Accessibility improves with each review, and reader feedback is where most of the gaps show up.</p>
+<h2>How Sonat supports accessible documentation</h2>
+<p><a href="https://sonat.com">Sonat</a> is built for teams who write documentation for real end users, and accessible writing fits naturally into that work.</p>
+<p>The built-in <strong>readability guide</strong> scores your writing, so you can spot long sentences and dense paragraphs before readers do. Every published manual works across desktop, tablet, and phone. <strong>Feedback on every topic</strong> lets readers tell you when something isn't working, including accessibility problems you missed. <strong>Machine translation</strong> across 184 languages helps you reach readers in their own language, and that works best when the source text is already clear and simple.</p>
+<p>Writers can draft in Google Docs or the Sonat editor and publish with one click. No technical knowledge is required.</p>
+<h2>Accessible docs are better docs</h2>
+<p>Documentation accessibility isn't a separate project for later. It comes from small writing choices you make every day: a clearer title, a real heading, a link that says where it goes, and an image description that does its job. Build these habits into your style guide and review process, and every reader benefits.</p>
+<p>Ready to publish documentation everyone can use? <a href="https://sonat.com">Start with Sonat for free</a>. No credit card required.</p>
+</article>
+</main>
+</body>
+</html>
