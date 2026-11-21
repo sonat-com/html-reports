@@ -3,80 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Content Reuse in Technical Writing: A Practical Guide</title>
-<meta name="description" content="Learn what content reuse is, when it pays off, what to reuse, and how to build a content reuse strategy so you write docs once and use them everywhere.">
+<title>Content Reuse: How to Write Once and Publish Everywhere</title>
+<meta name="description" content="Content reuse means writing documentation once and using it everywhere. Learn what to reuse, how to build modular content, and which mistakes to avoid.">
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#ffffff;color:#1f2933;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
-main{max-width:720px;margin:0 auto;padding:48px 16px 80px}
-h1{font-size:2.25rem;line-height:1.2;margin:0 0 28px;letter-spacing:-0.02em;color:#102a43}
-h2{font-size:1.5rem;line-height:1.3;margin:48px 0 12px;color:#102a43;letter-spacing:-0.01em}
-h3{font-size:1.2rem;margin:32px 0 8px;color:#102a43}
-p{margin:0 0 18px}
-a{color:#1a6fd6;text-decoration:underline;text-underline-offset:3px}
-strong{color:#102a43}
-figure{margin:28px 0}
-img{display:block;max-width:100%;height:auto;border-radius:12px}
-ul,ol{margin:0 0 20px;padding-left:1.4em}
-li{margin:6px 0}
-ul.checklist{list-style:none;padding-left:0}
-ul.checklist li{position:relative;padding-left:1.9em}
-ul.checklist li::before{content:"";position:absolute;left:0;top:.35em;width:1.05em;height:1.05em;border:2px solid #1a6fd6;border-radius:4px}
-code{background:#f0f4f8;padding:2px 6px;border-radius:4px;font-size:.9em}
-.table-wrap{overflow-x:auto;margin:0 0 24px}
-table{width:100%;border-collapse:collapse;font-size:.95rem}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #e4e7eb;vertical-align:top}
-th{background:#f5f8fb;color:#102a43}
-@media (max-width:600px){body{font-size:17px}h1{font-size:1.8rem}h2{font-size:1.3rem}main{padding-top:32px}}
+  body { margin: 0; background: #ffffff; color: #1f2933; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 24px; color: #0b2545; letter-spacing: -0.01em; }
+  h2 { font-size: 1.55rem; line-height: 1.3; margin: 48px 0 12px; color: #0b2545; }
+  h3 { font-size: 1.2rem; margin: 32px 0 8px; color: #13315c; }
+  p { margin: 0 0 18px; }
+  a { color: #1d6fd8; text-decoration: underline; text-underline-offset: 2px; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 20px; }
+  li { margin-bottom: 8px; }
+  strong { color: #0b2545; }
+  figure { margin: 32px 0; }
+  img { width: 100%; height: auto; border-radius: 12px; display: block; }
+  .table-wrap { overflow-x: auto; margin: 8px 0 24px; }
+  table { border-collapse: collapse; width: 100%; font-size: 16px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e4e7eb; vertical-align: top; }
+  th { background: #f0f5fb; color: #0b2545; }
+  @media (max-width: 600px) { body { font-size: 17px; } h1 { font-size: 1.75rem; } h2 { font-size: 1.35rem; } main { padding-top: 32px; } }
 </style>
 </head>
 <body>
 <main>
 <article>
-<h1>Content Reuse in Technical Writing: A Practical Guide</h1>
-<figure><img src="images/01-content-reuse-hero.png" alt="A person files a card into a binder next to three matching binders on a shelf while a colleague reads an open binder"></figure>
-<p>The same safety warning sits in six manuals. The same "how to sign in" steps appear in a dozen help articles. Then the product changes. Someone updates five copies, misses the sixth, and now your documentation contradicts itself.</p>
-<p>Content reuse fixes this. This guide explains what content reuse is, when it is worth the effort, which content to reuse, and how to build a simple content reuse strategy, even if your team has never heard of single sourcing.</p>
-<p><strong>In short:</strong> content reuse means writing a piece of content once, storing it in one place, and using it everywhere it is needed. When you update the source, every place that uses it updates too.</p>
+<h1>Content Reuse in Documentation: Write Once, Publish Everywhere</h1>
+<p>You change one safety warning in your product manual. Then you remember it also appears in the quick start guide, the troubleshooting article, two FAQ entries, and the German translation. You find four of them. A customer finds the fifth.</p>
+<p>Content reuse prevents this. This guide covers what content reuse is, which content is worth reusing, how to break documentation into modular pieces, and the mistakes that make reuse cause more problems than it solves. It ends with a simple plan for getting started.</p>
+<figure><img src="images/01-content-reuse-hero.png" alt="A technical writer holding matching labeled cards beside a row of identical binders while a colleague reads a printed manual" loading="lazy"></figure>
 <h2>What is content reuse?</h2>
-<p>Content reuse is the practice of creating content once and using it in more than one place: across topics, manuals, product versions, output formats, or languages. In technical writing it is often called <em>single sourcing</em>, which the reference glossary <em>The Language of Technical Communication</em> defines as "creating content once, planning for its reuse in multiple places, contexts, and output channels."</p>
-<p>The key word is <em>planning</em>. Copying and pasting a paragraph into three documents is not content reuse. It is duplication, and it creates three things to maintain. Real reuse means the paragraph exists once and every document points to it.</p>
-<h2>Why content reuse matters</h2>
-<p>Reusable content pays off in four ways:</p>
-<ul><li><strong>Consistency.</strong> One source means one wording. Readers see the same instructions and the same terms wherever they look.</li><li><strong>Accuracy.</strong> You fix a mistake once instead of hunting for every copy. The UK government's content design guidance makes the same point from the other direction: it recommends removing content to avoid duplication or conflicting information.</li><li><strong>Less maintenance.</strong> Fewer copies means less writing, editing, and reviewing every time the product changes.</li><li><strong>Lower translation effort.</strong> If a paragraph is translated once and reused, you don't pay to translate it again in every document.</li></ul>
-<p>The more products, versions, writers, and languages you have, the bigger these gains get.</p>
-<h2>When content reuse is (and isn't) worth it</h2>
-<p>Content reuse is not free. It takes planning, some discipline, and a way to manage shared content. For small projects, that overhead can outweigh the benefits. One independent technical writing consultancy argues that single sourcing is "not useful for most small documentation projects," because the main savings depend on repetition, and a single small product often has little to repeat.</p>
-<p>A quick way to decide: content reuse is probably worth it if two or more of these are true.</p>
-<ul><li>The same content appears in <strong>three or more places</strong></li><li>You document <strong>several products, editions, or versions</strong> that share features</li><li><strong>More than one writer</strong> works on the documentation</li><li>You publish in <strong>more than one language</strong></li><li>The same content goes to <strong>more than one audience or format</strong>, such as customers and support agents</li></ul>
-<p>If none of these apply yet, focus on writing good topics first. You can add reuse later.</p>
-<h2>What content should you reuse?</h2>
-<p>Not everything should be reused. Look for content that is both repeated and stable in meaning. Good candidates include:</p>
-<ul><li><strong>Safety warnings, notes, and disclaimers</strong> that must be worded exactly the same everywhere</li><li><strong>Common procedures</strong>, such as signing in, resetting a password, or contacting support</li><li><strong>Prerequisites</strong>, like system requirements or required permissions</li><li><strong>Definitions</strong> of product terms, so a word always means the same thing</li><li><strong>Legal and compliance text</strong> that must not drift between documents</li><li><strong>Specifications and settings descriptions</strong> shared by several product models</li></ul>
-<p>Avoid reusing content that only looks similar. Two procedures that differ by one step are not the same procedure, and forcing them into one source tends to create confusing exceptions.</p>
+<p><strong>Content reuse is the practice of writing a piece of documentation once, storing it in one place, and using it everywhere it's needed.</strong> When you update the source, every place that uses it updates too. The piece can be a whole topic, a paragraph, a warning, or a single product name.</p>
+<p>You'll also hear it called <em>single sourcing</em> or <em>single source publishing</em>. The idea is the same: one source of truth, many outputs.</p>
+<p>Content reuse isn't the same as copy and paste. Copying gives you two independent texts that drift apart the moment one of them changes. Reuse gives you one text shown in two places.</p>
+<h2>Why content reuse matters for documentation teams</h2>
+<p>Most documentation grows by duplication. Someone writes a good explanation of how to reset a password. Then it gets copied into the admin guide, the onboarding checklist, and the help center. A year later there are four versions, and none of them match.</p>
+<p>Reuse fixes this in a few practical ways.</p>
+<h3>One update instead of many</h3>
+<p>This is the main benefit. A Red Hat writer who single-sourced their upstream and downstream docs put it simply: if something changes, you only have to update it in one place. When a button label, price, or legal line changes, you edit it once and you're done.</p>
+<h3>Consistent answers for readers</h3>
+<p>When the same question gets the same answer everywhere, readers trust your docs. When the help center and the manual disagree, readers stop trusting both and contact support.</p>
+<h3>Fewer words to translate</h3>
+<p>If your documentation is published in several languages, every duplicated paragraph gets translated more than once. Reused content is translated once and appears everywhere in every language. It also makes it harder for one language version to fall behind the others.</p>
+<h3>Better answers from search and AI assistants</h3>
+<p>Search tools and AI answer generators work from your documentation. If they find three slightly different versions of the same procedure, they may return the outdated one. When each fact lives in one place, there's less for them to get wrong.</p>
+<h2>What content is worth reusing?</h2>
+<p>Not everything should be reused. The best candidates are pieces that are <strong>repeated often, change occasionally, and must be identical wherever they appear.</strong> Start with these:</p>
+<ul><li><strong>Warnings and safety notes</strong>: "Disconnect the power before opening the cover" has to be worded the same way every time.</li><li><strong>Prerequisites</strong>: "Before you begin, make sure you have admin access" shows up at the top of dozens of procedures.</li><li><strong>Common steps</strong>: Signing in, opening settings, or saving changes appear in many tasks.</li><li><strong>Product names and version numbers</strong>: These change with rebrands and releases, and a mismatch looks sloppy.</li><li><strong>Legal and compliance text</strong>: Disclaimers, warranty terms, and data-handling statements usually need sign-off, so you want one approved version.</li><li><strong>Glossary definitions</strong>: Define a term once and use the same definition everywhere it's explained.</li><li><strong>Support and contact details</strong>: Phone numbers, hours, and escalation paths change more often than you'd expect.</li></ul>
+<p>A quick test: if you'd be embarrassed to find two different versions of this text, reuse it.</p>
+<h2>How modular content makes reuse possible</h2>
+<p>You can't reuse content that's buried in a 40-page document. Reuse starts with breaking documentation into small pieces that each make sense on their own. This is called <strong>modular content</strong>, and the writing approach behind it is called <strong>topic-based authoring</strong>.</p>
+<h3>Write in self-contained topics</h3>
+<p>DITA, an open structured authoring standard published by the OASIS standards body, calls the topic "the basic unit of authoring and reuse." Red Hat's modular documentation guide sets the same bar for its modules: each one must make sense and provide value on its own, even when it's read separately from the others.</p>
+<p>In practice, that means a reader should be able to land on any topic from search and understand it without reading the page before it.</p>
+<h3>Separate concepts, tasks, and reference</h3>
+<p>Both DITA and Red Hat's modular documentation sort topics into three types:</p>
+<div class="table-wrap"><table><thead><tr><th>Topic type</th><th>Answers the question</th><th>Example</th></tr></thead><tbody><tr><td><strong>Concept</strong></td><td>"What is this, and why does it matter?"</td><td>What user roles are</td></tr><tr><td><strong>Task</strong> (or procedure)</td><td>"How do I do this?"</td><td>How to invite a new user</td></tr><tr><td><strong>Reference</strong></td><td>"What are the details?"</td><td>A table of every role and its permissions</td></tr></tbody></table></div>
+<p>Keeping them apart makes each one easier to reuse. A task topic about inviting users can go in the admin guide and the onboarding guide. The reference table can go anywhere roles are discussed. If all three were combined into one long page, you couldn't reuse any part of it cleanly.</p>
+<h3>Keep each piece small enough to scan</h3>
+<p>Smaller topics also help readers. Nielsen Norman Group notes that presenting content in chunks makes it easier to scan, and that human short-term memory is limited. A focused topic with a clear heading is easier to find, read, and reuse than a long section that covers five things.</p>
+<figure><img src="images/01-content-reuse-inline-1.png" alt="Two colleagues sorting colored cards into three separate trays on a table while one holds a tablet" loading="lazy"></figure>
 <h2>Three levels of content reuse</h2>
-<p>Content reuse works at different sizes. Most teams start with the first level and add the others as they grow.</p>
-<h3>1. Topic-level reuse</h3>
-<p>The simplest form: one whole topic appears in several places, such as two manuals or two menus. This is why topic based authoring and content reuse go together. The DITA standard, widely used in technical communication, calls the topic "the basic unit of authoring and of reuse." A topic that covers one subject and makes sense on its own can be placed wherever it is needed.</p>
-<h3>2. Snippet-level reuse</h3>
-<p>Smaller pieces, such as a warning, a step, or a paragraph, are stored once and pulled into many topics. In structured authoring systems this is often done with references: DITA's content reference mechanism, for example, pulls a shared element into a topic when the content is processed, instead of keeping a pasted copy.</p>
-<h3>3. Conditional content and variants</h3>
-<p>Sometimes the content is almost the same, but not quite. A feature might work differently in your basic and premium plans, or in version 2 and version 3. Conditional content handles this: you keep one source and mark the parts that apply only to a specific product, version, or audience. Readers see only what applies to them.</p>
-<figure><img src="images/01-content-reuse-inline-1.png" alt="A person arranging sticky notes into columns on a wall while a colleague points at one and suggests where it should go"></figure>
+<p>Content reuse happens at different sizes. Most teams use all three.</p>
+<ol><li><strong>Topic reuse.</strong> A whole topic appears in more than one manual or guide. Example: the same "Connect to Wi-Fi" procedure appears in the user manual for three printer models.</li><li><strong>Fragment reuse.</strong> A smaller piece, such as a warning, a prerequisite, or a set of steps, is pulled into many topics. DITA does this with content references, which reuse fragments inside topics.</li><li><strong>Variable reuse.</strong> A single value, such as a product name, version number, or support email, is stored once and inserted wherever it's needed.</li></ol>
+<p>There's also <strong>conditional content</strong>: one source that shows slightly different text depending on the audience or product edition. Red Hat's writer used this so upstream and downstream readers each saw the right product name. Use it lightly. A few conditions are manageable, but a topic with ten of them is hard to read and harder to review.</p>
 <h2>How to build a content reuse strategy</h2>
-<p>You don't need special software or a big project to start. Follow these steps.</p>
-<ol><li><strong>Find the repetition.</strong> Review your documentation and list content that appears in more than one place. Search for repeated warnings, steps, and definitions. This list is your reuse backlog.</li><li><strong>Choose your unit.</strong> Decide whether to reuse whole topics, smaller snippets, or both. Starting with whole topics is easiest to manage.</li><li><strong>Write reusable content.</strong> Content that will appear in many places must make sense in all of them (see the next section).</li><li><strong>Store it in one place.</strong> Keep shared content in a clearly named location with an owner, so writers know where to find it and who to ask.</li><li><strong>Reference, don't copy.</strong> Wherever the content is needed, link or include the source instead of pasting a copy.</li><li><strong>Review published output.</strong> Check how the reused content reads in each place it appears, not just in the source. Context changes how text reads.</li><li><strong>Revisit regularly.</strong> Products change, and so does what should be shared. Review your reuse backlog on a schedule.</li></ol>
-<p>As the glossary entry above notes, "successful single sourcing requires a solid plan for content creation and content reuse." These steps are that plan in its simplest form.</p>
-<h2>How to write reusable content</h2>
-<p>Reusable content has to stand on its own. A sentence that reads perfectly in one topic can be confusing in another. Before you mark something as shared, check it against these rules:</p>
-<ul><li><strong>Remove references to location.</strong> Avoid phrases like "as mentioned above," "in the previous section," or "this guide." The content won't always be in the same place.</li><li><strong>Keep terminology consistent.</strong> Shared content only works if every writer uses the same words for the same things. A <a href="https://sonat.com/@sonat/sonat-articles/01-documentation-style-guide">documentation style guide</a> and a <a href="https://sonat.com/@sonat/sonat-articles/01-translation-glossary">translation glossary</a> keep everyone aligned.</li><li><strong>Write in plain language.</strong> Simple words and short sentences fit more contexts. Google's technical writing course also advises avoiding idioms, which confuse international readers and translation software.</li><li><strong>Keep it focused.</strong> One subject per topic, one point per snippet. Small, focused pieces are easier to reuse than long sections that cover several things.</li><li><strong>Separate content from formatting.</strong> Let the publishing tool handle layout, so the same content can appear in a web page, a PDF, or a help widget without edits.</li></ul>
-<h2>Common content reuse mistakes</h2>
-<ul><li><strong>Reusing too much.</strong> If content becomes so generic that it no longer helps anyone, you have gone too far. Reuse should make docs clearer, not vaguer.</li><li><strong>Copying instead of referencing.</strong> Pasting text and calling it "reuse" brings back every problem reuse is meant to solve.</li><li><strong>Reviewing only the source.</strong> A snippet that looks fine on its own can break the flow of a topic. Always review the published result.</li><li><strong>No owner.</strong> Shared content without an owner goes out of date, and now it is wrong in many places at once.</li></ul>
-<h2>Content reuse with Sonat</h2>
-<p>Sonat is built around a single source of truth: every topic lives in one version-tracked place, so updates don't depend on finding every copy. Variants let you keep parallel versions of the same manual, such as product editions or releases, side by side in one place. And because content is managed in one place, machine translation into other languages starts from the same source. If you are building that foundation, our guide to creating a <a href="https://sonat.com/@sonat/sonat-articles/01-single-source-of-truth-team-knowledge">single source of truth for team knowledge</a> is a good next read, along with <a href="https://sonat.com/@sonat/sonat-articles/01-how-to-write-technical-documentation">how to write technical documentation people actually read</a>.</p>
-<h2>Conclusion</h2>
-<p>Content reuse is a simple idea: write it once, use it everywhere, and update it in one place. The hard part is the discipline. Find what repeats, write it so it stands on its own, keep it in one place with an owner, and check how it reads wherever it appears.</p>
-<p>Start small. Pick the one warning or procedure your docs repeat most, turn it into a single shared source, and see how much easier the next update becomes. If you want one place to write, organize, and publish your documentation, you can <a href="https://sonat.com/">try Sonat for free</a>.</p>
+<p>You don't need a big migration to start. A simple content reuse strategy looks like this:</p>
+<ol><li><strong>Audit what you already repeat.</strong> Search your docs for phrases you know get copied, such as warnings, sign-in steps, and support details. List every place each one appears.</li><li><strong>Pick your top five.</strong> Start with the pieces that change most often or cost the most when they're wrong. Legal text and safety notes are usually high on the list.</li><li><strong>Agree on one approved version.</strong> Merge the variations into a single, reviewed version. This is often the hardest step, because it forces decisions that were never made.</li><li><strong>Rewrite it to work anywhere.</strong> Remove phrases that depend on what comes before or after, like "as mentioned above" or "in the next section."</li><li><strong>Store it in one place and give it an owner.</strong> Someone needs to approve changes, because one edit now affects every page that uses it.</li><li><strong>Track where it's used.</strong> Before changing a reused piece, check every page it appears on. A wording that fits one context may not fit another.</li><li><strong>Review it on a schedule.</strong> Add reused content to your regular documentation review so it doesn't go stale.</li></ol>
+<p>Red Hat's writer said the hardest part of single sourcing was getting started. A small, visible win with five pieces of content is the easiest way to get past that.</p>
+<h2>Common content reuse mistakes to avoid</h2>
+<p>Reuse solves duplication, but it brings its own problems. Watch for these.</p>
+<ul><li><strong>Reusing for the sake of it.</strong> If two paragraphs look the same today but serve different readers, keep them separate. Forcing them together means one of them will eventually be wrong for its audience.</li><li><strong>Fragments that depend on context.</strong> A reused step that says "click the button again" makes no sense in a topic where the button never appeared. Every reusable piece has to stand on its own.</li><li><strong>Too many conditions.</strong> If a topic needs a decision tree to understand which text applies, split it into separate topics instead.</li><li><strong>No owner.</strong> Shared content without an owner gets edited by whoever notices a problem, and the edits pile up without review.</li><li><strong>Calling copy and paste "reuse."</strong> If changing the original doesn't update the copies, it isn't reuse. It's duplication with better intentions.</li></ul>
+<h2>How Sonat helps you keep one source of truth</h2>
+<p>Content reuse works best when your documentation tool is built around a single source of truth. <a href="https://sonat.com">Sonat</a> keeps every document in one central, version-tracked home, so your team always edits the current version and can restore an older one if needed.</p>
+<p>For documentation that comes in more than one version, such as different product editions or releases, Sonat's <strong>variants</strong> let you maintain parallel versions of the same manual without starting from scratch. Topics and menus keep your content modular. Built-in machine translation publishes your work in other languages from the same source.</p>
+<p>Writing happens where your team already works. Draft in Google Docs or the Sonat editor, then publish to your own domain with one click.</p>
+<h2>Start small and reuse with intent</h2>
+<p>Content reuse isn't about writing less. It's about making sure every fact in your documentation has one home. Start with the five pieces of text you repeat most, write them so they stand alone, give each one an owner, and build from there.</p>
+<p>Ready to give your documentation a single source of truth? <a href="https://sonat.com">Try Sonat for free</a>. No credit card required.</p>
 </article>
 </main>
 </body>
