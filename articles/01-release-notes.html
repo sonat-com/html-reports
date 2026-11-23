@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release Notes: How to Write Them (With a Free Template)</title>
+<meta name="description" content="Learn how to write release notes people actually read: what to include, a clear structure, release notes vs. changelogs, and a free template.">
+<style>
+  :root { --text:#1f2937; --muted:#4b5563; --accent:#2563eb; --bg:#ffffff; --soft:#f3f6fb; --line:#e5e7eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size:18px; line-height:1.7; }
+  main { max-width:760px; margin:0 auto; padding:48px 20px 72px; }
+  h1 { font-size:2.2rem; line-height:1.25; margin:0 0 24px; letter-spacing:-0.01em; }
+  h2 { font-size:1.55rem; line-height:1.3; margin:48px 0 12px; }
+  h3 { font-size:1.2rem; line-height:1.35; margin:32px 0 8px; }
+  p { margin:0 0 18px; }
+  ul { margin:0 0 18px; padding-left:24px; }
+  li { margin:6px 0; }
+  a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+  img { display:block; width:100%; height:auto; border-radius:12px; margin:28px 0; }
+  pre { background:var(--soft); border:1px solid var(--line); border-radius:10px; padding:18px; overflow-x:auto; font-size:0.85rem; line-height:1.55; white-space:pre; }
+  code { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  blockquote { margin:24px 0; padding:18px 22px; background:var(--soft); border-left:4px solid var(--accent); border-radius:0 10px 10px 0; }
+  blockquote p:last-child, blockquote ul:last-child { margin-bottom:0; }
+  .definition { font-size:1.05rem; }
+  @media (max-width:600px) { body { font-size:17px; } main { padding:32px 16px 56px; } h1 { font-size:1.75rem; } h2 { font-size:1.35rem; } }
+</style>
+</head>
+<body>
+<main>
+<article>
+<h1>How to Write Release Notes People Actually Read</h1>
+
+<img src="images/01-release-notes-hero.png" alt="A product team at a table, one person writing a list of product updates on an easel pad while two colleagues review notes beside their laptops">
+
+<p>You shipped the update. The work is done, the tests pass, and the team is already planning the next sprint. Then someone asks: “What do we tell customers?”</p>
+<p>That’s where release notes come in. Good release notes help customers find new features, warn them before something breaks, and cut down the “what changed?” tickets your support team would otherwise answer one by one. Bad ones get skipped, or worse, cause confusion.</p>
+<p>This guide covers what release notes are, what to put in them, a structure you can reuse, and a free release notes template you can copy today.</p>
+
+<h2>What are release notes?</h2>
+<p class="definition"><strong>Release notes are a short, dated summary of what changed in a product release and how those changes affect the people who use it.</strong> They cover new features, improvements, bug fixes, and anything users need to act on, such as a feature being retired.</p>
+<p>The key words are <em>how those changes affect the people who use it</em>. Release notes are not a record of what your team did. They are a message to your users about what’s different for them.</p>
+
+<h2>Release notes vs. changelog: what’s the difference?</h2>
+<p>The two terms get used interchangeably, but they usually serve different readers.</p>
+<ul>
+  <li><strong>A changelog</strong> is a complete, chronological list of notable changes for every version. It is often technical and kept alongside the product itself. A well-kept changelog is still written for humans: it groups similar changes, puts the newest version first, and shows the release date for each one.</li>
+  <li><strong>Release notes</strong> are curated for customers. They pick out what matters, explain the benefit in plain language, and point readers to help content when they need more.</li>
+</ul>
+<p>One rule applies to both: <strong>never paste a raw list of code commits.</strong> Commit messages are full of internal shorthand and noise. A single user-facing change might span dozens of commits, and a dozen commits might add up to nothing a customer would notice.</p>
+<p>If your product has both technical and non-technical users, keep both: a full changelog for people who want every detail, and release notes for everyone else.</p>
+
+<h2>What to include in release notes</h2>
+<p>Most release notes need the same core parts. Here’s what each one does.</p>
+
+<h3>A clear, dated title</h3>
+<p>Customers often relate more easily to a date than to a version number. A title like “November 2026 update” or “What’s new — 23 November 2026” tells readers at once whether they’ve seen it before. Add the version number too if your users rely on it.</p>
+<p>When you write dates in full or in ISO format (2026-11-23), readers in different countries can’t misread the day and month.</p>
+
+<h3>A short summary up top</h3>
+<p>Start with two or three sentences for the reader who has ten seconds. What’s the headline change? Is there anything they must do? Put the details further down.</p>
+
+<h3>New features</h3>
+<p>Lead with new things. For each feature, say what it does for the user and where to find it. Keep it short, and link to the full how-to guide instead of repeating every step.</p>
+
+<h3>Improvements</h3>
+<p>Changes to existing features: faster loading, a clearer layout, a renamed setting. Describe what feels different to the user, not what you refactored behind the scenes.</p>
+
+<h3>Bug fixes</h3>
+<p>List fixes users would notice. Describe the fix from the user’s side: “Exported PDFs now keep your table formatting” is better than “Fixed table rendering bug in PDF export module.”</p>
+
+<h3>Breaking changes, deprecations, and removals</h3>
+<p>This is the section readers can least afford to miss. If a change means users must do something, or something they rely on will stop working, say so clearly and early. Tell them exactly what to do and by when. If you only get one section right, make it this one.</p>
+
+<img src="images/01-release-notes-inline-1.png" alt="A support specialist at a desk pointing to a checklist on a monitor while a coworker takes notes beside them">
+
+<h2>How to write release notes: 7 best practices</h2>
+
+<h3>1. Write for your users, not your team</h3>
+<p>Picture explaining the update to a customer, not to a colleague. Drop internal project names, ticket numbers, and team jargon. If a term only makes sense inside your company, it doesn’t belong in release notes.</p>
+
+<h3>2. Start each item with the user’s outcome</h3>
+<p>The UK Government Digital Service’s guidance on release notes puts it simply: for each change, start by telling users directly how it affects them. Phrases like “You can now…” and “You no longer need to…” do this naturally.</p>
+<p>Compare:</p>
+<ul>
+  <li>❌ “Implemented bulk export functionality.”</li>
+  <li>✅ “You can now export several topics at once from the topic list.”</li>
+</ul>
+
+<h3>3. Use active voice and address the reader directly</h3>
+<p>“You can now filter by date” is clearer than “Date filtering has been added.” Active voice also makes it obvious who does what, which matters most when the reader has to take action.</p>
+
+<h3>4. Keep it brief and link out for details</h3>
+<p>Release notes are not a user manual. Give a high-level summary of each change and where to find it. Then link to a step-by-step guide or video for anyone who needs more. If that guide doesn’t exist yet, that’s a signal to write it.</p>
+
+<h3>5. Make it scannable</h3>
+<p>Use headings, short bullets, and white space. Avoid walls of text and deeply nested lists — one level of sub-bullets is plenty. Only use a table when the content truly has rows and columns.</p>
+
+<h3>6. Use version numbers that signal impact</h3>
+<p>If you number releases, a widely used convention is MAJOR.MINOR.PATCH. You raise the major number for changes that aren’t backward compatible, the minor number for new functionality that is, and the patch number for backward-compatible bug fixes. Readers can see at a glance whether an update needs their attention.</p>
+
+<h3>7. Be consistent, every release</h3>
+<p>Use the same structure, the same section order, and the same naming for features as your product interface. Consistency teaches readers where to look. Publish notes for every release, too. Users who learn to trust your release notes will treat them as the source of truth for what changed.</p>
+
+<h2>Release notes template</h2>
+<p>Copy this release notes format and adapt it to your product. Delete any section that’s empty for a given release.</p>
+<pre><code>[Product name] — [Month Year] update (version X.Y.Z)
+Released: [YYYY-MM-DD]
+
+Summary
+[2–3 sentences: the headline change and anything users must do.]
+
+⚠️ Action required
+- [What is changing or being removed] — [what users must do] by [date].
+
+New features
+- You can now [outcome]. Find it in [location]. [Link to guide]
+
+Improvements
+- [Feature] now [what's better for the user].
+
+Bug fixes
+- [What now works correctly, described from the user's side].
+
+Coming soon / deprecations
+- [Feature] will be retired on [date]. Use [replacement] instead. [Link to guide]</code></pre>
+
+<h2>Release notes example</h2>
+<p>Here’s how the template looks filled in for a fictional project-tracking app:</p>
+<blockquote>
+  <p><strong>Example App — November 2026 update (version 4.2.0)</strong><br>Released: 2026-11-23</p>
+  <p><strong>Summary:</strong> You can now share boards with people outside your team, and search is faster. If you use the old CSV import, switch to the new importer before 31 January 2027.</p>
+  <p><strong>Action required</strong></p>
+  <ul><li>The legacy CSV import will be removed on 31 January 2027. Use <strong>Import → Spreadsheet</strong> instead.</li></ul>
+  <p><strong>New features</strong></p>
+  <ul><li>You can now share a board with guests by email. Open a board and select <strong>Share</strong>.</li></ul>
+  <p><strong>Improvements</strong></p>
+  <ul><li>Search results now load as you type.</li></ul>
+  <p><strong>Bug fixes</strong></p>
+  <ul><li>Due dates now display correctly in your local time zone.</li></ul>
+</blockquote>
+<p>Notice what’s missing: no ticket numbers, no “various bug fixes and performance improvements,” no internal team names. Every line tells the reader something about their own experience.</p>
+
+<h2>Where to publish your release notes</h2>
+<p>Release notes work best where users already look for help. That means alongside your product documentation, not buried in an email that gets archived. Many teams keep a single “What’s new” page with the newest release at the top, then link to it from inside the product and from their update emails.</p>
+<p>A few things make that page much easier to maintain:</p>
+<ul>
+  <li><strong>Version history.</strong> You can see and restore earlier versions of a page if something is published by mistake.</li>
+  <li><strong>A review step.</strong> A second person checks breaking-change wording before it goes live.</li>
+  <li><strong>Translation.</strong> If your customers read other languages, a release note in their language is far more likely to be acted on.</li>
+  <li><strong>Search.</strong> Users searching your docs for a feature should find the release note that introduced it.</li>
+</ul>
+<p><a href="https://sonat.com">Sonat</a> is built for exactly this kind of published documentation. You can draft release notes in Google Docs or the built-in editor, send them through an approval workflow, publish in one click to your own docs site, and keep every past version in the archive. Full-text search comes built in, and machine translation on paid plans helps your notes reach customers in the languages they read.</p>
+
+<h2>Conclusion</h2>
+<p>Great release notes are short, dated, consistent, and written entirely from the user’s point of view. Lead with what’s new, flag anything that needs action, describe fixes the way users experience them, and link to deeper guides instead of cramming them in.</p>
+<p>Start with the template above for your next release. Within a few updates, your customers will know where to look and what to expect — and your support team will hear “what changed?” a lot less often.</p>
+</article>
+</main>
+</body>
+</html>
